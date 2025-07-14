@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="game-title">Rock Paper Scissors</h1>
+            <div class="scoreboard">
+                <div class="score-section">
+                    <h3>Player</h3>
+                    <span id="player-score" class="score">0</span>
+                </div>
+                <div class="score-section">
+                    <h3>Computer</h3>
+                    <span id="computer-score" class="score">0</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="game-area">
+            <div class="choices-display">
+                <div class="choice-result">
+                    <h3>Your Choice</h3>
+                    <div id="player-choice" class="choice-icon">?</div>
+                </div>
+                <div class="vs-section">
+                    <span class="vs-text">VS</span>
+                </div>
+                <div class="choice-result">
+                    <h3>Computer Choice</h3>
+                    <div id="computer-choice" class="choice-icon">?</div>
+                </div>
+            </div>
+
+            <div class="game-result">
+                <h2 id="result-text" class="result-text">Choose your weapon!</h2>
+                <div id="result-animation" class="result-animation"></div>
+            </div>
+
+            <div class="game-controls">
+                <button id="rock-btn" class="choice-btn" data-choice="rock">
+                    <span class="choice-emoji">🪨</span>
+                    <span class="choice-name">Rock</span>
+                </button>
+                <button id="paper-btn" class="choice-btn" data-choice="paper">
+                    <span class="choice-emoji">📄</span>
+                    <span class="choice-name">Paper</span>
+                </button>
+                <button id="scissors-btn" class="choice-btn" data-choice="scissors">
+                    <span class="choice-emoji">✂️</span>
+                    <span class="choice-name">Scissors</span>
+                </button>
+            </div>
+
+            <div class="game-actions">
+                <button id="reset-btn" class="action-btn">Reset Game</button>
+                <button id="history-btn" class="action-btn">Show History</button>
+            </div>
+        </main>
+
+        <div class="game-history" id="game-history">
+            <div class="history-header">
+                <h3>Game History</h3>
+                <button id="close-history" class="close-btn">×</button>
+            </div>
+            <div class="history-content">
+                <div id="history-list" class="history-list">
+                    <p class="no-history">No games played yet!</p>
+                </div>
+                <button id="clear-history" class="clear-history-btn">Clear History</button>
+            </div>
+        </div>
+
+        <div class="game-stats">
+            <div class="stat-item">
+                <span class="stat-label">Games Played:</span>
+                <span id="games-played" class="stat-value">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Win Rate:</span>
+                <span id="win-rate" class="stat-value">0%</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

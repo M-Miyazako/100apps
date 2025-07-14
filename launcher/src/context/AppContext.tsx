@@ -68,17 +68,9 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     const loadApps = async () => {
       dispatch({ type: 'SET_LOADING', payload: true });
       try {
-        const savedApps = localStorage.getItem('launcher-apps');
-        if (savedApps) {
-          const apps = JSON.parse(savedApps).map((app: any) => ({
-            ...app,
-            createdAt: new Date(app.createdAt),
-          }));
-          dispatch({ type: 'SET_APPS', payload: apps });
-        } else {
-          // 初回起動時にサンプルデータを読み込む
-          dispatch({ type: 'SET_APPS', payload: sampleApps });
-        }
+        // 開発中は常にサンプルデータを使用
+        localStorage.removeItem('launcher-apps');
+        dispatch({ type: 'SET_APPS', payload: sampleApps });
       } catch (error) {
         console.error('Failed to load apps:', error);
         // エラーの場合もサンプルデータを使用

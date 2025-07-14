@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Todo List</h1>
+            <p class="subtitle">Stay organized and productive</p>
+        </header>
+
+        <main>
+            <section class="todo-input-section">
+                <form id="todo-form" class="todo-form">
+                    <input 
+                        type="text" 
+                        id="todo-input" 
+                        placeholder="What needs to be done?" 
+                        required
+                        autocomplete="off"
+                    >
+                    <button type="submit" class="add-btn">Add Task</button>
+                </form>
+            </section>
+
+            <section class="todo-list-section">
+                <div class="todo-controls">
+                    <div class="todo-stats">
+                        <span id="task-count">0 tasks remaining</span>
+                    </div>
+                    
+                    <div class="todo-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="active">Active</button>
+                        <button class="filter-btn" data-filter="completed">Completed</button>
+                    </div>
+                </div>
+
+                <ul id="todo-list" class="todo-list">
+                    <!-- Todo items will be dynamically inserted here -->
+                </ul>
+
+                <div class="todo-actions">
+                    <button id="clear-completed" class="clear-btn">Clear Completed</button>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Todo List App - Part of 100 Web Apps Project</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

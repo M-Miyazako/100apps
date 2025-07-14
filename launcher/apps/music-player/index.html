@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="app-title">Music Player</h1>
+            <div class="app-subtitle">Upload and play your favorite songs</div>
+        </header>
+
+        <main class="main-content">
+            <!-- File Upload Section -->
+            <section class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">🎵</div>
+                    <div class="upload-text">
+                        <div class="upload-title">Drop your music files here</div>
+                        <div class="upload-subtitle">or click to browse</div>
+                    </div>
+                    <input type="file" id="fileInput" accept="audio/*" multiple>
+                </div>
+            </section>
+
+            <!-- Player Section -->
+            <section class="player-section">
+                <div class="player-container">
+                    <!-- Current Track Display -->
+                    <div class="current-track">
+                        <div class="track-artwork">
+                            <div class="artwork-placeholder">🎵</div>
+                        </div>
+                        <div class="track-info">
+                            <div class="track-title" id="trackTitle">No track selected</div>
+                            <div class="track-artist" id="trackArtist">Unknown Artist</div>
+                            <div class="track-duration" id="trackDuration">0:00 / 0:00</div>
+                        </div>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                            <div class="progress-handle" id="progressHandle"></div>
+                        </div>
+                        <div class="time-labels">
+                            <span id="currentTime">0:00</span>
+                            <span id="totalTime">0:00</span>
+                        </div>
+                    </div>
+
+                    <!-- Player Controls -->
+                    <div class="player-controls">
+                        <button class="control-btn" id="shuffleBtn" title="Shuffle">🔀</button>
+                        <button class="control-btn" id="prevBtn" title="Previous">⏮️</button>
+                        <button class="control-btn primary" id="playBtn" title="Play/Pause">▶️</button>
+                        <button class="control-btn" id="nextBtn" title="Next">⏭️</button>
+                        <button class="control-btn" id="repeatBtn" title="Repeat">🔁</button>
+                    </div>
+
+                    <!-- Volume Control -->
+                    <div class="volume-control">
+                        <button class="control-btn" id="muteBtn" title="Mute">🔊</button>
+                        <div class="volume-slider">
+                            <input type="range" id="volumeSlider" min="0" max="100" value="50">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Visualizer Section -->
+            <section class="visualizer-section">
+                <div class="visualizer-container">
+                    <div class="visualizer-title">Audio Visualizer</div>
+                    <canvas id="visualizer" width="800" height="200"></canvas>
+                </div>
+            </section>
+
+            <!-- Playlist Section -->
+            <section class="playlist-section">
+                <div class="playlist-header">
+                    <h2>Playlist</h2>
+                    <div class="playlist-actions">
+                        <button class="action-btn" id="clearPlaylistBtn">Clear All</button>
+                    </div>
+                </div>
+                <div class="playlist-container">
+                    <div class="playlist" id="playlist">
+                        <div class="empty-playlist">
+                            <div class="empty-icon">🎵</div>
+                            <div class="empty-text">No songs in playlist</div>
+                            <div class="empty-subtext">Upload some music files to get started</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Audio Element (Hidden) -->
+        <audio id="audioPlayer" preload="metadata"></audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

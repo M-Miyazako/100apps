@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hash Generator - Secure Hash Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Hash Generator</h1>
+            <p class="subtitle">Secure hash calculation for text and files</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Hash Algorithm Selection -->
+            <section class="algorithm-section">
+                <h2>Select Hash Algorithm</h2>
+                <div class="algorithm-grid">
+                    <label class="algorithm-option">
+                        <input type="radio" name="algorithm" value="md5" checked>
+                        <span class="algorithm-name">MD5</span>
+                        <span class="algorithm-desc">128-bit (Legacy)</span>
+                    </label>
+                    <label class="algorithm-option">
+                        <input type="radio" name="algorithm" value="sha1">
+                        <span class="algorithm-name">SHA-1</span>
+                        <span class="algorithm-desc">160-bit (Legacy)</span>
+                    </label>
+                    <label class="algorithm-option">
+                        <input type="radio" name="algorithm" value="sha256">
+                        <span class="algorithm-name">SHA-256</span>
+                        <span class="algorithm-desc">256-bit (Recommended)</span>
+                    </label>
+                    <label class="algorithm-option">
+                        <input type="radio" name="algorithm" value="sha512">
+                        <span class="algorithm-name">SHA-512</span>
+                        <span class="algorithm-desc">512-bit (Most Secure)</span>
+                    </label>
+                </div>
+            </section>
+
+            <!-- Input Methods -->
+            <section class="input-section">
+                <div class="input-tabs">
+                    <button class="tab-button active" data-tab="text">Text Input</button>
+                    <button class="tab-button" data-tab="file">File Upload</button>
+                </div>
+
+                <!-- Text Input Tab -->
+                <div class="tab-content active" id="text-tab">
+                    <h3>Text Input</h3>
+                    <div class="input-group">
+                        <textarea 
+                            id="text-input" 
+                            placeholder="Enter text to hash..." 
+                            rows="6"
+                            spellcheck="false"
+                        ></textarea>
+                        <div class="input-actions">
+                            <button class="btn btn-secondary" id="clear-text">Clear</button>
+                            <button class="btn btn-primary" id="hash-text">Generate Hash</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- File Upload Tab -->
+                <div class="tab-content" id="file-tab">
+                    <h3>File Upload</h3>
+                    <div class="file-upload-area" id="file-upload-area">
+                        <div class="file-upload-content">
+                            <div class="file-icon">📁</div>
+                            <p>Drag and drop a file here or click to select</p>
+                            <input type="file" id="file-input" hidden>
+                        </div>
+                        <div class="file-info" id="file-info" style="display: none;">
+                            <span class="file-name"></span>
+                            <span class="file-size"></span>
+                        </div>
+                    </div>
+                    <div class="input-actions">
+                        <button class="btn btn-secondary" id="clear-file">Clear</button>
+                        <button class="btn btn-primary" id="hash-file">Generate Hash</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hash Output -->
+            <section class="output-section">
+                <h3>Hash Result</h3>
+                <div class="hash-output" id="hash-output">
+                    <div class="hash-placeholder">
+                        <div class="placeholder-icon">🔐</div>
+                        <p>Your hash will appear here</p>
+                    </div>
+                </div>
+                <div class="output-actions" id="output-actions" style="display: none;">
+                    <button class="btn btn-secondary" id="copy-hash">Copy to Clipboard</button>
+                    <button class="btn btn-secondary" id="save-favorite">Save to Favorites</button>
+                </div>
+            </section>
+
+            <!-- Hash Comparison -->
+            <section class="comparison-section">
+                <h3>Hash Comparison</h3>
+                <div class="comparison-container">
+                    <div class="comparison-input">
+                        <label for="compare-hash">Compare with hash:</label>
+                        <input type="text" id="compare-hash" placeholder="Enter hash to compare...">
+                        <button class="btn btn-primary" id="compare-btn">Compare</button>
+                    </div>
+                    <div class="comparison-result" id="comparison-result"></div>
+                </div>
+            </section>
+
+            <!-- Hash History -->
+            <section class="history-section">
+                <div class="history-header">
+                    <h3>Hash History</h3>
+                    <button class="btn btn-secondary" id="clear-history">Clear History</button>
+                </div>
+                <div class="history-container" id="history-container">
+                    <div class="history-placeholder">
+                        <p>No hash history yet. Generate your first hash to see it here.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Favorites -->
+            <section class="favorites-section">
+                <div class="favorites-header">
+                    <h3>Favorites</h3>
+                    <button class="btn btn-secondary" id="clear-favorites">Clear Favorites</button>
+                </div>
+                <div class="favorites-container" id="favorites-container">
+                    <div class="favorites-placeholder">
+                        <p>No favorites yet. Save your important hashes here.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Loading Spinner -->
+        <div class="loading" id="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Generating hash...</p>
+        </div>
+
+        <!-- Toast Notifications -->
+        <div class="toast" id="toast"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

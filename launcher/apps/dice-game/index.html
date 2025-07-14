@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎲 Dice Game</h1>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-label">Score:</span>
+                    <span class="stat-value" id="currentScore">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Best:</span>
+                    <span class="stat-value" id="bestScore">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Rolls:</span>
+                    <span class="stat-value" id="rollCount">0</span>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="game-controls">
+                <div class="control-group">
+                    <label for="gameMode">Game Mode:</label>
+                    <select id="gameMode">
+                        <option value="simple">Simple Rolling</option>
+                        <option value="yahtzee">Yahtzee Style</option>
+                        <option value="target">Target Score</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="diceCount">Number of Dice:</label>
+                    <input type="range" id="diceCount" min="1" max="6" value="5">
+                    <span id="diceCountLabel">5</span>
+                </div>
+            </div>
+
+            <div class="dice-container" id="diceContainer">
+                <!-- Dice will be generated here -->
+            </div>
+
+            <div class="game-actions">
+                <button id="rollBtn" class="btn btn-primary">Roll Dice</button>
+                <button id="holdBtn" class="btn btn-secondary" disabled>Hold Selected</button>
+                <button id="resetBtn" class="btn btn-tertiary">Reset Game</button>
+            </div>
+
+            <div class="scoring-panel">
+                <div class="current-combination">
+                    <h3>Current Combination:</h3>
+                    <div id="currentCombination">Roll the dice to see combinations</div>
+                </div>
+                
+                <div class="score-options" id="scoreOptions">
+                    <!-- Score options will be populated here -->
+                </div>
+            </div>
+
+            <div class="game-info">
+                <div class="roll-history">
+                    <h3>Roll History</h3>
+                    <div id="rollHistory" class="history-list">
+                        <p>No rolls yet</p>
+                    </div>
+                </div>
+                
+                <div class="achievements">
+                    <h3>Achievements</h3>
+                    <div id="achievements" class="achievement-list">
+                        <div class="achievement">
+                            <span class="achievement-icon">🎯</span>
+                            <span class="achievement-text">First Roll</span>
+                            <span class="achievement-status" id="firstRoll">🔒</span>
+                        </div>
+                        <div class="achievement">
+                            <span class="achievement-icon">🎲</span>
+                            <span class="achievement-text">Yahtzee!</span>
+                            <span class="achievement-status" id="yahtzee">🔒</span>
+                        </div>
+                        <div class="achievement">
+                            <span class="achievement-icon">🔥</span>
+                            <span class="achievement-text">Hot Streak</span>
+                            <span class="achievement-status" id="hotStreak">🔒</span>
+                        </div>
+                        <div class="achievement">
+                            <span class="achievement-icon">💯</span>
+                            <span class="achievement-text">Century Club</span>
+                            <span class="achievement-status" id="centuryClub">🔒</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="sound-toggle">
+                <label>
+                    <input type="checkbox" id="soundToggle" checked>
+                    <span>🔊 Sound Effects</span>
+                </label>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

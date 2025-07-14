@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetris Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>TETRIS</h1>
+        </div>
+        
+        <div class="game-content">
+            <div class="side-panel left-panel">
+                <div class="hold-section">
+                    <h3>HOLD</h3>
+                    <canvas id="holdCanvas" width="120" height="120"></canvas>
+                </div>
+                <div class="info-section">
+                    <div class="info-item">
+                        <span class="label">SCORE</span>
+                        <span id="score" class="value">0</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">LINES</span>
+                        <span id="lines" class="value">0</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">LEVEL</span>
+                        <span id="level" class="value">1</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="main-game">
+                <canvas id="gameCanvas" width="300" height="600"></canvas>
+                <div class="game-over" id="gameOver" style="display: none;">
+                    <h2>GAME OVER</h2>
+                    <p>Final Score: <span id="finalScore">0</span></p>
+                    <button id="restartBtn">RESTART</button>
+                </div>
+            </div>
+            
+            <div class="side-panel right-panel">
+                <div class="next-section">
+                    <h3>NEXT</h3>
+                    <canvas id="nextCanvas" width="120" height="120"></canvas>
+                </div>
+                <div class="controls-section">
+                    <h3>CONTROLS</h3>
+                    <div class="control-item">
+                        <span class="key">←→</span>
+                        <span>Move</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">↓</span>
+                        <span>Soft Drop</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">↑</span>
+                        <span>Rotate</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">Space</span>
+                        <span>Hard Drop</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">C</span>
+                        <span>Hold</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">P</span>
+                        <span>Pause</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="game-controls">
+            <button id="startBtn">START</button>
+            <button id="pauseBtn" disabled>PAUSE</button>
+            <button id="resetBtn">RESET</button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

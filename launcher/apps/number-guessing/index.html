@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Number Guessing Game</h1>
+            <p class="subtitle">Test your guessing skills!</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Game Setup -->
+            <div class="setup-section" id="setupSection">
+                <h2>Game Setup</h2>
+                <div class="setup-options">
+                    <div class="option-group">
+                        <label for="difficultySelect">Choose Difficulty:</label>
+                        <select id="difficultySelect">
+                            <option value="easy">Easy (1-10)</option>
+                            <option value="medium">Medium (1-50)</option>
+                            <option value="hard">Hard (1-100)</option>
+                            <option value="expert">Expert (1-500)</option>
+                            <option value="custom">Custom Range</option>
+                        </select>
+                    </div>
+
+                    <div class="custom-range" id="customRange" style="display: none;">
+                        <div class="range-inputs">
+                            <div class="input-group">
+                                <label for="minNumber">Min:</label>
+                                <input type="number" id="minNumber" value="1" min="1">
+                            </div>
+                            <div class="input-group">
+                                <label for="maxNumber">Max:</label>
+                                <input type="number" id="maxNumber" value="100" min="2">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="start-btn" id="startBtn">Start Game</button>
+                </div>
+            </div>
+
+            <!-- Game Play -->
+            <div class="game-section" id="gameSection" style="display: none;">
+                <div class="game-info">
+                    <div class="info-item">
+                        <span class="info-label">Range:</span>
+                        <span class="info-value" id="rangeDisplay"></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Attempts:</span>
+                        <span class="info-value" id="attemptsDisplay">0</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Score:</span>
+                        <span class="info-value" id="scoreDisplay">0</span>
+                    </div>
+                </div>
+
+                <div class="guess-area">
+                    <h3>Make Your Guess</h3>
+                    <div class="guess-input-group">
+                        <input type="number" id="guessInput" placeholder="Enter your guess">
+                        <button class="guess-btn" id="guessBtn">Guess</button>
+                    </div>
+                </div>
+
+                <div class="feedback-area">
+                    <div class="feedback-message" id="feedbackMessage"></div>
+                    <div class="hint-message" id="hintMessage"></div>
+                </div>
+
+                <div class="attempts-history" id="attemptsHistory">
+                    <h4>Your Attempts</h4>
+                    <div class="attempts-list" id="attemptsList"></div>
+                </div>
+            </div>
+
+            <!-- Game Over -->
+            <div class="game-over-section" id="gameOverSection" style="display: none;">
+                <div class="celebration" id="celebration">
+                    <h2 class="celebration-title">Congratulations!</h2>
+                    <div class="celebration-content">
+                        <p class="celebration-message" id="celebrationMessage"></p>
+                        <div class="final-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Number was:</span>
+                                <span class="stat-value" id="finalNumber"></span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Attempts:</span>
+                                <span class="stat-value" id="finalAttempts"></span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Score:</span>
+                                <span class="stat-value" id="finalScore"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="game-over-actions">
+                    <button class="play-again-btn" id="playAgainBtn">Play Again</button>
+                    <button class="new-game-btn" id="newGameBtn">New Game</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Best Scores -->
+        <aside class="best-scores" id="bestScores">
+            <h3>Best Scores</h3>
+            <div class="scores-list" id="scoresList">
+                <div class="score-item">
+                    <span class="score-difficulty">Easy:</span>
+                    <span class="score-value" id="bestEasy">-</span>
+                </div>
+                <div class="score-item">
+                    <span class="score-difficulty">Medium:</span>
+                    <span class="score-value" id="bestMedium">-</span>
+                </div>
+                <div class="score-item">
+                    <span class="score-difficulty">Hard:</span>
+                    <span class="score-value" id="bestHard">-</span>
+                </div>
+                <div class="score-item">
+                    <span class="score-difficulty">Expert:</span>
+                    <span class="score-value" id="bestExpert">-</span>
+                </div>
+            </div>
+            <button class="clear-scores-btn" id="clearScoresBtn">Clear All Scores</button>
+        </aside>
+
+        <!-- Instructions -->
+        <footer class="instructions">
+            <h4>How to Play</h4>
+            <ol>
+                <li>Choose your difficulty level or set a custom range</li>
+                <li>Click "Start Game" to begin</li>
+                <li>Enter your guess and click "Guess"</li>
+                <li>Follow the hints to narrow down the correct number</li>
+                <li>Try to guess the number in as few attempts as possible</li>
+                <li>Higher scores are awarded for fewer attempts</li>
+            </ol>
+        </footer>
+    </div>
+
+    <!-- Confetti Animation -->
+    <div class="confetti" id="confetti"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name Generator - Generate Names for Every Purpose</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🎲 Name Generator</h1>
+            <p>Generate names for every purpose - from people to businesses to fantasy worlds</p>
+        </header>
+
+        <div class="controls">
+            <div class="category-selector">
+                <label for="nameCategory">Category:</label>
+                <select id="nameCategory">
+                    <option value="person">Person Names</option>
+                    <option value="business">Business Names</option>
+                    <option value="fantasy">Fantasy Names</option>
+                    <option value="nickname">Nicknames</option>
+                </select>
+            </div>
+
+            <div class="person-options category-options active" id="person-options">
+                <div class="option-group">
+                    <label for="personGender">Gender:</label>
+                    <select id="personGender">
+                        <option value="any">Any</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="unisex">Unisex</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="personCulture">Culture:</label>
+                    <select id="personCulture">
+                        <option value="any">Any</option>
+                        <option value="english">English</option>
+                        <option value="spanish">Spanish</option>
+                        <option value="french">French</option>
+                        <option value="german">German</option>
+                        <option value="italian">Italian</option>
+                        <option value="japanese">Japanese</option>
+                        <option value="chinese">Chinese</option>
+                        <option value="arabic">Arabic</option>
+                        <option value="russian">Russian</option>
+                        <option value="irish">Irish</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label>
+                        <input type="checkbox" id="includeMiddleName">
+                        Include Middle Name
+                    </label>
+                </div>
+            </div>
+
+            <div class="business-options category-options" id="business-options">
+                <div class="option-group">
+                    <label for="businessType">Type:</label>
+                    <select id="businessType">
+                        <option value="any">Any</option>
+                        <option value="tech">Technology</option>
+                        <option value="retail">Retail</option>
+                        <option value="food">Food & Beverage</option>
+                        <option value="consulting">Consulting</option>
+                        <option value="creative">Creative</option>
+                        <option value="healthcare">Healthcare</option>
+                        <option value="finance">Finance</option>
+                        <option value="education">Education</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label>
+                        <input type="checkbox" id="includeBusinessSuffix">
+                        Include Suffix (LLC, Inc, etc.)
+                    </label>
+                </div>
+            </div>
+
+            <div class="fantasy-options category-options" id="fantasy-options">
+                <div class="option-group">
+                    <label for="fantasyType">Type:</label>
+                    <select id="fantasyType">
+                        <option value="elf">Elf</option>
+                        <option value="dwarf">Dwarf</option>
+                        <option value="orc">Orc</option>
+                        <option value="human">Human Fantasy</option>
+                        <option value="dragon">Dragon</option>
+                        <option value="wizard">Wizard</option>
+                        <option value="kingdom">Kingdom</option>
+                        <option value="city">Fantasy City</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="fantasyGender">Gender:</label>
+                    <select id="fantasyGender">
+                        <option value="any">Any</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="nickname-options category-options" id="nickname-options">
+                <div class="option-group">
+                    <label for="nicknameStyle">Style:</label>
+                    <select id="nicknameStyle">
+                        <option value="cute">Cute</option>
+                        <option value="cool">Cool</option>
+                        <option value="funny">Funny</option>
+                        <option value="tough">Tough</option>
+                        <option value="gamer">Gamer</option>
+                        <option value="short">Short & Sweet</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="generation-controls">
+                <div class="option-group">
+                    <label for="bulkCount">Generate:</label>
+                    <select id="bulkCount">
+                        <option value="1">1 Name</option>
+                        <option value="5">5 Names</option>
+                        <option value="10">10 Names</option>
+                        <option value="25">25 Names</option>
+                        <option value="50">50 Names</option>
+                    </select>
+                </div>
+                <button id="generateBtn" class="generate-btn">Generate Names</button>
+            </div>
+        </div>
+
+        <div class="results-section">
+            <div class="results-header">
+                <h2>Generated Names</h2>
+                <div class="results-actions">
+                    <button id="copyAllBtn" class="action-btn" disabled>Copy All</button>
+                    <button id="clearBtn" class="action-btn" disabled>Clear</button>
+                </div>
+            </div>
+            
+            <div class="results-container">
+                <div id="nameResults" class="name-results">
+                    <div class="placeholder">
+                        <p>Click "Generate Names" to create your first batch of names!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="favorites-section">
+            <div class="favorites-header">
+                <h2>Favorites</h2>
+                <div class="favorites-actions">
+                    <button id="exportFavoritesBtn" class="action-btn" disabled>Export</button>
+                    <button id="clearFavoritesBtn" class="action-btn" disabled>Clear All</button>
+                </div>
+            </div>
+            <div id="favoritesList" class="favorites-list">
+                <div class="placeholder">
+                    <p>Your favorite names will appear here. Click the heart icon next to any generated name to save it!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

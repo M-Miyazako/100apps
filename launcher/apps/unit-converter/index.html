@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Unit Converter</h1>
+        <p>Convert between different units of measurement</p>
+    </header>
+
+    <main class="main">
+        <div class="converter-container">
+            <!-- Category Selection -->
+            <div class="category-section">
+                <h2>Select Category</h2>
+                <div class="category-buttons">
+                    <button class="category-btn active" data-category="length">Length</button>
+                    <button class="category-btn" data-category="weight">Weight</button>
+                    <button class="category-btn" data-category="temperature">Temperature</button>
+                    <button class="category-btn" data-category="volume">Volume</button>
+                    <button class="category-btn" data-category="area">Area</button>
+                </div>
+            </div>
+
+            <!-- Conversion Interface -->
+            <div class="conversion-section">
+                <div class="conversion-row">
+                    <div class="input-group">
+                        <label for="fromValue">From:</label>
+                        <div class="input-container">
+                            <input type="number" id="fromValue" placeholder="Enter value" step="any">
+                            <select id="fromUnit">
+                                <!-- Options will be populated by JavaScript -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="swap-container">
+                        <button class="swap-btn" id="swapBtn" title="Swap units">⇄</button>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="toValue">To:</label>
+                        <div class="input-container">
+                            <input type="number" id="toValue" placeholder="Result" step="any" readonly>
+                            <select id="toUnit">
+                                <!-- Options will be populated by JavaScript -->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-section">
+                    <div class="result-display" id="resultDisplay">
+                        <p>Enter a value to see the conversion</p>
+                    </div>
+                </div>
+
+                <div class="common-conversions" id="commonConversions">
+                    <h3>Common Conversions</h3>
+                    <div class="conversion-grid" id="conversionGrid">
+                        <!-- Common conversions will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Reference -->
+            <div class="reference-section">
+                <details class="reference-details">
+                    <summary>Quick Reference</summary>
+                    <div class="reference-content" id="referenceContent">
+                        <!-- Reference content will be populated by JavaScript -->
+                    </div>
+                </details>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Unit Converter - Part of 100 Web Apps</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

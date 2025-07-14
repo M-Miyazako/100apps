@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="chat-container">
+        <!-- Sidebar with contacts/rooms -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Chats</h2>
+                <button class="new-chat-btn" id="newChatBtn">+</button>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search chats..." class="search-input">
+            </div>
+            <div class="contacts-list" id="contactsList">
+                <!-- Contacts will be dynamically added here -->
+            </div>
+        </div>
+
+        <!-- Main chat area -->
+        <div class="main-chat">
+            <div class="chat-header" id="chatHeader">
+                <div class="chat-info">
+                    <div class="avatar" id="chatAvatar"></div>
+                    <div class="chat-details">
+                        <h3 id="chatName">Select a chat</h3>
+                        <span class="status" id="chatStatus">Click on a contact to start chatting</span>
+                    </div>
+                </div>
+                <div class="chat-actions">
+                    <button class="action-btn" id="callBtn">📞</button>
+                    <button class="action-btn" id="videoBtn">📹</button>
+                    <button class="action-btn" id="moreBtn">⋮</button>
+                </div>
+            </div>
+
+            <div class="messages-container" id="messagesContainer">
+                <div class="welcome-message">
+                    <div class="welcome-icon">💬</div>
+                    <h3>Welcome to Chat App</h3>
+                    <p>Select a contact from the sidebar to start messaging</p>
+                </div>
+            </div>
+
+            <div class="typing-indicator" id="typingIndicator">
+                <span class="typing-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+                <span class="typing-text">Someone is typing...</span>
+            </div>
+
+            <div class="message-input-container" id="messageInputContainer">
+                <button class="attachment-btn" id="attachmentBtn">📎</button>
+                <div class="input-wrapper">
+                    <input type="text" id="messageInput" placeholder="Type a message..." class="message-input">
+                    <button class="emoji-btn" id="emojiBtn">😊</button>
+                </div>
+                <button class="send-btn" id="sendBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 21L23 12L2 3V10L17 12L2 14V21Z" fill="currentColor"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Emoji Picker Modal -->
+    <div class="emoji-picker" id="emojiPicker">
+        <div class="emoji-header">
+            <h4>Emojis</h4>
+            <button class="close-emoji" id="closeEmoji">×</button>
+        </div>
+        <div class="emoji-grid" id="emojiGrid">
+            <!-- Emojis will be dynamically populated -->
+        </div>
+    </div>
+
+    <!-- New Chat Modal -->
+    <div class="modal-overlay" id="newChatModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>New Chat</h3>
+                <button class="close-modal" id="closeModal">×</button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="newContactName" placeholder="Enter contact name..." class="modal-input">
+                <div class="avatar-selection">
+                    <h4>Choose Avatar:</h4>
+                    <div class="avatar-options" id="avatarOptions">
+                        <!-- Avatar options will be populated -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="cancelBtn">Cancel</button>
+                <button class="btn-primary" id="createChatBtn">Create Chat</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

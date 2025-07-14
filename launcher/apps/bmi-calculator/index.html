@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator - Health & Fitness Tool</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>BMI Calculator</h1>
+            <p>Calculate your Body Mass Index and get health insights</p>
+        </header>
+
+        <main>
+            <!-- BMI Calculator Form -->
+            <section class="calculator-section">
+                <div class="card">
+                    <h2>Calculate Your BMI</h2>
+                    
+                    <!-- Unit Toggle -->
+                    <div class="unit-toggle">
+                        <label class="switch">
+                            <input type="checkbox" id="unitToggle">
+                            <span class="slider"></span>
+                        </label>
+                        <span class="unit-label">
+                            <span class="metric active">Metric</span>
+                            <span class="imperial">Imperial</span>
+                        </span>
+                    </div>
+
+                    <form id="bmiForm">
+                        <!-- Height Input -->
+                        <div class="input-group">
+                            <label for="height">Height</label>
+                            <div class="input-container">
+                                <input type="number" id="height" placeholder="170" step="0.1" min="0" required>
+                                <span class="unit" id="heightUnit">cm</span>
+                            </div>
+                        </div>
+
+                        <!-- Weight Input -->
+                        <div class="input-group">
+                            <label for="weight">Weight</label>
+                            <div class="input-container">
+                                <input type="number" id="weight" placeholder="70" step="0.1" min="0" required>
+                                <span class="unit" id="weightUnit">kg</span>
+                            </div>
+                        </div>
+
+                        <!-- Age Input (optional) -->
+                        <div class="input-group">
+                            <label for="age">Age (optional)</label>
+                            <div class="input-container">
+                                <input type="number" id="age" placeholder="25" min="1" max="120">
+                                <span class="unit">years</span>
+                            </div>
+                        </div>
+
+                        <!-- Gender Selection -->
+                        <div class="input-group">
+                            <label>Gender</label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="gender" value="male" checked>
+                                    <span class="radio-custom"></span>
+                                    Male
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="gender" value="female">
+                                    <span class="radio-custom"></span>
+                                    Female
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="calculate-btn">Calculate BMI</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <div class="card">
+                    <h2>Your BMI Result</h2>
+                    <div class="bmi-result">
+                        <div class="bmi-value">
+                            <span class="bmi-number" id="bmiValue">0.0</span>
+                            <span class="bmi-unit">kg/m²</span>
+                        </div>
+                        <div class="bmi-category" id="bmiCategory">Normal</div>
+                    </div>
+
+                    <!-- BMI Scale -->
+                    <div class="bmi-scale">
+                        <div class="scale-bar">
+                            <div class="scale-segment underweight" data-category="Underweight">
+                                <span class="scale-label">Underweight</span>
+                                <span class="scale-range">&lt; 18.5</span>
+                            </div>
+                            <div class="scale-segment normal" data-category="Normal">
+                                <span class="scale-label">Normal</span>
+                                <span class="scale-range">18.5 - 24.9</span>
+                            </div>
+                            <div class="scale-segment overweight" data-category="Overweight">
+                                <span class="scale-label">Overweight</span>
+                                <span class="scale-range">25 - 29.9</span>
+                            </div>
+                            <div class="scale-segment obese" data-category="Obese">
+                                <span class="scale-label">Obese</span>
+                                <span class="scale-range">≥ 30</span>
+                            </div>
+                        </div>
+                        <div class="bmi-pointer" id="bmiPointer"></div>
+                    </div>
+
+                    <!-- Health Recommendations -->
+                    <div class="health-recommendations">
+                        <h3>Health Recommendations</h3>
+                        <div class="recommendations-content" id="recommendationsContent">
+                            <!-- Recommendations will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Ideal Weight Range -->
+                    <div class="ideal-weight">
+                        <h3>Ideal Weight Range</h3>
+                        <div class="weight-range" id="idealWeightRange">
+                            <!-- Ideal weight range will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BMI History -->
+            <section class="history-section">
+                <div class="card">
+                    <h2>BMI History</h2>
+                    <div class="history-controls">
+                        <button id="clearHistory" class="clear-btn">Clear History</button>
+                    </div>
+                    <div class="history-list" id="historyList">
+                        <p class="no-history">No BMI calculations yet. Start by calculating your BMI above.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Health Information -->
+            <section class="info-section">
+                <div class="card">
+                    <h2>About BMI</h2>
+                    <div class="info-content">
+                        <p>Body Mass Index (BMI) is a measure of body fat based on height and weight. It's a useful screening tool, but it doesn't directly measure body fat percentage.</p>
+                        
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <h4>BMI Categories</h4>
+                                <ul>
+                                    <li><strong>Underweight:</strong> BMI below 18.5</li>
+                                    <li><strong>Normal:</strong> BMI 18.5 - 24.9</li>
+                                    <li><strong>Overweight:</strong> BMI 25 - 29.9</li>
+                                    <li><strong>Obese:</strong> BMI 30 and above</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="info-item">
+                                <h4>Important Notes</h4>
+                                <ul>
+                                    <li>BMI may not be accurate for athletes with high muscle mass</li>
+                                    <li>Age, gender, and body composition affect interpretation</li>
+                                    <li>Consult healthcare professionals for personalized advice</li>
+                                    <li>BMI is a screening tool, not a diagnostic measure</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 BMI Calculator. For educational purposes only. Consult healthcare professionals for medical advice.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

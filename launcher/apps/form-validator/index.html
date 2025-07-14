@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Form Validator</h1>
+            <p>Test comprehensive form validation with real-time feedback</p>
+        </header>
+
+        <main>
+            <form id="validationForm" class="validation-form">
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                    <div class="validation-message" id="firstNameMessage"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                    <div class="validation-message" id="lastNameMessage"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                    <div class="validation-message" id="emailMessage"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+                    <div class="validation-message" id="phoneMessage"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                    <div class="validation-message" id="passwordMessage"></div>
+                    <div class="password-strength">
+                        <div class="strength-bar">
+                            <div class="strength-fill" id="strengthFill"></div>
+                        </div>
+                        <div class="strength-text" id="strengthText">Password strength</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    <div class="validation-message" id="confirmPasswordMessage"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="creditCard">Credit Card Number</label>
+                    <input type="text" id="creditCard" name="creditCard" placeholder="1234 5678 9012 3456" maxlength="19">
+                    <div class="validation-message" id="creditCardMessage"></div>
+                    <div class="card-type" id="cardType"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="expiryDate">Expiry Date</label>
+                    <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" maxlength="5">
+                    <div class="validation-message" id="expiryDateMessage"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="4">
+                    <div class="validation-message" id="cvvMessage"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" min="13" max="120">
+                    <div class="validation-message" id="ageMessage"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="website">Website URL</label>
+                    <input type="url" id="website" name="website" placeholder="https://example.com">
+                    <div class="validation-message" id="websiteMessage"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                    <div class="validation-message" id="usernameMessage"></div>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <label>
+                        <input type="checkbox" id="terms" name="terms" required>
+                        I agree to the <a href="#" onclick="return false;">Terms and Conditions</a>
+                    </label>
+                    <div class="validation-message" id="termsMessage"></div>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <label>
+                        <input type="checkbox" id="newsletter" name="newsletter">
+                        Subscribe to newsletter
+                    </label>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" id="submitBtn">Validate Form</button>
+                    <button type="button" id="resetBtn">Reset Form</button>
+                </div>
+            </form>
+
+            <div class="validation-summary" id="validationSummary">
+                <h3>Validation Summary</h3>
+                <div class="summary-content" id="summaryContent">
+                    <p>Fill out the form to see validation results</p>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="validation-rules">
+                <h3>Validation Rules</h3>
+                <ul>
+                    <li><strong>Name:</strong> Must be at least 2 characters, letters only</li>
+                    <li><strong>Email:</strong> Must be a valid email format</li>
+                    <li><strong>Phone:</strong> Must be a valid US phone number format</li>
+                    <li><strong>Password:</strong> At least 8 characters, include uppercase, lowercase, number, and special character</li>
+                    <li><strong>Credit Card:</strong> Must be a valid card number (Visa, MasterCard, American Express, Discover)</li>
+                    <li><strong>Expiry Date:</strong> Must be MM/YY format and not expired</li>
+                    <li><strong>CVV:</strong> 3-4 digits depending on card type</li>
+                    <li><strong>Age:</strong> Must be between 13 and 120</li>
+                    <li><strong>Website:</strong> Must be a valid URL</li>
+                    <li><strong>Username:</strong> 3-20 characters, alphanumeric and underscores only</li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Password Generator</h1>
+            <p>Generate secure passwords with customizable options</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Password Generation Section -->
+            <section class="password-section">
+                <div class="password-output">
+                    <div class="password-display">
+                        <input type="text" id="passwordDisplay" readonly placeholder="Generated password will appear here">
+                        <button id="copyBtn" class="copy-btn" title="Copy to clipboard">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="password-strength">
+                        <div class="strength-indicator">
+                            <div class="strength-bar">
+                                <div class="strength-fill" id="strengthFill"></div>
+                            </div>
+                            <span class="strength-text" id="strengthText">No password generated</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Password Options Section -->
+            <section class="options-section">
+                <h2>Password Options</h2>
+                
+                <div class="option-group">
+                    <label for="passwordLength">Password Length: <span id="lengthValue">12</span></label>
+                    <input type="range" id="passwordLength" min="4" max="128" value="12" class="slider">
+                </div>
+
+                <div class="option-group">
+                    <h3>Character Types</h3>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="includeUppercase" checked>
+                            <span class="checkmark"></span>
+                            Uppercase Letters (A-Z)
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="includeLowercase" checked>
+                            <span class="checkmark"></span>
+                            Lowercase Letters (a-z)
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="includeNumbers" checked>
+                            <span class="checkmark"></span>
+                            Numbers (0-9)
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="includeSymbols">
+                            <span class="checkmark"></span>
+                            Special Characters (!@#$%^&*)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="option-group">
+                    <h3>Advanced Options</h3>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="excludeSimilar">
+                            <span class="checkmark"></span>
+                            Exclude Similar Characters (0, O, l, I, 1)
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="excludeAmbiguous">
+                            <span class="checkmark"></span>
+                            Exclude Ambiguous Characters ({} [] () /\ ~,;.&lt;&gt;)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="option-group">
+                    <label for="passwordCount">Number of Passwords: <span id="countValue">1</span></label>
+                    <input type="range" id="passwordCount" min="1" max="10" value="1" class="slider">
+                </div>
+            </section>
+
+            <!-- Action Buttons -->
+            <section class="actions-section">
+                <button id="generateBtn" class="generate-btn">Generate Password</button>
+                <button id="clearHistoryBtn" class="clear-btn">Clear History</button>
+            </section>
+
+            <!-- Multiple Passwords Display -->
+            <section class="multiple-passwords" id="multiplePasswords" style="display: none;">
+                <h3>Generated Passwords</h3>
+                <div id="passwordList" class="password-list"></div>
+            </section>
+
+            <!-- Password History Section -->
+            <section class="history-section">
+                <h3>Password History</h3>
+                <div id="passwordHistory" class="history-list">
+                    <p class="empty-history">No passwords generated yet</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Copy Feedback Toast -->
+        <div id="copyToast" class="toast">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 6L9 17l-5-5"></path>
+            </svg>
+            <span>Password copied to clipboard!</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

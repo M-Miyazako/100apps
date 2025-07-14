@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping List - ·çÃÔó°ê¹È</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Shopping List</h1>
+            <p>J·Diê¹È’¡W~W‡F</p>
+        </header>
+        
+        <main class="main-content">
+            <!-- ¢¤Æàý »¯·çó -->
+            <section class="add-item-section">
+                <div class="add-item-form">
+                    <div class="input-group">
+                        <input 
+                            type="text" 
+                            id="itemInput" 
+                            placeholder="¢¤Æà’e›"
+                            maxlength="50"
+                        >
+                        <select id="categorySelect">
+                            <option value="ßÁ">ßÁ</option>
+                            <option value="òi">òi</option>
+                            <option value="å(Á">å(Á</option>
+                            <option value="[(Á">[(Á</option>
+                            <option value="·ÍßÁ">·ÍßÁ</option>
+                            <option value="ÓP">ÓP</option>
+                            <option value="]nÖ">]nÖ</option>
+                        </select>
+                        <input 
+                            type="number" 
+                            id="quantityInput" 
+                            placeholder="pÏ"
+                            min="1"
+                            max="100"
+                            value="1"
+                        >
+                        <button class="btn btn-primary" id="addBtn">ý </button>
+                    </div>
+                </div>
+                
+                <div class="quick-add">
+                    <span class="quick-add-label">¯¤Ã¯ý :</span>
+                    <div class="quick-add-buttons">
+                        <button class="quick-btn" data-item="Ñó" data-category="ßÁ">Ñó</button>
+                        <button class="quick-btn" data-item="[s" data-category="òi">[s</button>
+                        <button class="quick-btn" data-item="u" data-category="ßÁ">u</button>
+                        <button class="quick-btn" data-item="s" data-category="ßÁ">s</button>
+                        <button class="quick-btn" data-item="ÎÜ" data-category="ßÁ">ÎÜ</button>
+                        <button class="quick-btn" data-item="‰" data-category="ßÁ">‰</button>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Õ£ë¿üû½üÈ»¯·çó -->
+            <section class="filter-section">
+                <div class="filter-controls">
+                    <div class="filter-group">
+                        <label for="categoryFilter">«Æ´êüÕ£ë¿ü:</label>
+                        <select id="categoryFilter">
+                            <option value="all">Yyf</option>
+                            <option value="ßÁ">ßÁ</option>
+                            <option value="òi">òi</option>
+                            <option value="å(Á">å(Á</option>
+                            <option value="[(Á">[(Á</option>
+                            <option value="·ÍßÁ">·ÍßÁ</option>
+                            <option value="ÓP">ÓP</option>
+                            <option value="]nÖ">]nÖ</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="sortBy">&yÿH:</label>
+                        <select id="sortBy">
+                            <option value="added">ý </option>
+                            <option value="name">M</option>
+                            <option value="category">«Æ´êü</option>
+                            <option value="quantity">pÏ</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox" id="showCompleted">
+                            <span>üe‚h:</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="list-actions">
+                    <button class="btn btn-secondary" id="clearCompletedBtn">üe’Jd</button>
+                    <button class="btn btn-warning" id="clearAllBtn">YyfJd</button>
+                </div>
+            </section>
+            
+            <!-- ·çÃÔó°ê¹È -->
+            <section class="shopping-list-section">
+                <div class="list-header">
+                    <h2>·çÃÔó°ê¹È</h2>
+                    <div class="list-stats">
+                        <span class="stat-item">: <span id="totalItems">0</span>ö</span>
+                        <span class="stat-item">üe: <span id="completedItems">0</span>ö</span>
+                    </div>
+                </div>
+                
+                <div class="shopping-list" id="shoppingList">
+                    <!-- ¢¤ÆàLSSký UŒ~Y -->
+                </div>
+                
+                <div class="empty-state" id="emptyState">
+                    <div class="empty-icon">=Ò</div>
+                    <h3>ê¹ÈLzgY</h3>
+                    <p>
+nÕ©üàK‰¢¤Æà’ý WfO`UD</p>
+                </div>
+            </section>
+        </main>
+        
+        <!-- µÞêü»¯·çó -->
+        <section class="summary-section">
+            <h3>«Æ´êü%µÞêü</h3>
+            <div class="category-summary" id="categorySummary">
+                <!-- «Æ´êü%µÞêüLSSkh:UŒ~Y -->
+            </div>
+        </section>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

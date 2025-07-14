@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Recorder - 音声録音</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="recorder">
+            <h1>Voice Recorder</h1>
+            <div class="visualizer" id="visualizer"></div>
+            <div class="controls">
+                <button class="record-btn" id="record-btn">🎙️ Record</button>
+                <button class="stop-btn" id="stop-btn" disabled>⏹️ Stop</button>
+                <button class="play-btn" id="play-btn" disabled>▶️ Play</button>
+            </div>
+            <div class="timer" id="timer">00:00</div>
+            <div class="recordings" id="recordings"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

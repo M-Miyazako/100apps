@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Viewer - PDFビューアー</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="toolbar">
+            <input type="file" id="file-input" accept=".pdf">
+            <button class="nav-btn" id="prev-btn">◀ Prev</button>
+            <span id="page-info">Page 1 of 1</span>
+            <button class="nav-btn" id="next-btn">Next ▶</button>
+            <button class="zoom-btn" id="zoom-out">🔍-</button>
+            <span id="zoom-info">100%</span>
+            <button class="zoom-btn" id="zoom-in">🔍+</button>
+            <button class="fullscreen-btn" id="fullscreen">📺 Full</button>
+        </div>
+        <div class="viewer">
+            <div class="pdf-container" id="pdf-container">
+                <div class="no-pdf">
+                    <div class="upload-icon">📄</div>
+                    <p>PDFファイルを選択してください</p>
+                    <button class="upload-btn" onclick="document.getElementById('file-input').click()">📁 Choose File</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

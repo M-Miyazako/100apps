@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Widget - 天気予報</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="weather-widget">
+            <div class="search-container">
+                <input type="text" id="location-input" placeholder="都市名を入力してください">
+                <button id="search-btn">検索</button>
+                <button id="location-btn" title="現在地の天気を取得">📍</button>
+            </div>
+
+            <div class="loading" id="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>天気情報を取得中...</p>
+            </div>
+
+            <div class="weather-main" id="weather-main" style="display: none;">
+                <div class="location-info">
+                    <h2 id="location-name">東京</h2>
+                    <p id="current-date"></p>
+                </div>
+
+                <div class="current-weather">
+                    <div class="weather-icon">
+                        <span id="weather-emoji">☀️</span>
+                    </div>
+                    <div class="temperature">
+                        <span id="current-temp">25</span>
+                        <span class="unit">°C</span>
+                    </div>
+                    <div class="weather-description">
+                        <p id="weather-desc">晴れ</p>
+                        <p id="feels-like">体感温度: 27°C</p>
+                    </div>
+                </div>
+
+                <div class="weather-details">
+                    <div class="detail-item">
+                        <div class="detail-icon">💧</div>
+                        <div class="detail-info">
+                            <span class="detail-label">湿度</span>
+                            <span class="detail-value" id="humidity">60%</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon">💨</div>
+                        <div class="detail-info">
+                            <span class="detail-label">風速</span>
+                            <span class="detail-value" id="wind-speed">5 m/s</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon">👁️</div>
+                        <div class="detail-info">
+                            <span class="detail-label">視界</span>
+                            <span class="detail-value" id="visibility">10 km</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon">🌅</div>
+                        <div class="detail-info">
+                            <span class="detail-label">日出</span>
+                            <span class="detail-value" id="sunrise">6:30</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon">🌇</div>
+                        <div class="detail-info">
+                            <span class="detail-label">日没</span>
+                            <span class="detail-value" id="sunset">18:30</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon">🌡️</div>
+                        <div class="detail-info">
+                            <span class="detail-label">気圧</span>
+                            <span class="detail-value" id="pressure">1013 hPa</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="forecast-section">
+                    <h3>5日間予報</h3>
+                    <div class="forecast-container" id="forecast-container">
+                        <!-- 5日間の予報がここに表示される -->
+                    </div>
+                </div>
+
+                <div class="hourly-section">
+                    <h3>24時間予報</h3>
+                    <div class="hourly-container" id="hourly-container">
+                        <!-- 24時間の予報がここに表示される -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="error-message" id="error-message" style="display: none;">
+                <div class="error-icon">❌</div>
+                <p id="error-text">エラーが発生しました</p>
+            </div>
+
+            <div class="favorites">
+                <h3>お気に入りの都市</h3>
+                <div class="favorites-container" id="favorites-container">
+                    <!-- お気に入りの都市がここに表示される -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

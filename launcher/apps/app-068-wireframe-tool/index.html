@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe Tool</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <h1><i class="fas fa-drafting-compass"></i> Wireframe Tool</h1>
+            </div>
+            <div class="header-center">
+                <div class="toolbar">
+                    <button class="tool-btn active" data-tool="select" title="Select">
+                        <i class="fas fa-mouse-pointer"></i>
+                    </button>
+                    <button class="tool-btn" data-tool="text" title="Text">
+                        <i class="fas fa-font"></i>
+                    </button>
+                    <button class="tool-btn" data-tool="rectangle" title="Rectangle">
+                        <i class="fas fa-square"></i>
+                    </button>
+                    <button class="tool-btn" data-tool="circle" title="Circle">
+                        <i class="fas fa-circle"></i>
+                    </button>
+                    <button class="tool-btn" data-tool="line" title="Line">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button class="tool-btn" data-tool="image" title="Image Placeholder">
+                        <i class="fas fa-image"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="device-selector">
+                    <select id="device-select">
+                        <option value="desktop">Desktop (1200px)</option>
+                        <option value="tablet">Tablet (768px)</option>
+                        <option value="mobile">Mobile (375px)</option>
+                        <option value="custom">Custom</option>
+                    </select>
+                </div>
+                <button class="action-btn" id="preview-mode" title="Preview Mode">
+                    <i class="fas fa-eye"></i> Preview
+                </button>
+                <button class="action-btn" id="export-html" title="Export HTML">
+                    <i class="fas fa-code"></i> HTML
+                </button>
+                <button class="action-btn" id="export-png" title="Export PNG">
+                    <i class="fas fa-download"></i> PNG
+                </button>
+                <button class="action-btn" id="export-json" title="Export JSON">
+                    <i class="fas fa-file-code"></i> JSON
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Components Panel -->
+            <aside class="components-panel">
+                <div class="panel">
+                    <h3>UI Components</h3>
+                    <div class="components-grid">
+                        <div class="component-item" data-component="button" draggable="true">
+                            <i class="fas fa-hand-pointer"></i>
+                            <span>Button</span>
+                        </div>
+                        <div class="component-item" data-component="input" draggable="true">
+                            <i class="fas fa-edit"></i>
+                            <span>Input</span>
+                        </div>
+                        <div class="component-item" data-component="checkbox" draggable="true">
+                            <i class="fas fa-check-square"></i>
+                            <span>Checkbox</span>
+                        </div>
+                        <div class="component-item" data-component="radio" draggable="true">
+                            <i class="fas fa-dot-circle"></i>
+                            <span>Radio</span>
+                        </div>
+                        <div class="component-item" data-component="dropdown" draggable="true">
+                            <i class="fas fa-caret-down"></i>
+                            <span>Dropdown</span>
+                        </div>
+                        <div class="component-item" data-component="textarea" draggable="true">
+                            <i class="fas fa-align-left"></i>
+                            <span>Textarea</span>
+                        </div>
+                        <div class="component-item" data-component="header" draggable="true">
+                            <i class="fas fa-heading"></i>
+                            <span>Header</span>
+                        </div>
+                        <div class="component-item" data-component="navigation" draggable="true">
+                            <i class="fas fa-bars"></i>
+                            <span>Navigation</span>
+                        </div>
+                        <div class="component-item" data-component="card" draggable="true">
+                            <i class="fas fa-id-card"></i>
+                            <span>Card</span>
+                        </div>
+                        <div class="component-item" data-component="table" draggable="true">
+                            <i class="fas fa-table"></i>
+                            <span>Table</span>
+                        </div>
+                        <div class="component-item" data-component="sidebar" draggable="true">
+                            <i class="fas fa-columns"></i>
+                            <span>Sidebar</span>
+                        </div>
+                        <div class="component-item" data-component="footer" draggable="true">
+                            <i class="fas fa-window-minimize"></i>
+                            <span>Footer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <h3>Layout</h3>
+                    <div class="layout-grid">
+                        <div class="layout-item" data-layout="container" draggable="true">
+                            <div class="layout-preview container-preview"></div>
+                            <span>Container</span>
+                        </div>
+                        <div class="layout-item" data-layout="row" draggable="true">
+                            <div class="layout-preview row-preview"></div>
+                            <span>Row</span>
+                        </div>
+                        <div class="layout-item" data-layout="column" draggable="true">
+                            <div class="layout-preview column-preview"></div>
+                            <span>Column</span>
+                        </div>
+                        <div class="layout-item" data-layout="grid" draggable="true">
+                            <div class="layout-preview grid-preview"></div>
+                            <span>Grid</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <h3>Templates</h3>
+                    <div class="templates-list">
+                        <button class="template-btn" data-template="landing-page">
+                            <i class="fas fa-home"></i>
+                            Landing Page
+                        </button>
+                        <button class="template-btn" data-template="dashboard">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Dashboard
+                        </button>
+                        <button class="template-btn" data-template="form">
+                            <i class="fas fa-wpforms"></i>
+                            Form
+                        </button>
+                        <button class="template-btn" data-template="blog">
+                            <i class="fas fa-blog"></i>
+                            Blog Layout
+                        </button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Canvas Area -->
+            <div class="canvas-area">
+                <div class="canvas-header">
+                    <div class="canvas-info">
+                        <span class="device-name">Desktop</span>
+                        <span class="canvas-dimensions">1200 x 800</span>
+                    </div>
+                    <div class="canvas-controls">
+                        <button class="zoom-btn" id="zoom-in" title="Zoom In">
+                            <i class="fas fa-search-plus"></i>
+                        </button>
+                        <span class="zoom-level" id="zoom-level">100%</span>
+                        <button class="zoom-btn" id="zoom-out" title="Zoom Out">
+                            <i class="fas fa-search-minus"></i>
+                        </button>
+                        <button class="zoom-btn" id="zoom-fit" title="Fit to Screen">
+                            <i class="fas fa-expand-arrows-alt"></i>
+                        </button>
+                        <label class="grid-toggle">
+                            <input type="checkbox" id="show-grid" checked>
+                            <i class="fas fa-th"></i> Grid
+                        </label>
+                        <label class="snap-toggle">
+                            <input type="checkbox" id="snap-to-grid" checked>
+                            <i class="fas fa-magnet"></i> Snap
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="canvas-container">
+                    <div class="canvas-wrapper" id="canvas-wrapper">
+                        <div class="wireframe-canvas" id="wireframe-canvas">
+                            <div class="grid-overlay" id="grid-overlay"></div>
+                            <div class="drop-zone" id="drop-zone">
+                                Drop components here
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Properties Panel -->
+            <aside class="properties-panel">
+                <div class="panel">
+                    <h3>Properties</h3>
+                    <div class="properties-content" id="properties-content">
+                        <div class="no-selection">
+                            <i class="fas fa-mouse-pointer"></i>
+                            <p>Select an element to edit properties</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <h3>Layers</h3>
+                    <div class="layers-container" id="layers-list">
+                        <!-- Layers will be populated here -->
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <h3>History</h3>
+                    <div class="history-container">
+                        <button class="history-btn" id="undo-btn" title="Undo">
+                            <i class="fas fa-undo"></i> Undo
+                        </button>
+                        <button class="history-btn" id="redo-btn" title="Redo">
+                            <i class="fas fa-redo"></i> Redo
+                        </button>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Context Menu -->
+        <div class="context-menu" id="context-menu">
+            <div class="context-item" data-action="copy">
+                <i class="fas fa-copy"></i> Copy
+            </div>
+            <div class="context-item" data-action="paste">
+                <i class="fas fa-paste"></i> Paste
+            </div>
+            <div class="context-item" data-action="delete">
+                <i class="fas fa-trash"></i> Delete
+            </div>
+            <div class="context-divider"></div>
+            <div class="context-item" data-action="bring-front">
+                <i class="fas fa-arrow-up"></i> Bring to Front
+            </div>
+            <div class="context-item" data-action="send-back">
+                <i class="fas fa-arrow-down"></i> Send to Back
+            </div>
+            <div class="context-divider"></div>
+            <div class="context-item" data-action="group">
+                <i class="fas fa-object-group"></i> Group
+            </div>
+            <div class="context-item" data-action="ungroup">
+                <i class="fas fa-object-ungroup"></i> Ungroup
+            </div>
+        </div>
+
+        <!-- Preview Modal -->
+        <div class="modal" id="preview-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Preview</h3>
+                    <div class="preview-controls">
+                        <select id="preview-device">
+                            <option value="desktop">Desktop</option>
+                            <option value="tablet">Tablet</option>
+                            <option value="mobile">Mobile</option>
+                        </select>
+                        <button class="modal-close" id="close-preview">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="preview-frame" id="preview-frame">
+                        <!-- Preview content will be generated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Text Edit Modal -->
+        <div class="modal" id="text-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Edit Text</h3>
+                    <button class="modal-close" id="close-text-modal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <textarea id="text-input" placeholder="Enter text..."></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" id="cancel-text">Cancel</button>
+                    <button class="btn btn-primary" id="save-text">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

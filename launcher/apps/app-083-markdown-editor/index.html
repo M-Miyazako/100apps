@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Editor - マークダウンエディター</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <h1><i class="fab fa-markdown"></i> Markdown Editor</h1>
+            <div class="header-actions">
+                <button id="exportHTML"><i class="fas fa-download"></i> HTML</button>
+                <button id="exportPDF"><i class="fas fa-file-pdf"></i> PDF</button>
+                <button id="saveFile"><i class="fas fa-save"></i> 保存</button>
+            </div>
+        </header>
+
+        <nav class="toolbar">
+            <button id="bold"><i class="fas fa-bold"></i></button>
+            <button id="italic"><i class="fas fa-italic"></i></button>
+            <button id="heading"><i class="fas fa-heading"></i></button>
+            <button id="link"><i class="fas fa-link"></i></button>
+            <button id="image"><i class="fas fa-image"></i></button>
+            <button id="list"><i class="fas fa-list-ul"></i></button>
+            <button id="table"><i class="fas fa-table"></i></button>
+            <button id="code"><i class="fas fa-code"></i></button>
+        </nav>
+
+        <main class="main-content">
+            <div class="editor-container">
+                <textarea id="editor" placeholder="ここにMarkdownを入力してください..."></textarea>
+            </div>
+            <div class="preview-container">
+                <div id="preview"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.2/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Editor - 画像編集</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="toolbar">
+            <input type="file" id="file-input" accept="image/*">
+            <button class="tool-btn" data-filter="brightness">🔆 Brightness</button>
+            <button class="tool-btn" data-filter="contrast">🎨 Contrast</button>
+            <button class="tool-btn" data-filter="saturate">🌈 Saturate</button>
+            <button class="tool-btn" data-filter="blur">💫 Blur</button>
+            <button class="tool-btn" data-filter="grayscale">⚫ Grayscale</button>
+            <button class="tool-btn" data-filter="sepia">🟤 Sepia</button>
+            <button class="reset-btn">🔄 Reset</button>
+            <button class="save-btn">💾 Save</button>
+        </div>
+        <div class="editor">
+            <div class="canvas-container">
+                <canvas id="canvas"></canvas>
+            </div>
+            <div class="controls">
+                <div class="slider-group">
+                    <label>Brightness</label>
+                    <input type="range" id="brightness" min="0" max="200" value="100">
+                </div>
+                <div class="slider-group">
+                    <label>Contrast</label>
+                    <input type="range" id="contrast" min="0" max="200" value="100">
+                </div>
+                <div class="slider-group">
+                    <label>Saturate</label>
+                    <input type="range" id="saturate" min="0" max="200" value="100">
+                </div>
+                <div class="slider-group">
+                    <label>Blur</label>
+                    <input type="range" id="blur" min="0" max="10" value="0">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

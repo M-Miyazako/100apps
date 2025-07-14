@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentation Tool - プレゼンテーション</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>Slides</h3>
+            <div class="slides-list" id="slides-list"></div>
+            <button class="add-slide-btn" id="add-slide">+ Add Slide</button>
+        </div>
+        <div class="main-content">
+            <div class="toolbar">
+                <button class="tool-btn" id="text-tool">📝 Text</button>
+                <button class="tool-btn" id="image-tool">🖼️ Image</button>
+                <button class="tool-btn" id="shape-tool">🔶 Shape</button>
+                <button class="tool-btn" id="present-btn">🎯 Present</button>
+            </div>
+            <div class="slide-editor" id="slide-editor">
+                <div class="slide-content" id="slide-content">
+                    <h1>Click to add title</h1>
+                    <p>Click to add content</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Flip Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <header class="header">
+            <h1>Coin Flip Game</h1>
+            <p>Click the coin to flip it!</p>
+        </header>
+
+        <div class="game-area">
+            <div class="coin-container">
+                <div class="coin" id="coin">
+                    <div class="coin-face heads">
+                        <div class="coin-inner">
+                            <div class="coin-text">HEADS</div>
+                        </div>
+                    </div>
+                    <div class="coin-face tails">
+                        <div class="coin-inner">
+                            <div class="coin-text">TAILS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="flip-btn" id="flipBtn">Flip Coin</button>
+                <div class="coin-selector">
+                    <label for="coinType">Coin Design:</label>
+                    <select id="coinType">
+                        <option value="classic">Classic</option>
+                        <option value="modern">Modern</option>
+                        <option value="golden">Golden</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="result-display">
+                <div class="result" id="result">Ready to flip!</div>
+                <div class="streak" id="streak">Current Streak: 0</div>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Flips</h3>
+                    <span class="stat-value" id="totalFlips">0</span>
+                </div>
+                <div class="stat-card">
+                    <h3>Heads</h3>
+                    <span class="stat-value" id="headsCount">0</span>
+                    <span class="stat-percentage" id="headsPercentage">0%</span>
+                </div>
+                <div class="stat-card">
+                    <h3>Tails</h3>
+                    <span class="stat-value" id="tailsCount">0</span>
+                    <span class="stat-percentage" id="tailsPercentage">0%</span>
+                </div>
+                <div class="stat-card">
+                    <h3>Best Streak</h3>
+                    <span class="stat-value" id="bestStreak">0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="history-section">
+            <h3>Flip History</h3>
+            <div class="history-container" id="historyContainer">
+                <p class="no-history">No flips yet!</p>
+            </div>
+            <button class="clear-history-btn" id="clearHistoryBtn">Clear History</button>
+        </div>
+
+        <div class="sound-toggle">
+            <label>
+                <input type="checkbox" id="soundToggle" checked>
+                Sound Effects
+            </label>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

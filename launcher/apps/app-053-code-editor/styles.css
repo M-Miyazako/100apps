@@ -1,0 +1,206 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    background: #1e1e1e;
+    color: #d4d4d4;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.toolbar {
+    background: #2d2d2d;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid #404040;
+}
+
+#language-select {
+    background: #404040;
+    color: #d4d4d4;
+    border: 1px solid #555;
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-size: 0.9rem;
+}
+
+.toolbar-btn {
+    background: #404040;
+    color: #d4d4d4;
+    border: 1px solid #555;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.toolbar-btn:hover {
+    background: #505050;
+}
+
+.editor-container {
+    flex: 1;
+    display: flex;
+    background: #1e1e1e;
+    position: relative;
+}
+
+.line-numbers {
+    width: 50px;
+    background: #2d2d2d;
+    border-right: 1px solid #404040;
+    padding: 15px 10px;
+    font-size: 0.9rem;
+    color: #858585;
+    text-align: right;
+    line-height: 1.6;
+    white-space: pre;
+    user-select: none;
+    overflow: hidden;
+}
+
+.code-editor {
+    flex: 1;
+    background: #1e1e1e;
+    color: #d4d4d4;
+    border: none;
+    padding: 15px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    resize: none;
+    outline: none;
+    tab-size: 2;
+}
+
+.code-editor::placeholder {
+    color: #6a6a6a;
+}
+
+.output {
+    height: 150px;
+    background: #252526;
+    border-top: 1px solid #404040;
+    display: flex;
+    flex-direction: column;
+}
+
+.output-header {
+    background: #2d2d2d;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    color: #cccccc;
+    border-bottom: 1px solid #404040;
+}
+
+.output-content {
+    flex: 1;
+    padding: 10px 15px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.9rem;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    color: #d4d4d4;
+}
+
+.output-content.error {
+    color: #f48771;
+}
+
+.output-content.success {
+    color: #73c991;
+}
+
+/* Light theme */
+body.light-theme {
+    background: #ffffff;
+    color: #333333;
+}
+
+body.light-theme .container {
+    background: #ffffff;
+}
+
+body.light-theme .toolbar {
+    background: #f3f3f3;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+body.light-theme #language-select {
+    background: #ffffff;
+    color: #333333;
+    border: 1px solid #ccc;
+}
+
+body.light-theme .toolbar-btn {
+    background: #ffffff;
+    color: #333333;
+    border: 1px solid #ccc;
+}
+
+body.light-theme .toolbar-btn:hover {
+    background: #f0f0f0;
+}
+
+body.light-theme .editor-container {
+    background: #ffffff;
+}
+
+body.light-theme .line-numbers {
+    background: #f3f3f3;
+    border-right: 1px solid #e0e0e0;
+    color: #666666;
+}
+
+body.light-theme .code-editor {
+    background: #ffffff;
+    color: #333333;
+}
+
+body.light-theme .code-editor::placeholder {
+    color: #999999;
+}
+
+body.light-theme .output {
+    background: #f8f8f8;
+    border-top: 1px solid #e0e0e0;
+}
+
+body.light-theme .output-header {
+    background: #f3f3f3;
+    color: #333333;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+body.light-theme .output-content {
+    color: #333333;
+}
+
+@media (max-width: 768px) {
+    .toolbar {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .output {
+        height: 120px;
+    }
+    
+    .line-numbers {
+        width: 40px;
+        padding: 15px 5px;
+    }
+}

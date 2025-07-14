@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player - ビデオプレイヤー</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="video-player">
+            <video class="video-element" id="video" preload="metadata">
+                <source src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="controls" id="controls">
+                <button class="play-btn" id="play-btn">▶️</button>
+                <div class="time-display">
+                    <span id="current-time">0:00</span>
+                    <span>/</span>
+                    <span id="duration">0:00</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                </div>
+                <div class="volume-container">
+                    <button class="volume-btn" id="volume-btn">🔊</button>
+                    <div class="volume-slider" id="volume-slider">
+                        <div class="volume-fill" id="volume-fill"></div>
+                    </div>
+                </div>
+                <button class="fullscreen-btn" id="fullscreen-btn">⛶</button>
+            </div>
+        </div>
+        <div class="upload-area" id="upload-area">
+            <div class="upload-content">
+                <div class="upload-icon">🎬</div>
+                <p>ビデオファイルをドラッグ&ドロップ</p>
+                <p>または</p>
+                <input type="file" id="file-input" accept="video/*">
+                <button class="upload-btn" onclick="document.getElementById('file-input').click()">ファイルを選択</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

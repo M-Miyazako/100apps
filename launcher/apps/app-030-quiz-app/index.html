@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <header class="quiz-header">
+            <h1>🧠 Quiz App</h1>
+            <div class="header-controls">
+                <button id="themeToggle" class="theme-btn">🌙</button>
+                <button id="statsToggle" class="stats-btn">📊</button>
+            </div>
+        </header>
+        
+        <div class="quiz-content">
+            <div class="main-quiz">
+                <div class="quiz-setup" id="quizSetup">
+                    <h2>Setup Your Quiz</h2>
+                    <div class="setup-options">
+                        <div class="option-group">
+                            <label for="category">Category:</label>
+                            <select id="category">
+                                <option value="general">General Knowledge</option>
+                                <option value="science">Science</option>
+                                <option value="history">History</option>
+                                <option value="geography">Geography</option>
+                                <option value="sports">Sports</option>
+                                <option value="entertainment">Entertainment</option>
+                                <option value="technology">Technology</option>
+                            </select>
+                        </div>
+                        
+                        <div class="option-group">
+                            <label for="difficulty">Difficulty:</label>
+                            <select id="difficulty">
+                                <option value="easy">Easy</option>
+                                <option value="medium">Medium</option>
+                                <option value="hard">Hard</option>
+                            </select>
+                        </div>
+                        
+                        <div class="option-group">
+                            <label for="questionCount">Number of Questions:</label>
+                            <select id="questionCount">
+                                <option value="5">5</option>
+                                <option value="10" selected>10</option>
+                                <option value="15">15</option>
+                                <option value="20">20</option>
+                            </select>
+                        </div>
+                        
+                        <div class="option-group">
+                            <label for="timeLimit">Time Limit (seconds):</label>
+                            <select id="timeLimit">
+                                <option value="0">No Limit</option>
+                                <option value="30" selected>30</option>
+                                <option value="60">60</option>
+                                <option value="90">90</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button id="startQuiz" class="start-btn">Start Quiz</button>
+                </div>
+                
+                <div class="quiz-game" id="quizGame">
+                    <div class="quiz-header-info">
+                        <div class="question-counter">
+                            <span id="currentQuestion">1</span> / <span id="totalQuestions">10</span>
+                        </div>
+                        <div class="timer" id="timer">30</div>
+                        <div class="score">Score: <span id="score">0</span></div>
+                    </div>
+                    
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    
+                    <div class="question-container">
+                        <h2 id="questionText">Question will appear here</h2>
+                        <div class="answers" id="answers">
+                            <!-- Answer options will be populated here -->
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-controls">
+                        <button id="nextBtn" class="control-btn" disabled>Next</button>
+                        <button id="skipBtn" class="control-btn">Skip</button>
+                        <button id="quitBtn" class="control-btn danger">Quit</button>
+                    </div>
+                </div>
+                
+                <div class="quiz-results" id="quizResults">
+                    <h2>Quiz Complete!</h2>
+                    <div class="results-summary">
+                        <div class="final-score">
+                            <span class="score-value" id="finalScore">0</span>
+                            <span class="score-label">Final Score</span>
+                        </div>
+                        <div class="results-stats">
+                            <div class="stat-item">
+                                <span class="stat-value" id="correctAnswers">0</span>
+                                <span class="stat-label">Correct</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value" id="incorrectAnswers">0</span>
+                                <span class="stat-label">Incorrect</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value" id="skippedAnswers">0</span>
+                                <span class="stat-label">Skipped</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value" id="accuracy">0%</span>
+                                <span class="stat-label">Accuracy</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="performance-badge" id="performanceBadge">
+                        <div class="badge-icon">🏆</div>
+                        <div class="badge-text">Excellent!</div>
+                    </div>
+                    
+                    <div class="results-actions">
+                        <button id="reviewAnswers" class="action-btn">Review Answers</button>
+                        <button id="playAgain" class="action-btn primary">Play Again</button>
+                        <button id="shareResults" class="action-btn">Share Results</button>
+                    </div>
+                </div>
+                
+                <div class="answer-review" id="answerReview">
+                    <h2>Answer Review</h2>
+                    <div class="review-list" id="reviewList">
+                        <!-- Review items will be populated here -->
+                    </div>
+                    <button id="backToResults" class="back-btn">Back to Results</button>
+                </div>
+            </div>
+            
+            <div class="side-panel" id="sidePanel">
+                <div class="stats-panel">
+                    <h3>Statistics</h3>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number" id="totalQuizzes">0</div>
+                            <div class="stat-title">Total Quizzes</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="averageScore">0</div>
+                            <div class="stat-title">Average Score</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="bestScore">0</div>
+                            <div class="stat-title">Best Score</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="totalCorrect">0</div>
+                            <div class="stat-title">Total Correct</div>
+                        </div>
+                    </div>
+                    
+                    <div class="category-stats">
+                        <h4>Performance by Category</h4>
+                        <div class="category-chart" id="categoryChart">
+                            <!-- Category performance will be shown here -->
+                        </div>
+                    </div>
+                    
+                    <div class="recent-scores">
+                        <h4>Recent Scores</h4>
+                        <div class="scores-list" id="recentScores">
+                            <!-- Recent scores will be shown here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

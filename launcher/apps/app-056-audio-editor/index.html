@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Editor - オーディオエディター</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="toolbar">
+            <input type="file" id="file-input" accept="audio/*">
+            <button class="tool-btn" id="play-btn">▶️ Play</button>
+            <button class="tool-btn" id="pause-btn">⏸️ Pause</button>
+            <button class="tool-btn" id="stop-btn">⏹️ Stop</button>
+            <button class="tool-btn" id="record-btn">🎙️ Record</button>
+            <div class="volume-control">
+                <label>Volume:</label>
+                <input type="range" id="volume-slider" min="0" max="100" value="50">
+                <span id="volume-value">50%</span>
+            </div>
+        </div>
+        
+        <div class="waveform-container">
+            <canvas id="waveform" width="800" height="200"></canvas>
+            <div class="playhead" id="playhead"></div>
+        </div>
+        
+        <div class="controls">
+            <div class="time-display">
+                <span id="current-time">0:00</span>
+                <span>/</span>
+                <span id="duration">0:00</span>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="effects-panel">
+            <h3>Audio Effects</h3>
+            <div class="effect-group">
+                <label>Reverb:</label>
+                <input type="range" id="reverb-slider" min="0" max="100" value="0">
+                <span id="reverb-value">0%</span>
+            </div>
+            <div class="effect-group">
+                <label>Echo:</label>
+                <input type="range" id="echo-slider" min="0" max="100" value="0">
+                <span id="echo-value">0%</span>
+            </div>
+            <div class="effect-group">
+                <label>Distortion:</label>
+                <input type="range" id="distortion-slider" min="0" max="100" value="0">
+                <span id="distortion-value">0%</span>
+            </div>
+            <button class="effect-btn" id="apply-effects">Apply Effects</button>
+        </div>
+        
+        <div class="upload-area" id="upload-area">
+            <div class="upload-content">
+                <div class="upload-icon">🎵</div>
+                <p>オーディオファイルをドラッグ&ドロップ</p>
+                <p>または</p>
+                <button class="upload-btn" onclick="document.getElementById('file-input').click()">ファイルを選択</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

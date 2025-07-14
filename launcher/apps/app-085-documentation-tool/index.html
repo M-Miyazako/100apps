@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation Tool - ドキュメント作成ツール</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <h1><i class="fas fa-book"></i> Documentation Tool</h1>
+            <div class="header-actions">
+                <button id="exportDocs"><i class="fas fa-download"></i> エクスポート</button>
+                <button id="saveDocs"><i class="fas fa-save"></i> 保存</button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <h3>ページ構造</h3>
+                    <button id="addPage"><i class="fas fa-plus"></i></button>
+                </div>
+                <div class="page-tree" id="pageTree">
+                    <!-- ページツリーがここに表示 -->
+                </div>
+            </aside>
+
+            <section class="editor-section">
+                <div class="editor-header">
+                    <input type="text" id="pageTitle" placeholder="ページタイトル">
+                    <select id="pageTemplate">
+                        <option value="blank">空白</option>
+                        <option value="api">API ドキュメント</option>
+                        <option value="guide">ガイド</option>
+                        <option value="reference">リファレンス</option>
+                    </select>
+                </div>
+                <div class="editor-container">
+                    <textarea id="contentEditor" placeholder="ここにMarkdownでドキュメントを書いてください..."></textarea>
+                </div>
+            </section>
+
+            <section class="preview-section">
+                <div class="preview-header">
+                    <h3>プレビュー</h3>
+                    <button id="togglePreview"><i class="fas fa-eye"></i></button>
+                </div>
+                <div class="preview-container">
+                    <div id="docPreview"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.2/marked.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

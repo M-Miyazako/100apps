@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Generator - CSSジェネレータ</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <h1><i class="fas fa-code"></i> CSS Generator</h1>
+            <p>様々なCSSプロパティを視覚的に設定してコードを生成できるツール</p>
+        </header>
+
+        <main class="main-content">
+            <!-- ジェネレータータブ -->
+            <nav class="generator-tabs">
+                <button class="tab-btn active" data-tab="box-shadow">
+                    <i class="fas fa-cube"></i> ボックスシャドウ
+                </button>
+                <button class="tab-btn" data-tab="border-radius">
+                    <i class="fas fa-square"></i> ボーダー半径
+                </button>
+                <button class="tab-btn" data-tab="text-shadow">
+                    <i class="fas fa-font"></i> テキストシャドウ
+                </button>
+                <button class="tab-btn" data-tab="transform">
+                    <i class="fas fa-sync-alt"></i> 変形
+                </button>
+                <button class="tab-btn" data-tab="animation">
+                    <i class="fas fa-play"></i> アニメーション
+                </button>
+                <button class="tab-btn" data-tab="flexbox">
+                    <i class="fas fa-grip-horizontal"></i> Flexbox
+                </button>
+                <button class="tab-btn" data-tab="grid">
+                    <i class="fas fa-th"></i> Grid
+                </button>
+                <button class="tab-btn" data-tab="filter">
+                    <i class="fas fa-adjust"></i> フィルター
+                </button>
+            </nav>
+
+            <div class="generator-content">
+                <!-- プレビューエリア -->
+                <section class="preview-section">
+                    <div class="preview-container">
+                        <div class="preview-element" id="previewElement">
+                            <span class="preview-text">プレビューテキスト</span>
+                        </div>
+                    </div>
+                    <div class="preview-controls">
+                        <div class="background-controls">
+                            <label>背景色:
+                                <input type="color" id="backgroundColor" value="#f0f0f0">
+                            </label>
+                            <label>要素色:
+                                <input type="color" id="elementColor" value="#ffffff">
+                            </label>
+                            <label>テキスト色:
+                                <input type="color" id="textColor" value="#333333">
+                            </label>
+                        </div>
+                        <div class="size-controls">
+                            <label>幅:
+                                <input type="range" id="elementWidth" min="100" max="400" value="200">
+                                <span id="widthValue">200px</span>
+                            </label>
+                            <label>高さ:
+                                <input type="range" id="elementHeight" min="50" max="200" value="100">
+                                <span id="heightValue">100px</span>
+                            </label>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- コントロールパネル -->
+                <section class="controls-panel">
+                    <!-- ボックスシャドウ -->
+                    <div class="tab-content active" id="box-shadow-content">
+                        <h3><i class="fas fa-cube"></i> ボックスシャドウ</h3>
+                        <div class="controls-grid">
+                            <div class="control-group">
+                                <label>水平オフセット:
+                                    <input type="range" id="shadowX" min="-50" max="50" value="0">
+                                    <span id="shadowXValue">0px</span>
+                                </label>
+                            </div>
+                            <div class="control-group">
+                                <label>垂直オフセット:
+                                    <input type="range" id="shadowY" min="-50" max="50" value="5">
+                                    <span id="shadowYValue">5px</span>
+                                </label>
+                            </div>
+                            <div class="control-group">
+                                <label>ぼかし:
+                                    <input type="range" id="shadowBlur" min="0" max="50" value="15">
+                                    <span id="shadowBlurValue">15px</span>
+                                </label>
+                            </div>
+                            <div class="control-group">
+                                <label>広がり:
+                                    <input type="range" id="shadowSpread" min="-20" max="20" value="0">
+                                    <span id="shadowSpreadValue">0px</span>
+                                </label>
+                            </div>
+                            <div class="control-group">
+                                <label>シャドウ色:
+                                    <input type="color" id="shadowColor" value="#000000">
+                                </label>
+                            </div>
+                            <div class="control-group">
+                                <label>透明度:
+                                    <input type="range" id="shadowOpacity" min="0" max="100" value="30">
+                                    <span id="shadowOpacityValue">30%</span>
+                                </label>
+                            </div>
+                            <div class="control-group">
+                                <label>
+                                    <input type="checkbox" id="shadowInset">
+                                    内側シャドウ
+                                </label>
+                            </div>
+                        </div>
+                        <div class="preset-shadows">
+                            <h4>プリセット</h4>
+                            <div class="presets-grid">
+                                <button class="preset-btn" data-preset="subtle">控えめ</button>
+                                <button class="preset-btn" data-preset="medium">標準</button>
+                                <button class="preset-btn" data-preset="large">大きめ</button>
+                                <button class="preset-btn" data-preset="inset">内側</button>
+                                <button class="preset-btn" data-preset="colored">カラフル</button>
+                                <button class="preset-btn" data-preset="multiple">複数</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ボーダー半径 -->
+                    <div class="tab-content" id="border-radius-content">
+                        <h3><i class="fas fa-square"></i> ボーダー半径</h3>
+                        <div class="border-radius-visual">
+                            <div class="corner-control" data-corner="tl">
+                                <label>左上: <input type="range" id="radiusTL" min="0" max="100" value="0"></label>
+                                <span id="radiusTLValue">0px</span>
+                            </div>
+                            <div class="corner-control" data-corner="tr">
+                                <label>右上: <input type="range" id="radiusTR" min="0" max="100" value="0"></label>
+                                <span id="radiusTRValue">0px</span>
+                            </div>
+                            <div class="corner-control" data-corner="bl">
+                                <label>左下: <input type="range" id="radiusBL" min="0" max="100" value="0"></label>
+                                <span id="radiusBLValue">0px</span>
+                            </div>
+                            <div class="corner-control" data-corner="br">
+                                <label>右下: <input type="range" id="radiusBR" min="0" max="100" value="0"></label>
+                                <span id="radiusBRValue">0px</span>
+                            </div>
+                        </div>
+                        <div class="unified-controls">
+                            <label>
+                                <input type="checkbox" id="unifiedRadius" checked>
+                                統一設定
+                            </label>
+                            <label>全体:
+                                <input type="range" id="allRadius" min="0" max="100" value="0">
+                                <span id="allRadiusValue">0px</span>
+                            </label>
+                        </div>
+                        <div class="shape-presets">
+                            <h4>形状プリセット</h4>
+                            <div class="presets-grid">
+                                <button class="preset-btn" data-shape="square">正方形</button>
+                                <button class="preset-btn" data-shape="rounded">角丸</button>
+                                <button class="preset-btn" data-shape="circle">円</button>
+                                <button class="preset-btn" data-shape="pill">ピル</button>
+                                <button class="preset-btn" data-shape="leaf">葉</button>
+                                <button class="preset-btn" data-shape="blob">ブロブ</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- テキストシャドウ -->
+                    <div class="tab-content" id="text-shadow-content">
+                        <h3><i class="fas fa-font"></i> テキストシャドウ</h3>
+                        <div class="controls-grid">
+                            <div class="control-group">
+                                <label>水平オフセット:
+                                    <input type="range" id="textShadowX" min="-20" max="20" value="1">
+                                    <span id="textShadowXValue">1px</span>
+                                </label>
+                            </div>
+                            <div class="control-group">
+                                <label>垂直オフセット:
+                                    <input type="range" id="textShadowY" min="-20" max="20" value="1">
+                                    <span id="textShadowYValue">1px</span>
+                                </label>
+                            </div>
+                            <div class="control-group">
+                                <label>ぼかし:
+                                    <input type="range" id="textShadowBlur" min="0" max="20" value="0">
+                                    <span id="textShadowBlurValue">0px</span>
+                                </label>
+                            </div>
+                            <div class="control-group">
+                                <label>シャドウ色:
+                                    <input type="color" id="textShadowColor" value="#000000">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="text-settings">
+                            <label>フォントサイズ:
+                                <input type="range" id="fontSize" min="12" max="72" value="24">
+                                <span id="fontSizeValue">24px</span>
+                            </label>
+                            <label>フォントウェイト:
+                                <select id="fontWeight">
+                                    <option value="300">Light</option>
+                                    <option value="400" selected>Normal</option>
+                                    <option value="600">Semi Bold</option>
+                                    <option value="700">Bold</option>
+                                    <option value="900">Black</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 変形 -->
+                    <div class="tab-content" id="transform-content">
+                        <h3><i class="fas fa-sync-alt"></i> 変形 (Transform)</h3>
+                        <div class="controls-grid">
+                            <div class="control-group">
+                                <label>回転:
+                                    <input type="range" id="rotate" min="-180" max="180" value="0">
+                                    <span id="rotateValue">0deg</span>
+                                </label>
+                            </div>
+                            <div class="control-group">
+                                <label>スケールX:
+                                    <input type="range" id="scaleX" min="0.1" max="3" step="0.1" value="1">
+                                    <span id="scaleXValue">1</span>
+                                </label>
+                            </div>
+                            <div class="control-group">
+                                <label>スケールY:
+                                    <input type="range" id="scaleY" min="0.1" max="3" step="0.1" value="1">
+                                    <span id="scaleYValue">1</span>
+                                </label>
+                            </div>
+                            <div class="control-group">
+                                <label>移動X:
+                                    <input type="range" id="translateX" min="-100" max="100" value="0">
+                                    <span id="translateXValue">0px</span>
+                                </label>
+                            </div>
+                            <div class="control-group">
+                                <label>移動Y:
+                                    <input type="range" id="translateY" min="-100" max="100" value="0">
+                                    <span id="translateYValue">0px</span>
+                                </label>
+                            </div>
+                            <div class="control-group">
+                                <label>斜めX:
+                                    <input type="range" id="skewX" min="-45" max="45" value="0">
+                                    <span id="skewXValue">0deg</span>
+                                </label>
+                            </div>
+                            <div class="control-group">
+                                <label>斜めY:
+                                    <input type="range" id="skewY" min="-45" max="45" value="0">
+                                    <span id="skewYValue">0deg</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="transform-origin">
+                            <h4>変形の基点</h4>
+                            <div class="origin-grid">
+                                <button class="origin-btn" data-origin="top left">↖</button>
+                                <button class="origin-btn" data-origin="top center">↑</button>
+                                <button class="origin-btn" data-origin="top right">↗</button>
+                                <button class="origin-btn" data-origin="center left">←</button>
+                                <button class="origin-btn active" data-origin="center">●</button>
+                                <button class="origin-btn" data-origin="center right">→</button>
+                                <button class="origin-btn" data-origin="bottom left">↙</button>
+                                <button class="origin-btn" data-origin="bottom center">↓</button>
+                                <button class="origin-btn" data-origin="bottom right">↘</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- アニメーション -->
+                    <div class="tab-content" id="animation-content">
+                        <h3><i class="fas fa-play"></i> アニメーション</h3>
+                        <div class="animation-controls">
+                            <div class="control-group">
+                                <label>アニメーション名:
+                                    <input type="text" id="animationName" value="myAnimation" placeholder="アニメーション名">
+                                </label>
+                            </div>
+                            <div class="control-group">
+                                <label>持続時間:
+                                    <input type="range" id="animationDuration" min="0.1" max="10" step="0.1" value="1">
+                                    <span id="animationDurationValue">1s</span>
+                                </label>
+                            </div>
+                            <div class="control-group">
+                                <label>イージング:
+                                    <select id="animationEasing">
+                                        <option value="ease">ease</option>
+                                        <option value="ease-in">ease-in</option>
+                                        <option value="ease-out">ease-out</option>
+                                        <option value="ease-in-out">ease-in-out</option>
+                                        <option value="linear">linear</option>
+                                        <option value="cubic-bezier(0.68, -0.55, 0.265, 1.55)">bounce</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="control-group">
+                                <label>遅延:
+                                    <input type="range" id="animationDelay" min="0" max="5" step="0.1" value="0">
+                                    <span id="animationDelayValue">0s</span>
+                                </label>
+                            </div>
+                            <div class="control-group">
+                                <label>繰り返し:
+                                    <select id="animationIterations">
+                                        <option value="1">1回</option>
+                                        <option value="2">2回</option>
+                                        <option value="3">3回</option>
+                                        <option value="infinite">無限</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="control-group">
+                                <label>方向:
+                                    <select id="animationDirection">
+                                        <option value="normal">normal</option>
+                                        <option value="reverse">reverse</option>
+                                        <option value="alternate">alternate</option>
+                                        <option value="alternate-reverse">alternate-reverse</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="animation-presets">
+                            <h4>プリセットアニメーション</h4>
+                            <div class="presets-grid">
+                                <button class="preset-btn" data-animation="bounce">バウンス</button>
+                                <button class="preset-btn" data-animation="pulse">パルス</button>
+                                <button class="preset-btn" data-animation="shake">シェイク</button>
+                                <button class="preset-btn" data-animation="fadeIn">フェードイン</button>
+                                <button class="preset-btn" data-animation="slideIn">スライドイン</button>
+                                <button class="preset-btn" data-animation="rotate">回転</button>
+                            </div>
+                        </div>
+                        <div class="animation-controls-btns">
+                            <button id="playAnimation">▶ 再生</button>
+                            <button id="pauseAnimation">⏸ 停止</button>
+                            <button id="resetAnimation">⏹ リセット</button>
+                        </div>
+                    </div>
+
+                    <!-- Flexbox -->
+                    <div class="tab-content" id="flexbox-content">
+                        <h3><i class="fas fa-grip-horizontal"></i> Flexbox</h3>
+                        <div class="flexbox-container-controls">
+                            <h4>コンテナ設定</h4>
+                            <div class="controls-grid">
+                                <div class="control-group">
+                                    <label>方向:
+                                        <select id="flexDirection">
+                                            <option value="row">row</option>
+                                            <option value="row-reverse">row-reverse</option>
+                                            <option value="column">column</option>
+                                            <option value="column-reverse">column-reverse</option>
+                                        </select>
+                                    </label>
+                                </div>
+                                <div class="control-group">
+                                    <label>主軸揃え:
+                                        <select id="justifyContent">
+                                            <option value="flex-start">flex-start</option>
+                                            <option value="flex-end">flex-end</option>
+                                            <option value="center">center</option>
+                                            <option value="space-between">space-between</option>
+                                            <option value="space-around">space-around</option>
+                                            <option value="space-evenly">space-evenly</option>
+                                        </select>
+                                    </label>
+                                </div>
+                                <div class="control-group">
+                                    <label>交差軸揃え:
+                                        <select id="alignItems">
+                                            <option value="stretch">stretch</option>
+                                            <option value="flex-start">flex-start</option>
+                                            <option value="flex-end">flex-end</option>
+                                            <option value="center">center</option>
+                                            <option value="baseline">baseline</option>
+                                        </select>
+                                    </label>
+                                </div>
+                                <div class="control-group">
+                                    <label>折り返し:
+                                        <select id="flexWrap">
+                                            <option value="nowrap">nowrap</option>
+                                            <option value="wrap">wrap</option>
+                                            <option value="wrap-reverse">wrap-reverse</option>
+                                        </select>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-items-preview">
+                            <h4>プレビュー</h4>
+                            <div class="flex-container" id="flexContainer">
+                                <div class="flex-item">1</div>
+                                <div class="flex-item">2</div>
+                                <div class="flex-item">3</div>
+                            </div>
+                        </div>
+                        <div class="flex-item-controls">
+                            <label>アイテム数:
+                                <input type="range" id="flexItemCount" min="1" max="6" value="3">
+                                <span id="flexItemCountValue">3</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Grid -->
+                    <div class="tab-content" id="grid-content">
+                        <h3><i class="fas fa-th"></i> CSS Grid</h3>
+                        <div class="grid-controls">
+                            <div class="controls-grid">
+                                <div class="control-group">
+                                    <label>列数:
+                                        <input type="range" id="gridColumns" min="1" max="6" value="3">
+                                        <span id="gridColumnsValue">3</span>
+                                    </label>
+                                </div>
+                                <div class="control-group">
+                                    <label>行数:
+                                        <input type="range" id="gridRows" min="1" max="6" value="2">
+                                        <span id="gridRowsValue">2</span>
+                                    </label>
+                                </div>
+                                <div class="control-group">
+                                    <label>列間隔:
+                                        <input type="range" id="gridColumnGap" min="0" max="50" value="10">
+                                        <span id="gridColumnGapValue">10px</span>
+                                    </label>
+                                </div>
+                                <div class="control-group">
+                                    <label>行間隔:
+                                        <input type="range" id="gridRowGap" min="0" max="50" value="10">
+                                        <span id="gridRowGapValue">10px</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-preview">
+                            <h4>プレビュー</h4>
+                            <div class="grid-container" id="gridContainer">
+                                <!-- グリッドアイテムは動的に生成 -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- フィルター -->
+                    <div class="tab-content" id="filter-content">
+                        <h3><i class="fas fa-adjust"></i> CSS フィルター</h3>
+                        <div class="controls-grid">
+                            <div class="control-group">
+                                <label>ぼかし:
+                                    <input type="range" id="filterBlur" min="0" max="20" value="0">
+                                    <span id="filterBlurValue">0px</span>
+                                </label>
+                            </div>
+                            <div class="control-group">
+                                <label>明度:
+                                    <input type="range" id="filterBrightness" min="0" max="200" value="100">
+                                    <span id="filterBrightnessValue">100%</span>
+                                </label>
+                            </div>
+                            <div class="control-group">
+                                <label>コントラスト:
+                                    <input type="range" id="filterContrast" min="0" max="200" value="100">
+                                    <span id="filterContrastValue">100%</span>
+                                </label>
+                            </div>
+                            <div class="control-group">
+                                <label>彩度:
+                                    <input type="range" id="filterSaturate" min="0" max="200" value="100">
+                                    <span id="filterSaturateValue">100%</span>
+                                </label>
+                            </div>
+                            <div class="control-group">
+                                <label>色相回転:
+                                    <input type="range" id="filterHueRotate" min="0" max="360" value="0">
+                                    <span id="filterHueRotateValue">0deg</span>
+                                </label>
+                            </div>
+                            <div class="control-group">
+                                <label>セピア:
+                                    <input type="range" id="filterSepia" min="0" max="100" value="0">
+                                    <span id="filterSepiaValue">0%</span>
+                                </label>
+                            </div>
+                            <div class="control-group">
+                                <label>グレースケール:
+                                    <input type="range" id="filterGrayscale" min="0" max="100" value="0">
+                                    <span id="filterGrayscaleValue">0%</span>
+                                </label>
+                            </div>
+                            <div class="control-group">
+                                <label>反転:
+                                    <input type="range" id="filterInvert" min="0" max="100" value="0">
+                                    <span id="filterInvertValue">0%</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="filter-presets">
+                            <h4>フィルタープリセット</h4>
+                            <div class="presets-grid">
+                                <button class="preset-btn" data-filter="normal">通常</button>
+                                <button class="preset-btn" data-filter="vintage">ヴィンテージ</button>
+                                <button class="preset-btn" data-filter="dramatic">ドラマチック</button>
+                                <button class="preset-btn" data-filter="cool">クール</button>
+                                <button class="preset-btn" data-filter="warm">ウォーム</button>
+                                <button class="preset-btn" data-filter="bw">白黒</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 生成されたCSS -->
+                <section class="css-output">
+                    <div class="output-header">
+                        <h3><i class="fas fa-code"></i> 生成されたCSS</h3>
+                        <div class="output-actions">
+                            <button id="copyCSS" class="action-btn">
+                                <i class="fas fa-copy"></i> コピー
+                            </button>
+                            <button id="downloadCSS" class="action-btn">
+                                <i class="fas fa-download"></i> ダウンロード
+                            </button>
+                            <button id="resetAll" class="action-btn danger">
+                                <i class="fas fa-undo"></i> リセット
+                            </button>
+                        </div>
+                    </div>
+                    <div class="css-code">
+                        <pre><code id="cssOutput" class="language-css"></code></pre>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- フィードバック -->
+        <div id="feedback" class="feedback">
+            <i class="fas fa-check"></i>
+            <span></span>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

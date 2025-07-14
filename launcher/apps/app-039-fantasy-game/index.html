@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy Adventure - ’°Ûø∏¸íz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Fantasy Adventure</h1>
+            <p>T’nLgízWàF</p>
+        </header>
+        
+        <div class="game-container">
+            <div class="character-panel">
+                <div class="character-info">
+                    <h3 id="characterName">«</h3>
+                    <div class="stats">
+                        <div class="stat-bar">
+                            <label>HP</label>
+                            <div class="bar">
+                                <div class="bar-fill hp-bar" id="hpBar"></div>
+                                <span id="hpText">100/100</span>
+                            </div>
+                        </div>
+                        <div class="stat-bar">
+                            <label>MP</label>
+                            <div class="bar">
+                                <div class="bar-fill mp-bar" id="mpBar"></div>
+                                <span id="mpText">50/50</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <label>ÏŸÎ</label>
+                            <span id="level">1</span>
+                        </div>
+                        <div class="stat-item">
+                            <label>L$</label>
+                            <span id="exp">0/100</span>
+                        </div>
+                        <div class="stat-item">
+                            <label>¥¸Î…</label>
+                            <span id="gold">100</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="inventory">
+                    <h3>¢§∆‡</h3>
+                    <div class="item-list" id="itemList">
+                        <div class="item">ﬁ©¨ x3</div>
+                        <div class="item">T’¨ x2</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="game-area">
+                <div class="story-display" id="storyDisplay">
+                    <p>Bj_oTãíY_Åk≈Àc_«gY<br>
+                    Óneä„gízLÀ~ä~Y...</p>
+                </div>
+                
+                <div class="choice-area" id="choiceArea">
+                    <div class="choice-btn" data-choice="forest">Óí¢"Yã</div>
+                    <div class="choice-btn" data-choice="village">Qí*åã</div>
+                    <div class="choice-btn" data-choice="shop">FókLO</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="battle-area" id="battleArea">
+            <div class="enemy-info">
+                <h3 id="enemyName">u</h3>
+                <div class="enemy-hp">
+                    <div class="bar">
+                        <div class="bar-fill enemy-hp-bar" id="enemyHpBar"></div>
+                        <span id="enemyHpText">100/100</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="battle-log" id="battleLog">
+                <p>&ÿãÀ</p>
+            </div>
+            
+            <div class="battle-actions">
+                <button class="action-btn" id="attackBtn">;É</button>
+                <button class="action-btn" id="magicBtn">T’</button>
+                <button class="action-btn" id="healBtn">ﬁ©</button>
+                <button class="action-btn" id="runBtn">Rã</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

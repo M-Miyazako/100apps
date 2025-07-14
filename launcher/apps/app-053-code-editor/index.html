@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Editor - コードエディター</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="toolbar">
+            <select id="language-select">
+                <option value="javascript">JavaScript</option>
+                <option value="html">HTML</option>
+                <option value="css">CSS</option>
+                <option value="python">Python</option>
+            </select>
+            <button class="toolbar-btn" id="save-btn">💾 Save</button>
+            <button class="toolbar-btn" id="load-btn">📁 Load</button>
+            <button class="toolbar-btn" id="run-btn">▶️ Run</button>
+            <button class="toolbar-btn" id="theme-btn">🌙 Theme</button>
+        </div>
+        <div class="editor-container">
+            <div class="line-numbers" id="line-numbers">1</div>
+            <textarea class="code-editor" id="code-editor" placeholder="// Start coding here..."></textarea>
+        </div>
+        <div class="output" id="output">
+            <div class="output-header">Output</div>
+            <div class="output-content" id="output-content">Ready to run code...</div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

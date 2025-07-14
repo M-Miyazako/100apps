@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Platform - ブログプラットフォーム</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <h1><i class="fas fa-blog"></i> Blog Platform</h1>
+            <div class="header-actions">
+                <button id="newPost"><i class="fas fa-plus"></i> 新規投稿</button>
+                <button id="publishAll"><i class="fas fa-globe"></i> 公開</button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <aside class="sidebar">
+                <div class="sidebar-section">
+                    <h3>投稿一覧</h3>
+                    <div class="posts-list" id="postsList">
+                        <!-- 投稿リストがここに表示 -->
+                    </div>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>カテゴリ</h3>
+                    <div class="categories-list" id="categoriesList">
+                        <!-- カテゴリリストがここに表示 -->
+                    </div>
+                    <button id="addCategory"><i class="fas fa-plus"></i> カテゴリ追加</button>
+                </div>
+            </aside>
+
+            <section class="editor-section">
+                <div class="editor-header">
+                    <input type="text" id="postTitle" placeholder="投稿タイトル">
+                    <select id="postCategory">
+                        <option value="">カテゴリを選択</option>
+                    </select>
+                    <input type="text" id="postTags" placeholder="タグ（カンマ区切り）">
+                </div>
+                
+                <div class="editor-toolbar">
+                    <button id="bold"><i class="fas fa-bold"></i></button>
+                    <button id="italic"><i class="fas fa-italic"></i></button>
+                    <button id="heading"><i class="fas fa-heading"></i></button>
+                    <button id="link"><i class="fas fa-link"></i></button>
+                    <button id="image"><i class="fas fa-image"></i></button>
+                    <button id="list"><i class="fas fa-list-ul"></i></button>
+                    <button id="quote"><i class="fas fa-quote-right"></i></button>
+                </div>
+                
+                <div class="editor-container">
+                    <textarea id="postContent" placeholder="ここに投稿内容を書いてください（Markdown形式）..."></textarea>
+                </div>
+                
+                <div class="editor-footer">
+                    <div class="post-meta">
+                        <label>
+                            <input type="checkbox" id="postDraft"> 下書きとして保存
+                        </label>
+                        <span>作成日: <span id="createdDate">-</span></span>
+                    </div>
+                    <div class="post-actions">
+                        <button id="savePost"><i class="fas fa-save"></i> 保存</button>
+                        <button id="previewPost"><i class="fas fa-eye"></i> プレビュー</button>
+                        <button id="deletePost"><i class="fas fa-trash"></i> 削除</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="preview-section" id="previewSection">
+                <div class="preview-header">
+                    <h3>プレビュー</h3>
+                    <button id="closePreview"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="preview-container">
+                    <article class="blog-post">
+                        <header class="post-header">
+                            <h1 id="previewTitle">タイトル</h1>
+                            <div class="post-meta-preview">
+                                <span class="post-date" id="previewDate"></span>
+                                <span class="post-category" id="previewCategory"></span>
+                                <div class="post-tags" id="previewTags"></div>
+                            </div>
+                        </header>
+                        <div class="post-content" id="previewContent">
+                            <!-- プレビュー内容がここに表示 -->
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.2/marked.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

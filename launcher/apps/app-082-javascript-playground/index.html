@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Playground - JavaScript プレイグラウンド</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.41.0/min/vs/editor/editor.main.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fab fa-js"></i> JavaScript Playground</h1>
+                <p>ブラウザでJavaScriptを書いて実行できる開発環境</p>
+            </div>
+            <div class="header-actions">
+                <select id="themeSelector">
+                    <option value="vs-dark">ダークテーマ</option>
+                    <option value="vs-light">ライトテーマ</option>
+                    <option value="hc-black">ハイコントラスト</option>
+                </select>
+                <button id="shareCode" class="header-btn">
+                    <i class="fas fa-share"></i> 共有
+                </button>
+                <button id="exportCode" class="header-btn">
+                    <i class="fas fa-download"></i> エクスポート
+                </button>
+            </div>
+        </header>
+
+        <nav class="toolbar">
+            <div class="toolbar-section">
+                <button id="runCode" class="run-btn">
+                    <i class="fas fa-play"></i> 実行 (Ctrl+Enter)
+                </button>
+                <button id="clearOutput" class="toolbar-btn">
+                    <i class="fas fa-trash"></i> クリア
+                </button>
+                <button id="formatCode" class="toolbar-btn">
+                    <i class="fas fa-magic"></i> フォーマット
+                </button>
+            </div>
+            
+            <div class="toolbar-section">
+                <select id="jsVersion">
+                    <option value="es2023">ES2023</option>
+                    <option value="es2022">ES2022</option>
+                    <option value="es2021">ES2021</option>
+                    <option value="es2020">ES2020</option>
+                    <option value="es6">ES6</option>
+                </select>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="strictMode" checked>
+                    <span>Strict Mode</span>
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="autoRun">
+                    <span>自動実行</span>
+                </label>
+            </div>
+
+            <div class="toolbar-section">
+                <button id="saveSnippet" class="toolbar-btn">
+                    <i class="fas fa-save"></i> 保存
+                </button>
+                <button id="loadSnippet" class="toolbar-btn">
+                    <i class="fas fa-folder-open"></i> 読込
+                </button>
+                <button id="newSnippet" class="toolbar-btn">
+                    <i class="fas fa-file"></i> 新規
+                </button>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <!-- エディターパネル -->
+            <section class="editor-panel">
+                <div class="panel-header">
+                    <div class="panel-title">
+                        <i class="fas fa-code"></i>
+                        <span>エディター</span>
+                        <input type="text" id="snippetName" placeholder="スニペット名" value="untitled">
+                    </div>
+                    <div class="editor-actions">
+                        <button id="toggleWordWrap" class="icon-btn" title="改行">
+                            <i class="fas fa-align-left"></i>
+                        </button>
+                        <button id="toggleMinimap" class="icon-btn" title="ミニマップ">
+                            <i class="fas fa-map"></i>
+                        </button>
+                        <button id="increaseFontSize" class="icon-btn" title="フォント拡大">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <button id="decreaseFontSize" class="icon-btn" title="フォント縮小">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="editor-container">
+                    <div id="editor"></div>
+                </div>
+                <div class="editor-footer">
+                    <div class="editor-info">
+                        <span id="cursorPosition">行 1, 列 1</span>
+                        <span id="selectionInfo"></span>
+                        <span id="characterCount">0 文字</span>
+                    </div>
+                    <div class="editor-status">
+                        <span id="syntaxStatus" class="status-ok">構文OK</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- アウトプットパネル -->
+            <section class="output-panel">
+                <div class="panel-tabs">
+                    <button class="tab-btn active" data-tab="console">
+                        <i class="fas fa-terminal"></i> コンソール
+                    </button>
+                    <button class="tab-btn" data-tab="result">
+                        <i class="fas fa-eye"></i> 結果
+                    </button>
+                    <button class="tab-btn" data-tab="errors">
+                        <i class="fas fa-exclamation-triangle"></i> エラー
+                    </button>
+                    <button class="tab-btn" data-tab="performance">
+                        <i class="fas fa-tachometer-alt"></i> パフォーマンス
+                    </button>
+                </div>
+
+                <!-- コンソールタブ -->
+                <div class="tab-content active" id="console-tab">
+                    <div class="console-output" id="consoleOutput">
+                        <div class="console-welcome">
+                            <i class="fab fa-js"></i>
+                            <p>JavaScript Playground へようこそ</p>
+                            <p>コードを実行するとここに結果が表示されます</p>
+                        </div>
+                    </div>
+                    <div class="console-input">
+                        <span class="console-prompt">></span>
+                        <input type="text" id="consoleInput" placeholder="JavaScriptコマンドを入力...">
+                        <button id="executeCommand">
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 結果タブ -->
+                <div class="tab-content" id="result-tab">
+                    <div class="result-output" id="resultOutput">
+                        <div class="result-placeholder">
+                            <i class="fas fa-play-circle"></i>
+                            <p>コードを実行すると結果がここに表示されます</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- エラータブ -->
+                <div class="tab-content" id="errors-tab">
+                    <div class="errors-output" id="errorsOutput">
+                        <div class="errors-placeholder">
+                            <i class="fas fa-check-circle"></i>
+                            <p>エラーはありません</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- パフォーマンスタブ -->
+                <div class="tab-content" id="performance-tab">
+                    <div class="performance-output" id="performanceOutput">
+                        <div class="performance-placeholder">
+                            <i class="fas fa-stopwatch"></i>
+                            <p>パフォーマンス情報がここに表示されます</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- サイドパネル -->
+        <aside class="side-panel" id="sidePanel">
+            <div class="side-panel-tabs">
+                <button class="side-tab-btn active" data-tab="snippets">
+                    <i class="fas fa-code"></i> スニペット
+                </button>
+                <button class="side-tab-btn" data-tab="examples">
+                    <i class="fas fa-lightbulb"></i> サンプル
+                </button>
+                <button class="side-tab-btn" data-tab="help">
+                    <i class="fas fa-question-circle"></i> ヘルプ
+                </button>
+            </div>
+
+            <!-- スニペットタブ -->
+            <div class="side-tab-content active" id="snippets-content">
+                <div class="snippets-header">
+                    <h3>保存済みスニペット</h3>
+                    <button id="deleteAllSnippets" class="delete-btn">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+                <div class="snippets-list" id="snippetsList">
+                    <div class="empty-state">
+                        <i class="fas fa-code"></i>
+                        <p>保存されたスニペットはありません</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- サンプルタブ -->
+            <div class="side-tab-content" id="examples-content">
+                <div class="examples-header">
+                    <h3>サンプルコード</h3>
+                    <select id="exampleCategory">
+                        <option value="basic">基本</option>
+                        <option value="dom">DOM操作</option>
+                        <option value="async">非同期処理</option>
+                        <option value="array">配列操作</option>
+                        <option value="object">オブジェクト</option>
+                        <option value="algorithm">アルゴリズム</option>
+                    </select>
+                </div>
+                <div class="examples-list" id="examplesList">
+                    <!-- サンプルコードがここに表示 -->
+                </div>
+            </div>
+
+            <!-- ヘルプタブ -->
+            <div class="side-tab-content" id="help-content">
+                <div class="help-section">
+                    <h3>ショートカットキー</h3>
+                    <div class="shortcuts">
+                        <div class="shortcut">
+                            <kbd>Ctrl</kbd> + <kbd>Enter</kbd>
+                            <span>コード実行</span>
+                        </div>
+                        <div class="shortcut">
+                            <kbd>Ctrl</kbd> + <kbd>S</kbd>
+                            <span>保存</span>
+                        </div>
+                        <div class="shortcut">
+                            <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>F</kbd>
+                            <span>フォーマット</span>
+                        </div>
+                        <div class="shortcut">
+                            <kbd>Ctrl</kbd> + <kbd>/</kbd>
+                            <span>コメント切り替え</span>
+                        </div>
+                        <div class="shortcut">
+                            <kbd>Ctrl</kbd> + <kbd>Z</kbd>
+                            <span>元に戻す</span>
+                        </div>
+                        <div class="shortcut">
+                            <kbd>Ctrl</kbd> + <kbd>Y</kbd>
+                            <span>やり直し</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="help-section">
+                    <h3>利用可能なAPI</h3>
+                    <div class="api-list">
+                        <div class="api-item">console.log(), console.error(), console.warn()</div>
+                        <div class="api-item">DOM API (document, window)</div>
+                        <div class="api-item">Fetch API</div>
+                        <div class="api-item">Promise, async/await</div>
+                        <div class="api-item">Array methods</div>
+                        <div class="api-item">Object methods</div>
+                        <div class="api-item">String methods</div>
+                        <div class="api-item">Math object</div>
+                        <div class="api-item">Date object</div>
+                    </div>
+                </div>
+
+                <div class="help-section">
+                    <h3>Tips</h3>
+                    <div class="tips">
+                        <div class="tip">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>自動実行を有効にすると、コード変更時に自動で実行されます</span>
+                        </div>
+                        <div class="tip">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>console.log()を使って値をコンソールに出力できます</span>
+                        </div>
+                        <div class="tip">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>エラーが発生した場合はエラータブに詳細が表示されます</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- サイドパネル切り替えボタン -->
+        <button id="toggleSidePanel" class="toggle-btn">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+
+        <!-- モーダル -->
+        <div id="shareModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3><i class="fas fa-share"></i> コードを共有</h3>
+                    <button id="closeShareModal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="share-options">
+                        <button id="copyToClipboard" class="share-btn">
+                            <i class="fas fa-copy"></i> クリップボードにコピー
+                        </button>
+                        <button id="generateGist" class="share-btn">
+                            <i class="fab fa-github"></i> GitHub Gist作成
+                        </button>
+                        <button id="exportAsFile" class="share-btn">
+                            <i class="fas fa-download"></i> ファイルとしてダウンロード
+                        </button>
+                    </div>
+                    <div class="share-url">
+                        <label>共有URL:</label>
+                        <div class="url-input">
+                            <input type="text" id="shareUrl" readonly>
+                            <button id="copyUrl">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- フィードバック -->
+        <div id="feedback" class="feedback">
+            <i class="fas fa-check"></i>
+            <span></span>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.41.0/min/vs/loader.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

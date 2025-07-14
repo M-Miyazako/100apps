@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flow Chart Designer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <h1><i class="fas fa-project-diagram"></i> Flow Chart Designer</h1>
+            </div>
+            <div class="header-center">
+                <div class="toolbar">
+                    <button class="tool-btn active" data-tool="select" title="Select">
+                        <i class="fas fa-mouse-pointer"></i>
+                    </button>
+                    <button class="tool-btn" data-tool="rectangle" title="Rectangle">
+                        <i class="fas fa-square"></i>
+                    </button>
+                    <button class="tool-btn" data-tool="diamond" title="Decision">
+                        <i class="fas fa-gem"></i>
+                    </button>
+                    <button class="tool-btn" data-tool="circle" title="Circle">
+                        <i class="fas fa-circle"></i>
+                    </button>
+                    <button class="tool-btn" data-tool="text" title="Text">
+                        <i class="fas fa-font"></i>
+                    </button>
+                    <button class="tool-btn" data-tool="connector" title="Connector">
+                        <i class="fas fa-long-arrow-alt-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="action-btn" id="clear-canvas" title="Clear Canvas">
+                    <i class="fas fa-trash"></i>
+                </button>
+                <button class="action-btn" id="export-png" title="Export PNG">
+                    <i class="fas fa-download"></i> PNG
+                </button>
+                <button class="action-btn" id="export-svg" title="Export SVG">
+                    <i class="fas fa-download"></i> SVG
+                </button>
+                <button class="action-btn" id="export-json" title="Export JSON">
+                    <i class="fas fa-file-code"></i> JSON
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="panel">
+                    <h3>Properties</h3>
+                    <div class="property-group">
+                        <label>Fill Color:</label>
+                        <input type="color" id="fill-color" value="#ffffff">
+                    </div>
+                    <div class="property-group">
+                        <label>Border Color:</label>
+                        <input type="color" id="border-color" value="#000000">
+                    </div>
+                    <div class="property-group">
+                        <label>Border Width:</label>
+                        <input type="range" id="border-width" min="1" max="10" value="2">
+                        <span id="border-width-value">2px</span>
+                    </div>
+                    <div class="property-group">
+                        <label>Font Size:</label>
+                        <input type="range" id="font-size" min="10" max="24" value="14">
+                        <span id="font-size-value">14px</span>
+                    </div>
+                    <div class="property-group">
+                        <label>Text Color:</label>
+                        <input type="color" id="text-color" value="#000000">
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <h3>Layers</h3>
+                    <div class="layers-container" id="layers-list">
+                        <!-- Layers will be populated here -->
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <h3>Templates</h3>
+                    <div class="templates-grid">
+                        <button class="template-btn" data-template="basic-flow">
+                            <i class="fas fa-arrow-down"></i>
+                            Basic Flow
+                        </button>
+                        <button class="template-btn" data-template="decision-tree">
+                            <i class="fas fa-sitemap"></i>
+                            Decision Tree
+                        </button>
+                        <button class="template-btn" data-template="process-flow">
+                            <i class="fas fa-cogs"></i>
+                            Process Flow
+                        </button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Canvas Area -->
+            <div class="canvas-container">
+                <div class="canvas-wrapper">
+                    <canvas id="flowchart-canvas"></canvas>
+                    <div class="grid-overlay" id="grid-overlay"></div>
+                </div>
+                <div class="canvas-controls">
+                    <button class="zoom-btn" id="zoom-in" title="Zoom In">
+                        <i class="fas fa-search-plus"></i>
+                    </button>
+                    <span class="zoom-level" id="zoom-level">100%</span>
+                    <button class="zoom-btn" id="zoom-out" title="Zoom Out">
+                        <i class="fas fa-search-minus"></i>
+                    </button>
+                    <button class="zoom-btn" id="zoom-fit" title="Fit to Screen">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </button>
+                    <label class="grid-toggle">
+                        <input type="checkbox" id="show-grid" checked>
+                        <i class="fas fa-th"></i> Grid
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Context Menu -->
+        <div class="context-menu" id="context-menu">
+            <div class="context-item" data-action="copy">
+                <i class="fas fa-copy"></i> Copy
+            </div>
+            <div class="context-item" data-action="paste">
+                <i class="fas fa-paste"></i> Paste
+            </div>
+            <div class="context-item" data-action="delete">
+                <i class="fas fa-trash"></i> Delete
+            </div>
+            <div class="context-divider"></div>
+            <div class="context-item" data-action="bring-front">
+                <i class="fas fa-arrow-up"></i> Bring to Front
+            </div>
+            <div class="context-item" data-action="send-back">
+                <i class="fas fa-arrow-down"></i> Send to Back
+            </div>
+        </div>
+
+        <!-- Text Input Modal -->
+        <div class="modal" id="text-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Edit Text</h3>
+                    <button class="modal-close" id="close-text-modal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <textarea id="text-input" placeholder="Enter text..."></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" id="cancel-text">Cancel</button>
+                    <button class="btn btn-primary" id="save-text">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

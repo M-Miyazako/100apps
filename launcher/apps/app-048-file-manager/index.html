@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Manager - ファイル管理</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>Quick Access</h3>
+            <div class="sidebar-item">📁 Documents</div>
+            <div class="sidebar-item">📷 Pictures</div>
+            <div class="sidebar-item">🎵 Music</div>
+            <div class="sidebar-item">🎬 Videos</div>
+            <div class="sidebar-item">⬇️ Downloads</div>
+        </div>
+        <div class="main-content">
+            <div class="toolbar">
+                <button class="upload-btn">📤 Upload</button>
+                <button class="new-folder-btn">📁 New Folder</button>
+                <div class="search-box">
+                    <input type="text" placeholder="Search files..." id="search-input">
+                </div>
+            </div>
+            <div class="file-grid" id="file-grid">
+                <!-- Files will be displayed here -->
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

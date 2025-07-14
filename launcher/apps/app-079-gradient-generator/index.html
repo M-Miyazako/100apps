@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gradient Generator - グラデーションジェネレータ</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <h1><i class="fas fa-palette"></i> Gradient Generator</h1>
+            <p>美しいグラデーションを作成・カスタマイズ・エクスポートできるツール</p>
+        </header>
+
+        <main class="main-content">
+            <!-- グラデーションプレビュー -->
+            <section class="preview-section">
+                <div class="gradient-preview" id="gradientPreview"></div>
+                <div class="preview-info">
+                    <div class="gradient-info">
+                        <h3>現在のグラデーション</h3>
+                        <div class="gradient-code" id="gradientCode">
+                            linear-gradient(45deg, #ff6b6b, #4ecdc4)
+                        </div>
+                    </div>
+                    <div class="quick-actions">
+                        <button id="randomGradient" class="action-btn">
+                            <i class="fas fa-dice"></i> ランダム
+                        </button>
+                        <button id="copyCSS" class="action-btn">
+                            <i class="fas fa-copy"></i> CSS コピー
+                        </button>
+                        <button id="downloadImage" class="action-btn">
+                            <i class="fas fa-download"></i> 画像保存
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- コントロールパネル -->
+            <section class="controls-section">
+                <div class="controls-grid">
+                    <!-- グラデーション方向 -->
+                    <div class="control-group">
+                        <h4><i class="fas fa-compass"></i> 方向</h4>
+                        <div class="direction-controls">
+                            <div class="direction-type">
+                                <label>
+                                    <input type="radio" name="gradientType" value="linear" checked>
+                                    <span>線形</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="gradientType" value="radial">
+                                    <span>円形</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="gradientType" value="conic">
+                                    <span>角度</span>
+                                </label>
+                            </div>
+                            <div class="linear-controls" id="linearControls">
+                                <label>角度:
+                                    <input type="range" id="angleSlider" min="0" max="360" value="45">
+                                    <span id="angleValue">45°</span>
+                                </label>
+                                <div class="preset-directions">
+                                    <button data-angle="0">↑</button>
+                                    <button data-angle="45">↗</button>
+                                    <button data-angle="90">→</button>
+                                    <button data-angle="135">↘</button>
+                                    <button data-angle="180">↓</button>
+                                    <button data-angle="225">↙</button>
+                                    <button data-angle="270">←</button>
+                                    <button data-angle="315">↖</button>
+                                </div>
+                            </div>
+                            <div class="radial-controls" id="radialControls" style="display: none;">
+                                <label>形状:
+                                    <select id="radialShape">
+                                        <option value="circle">円</option>
+                                        <option value="ellipse">楕円</option>
+                                    </select>
+                                </label>
+                                <label>位置:
+                                    <select id="radialPosition">
+                                        <option value="center">中央</option>
+                                        <option value="top">上</option>
+                                        <option value="bottom">下</option>
+                                        <option value="left">左</option>
+                                        <option value="right">右</option>
+                                        <option value="top left">左上</option>
+                                        <option value="top right">右上</option>
+                                        <option value="bottom left">左下</option>
+                                        <option value="bottom right">右下</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- カラーストップ -->
+                    <div class="control-group">
+                        <h4><i class="fas fa-palette"></i> カラー</h4>
+                        <div class="color-stops" id="colorStops">
+                            <!-- カラーストップがここに動的に追加される -->
+                        </div>
+                        <div class="color-actions">
+                            <button id="addColorStop" class="add-btn">
+                                <i class="fas fa-plus"></i> カラー追加
+                            </button>
+                            <button id="sortColors" class="sort-btn">
+                                <i class="fas fa-sort"></i> 自動整列
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- プリセット -->
+                    <div class="control-group">
+                        <h4><i class="fas fa-star"></i> プリセット</h4>
+                        <div class="presets-grid" id="presetsGrid">
+                            <!-- プリセットがここに動的に追加される -->
+                        </div>
+                        <div class="preset-actions">
+                            <button id="savePreset" class="save-btn">
+                                <i class="fas fa-save"></i> プリセット保存
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- エクスポート -->
+                    <div class="control-group">
+                        <h4><i class="fas fa-download"></i> エクスポート</h4>
+                        <div class="export-options">
+                            <div class="format-options">
+                                <label>
+                                    <input type="radio" name="exportFormat" value="css" checked>
+                                    <span>CSS</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="exportFormat" value="scss">
+                                    <span>SCSS</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="exportFormat" value="svg">
+                                    <span>SVG</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="exportFormat" value="png">
+                                    <span>PNG</span>
+                                </label>
+                            </div>
+                            <div class="export-settings">
+                                <label>画像サイズ:
+                                    <select id="imageSize">
+                                        <option value="400x400">400×400</option>
+                                        <option value="800x600">800×600</option>
+                                        <option value="1200x800">1200×800</option>
+                                        <option value="1920x1080">1920×1080</option>
+                                        <option value="custom">カスタム</option>
+                                    </select>
+                                </label>
+                                <div id="customSize" style="display: none;">
+                                    <input type="number" id="customWidth" placeholder="幅" value="800">
+                                    <input type="number" id="customHeight" placeholder="高さ" value="600">
+                                </div>
+                            </div>
+                            <div class="export-buttons">
+                                <button id="exportCode" class="export-btn">
+                                    <i class="fas fa-code"></i> コード生成
+                                </button>
+                                <button id="exportFile" class="export-btn">
+                                    <i class="fas fa-file-export"></i> ファイル出力
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- コード表示エリア -->
+            <section class="code-section" id="codeSection" style="display: none;">
+                <div class="code-header">
+                    <h4><i class="fas fa-code"></i> 生成されたコード</h4>
+                    <button id="closeCode"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="code-content">
+                    <pre><code id="generatedCode"></code></pre>
+                    <button id="copyGeneratedCode" class="copy-code-btn">
+                        <i class="fas fa-copy"></i> コピー
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <!-- ライブプレビュー -->
+        <aside class="live-preview" id="livePreview">
+            <div class="preview-header">
+                <h4>ライブプレビュー</h4>
+                <button id="togglePreview"><i class="fas fa-eye"></i></button>
+            </div>
+            <div class="preview-samples">
+                <div class="sample-box gradient-bg" data-type="box">
+                    <span>ボックス</span>
+                </div>
+                <div class="sample-text gradient-bg" data-type="text">
+                    <span>テキスト</span>
+                </div>
+                <div class="sample-button gradient-bg" data-type="button">
+                    <span>ボタン</span>
+                </div>
+                <div class="sample-card gradient-bg" data-type="card">
+                    <h5>カード</h5>
+                    <p>サンプルテキスト</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- フィードバック -->
+        <div id="feedback" class="feedback">
+            <i class="fas fa-check"></i>
+            <span></span>
+        </div>
+
+        <!-- プリセット保存モーダル -->
+        <div id="saveModal" class="modal">
+            <div class="modal-content">
+                <h3>プリセットを保存</h3>
+                <input type="text" id="presetName" placeholder="プリセット名を入力">
+                <div class="modal-actions">
+                    <button id="confirmSave" class="confirm-btn">保存</button>
+                    <button id="cancelSave" class="cancel-btn">キャンセル</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

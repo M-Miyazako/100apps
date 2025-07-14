@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drawing App - 描画アプリ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="toolbar">
+            <div class="tool-group">
+                <button class="tool-btn active" data-tool="pen">🖊️</button>
+                <button class="tool-btn" data-tool="eraser">🧹</button>
+                <button class="tool-btn" data-tool="line">📏</button>
+                <button class="tool-btn" data-tool="circle">⭕</button>
+                <button class="tool-btn" data-tool="rect">⬜</button>
+            </div>
+            <div class="tool-group">
+                <input type="color" id="color-picker" value="#000000">
+                <input type="range" id="brush-size" min="1" max="50" value="3">
+                <span id="size-display">3px</span>
+            </div>
+            <div class="tool-group">
+                <button class="action-btn" id="clear-btn">🗑️ Clear</button>
+                <button class="action-btn" id="save-btn">💾 Save</button>
+                <button class="action-btn" id="load-btn">📁 Load</button>
+            </div>
+        </div>
+        <div class="canvas-container">
+            <canvas id="canvas"></canvas>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

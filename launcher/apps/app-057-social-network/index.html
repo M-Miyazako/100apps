@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Network - SNS プラットフォーム</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">🌐</div>
+                    <h1>SocialNet</h1>
+                </div>
+                <nav class="nav">
+                    <button class="nav-btn active" data-section="home">
+                        <span class="nav-icon">🏠</span>
+                        <span class="nav-text">ホーム</span>
+                    </button>
+                    <button class="nav-btn" data-section="profile">
+                        <span class="nav-icon">👤</span>
+                        <span class="nav-text">プロフィール</span>
+                    </button>
+                    <button class="nav-btn" data-section="messages">
+                        <span class="nav-icon">💬</span>
+                        <span class="nav-text">メッセージ</span>
+                    </button>
+                    <button class="nav-btn" data-section="notifications">
+                        <span class="nav-icon">🔔</span>
+                        <span class="nav-text">通知</span>
+                    </button>
+                </nav>
+                <div class="user-menu">
+                    <div class="user-avatar">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiM2MzY2ZjEiLz4KPHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIxNiIgcj0iNiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTEwIDMwQzEwIDI1IDE0LjQ3NzIgMjEgMjAgMjFDMjUuNTIyOCAyMSAzMCAyNSAzMCAzMEgxMFoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo8L3N2Zz4K" alt="User" />
+                    </div>
+                    <button class="logout-btn">ログアウト</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="main">
+            <!-- Home Section -->
+            <section class="section active" id="home">
+                <div class="content-wrapper">
+                    <div class="sidebar">
+                        <div class="sidebar-section">
+                            <h3>クイックアクセス</h3>
+                            <ul class="sidebar-links">
+                                <li><a href="#" class="sidebar-link">友達</a></li>
+                                <li><a href="#" class="sidebar-link">グループ</a></li>
+                                <li><a href="#" class="sidebar-link">イベント</a></li>
+                                <li><a href="#" class="sidebar-link">写真</a></li>
+                                <li><a href="#" class="sidebar-link">動画</a></li>
+                            </ul>
+                        </div>
+                        <div class="sidebar-section">
+                            <h3>トレンド</h3>
+                            <div class="trending-topics">
+                                <div class="trending-item">#技術</div>
+                                <div class="trending-item">#デザイン</div>
+                                <div class="trending-item">#プログラミング</div>
+                                <div class="trending-item">#アート</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="main-content">
+                        <div class="post-composer">
+                            <div class="composer-header">
+                                <div class="composer-avatar">
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiM2MzY2ZjEiLz4KPHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIxNiIgcj0iNiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTEwIDMwQzEwIDI1IDE0LjQ3NzIgMjEgMjAgMjFDMjUuNTIyOCAyMSAzMCAyNSAzMCAzMEgxMFoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo8L3N2Zz4K" alt="User" />
+                                </div>
+                                <textarea class="composer-input" placeholder="今何してる？"></textarea>
+                            </div>
+                            <div class="composer-actions">
+                                <button class="action-btn">📷 写真</button>
+                                <button class="action-btn">🎥 動画</button>
+                                <button class="action-btn">📍 位置</button>
+                                <button class="action-btn">😊 感情</button>
+                                <button class="post-btn">投稿</button>
+                            </div>
+                        </div>
+
+                        <div class="feed">
+                            <div class="post" data-post-id="1">
+                                <div class="post-header">
+                                    <div class="post-avatar">
+                                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiNmNTcxNzEiLz4KPHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIxNiIgcj0iNiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTEwIDMwQzEwIDI1IDE0LjQ3NzIgMjEgMjAgMjFDMjUuNTIyOCAyMSAzMCAyNSAzMCAzMEgxMFoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo8L3N2Zz4K" alt="User" />
+                                    </div>
+                                    <div class="post-info">
+                                        <div class="post-author">田中太郎</div>
+                                        <div class="post-time">2時間前</div>
+                                    </div>
+                                    <div class="post-menu">⋮</div>
+                                </div>
+                                <div class="post-content">
+                                    <p>新しいプロジェクトを開始しました！みんなで協力してすばらしいものを作りましょう 🚀</p>
+                                </div>
+                                <div class="post-image">
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDUwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjZjNmNGY2Ii8+Cjx0ZXh0IHg9IjI1MCIgeT0iMTUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOWNhM2FmIiBmb250LXNpemU9IjE4Ij5TYW1wbGUgSW1hZ2U8L3RleHQ+Cjwvc3ZnPgo=" alt="Post image" />
+                                </div>
+                                <div class="post-actions">
+                                    <button class="action-btn like-btn">👍 いいね <span class="count">12</span></button>
+                                    <button class="action-btn comment-btn">💬 コメント <span class="count">3</span></button>
+                                    <button class="action-btn share-btn">📤 シェア</button>
+                                </div>
+                            </div>
+
+                            <div class="post" data-post-id="2">
+                                <div class="post-header">
+                                    <div class="post-avatar">
+                                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiMzNGQ0YWEiLz4KPHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIxNiIgcj0iNiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTEwIDMwQzEwIDI1IDE0LjQ3NzIgMjEgMjAgMjFDMjUuNTIyOCAyMSAzMCAyNSAzMCAzMEgxMFoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo8L3N2Zz4K" alt="User" />
+                                    </div>
+                                    <div class="post-info">
+                                        <div class="post-author">佐藤花子</div>
+                                        <div class="post-time">4時間前</div>
+                                    </div>
+                                    <div class="post-menu">⋮</div>
+                                </div>
+                                <div class="post-content">
+                                    <p>今日は素晴らしい一日でした！みんなにシェアしたいと思います ✨</p>
+                                </div>
+                                <div class="post-actions">
+                                    <button class="action-btn like-btn">👍 いいね <span class="count">8</span></button>
+                                    <button class="action-btn comment-btn">💬 コメント <span class="count">1</span></button>
+                                    <button class="action-btn share-btn">📤 シェア</button>
+                                </div>
+                            </div>
+
+                            <div class="post" data-post-id="3">
+                                <div class="post-header">
+                                    <div class="post-avatar">
+                                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiNmNTkxNDciLz4KPHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIxNiIgcj0iNiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTEwIDMwQzEwIDI1IDE0LjQ3NzIgMjEgMjAgMjFDMjUuNTIyOCAyMSAzMCAyNSAzMCAzMEgxMFoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo8L3N2Zz4K" alt="User" />
+                                    </div>
+                                    <div class="post-info">
+                                        <div class="post-author">鈴木一郎</div>
+                                        <div class="post-time">6時間前</div>
+                                    </div>
+                                    <div class="post-menu">⋮</div>
+                                </div>
+                                <div class="post-content">
+                                    <p>テクノロジーの進歩は本当に素晴らしい！みんなで学び続けましょう 💻</p>
+                                </div>
+                                <div class="post-actions">
+                                    <button class="action-btn like-btn">👍 いいね <span class="count">15</span></button>
+                                    <button class="action-btn comment-btn">💬 コメント <span class="count">5</span></button>
+                                    <button class="action-btn share-btn">📤 シェア</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Profile Section -->
+            <section class="section" id="profile">
+                <div class="profile-container">
+                    <div class="profile-header">
+                        <div class="profile-cover">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDgwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjNjM2NmYxIi8+Cjx0ZXh0IHg9IjQwMCIgeT0iMTUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ3aGl0ZSIgZm9udC1zaXplPSIyNCI+Q292ZXIgUGhvdG88L3RleHQ+Cjwvc3ZnPgo=" alt="Cover photo" />
+                        </div>
+                        <div class="profile-info">
+                            <div class="profile-avatar-large">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxjaXJjbGUgY3g9IjYwIiBjeT0iNjAiIHI9IjYwIiBmaWxsPSIjNjM2NmYxIi8+Cjx0ZXh0IHg9IjYwIiB5PSI3MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtc2l6ZT0iMjQiPllvdTwvdGV4dD4KPC9zdmc+Cg==" alt="Profile" />
+                            </div>
+                            <div class="profile-details">
+                                <h2>あなたの名前</h2>
+                                <p>@username</p>
+                                <p>プロフィール説明がここに表示されます。</p>
+                                <div class="profile-stats">
+                                    <div class="stat">
+                                        <span class="stat-number">1,234</span>
+                                        <span class="stat-label">フォロワー</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-number">567</span>
+                                        <span class="stat-label">フォロー中</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-number">89</span>
+                                        <span class="stat-label">投稿</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="btn btn-primary">プロフィール編集</button>
+                        <button class="btn btn-secondary">設定</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Messages Section -->
+            <section class="section" id="messages">
+                <div class="messages-container">
+                    <div class="messages-sidebar">
+                        <h3>チャット</h3>
+                        <div class="chat-list">
+                            <div class="chat-item active">
+                                <div class="chat-avatar">
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiNmNTcxNzEiLz4KPHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIxNiIgcj0iNiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTEwIDMwQzEwIDI1IDE0LjQ3NzIgMjEgMjAgMjFDMjUuNTIyOCAyMSAzMCAyNSAzMCAzMEgxMFoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo8L3N2Zz4K" alt="User" />
+                                </div>
+                                <div class="chat-info">
+                                    <div class="chat-name">田中太郎</div>
+                                    <div class="chat-preview">こんにちは！</div>
+                                </div>
+                                <div class="chat-time">10:30</div>
+                            </div>
+                            <div class="chat-item">
+                                <div class="chat-avatar">
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiMzNGQ0YWEiLz4KPHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIxNiIgcj0iNiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTEwIDMwQzEwIDI1IDE0LjQ3NzIgMjEgMjAgMjFDMjUuNTIyOCAyMSAzMCAyNSAzMCAzMEgxMFoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo8L3N2Zz4K" alt="User" />
+                                </div>
+                                <div class="chat-info">
+                                    <div class="chat-name">佐藤花子</div>
+                                    <div class="chat-preview">お疲れ様でした</div>
+                                </div>
+                                <div class="chat-time">昨日</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="messages-main">
+                        <div class="chat-header">
+                            <div class="chat-user">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiNmNTcxNzEiLz4KPHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIxNiIgcj0iNiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTEwIDMwQzEwIDI1IDE0LjQ3NzIgMjEgMjAgMjFDMjUuNTIyOCAyMSAzMCAyNSAzMCAzMEgxMFoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo8L3N2Zz4K" alt="User" />
+                                <span>田中太郎</span>
+                            </div>
+                        </div>
+                        <div class="chat-messages">
+                            <div class="message received">
+                                <div class="message-content">こんにちは！</div>
+                                <div class="message-time">10:30</div>
+                            </div>
+                            <div class="message sent">
+                                <div class="message-content">こんにちは！元気ですか？</div>
+                                <div class="message-time">10:32</div>
+                            </div>
+                        </div>
+                        <div class="chat-input">
+                            <input type="text" placeholder="メッセージを入力..." class="message-input" />
+                            <button class="send-btn">送信</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Notifications Section -->
+            <section class="section" id="notifications">
+                <div class="notifications-container">
+                    <h2>通知</h2>
+                    <div class="notification-item">
+                        <div class="notification-icon">👍</div>
+                        <div class="notification-content">
+                            <p><strong>田中太郎</strong>があなたの投稿にいいねしました</p>
+                            <span class="notification-time">5分前</span>
+                        </div>
+                    </div>
+                    <div class="notification-item">
+                        <div class="notification-icon">💬</div>
+                        <div class="notification-content">
+                            <p><strong>佐藤花子</strong>があなたの投稿にコメントしました</p>
+                            <span class="notification-time">1時間前</span>
+                        </div>
+                    </div>
+                    <div class="notification-item">
+                        <div class="notification-icon">👤</div>
+                        <div class="notification-content">
+                            <p><strong>鈴木一郎</strong>があなたをフォローしました</p>
+                            <span class="notification-time">2時間前</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

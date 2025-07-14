@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adventure Game - ¢≤¸‡</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Mystery Adventure</h1>
+            <p>‰„z·í¢WàF</p>
+        </header>
+        
+        <div class="game-area">
+            <div class="map-container">
+                <div class="map" id="gameMap">
+                    <div class="player" id="player"></div>
+                </div>
+                <div class="map-info">
+                    <div class="location-info" id="locationInfo">
+                        <h3>˛(0: ®Û»ÈÛπ</h3>
+                        <p>‰„z·neä„gY</p>
+                    </div>
+                    <div class="inventory-info">
+                        <h3>@¡</h3>
+                        <div class="inventory" id="inventory">
+                            <div class="item">–-˚o</div>
+                            <div class="item">Ì¸◊</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <div class="movement-controls">
+                    <button class="move-btn" id="moveUp">ë</button>
+                    <div class="horizontal-controls">
+                        <button class="move-btn" id="moveLeft">ê</button>
+                        <button class="move-btn" id="moveRight">í</button>
+                    </div>
+                    <button class="move-btn" id="moveDown">ì</button>
+                </div>
+                
+                <div class="action-controls">
+                    <button class="action-btn" id="searchBtn">øyã</button>
+                    <button class="action-btn" id="useItemBtn">¢§∆‡(</button>
+                    <button class="action-btn" id="saveBtn">ª¸÷</button>
+                    <button class="action-btn" id="loadBtn">Ì¸…</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="message-area">
+            <div class="message-log" id="messageLog">
+                <p>z·n¢íãÀW~YWASD≠¸~_o‹øÛg˚’gM~Y</p>
+            </div>
+        </div>
+        
+        <div class="status-bar">
+            <div class="status-item">
+                <label>Sõ:</label>
+                <div class="health-bar">
+                    <div class="health-fill" id="healthFill"></div>
+                </div>
+                <span id="healthText">100/100</span>
+            </div>
+            <div class="status-item">
+                <label>zãW_¢§∆‡:</label>
+                <span id="itemCount">0</span>
+            </div>
+            <div class="status-item">
+                <label>¢¶:</label>
+                <span id="exploration">0%</span>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Viewer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .app-container {
+            display: flex;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .sidebar {
+            width: 300px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .sidebar-header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .connection-section {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .connection-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 12px;
+            margin-bottom: 5px;
+            opacity: 0.9;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 8px;
+            border: none;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            font-size: 12px;
+        }
+
+        .connect-btn {
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .connect-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .tables-section {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .tables-list h3 {
+            margin-bottom: 15px;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .table-item {
+            padding: 10px 15px;
+            margin: 5px 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 13px;
+        }
+
+        .table-item:hover,
+        .table-item.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: white;
+        }
+
+        .toolbar {
+            padding: 15px 25px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .toolbar-left {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .query-input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            min-width: 300px;
+        }
+
+        .query-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .toolbar-btn {
+            padding: 8px 15px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .toolbar-btn:hover {
+            background: #5a6fd8;
+        }
+
+        .toolbar-btn.secondary {
+            background: #6c757d;
+        }
+
+        .toolbar-btn.secondary:hover {
+            background: #5a6268;
+        }
+
+        .content-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .tab {
+            padding: 12px 20px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .tab:hover,
+        .tab.active {
+            background: white;
+            border-bottom-color: #667eea;
+            color: #667eea;
+        }
+
+        .tab-content {
+            flex: 1;
+            overflow: auto;
+            padding: 20px;
+        }
+
+        .table-container {
+            overflow: auto;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background: white;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+            white-space: nowrap;
+        }
+
+        .data-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #333;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .data-table tr:hover {
+            background: #f8f9ff;
+        }
+
+        .data-table td.number {
+            text-align: right;
+            font-family: 'Courier New', monospace;
+        }
+
+        .data-table td.null {
+            color: #999;
+            font-style: italic;
+        }
+
+        .schema-view {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .table-schema {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .table-schema h4 {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .column-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .column-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 12px;
+            background: white;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .column-name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .column-type {
+            font-size: 12px;
+            color: #666;
+            font-family: 'Courier New', monospace;
+        }
+
+        .query-history {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .history-item {
+            padding: 10px 15px;
+            margin: 5px 0;
+            background: #f8f9fa;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 3px solid #e0e0e0;
+        }
+
+        .history-item:hover {
+            background: #e9ecef;
+            border-left-color: #667eea;
+        }
+
+        .history-query {
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .history-time {
+            font-size: 11px;
+            color: #666;
+        }
+
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border: 1px solid #f5c6cb;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border: 1px solid #c3e6cb;
+        }
+
+        .connection-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #dc3545;
+        }
+
+        .status-indicator.connected {
+            background: #28a745;
+        }
+
+        .export-options {
+            display: flex;
+            gap: 10px;
+        }
+
+        .sample-data-section {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .sample-data-section h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .sample-btn {
+            padding: 8px 15px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            font-size: 12px;
+        }
+
+        .sample-btn:hover {
+            background: #218838;
+        }
+
+        @media (max-width: 768px) {
+            .app-container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                max-height: 40vh;
+            }
+
+            .toolbar {
+                flex-direction: column;
+                gap: 10px;
+                align-items: stretch;
+            }
+
+            .toolbar-left {
+                flex-direction: column;
+            }
+
+            .query-input {
+                min-width: auto;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h1>🗄️ Database Viewer</h1>
+                <div class="connection-status">
+                    <div class="status-indicator" id="statusIndicator"></div>
+                    <span id="connectionStatus">Disconnected</span>
+                </div>
+            </div>
+
+            <div class="connection-section">
+                <form class="connection-form" id="connectionForm">
+                    <div class="form-group">
+                        <label for="dbType">Database Type</label>
+                        <select id="dbType">
+                            <option value="sample">Sample Data</option>
+                            <option value="mysql">MySQL</option>
+                            <option value="postgresql">PostgreSQL</option>
+                            <option value="sqlite">SQLite</option>
+                            <option value="mongodb">MongoDB</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group connection-fields">
+                        <label for="host">Host</label>
+                        <input type="text" id="host" value="localhost" placeholder="localhost">
+                    </div>
+                    
+                    <div class="form-group connection-fields">
+                        <label for="port">Port</label>
+                        <input type="number" id="port" value="3306" placeholder="3306">
+                    </div>
+                    
+                    <div class="form-group connection-fields">
+                        <label for="database">Database</label>
+                        <input type="text" id="database" placeholder="database_name">
+                    </div>
+                    
+                    <div class="form-group connection-fields">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" placeholder="username">
+                    </div>
+                    
+                    <div class="form-group connection-fields">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="password">
+                    </div>
+
+                    <button type="submit" class="connect-btn" id="connectBtn">Connect</button>
+                </form>
+            </div>
+
+            <div class="tables-section">
+                <div class="tables-list">
+                    <h3>Tables</h3>
+                    <div id="tablesList">
+                        <div style="color: rgba(255,255,255,0.6); font-size: 12px; text-align: center; padding: 20px;">
+                            Connect to view tables
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="toolbar">
+                <div class="toolbar-left">
+                    <input type="text" class="query-input" id="queryInput" placeholder="SELECT * FROM table_name">
+                    <button class="toolbar-btn" id="executeBtn">Execute</button>
+                    <button class="toolbar-btn secondary" id="clearBtn">Clear</button>
+                </div>
+                
+                <div class="export-options">
+                    <button class="toolbar-btn secondary" id="exportCSV">Export CSV</button>
+                    <button class="toolbar-btn secondary" id="exportJSON">Export JSON</button>
+                </div>
+            </div>
+
+            <div class="tabs">
+                <div class="tab active" data-tab="data">Data</div>
+                <div class="tab" data-tab="schema">Schema</div>
+                <div class="tab" data-tab="history">Query History</div>
+                <div class="tab" data-tab="stats">Statistics</div>
+            </div>
+
+            <div class="content-area">
+                <div class="tab-content" id="dataTab">
+                    <div id="resultsContainer">
+                        <div style="text-align: center; color: #666; padding: 40px;">
+                            <h3>Welcome to Database Viewer</h3>
+                            <p>Connect to a database and execute queries to view results here</p>
+                            
+                            <div class="sample-data-section">
+                                <h3>Try Sample Data</h3>
+                                <p style="margin-bottom: 15px; color: #666;">Click a button below to load sample data and explore the features:</p>
+                                <button class="sample-btn" onclick="dbViewer.loadSampleData('users')">Sample Users</button>
+                                <button class="sample-btn" onclick="dbViewer.loadSampleData('products')">Sample Products</button>
+                                <button class="sample-btn" onclick="dbViewer.loadSampleData('orders')">Sample Orders</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content hidden" id="schemaTab">
+                    <div class="schema-view" id="schemaView">
+                        <div style="text-align: center; color: #666; padding: 40px;">
+                            <h3>Database Schema</h3>
+                            <p>Connect to a database to view table schemas</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content hidden" id="historyTab">
+                    <div class="query-history" id="queryHistory">
+                        <div style="text-align: center; color: #666; padding: 40px;">
+                            <h3>Query History</h3>
+                            <p>Your executed queries will appear here</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content hidden" id="statsTab">
+                    <div id="statsContent">
+                        <div class="stats-section">
+                            <div class="stat-card">
+                                <div class="stat-number" id="totalTables">0</div>
+                                <div class="stat-label">Tables</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="totalRows">0</div>
+                                <div class="stat-label">Total Rows</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="queriesExecuted">0</div>
+                                <div class="stat-label">Queries Executed</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="avgQueryTime">0ms</div>
+                                <div class="stat-label">Avg Query Time</div>
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center; color: #666; padding: 40px;">
+                            <h3>Database Statistics</h3>
+                            <p>Detailed analytics about your database usage</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class DatabaseViewer {
+            constructor() {
+                this.isConnected = false;
+                this.currentDatabase = null;
+                this.sampleData = this.generateSampleData();
+                this.queryHistory = JSON.parse(localStorage.getItem('db_query_history')) || [];
+                this.currentResults = null;
+                this.stats = {
+                    totalTables: 0,
+                    totalRows: 0,
+                    queriesExecuted: this.queryHistory.length,
+                    queryTimes: []
+                };
+
+                this.initializeEventListeners();
+                this.updateConnectionFields();
+                this.renderQueryHistory();
+                this.updateStats();
+            }
+
+            initializeEventListeners() {
+                // Connection form
+                document.getElementById('connectionForm').addEventListener('submit', (e) => this.handleConnection(e));
+                document.getElementById('dbType').addEventListener('change', () => this.updateConnectionFields());
+
+                // Query execution
+                document.getElementById('executeBtn').addEventListener('click', () => this.executeQuery());
+                document.getElementById('clearBtn').addEventListener('click', () => this.clearQuery());
+                document.getElementById('queryInput').addEventListener('keydown', (e) => {
+                    if (e.ctrlKey && e.key === 'Enter') {
+                        this.executeQuery();
+                    }
+                });
+
+                // Export buttons
+                document.getElementById('exportCSV').addEventListener('click', () => this.exportResults('csv'));
+                document.getElementById('exportJSON').addEventListener('click', () => this.exportResults('json'));
+
+                // Tab switching
+                document.querySelectorAll('.tab').forEach(tab => {
+                    tab.addEventListener('click', (e) => this.switchTab(e.target.dataset.tab));
+                });
+            }
+
+            generateSampleData() {
+                return {
+                    users: {
+                        schema: [
+                            { name: 'id', type: 'INT PRIMARY KEY' },
+                            { name: 'name', type: 'VARCHAR(100)' },
+                            { name: 'email', type: 'VARCHAR(255)' },
+                            { name: 'age', type: 'INT' },
+                            { name: 'created_at', type: 'DATETIME' }
+                        ],
+                        data: [
+                            { id: 1, name: 'John Doe', email: 'john@example.com', age: 30, created_at: '2024-01-15 10:30:00' },
+                            { id: 2, name: 'Jane Smith', email: 'jane@example.com', age: 25, created_at: '2024-01-16 14:20:00' },
+                            { id: 3, name: 'Bob Johnson', email: 'bob@example.com', age: 35, created_at: '2024-01-17 09:15:00' },
+                            { id: 4, name: 'Alice Brown', email: 'alice@example.com', age: 28, created_at: '2024-01-18 16:45:00' },
+                            { id: 5, name: 'Charlie Wilson', email: 'charlie@example.com', age: 42, created_at: '2024-01-19 11:30:00' }
+                        ]
+                    },
+                    products: {
+                        schema: [
+                            { name: 'id', type: 'INT PRIMARY KEY' },
+                            { name: 'name', type: 'VARCHAR(200)' },
+                            { name: 'price', type: 'DECIMAL(10,2)' },
+                            { name: 'category', type: 'VARCHAR(100)' },
+                            { name: 'stock', type: 'INT' }
+                        ],
+                        data: [
+                            { id: 1, name: 'Laptop', price: 999.99, category: 'Electronics', stock: 50 },
+                            { id: 2, name: 'Mouse', price: 29.99, category: 'Electronics', stock: 200 },
+                            { id: 3, name: 'Keyboard', price: 79.99, category: 'Electronics', stock: 150 },
+                            { id: 4, name: 'Monitor', price: 299.99, category: 'Electronics', stock: 75 },
+                            { id: 5, name: 'Desk Chair', price: 199.99, category: 'Furniture', stock: 30 }
+                        ]
+                    },
+                    orders: {
+                        schema: [
+                            { name: 'id', type: 'INT PRIMARY KEY' },
+                            { name: 'user_id', type: 'INT' },
+                            { name: 'product_id', type: 'INT' },
+                            { name: 'quantity', type: 'INT' },
+                            { name: 'total', type: 'DECIMAL(10,2)' },
+                            { name: 'order_date', type: 'DATETIME' }
+                        ],
+                        data: [
+                            { id: 1, user_id: 1, product_id: 1, quantity: 1, total: 999.99, order_date: '2024-01-20 14:30:00' },
+                            { id: 2, user_id: 2, product_id: 2, quantity: 2, total: 59.98, order_date: '2024-01-21 10:15:00' },
+                            { id: 3, user_id: 3, product_id: 4, quantity: 1, total: 299.99, order_date: '2024-01-22 16:45:00' },
+                            { id: 4, user_id: 1, product_id: 3, quantity: 1, total: 79.99, order_date: '2024-01-23 09:20:00' },
+                            { id: 5, user_id: 4, product_id: 5, quantity: 1, total: 199.99, order_date: '2024-01-24 13:10:00' }
+                        ]
+                    }
+                };
+            }
+
+            updateConnectionFields() {
+                const dbType = document.getElementById('dbType').value;
+                const fields = document.querySelectorAll('.connection-fields');
+                
+                if (dbType === 'sample') {
+                    fields.forEach(field => field.style.display = 'none');
+                } else {
+                    fields.forEach(field => field.style.display = 'flex');
+                    
+                    // Update default ports
+                    const portField = document.getElementById('port');
+                    switch (dbType) {
+                        case 'mysql':
+                            portField.value = '3306';
+                            break;
+                        case 'postgresql':
+                            portField.value = '5432';
+                            break;
+                        case 'mongodb':
+                            portField.value = '27017';
+                            break;
+                        default:
+                            portField.value = '';
+                    }
+                }
+            }
+
+            handleConnection(e) {
+                e.preventDefault();
+                const dbType = document.getElementById('dbType').value;
+                
+                if (dbType === 'sample') {
+                    this.connectToSampleData();
+                } else {
+                    this.connectToRealDatabase();
+                }
+            }
+
+            connectToSampleData() {
+                this.isConnected = true;
+                this.currentDatabase = 'sample';
+                this.updateConnectionStatus(true, 'Connected to Sample Data');
+                this.loadTables(Object.keys(this.sampleData));
+                this.updateStats();
+                this.showMessage('Connected to sample database successfully!', 'success');
+            }
+
+            connectToRealDatabase() {
+                // Simulate connection (in real app, this would make actual API calls)
+                const host = document.getElementById('host').value;
+                const database = document.getElementById('database').value;
+                
+                if (!host || !database) {
+                    this.showMessage('Please fill in all required fields', 'error');
+                    return;
+                }
+
+                // Simulate connection delay
+                document.getElementById('connectBtn').textContent = 'Connecting...';
+                document.getElementById('connectBtn').disabled = true;
+
+                setTimeout(() => {
+                    // Simulate connection failure for demo
+                    this.showMessage('Connection failed: This is a demo version. Use "Sample Data" to explore features.', 'error');
+                    document.getElementById('connectBtn').textContent = 'Connect';
+                    document.getElementById('connectBtn').disabled = false;
+                }, 2000);
+            }
+
+            updateConnectionStatus(connected, message) {
+                const indicator = document.getElementById('statusIndicator');
+                const status = document.getElementById('connectionStatus');
+                
+                indicator.classList.toggle('connected', connected);
+                status.textContent = message;
+                this.isConnected = connected;
+            }
+
+            loadTables(tables) {
+                const tablesList = document.getElementById('tablesList');
+                tablesList.innerHTML = tables.map(table => `
+                    <div class="table-item" onclick="dbViewer.selectTable('${table}')">
+                        📄 ${table}
+                    </div>
+                `).join('');
+
+                this.stats.totalTables = tables.length;
+                this.stats.totalRows = Object.values(this.sampleData).reduce((sum, table) => sum + table.data.length, 0);
+                this.updateStats();
+            }
+
+            selectTable(tableName) {
+                // Update active table
+                document.querySelectorAll('.table-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                event.target.classList.add('active');
+
+                // Auto-fill query
+                document.getElementById('queryInput').value = `SELECT * FROM ${tableName}`;
+                
+                // Auto-execute for demo
+                this.executeQuery();
+            }
+
+            loadSampleData(tableName) {
+                if (!this.isConnected) {
+                    this.connectToSampleData();
+                }
+                
+                setTimeout(() => {
+                    this.selectTable(tableName);
+                }, 500);
+            }
+
+            executeQuery() {
+                if (!this.isConnected) {
+                    this.showMessage('Please connect to a database first', 'error');
+                    return;
+                }
+
+                const query = document.getElementById('queryInput').value.trim();
+                if (!query) {
+                    this.showMessage('Please enter a query', 'error');
+                    return;
+                }
+
+                const startTime = Date.now();
+                
+                try {
+                    const results = this.processQuery(query);
+                    const queryTime = Date.now() - startTime;
+                    
+                    this.currentResults = results;
+                    this.renderResults(results);
+                    this.addToHistory(query, queryTime);
+                    this.updateStats();
+                    
+                    this.showMessage(`Query executed successfully (${queryTime}ms)`, 'success');
+                } catch (error) {
+                    this.showMessage(`Query error: ${error.message}`, 'error');
+                }
+            }
+
+            processQuery(query) {
+                // Simple query parser for demo purposes
+                const normalizedQuery = query.toLowerCase().trim();
+                
+                if (normalizedQuery.startsWith('select')) {
+                    return this.processSelectQuery(query);
+                } else {
+                    throw new Error('Only SELECT queries are supported in demo mode');
+                }
+            }
+
+            processSelectQuery(query) {
+                const normalizedQuery = query.toLowerCase();
+                
+                // Extract table name (very basic parsing)
+                const fromMatch = normalizedQuery.match(/from\s+(\w+)/);
+                if (!fromMatch) {
+                    throw new Error('Invalid SELECT query: missing FROM clause');
+                }
+
+                const tableName = fromMatch[1];
+                if (!this.sampleData[tableName]) {
+                    throw new Error(`Table '${tableName}' not found`);
+                }
+
+                const table = this.sampleData[tableName];
+                
+                // For demo, just return all data
+                return {
+                    columns: table.schema.map(col => col.name),
+                    rows: table.data,
+                    rowCount: table.data.length
+                };
+            }
+
+            renderResults(results) {
+                const container = document.getElementById('resultsContainer');
+                
+                if (!results || !results.rows || results.rows.length === 0) {
+                    container.innerHTML = `
+                        <div style="text-align: center; color: #666; padding: 40px;">
+                            <h3>No Results</h3>
+                            <p>The query returned no results</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                const table = document.createElement('div');
+                table.className = 'table-container';
+                
+                table.innerHTML = `
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                ${results.columns.map(col => `<th>${col}</th>`).join('')}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${results.rows.map(row => `
+                                <tr>
+                                    ${results.columns.map(col => {
+                                        const value = row[col];
+                                        const cellClass = this.getCellClass(value);
+                                        return `<td class="${cellClass}">${this.formatCellValue(value)}</td>`;
+                                    }).join('')}
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+
+                container.innerHTML = `
+                    <div style="margin-bottom: 15px; color: #666; font-size: 14px;">
+                        Query returned ${results.rowCount} row(s)
+                    </div>
+                `;
+                container.appendChild(table);
+            }
+
+            getCellClass(value) {
+                if (value === null || value === undefined) {
+                    return 'null';
+                } else if (typeof value === 'number') {
+                    return 'number';
+                }
+                return '';
+            }
+
+            formatCellValue(value) {
+                if (value === null || value === undefined) {
+                    return 'NULL';
+                }
+                return String(value);
+            }
+
+            clearQuery() {
+                document.getElementById('queryInput').value = '';
+            }
+
+            addToHistory(query, queryTime) {
+                const historyItem = {
+                    query: query,
+                    timestamp: new Date().toISOString(),
+                    executionTime: queryTime
+                };
+
+                this.queryHistory.unshift(historyItem);
+                
+                // Keep only last 50 queries
+                if (this.queryHistory.length > 50) {
+                    this.queryHistory = this.queryHistory.slice(0, 50);
+                }
+
+                localStorage.setItem('db_query_history', JSON.stringify(this.queryHistory));
+                this.renderQueryHistory();
+                
+                this.stats.queriesExecuted++;
+                this.stats.queryTimes.push(queryTime);
+                this.updateStats();
+            }
+
+            renderQueryHistory() {
+                const container = document.getElementById('queryHistory');
+                
+                if (this.queryHistory.length === 0) {
+                    container.innerHTML = `
+                        <div style="text-align: center; color: #666; padding: 40px;">
+                            <h3>Query History</h3>
+                            <p>Your executed queries will appear here</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                container.innerHTML = this.queryHistory.map(item => `
+                    <div class="history-item" onclick="dbViewer.loadHistoryQuery('${item.query.replace(/'/g, "\\'")}')">
+                        <div class="history-query">${item.query}</div>
+                        <div class="history-time">
+                            ${new Date(item.timestamp).toLocaleString()} • ${item.executionTime}ms
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            loadHistoryQuery(query) {
+                document.getElementById('queryInput').value = query;
+                this.switchTab('data');
+            }
+
+            switchTab(tabName) {
+                // Update tab buttons
+                document.querySelectorAll('.tab').forEach(tab => {
+                    tab.classList.toggle('active', tab.dataset.tab === tabName);
+                });
+
+                // Update tab content
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.add('hidden');
+                });
+                document.getElementById(tabName + 'Tab').classList.remove('hidden');
+
+                // Load content based on tab
+                if (tabName === 'schema') {
+                    this.renderSchema();
+                } else if (tabName === 'stats') {
+                    this.updateStats();
+                }
+            }
+
+            renderSchema() {
+                const container = document.getElementById('schemaView');
+                
+                if (!this.isConnected) {
+                    container.innerHTML = `
+                        <div style="text-align: center; color: #666; padding: 40px;">
+                            <h3>Database Schema</h3>
+                            <p>Connect to a database to view table schemas</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                container.innerHTML = Object.entries(this.sampleData).map(([tableName, table]) => `
+                    <div class="table-schema">
+                        <h4>📄 ${tableName}</h4>
+                        <div class="column-list">
+                            ${table.schema.map(column => `
+                                <div class="column-item">
+                                    <span class="column-name">${column.name}</span>
+                                    <span class="column-type">${column.type}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            updateStats() {
+                document.getElementById('totalTables').textContent = this.stats.totalTables;
+                document.getElementById('totalRows').textContent = this.stats.totalRows;
+                document.getElementById('queriesExecuted').textContent = this.stats.queriesExecuted;
+                
+                const avgTime = this.stats.queryTimes.length > 0 
+                    ? Math.round(this.stats.queryTimes.reduce((a, b) => a + b, 0) / this.stats.queryTimes.length)
+                    : 0;
+                document.getElementById('avgQueryTime').textContent = avgTime + 'ms';
+            }
+
+            exportResults(format) {
+                if (!this.currentResults) {
+                    this.showMessage('No data to export', 'error');
+                    return;
+                }
+
+                const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+                
+                if (format === 'csv') {
+                    const csv = [
+                        this.currentResults.columns.join(','),
+                        ...this.currentResults.rows.map(row => 
+                            this.currentResults.columns.map(col => 
+                                JSON.stringify(row[col] || '')
+                            ).join(',')
+                        )
+                    ].join('\n');
+                    
+                    this.downloadFile(csv, `query_results_${timestamp}.csv`, 'text/csv');
+                } else if (format === 'json') {
+                    const json = JSON.stringify({
+                        columns: this.currentResults.columns,
+                        rows: this.currentResults.rows,
+                        exportDate: new Date().toISOString()
+                    }, null, 2);
+                    
+                    this.downloadFile(json, `query_results_${timestamp}.json`, 'application/json');
+                }
+            }
+
+            downloadFile(content, filename, contentType) {
+                const blob = new Blob([content], { type: contentType });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = filename;
+                a.click();
+                URL.revokeObjectURL(url);
+            }
+
+            showMessage(message, type) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = type === 'error' ? 'error-message' : 'success-message';
+                messageDiv.textContent = message;
+                
+                const container = document.getElementById('resultsContainer');
+                container.insertBefore(messageDiv, container.firstChild);
+                
+                setTimeout(() => messageDiv.remove(), 5000);
+            }
+        }
+
+        // Initialize the database viewer
+        const dbViewer = new DatabaseViewer();
+    </script>
+</body>
+</html>

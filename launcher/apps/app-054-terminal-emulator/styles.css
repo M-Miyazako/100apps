@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    background: #1e1e1e;
+    color: #00ff00;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.terminal {
+    width: 100%;
+    max-width: 800px;
+    height: 600px;
+    background: #000000;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.terminal-header {
+    background: #2d2d2d;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #404040;
+}
+
+.traffic-lights {
+    display: flex;
+    gap: 6px;
+}
+
+.light {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.light.red {
+    background: #ff5f57;
+}
+
+.light.yellow {
+    background: #ffbd2e;
+}
+
+.light.green {
+    background: #28ca42;
+}
+
+.terminal-title {
+    color: #cccccc;
+    font-size: 0.9rem;
+    margin-left: 10px;
+}
+
+.terminal-body {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.terminal-output {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    line-height: 1.4;
+    font-size: 0.9rem;
+}
+
+.welcome-message {
+    color: #00ff00;
+    margin-bottom: 20px;
+}
+
+.command-line {
+    margin-bottom: 5px;
+}
+
+.command {
+    color: #ffffff;
+}
+
+.output {
+    color: #00ff00;
+    margin-left: 0;
+    white-space: pre-wrap;
+}
+
+.error {
+    color: #ff6b6b;
+}
+
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+    color: #00ff00;
+    font-size: 0.9rem;
+}
+
+.prompt {
+    color: #00ff00;
+    margin-right: 5px;
+}
+
+.terminal-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.9rem;
+    outline: none;
+    caret-color: #00ff00;
+}
+
+.terminal-output::-webkit-scrollbar {
+    width: 8px;
+}
+
+.terminal-output::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+.terminal-output::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 4px;
+}
+
+.terminal-output::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.cursor {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .terminal {
+        height: 80vh;
+    }
+    
+    .terminal-body {
+        padding: 15px;
+    }
+    
+    .terminal-output,
+    .terminal-input,
+    .prompt {
+        font-size: 0.8rem;
+    }
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icon Library - アイコンライブラリ</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <h1><i class="fas fa-icons"></i> Icon Library</h1>
+            <p>アイコンを検索・プレビュー・エクスポートできるライブラリツール</p>
+        </header>
+
+        <main class="main-content">
+            <!-- 検索・フィルター -->
+            <section class="search-section">
+                <div class="search-controls">
+                    <div class="search-input-group">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="アイコンを検索...">
+                    </div>
+                    <select id="categoryFilter">
+                        <option value="">すべてのカテゴリ</option>
+                        <option value="interface">インターフェース</option>
+                        <option value="communication">コミュニケーション</option>
+                        <option value="media">メディア</option>
+                        <option value="business">ビジネス</option>
+                        <option value="social">ソーシャル</option>
+                        <option value="navigation">ナビゲーション</option>
+                        <option value="weather">天気</option>
+                        <option value="technology">テクノロジー</option>
+                    </select>
+                    <select id="styleFilter">
+                        <option value="">すべてのスタイル</option>
+                        <option value="solid">ソリッド</option>
+                        <option value="outline">アウトライン</option>
+                        <option value="brands">ブランド</option>
+                    </select>
+                </div>
+                <div class="view-controls">
+                    <label>
+                        <input type="range" id="sizeSlider" min="16" max="128" value="32">
+                        <span>サイズ: <span id="sizeValue">32px</span></span>
+                    </label>
+                    <div class="view-mode">
+                        <button id="gridView" class="active"><i class="fas fa-th"></i></button>
+                        <button id="listView"><i class="fas fa-list"></i></button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- アイコングリッド -->
+            <section class="icons-section">
+                <div id="iconGrid" class="icon-grid"></div>
+                <div id="loadingIndicator" class="loading">
+                    <i class="fas fa-spinner fa-spin"></i> アイコンを読み込み中...
+                </div>
+            </section>
+
+            <!-- プレビューパネル -->
+            <aside class="preview-panel" id="previewPanel">
+                <div class="preview-header">
+                    <h3>アイコンプレビュー</h3>
+                    <button id="closePreview"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="preview-content">
+                    <div class="preview-icon">
+                        <i id="previewIconElement"></i>
+                    </div>
+                    <div class="preview-info">
+                        <h4 id="previewName"></h4>
+                        <p id="previewCategory"></p>
+                    </div>
+                    <div class="preview-customization">
+                        <h5>カスタマイズ</h5>
+                        <div class="control-group">
+                            <label>サイズ:</label>
+                            <input type="range" id="previewSize" min="16" max="200" value="48">
+                            <span id="previewSizeValue">48px</span>
+                        </div>
+                        <div class="control-group">
+                            <label>色:</label>
+                            <input type="color" id="previewColor" value="#333333">
+                        </div>
+                        <div class="control-group">
+                            <label>回転:</label>
+                            <input type="range" id="previewRotation" min="0" max="360" value="0">
+                            <span id="previewRotationValue">0°</span>
+                        </div>
+                    </div>
+                    <div class="export-section">
+                        <h5>エクスポート</h5>
+                        <div class="export-buttons">
+                            <button id="copyHTML" class="export-btn">
+                                <i class="fas fa-code"></i> HTML
+                            </button>
+                            <button id="copyCSS" class="export-btn">
+                                <i class="fas fa-file-code"></i> CSS
+                            </button>
+                            <button id="downloadSVG" class="export-btn">
+                                <i class="fas fa-download"></i> SVG
+                            </button>
+                            <button id="downloadPNG" class="export-btn">
+                                <i class="fas fa-image"></i> PNG
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </main>
+
+        <!-- 統計情報 -->
+        <footer class="stats-footer">
+            <div class="stats">
+                <span>総アイコン数: <span id="totalIcons">0</span></span>
+                <span>表示中: <span id="visibleIcons">0</span></span>
+                <span>選択中: <span id="selectedIcon">なし</span></span>
+            </div>
+        </footer>
+
+        <!-- クリップボードフィードバック -->
+        <div id="copyFeedback" class="copy-feedback">
+            <i class="fas fa-check"></i> <span></span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

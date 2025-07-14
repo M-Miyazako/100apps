@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener - 短縮URL作成</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">🔗</span>
+                <h1>URL Shortener</h1>
+            </div>
+        </header>
+
+        <main class="main">
+            <div class="shortener-container">
+                <div class="hero-section">
+                    <h2>長いURLを短く、管理しやすく</h2>
+                    <p>無料でURLを短縮し、クリック数を追跡できます</p>
+                </div>
+
+                <div class="url-form">
+                    <div class="input-group">
+                        <input type="url" id="originalUrl" placeholder="短縮したいURLを入力してください">
+                        <button id="shortenBtn">短縮</button>
+                    </div>
+                    <div class="custom-alias">
+                        <input type="text" id="customAlias" placeholder="カスタムエイリアス (オプション)">
+                    </div>
+                </div>
+
+                <div class="result-section" id="resultSection" style="display: none;">
+                    <div class="result-card">
+                        <h3>短縮URLが作成されました！</h3>
+                        <div class="url-display">
+                            <input type="text" id="shortenedUrl" readonly>
+                            <button id="copyBtn">コピー</button>
+                        </div>
+                        <div class="qr-code" id="qrCode"></div>
+                        <div class="url-stats">
+                            <div class="stat">
+                                <span class="stat-value" id="clickCount">0</span>
+                                <span class="stat-label">クリック数</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" id="createDate">-</span>
+                                <span class="stat-label">作成日</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="url-history">
+                    <h3>履歴</h3>
+                    <div class="history-list" id="historyList">
+                        <div class="empty-state">
+                            <span class="empty-icon">📋</span>
+                            <p>まだ短縮URLがありません</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

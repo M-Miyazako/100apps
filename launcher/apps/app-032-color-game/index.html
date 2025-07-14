@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Game - rSf²üà</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Color Game</h1>
+            <p>h:UŒ‹r’Sf‹²üàgY</p>
+        </header>
+        
+        <main class="game-area">
+            <div class="game-stats">
+                <div class="stat-item">
+                    <span class="stat-label">¹³¢</span>
+                    <span class="stat-value" id="score">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">ìÙë</span>
+                    <span class="stat-value" id="level">1</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">‹ŠB“</span>
+                    <span class="stat-value" id="time">30</span>
+                </div>
+            </div>
+            
+            <div class="color-display" id="colorDisplay">
+                <div class="color-circle" id="colorCircle"></div>
+                <div class="color-name" id="colorName">«éü</div>
+            </div>
+            
+            <div class="game-controls">
+                <div class="options-container" id="optionsContainer">
+                    <!-- xž¢LSSkÕ„ký UŒ~Y -->
+                </div>
+                
+                <div class="game-buttons">
+                    <button class="btn btn-primary" id="startBtn">²üà‹Ë</button>
+                    <button class="btn btn-secondary" id="resetBtn">ê»ÃÈ</button>
+                </div>
+            </div>
+            
+            <div class="result-message" id="resultMessage"></div>
+        </main>
+        
+        <section class="settings">
+            <h3>-š</h3>
+            <div class="settings-group">
+                <label>
+                    <input type="radio" name="difficulty" value="easy" checked>
+                    <span>!X4r	</span>
+                </label>
+                <label>
+                    <input type="radio" name="difficulty" value="medium">
+                    <span>n6r	</span>
+                </label>
+                <label>
+                    <input type="radio" name="difficulty" value="hard">
+                    <span>ãWD8r	</span>
+                </label>
+            </div>
+        </section>
+        
+        <section class="highscore">
+            <h3>Ï¤¹³¢</h3>
+            <div class="highscore-list" id="highscoreList">
+                <!-- Ï¤¹³¢LSSkh:UŒ~Y -->
+            </div>
+        </section>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

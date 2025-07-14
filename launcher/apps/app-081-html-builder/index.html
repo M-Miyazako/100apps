@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Builder - HTMLビルダー</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <h1><i class="fas fa-hammer"></i> HTML Builder</h1>
+            <p>ドラッグ&ドロップでHTMLページを視覚的に構築できるツール</p>
+        </header>
+
+        <main class="main-content">
+            <!-- ツールバー -->
+            <nav class="toolbar">
+                <div class="toolbar-section">
+                    <button id="newProject" class="toolbar-btn">
+                        <i class="fas fa-file"></i> 新規
+                    </button>
+                    <button id="saveProject" class="toolbar-btn">
+                        <i class="fas fa-save"></i> 保存
+                    </button>
+                    <button id="loadProject" class="toolbar-btn">
+                        <i class="fas fa-folder-open"></i> 読込
+                    </button>
+                    <input type="file" id="fileInput" accept=".json" style="display: none;">
+                </div>
+                <div class="toolbar-section">
+                    <button id="undoBtn" class="toolbar-btn">
+                        <i class="fas fa-undo"></i> 元に戻す
+                    </button>
+                    <button id="redoBtn" class="toolbar-btn">
+                        <i class="fas fa-redo"></i> やり直し
+                    </button>
+                </div>
+                <div class="toolbar-section">
+                    <button id="previewMode" class="toolbar-btn toggle">
+                        <i class="fas fa-eye"></i> プレビュー
+                    </button>
+                    <button id="codeView" class="toolbar-btn">
+                        <i class="fas fa-code"></i> コード表示
+                    </button>
+                    <button id="exportHTML" class="toolbar-btn">
+                        <i class="fas fa-download"></i> エクスポート
+                    </button>
+                </div>
+                <div class="toolbar-section">
+                    <select id="devicePreview">
+                        <option value="desktop">デスクトップ</option>
+                        <option value="tablet">タブレット</option>
+                        <option value="mobile">モバイル</option>
+                    </select>
+                </div>
+            </nav>
+
+            <div class="editor-layout">
+                <!-- コンポーネントパレット -->
+                <aside class="component-palette">
+                    <div class="palette-header">
+                        <h3><i class="fas fa-th-large"></i> コンポーネント</h3>
+                        <input type="text" id="componentSearch" placeholder="コンポーネント検索...">
+                    </div>
+                    
+                    <div class="component-categories">
+                        <!-- レイアウト -->
+                        <div class="category">
+                            <h4 class="category-title">
+                                <i class="fas fa-grip-lines"></i> レイアウト
+                                <i class="fas fa-chevron-down expand-icon"></i>
+                            </h4>
+                            <div class="category-content">
+                                <div class="component-item" data-type="container">
+                                    <i class="fas fa-square"></i>
+                                    <span>コンテナ</span>
+                                </div>
+                                <div class="component-item" data-type="row">
+                                    <i class="fas fa-grip-horizontal"></i>
+                                    <span>行</span>
+                                </div>
+                                <div class="component-item" data-type="column">
+                                    <i class="fas fa-grip-vertical"></i>
+                                    <span>列</span>
+                                </div>
+                                <div class="component-item" data-type="section">
+                                    <i class="fas fa-layer-group"></i>
+                                    <span>セクション</span>
+                                </div>
+                                <div class="component-item" data-type="header">
+                                    <i class="fas fa-heading"></i>
+                                    <span>ヘッダー</span>
+                                </div>
+                                <div class="component-item" data-type="footer">
+                                    <i class="fas fa-window-minimize"></i>
+                                    <span>フッター</span>
+                                </div>
+                                <div class="component-item" data-type="nav">
+                                    <i class="fas fa-bars"></i>
+                                    <span>ナビゲーション</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- テキスト -->
+                        <div class="category">
+                            <h4 class="category-title">
+                                <i class="fas fa-font"></i> テキスト
+                                <i class="fas fa-chevron-down expand-icon"></i>
+                            </h4>
+                            <div class="category-content">
+                                <div class="component-item" data-type="h1">
+                                    <i class="fas fa-heading"></i>
+                                    <span>見出し1</span>
+                                </div>
+                                <div class="component-item" data-type="h2">
+                                    <i class="fas fa-heading"></i>
+                                    <span>見出し2</span>
+                                </div>
+                                <div class="component-item" data-type="h3">
+                                    <i class="fas fa-heading"></i>
+                                    <span>見出し3</span>
+                                </div>
+                                <div class="component-item" data-type="p">
+                                    <i class="fas fa-paragraph"></i>
+                                    <span>段落</span>
+                                </div>
+                                <div class="component-item" data-type="span">
+                                    <i class="fas fa-text-width"></i>
+                                    <span>スパン</span>
+                                </div>
+                                <div class="component-item" data-type="blockquote">
+                                    <i class="fas fa-quote-right"></i>
+                                    <span>引用</span>
+                                </div>
+                                <div class="component-item" data-type="ul">
+                                    <i class="fas fa-list-ul"></i>
+                                    <span>リスト</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- フォーム -->
+                        <div class="category">
+                            <h4 class="category-title">
+                                <i class="fas fa-edit"></i> フォーム
+                                <i class="fas fa-chevron-down expand-icon"></i>
+                            </h4>
+                            <div class="category-content">
+                                <div class="component-item" data-type="form">
+                                    <i class="fas fa-wpforms"></i>
+                                    <span>フォーム</span>
+                                </div>
+                                <div class="component-item" data-type="input">
+                                    <i class="fas fa-edit"></i>
+                                    <span>入力欄</span>
+                                </div>
+                                <div class="component-item" data-type="textarea">
+                                    <i class="fas fa-align-left"></i>
+                                    <span>テキストエリア</span>
+                                </div>
+                                <div class="component-item" data-type="select">
+                                    <i class="fas fa-caret-square-down"></i>
+                                    <span>セレクト</span>
+                                </div>
+                                <div class="component-item" data-type="button">
+                                    <i class="fas fa-mouse-pointer"></i>
+                                    <span>ボタン</span>
+                                </div>
+                                <div class="component-item" data-type="checkbox">
+                                    <i class="fas fa-check-square"></i>
+                                    <span>チェックボックス</span>
+                                </div>
+                                <div class="component-item" data-type="radio">
+                                    <i class="fas fa-dot-circle"></i>
+                                    <span>ラジオボタン</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- メディア -->
+                        <div class="category">
+                            <h4 class="category-title">
+                                <i class="fas fa-photo-video"></i> メディア
+                                <i class="fas fa-chevron-down expand-icon"></i>
+                            </h4>
+                            <div class="category-content">
+                                <div class="component-item" data-type="img">
+                                    <i class="fas fa-image"></i>
+                                    <span>画像</span>
+                                </div>
+                                <div class="component-item" data-type="video">
+                                    <i class="fas fa-video"></i>
+                                    <span>動画</span>
+                                </div>
+                                <div class="component-item" data-type="audio">
+                                    <i class="fas fa-volume-up"></i>
+                                    <span>音声</span>
+                                </div>
+                                <div class="component-item" data-type="iframe">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <span>埋め込み</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ナビゲーション -->
+                        <div class="category">
+                            <h4 class="category-title">
+                                <i class="fas fa-link"></i> リンク
+                                <i class="fas fa-chevron-down expand-icon"></i>
+                            </h4>
+                            <div class="category-content">
+                                <div class="component-item" data-type="a">
+                                    <i class="fas fa-link"></i>
+                                    <span>リンク</span>
+                                </div>
+                                <div class="component-item" data-type="menu">
+                                    <i class="fas fa-bars"></i>
+                                    <span>メニュー</span>
+                                </div>
+                                <div class="component-item" data-type="breadcrumb">
+                                    <i class="fas fa-chevron-right"></i>
+                                    <span>パンくず</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- ビジュアルエディター -->
+                <main class="visual-editor">
+                    <div class="editor-header">
+                        <div class="page-info">
+                            <span>ページタイトル:</span>
+                            <input type="text" id="pageTitle" value="新しいページ" placeholder="ページタイトル">
+                        </div>
+                        <div class="zoom-controls">
+                            <button id="zoomOut"><i class="fas fa-search-minus"></i></button>
+                            <span id="zoomLevel">100%</span>
+                            <button id="zoomIn"><i class="fas fa-search-plus"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="canvas-container" id="canvasContainer">
+                        <div class="canvas" id="canvas">
+                            <div class="drop-zone" id="dropZone">
+                                <div class="drop-message">
+                                    <i class="fas fa-plus-circle"></i>
+                                    <p>ここにコンポーネントをドラッグしてください</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+
+                <!-- プロパティパネル -->
+                <aside class="properties-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-cogs"></i> プロパティ</h3>
+                    </div>
+                    
+                    <div class="properties-content" id="propertiesContent">
+                        <div class="no-selection">
+                            <i class="fas fa-mouse-pointer"></i>
+                            <p>要素を選択してプロパティを編集してください</p>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- レイヤーパネル -->
+            <div class="layers-panel" id="layersPanel">
+                <div class="panel-header">
+                    <h3><i class="fas fa-layer-group"></i> レイヤー</h3>
+                    <button id="toggleLayers" class="toggle-btn">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                <div class="layers-tree" id="layersTree">
+                    <!-- レイヤーツリーがここに表示 -->
+                </div>
+            </div>
+        </main>
+
+        <!-- コードビューモーダル -->
+        <div id="codeModal" class="modal">
+            <div class="modal-content code-modal">
+                <div class="modal-header">
+                    <h3><i class="fas fa-code"></i> 生成されたコード</h3>
+                    <div class="modal-actions">
+                        <button id="copyCode"><i class="fas fa-copy"></i> コピー</button>
+                        <button id="downloadCode"><i class="fas fa-download"></i> ダウンロード</button>
+                        <button id="closeCodeModal"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="code-tabs">
+                    <button class="code-tab active" data-tab="html">HTML</button>
+                    <button class="code-tab" data-tab="css">CSS</button>
+                    <button class="code-tab" data-tab="js">JavaScript</button>
+                </div>
+                <div class="code-content">
+                    <pre><code id="htmlCode" class="language-html"></code></pre>
+                    <pre><code id="cssCode" class="language-css" style="display: none;"></code></pre>
+                    <pre><code id="jsCode" class="language-javascript" style="display: none;"></code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- コンテキストメニュー -->
+        <div id="contextMenu" class="context-menu">
+            <div class="context-item" id="copyElement">
+                <i class="fas fa-copy"></i> コピー
+            </div>
+            <div class="context-item" id="pasteElement">
+                <i class="fas fa-paste"></i> 貼り付け
+            </div>
+            <div class="context-item" id="duplicateElement">
+                <i class="fas fa-clone"></i> 複製
+            </div>
+            <div class="context-item" id="deleteElement">
+                <i class="fas fa-trash"></i> 削除
+            </div>
+            <hr>
+            <div class="context-item" id="moveUp">
+                <i class="fas fa-arrow-up"></i> 上へ移動
+            </div>
+            <div class="context-item" id="moveDown">
+                <i class="fas fa-arrow-down"></i> 下へ移動
+            </div>
+        </div>
+
+        <!-- ドラッグ中の要素のプレビュー -->
+        <div id="dragPreview" class="drag-preview"></div>
+
+        <!-- フィードバック -->
+        <div id="feedback" class="feedback">
+            <i class="fas fa-check"></i>
+            <span></span>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

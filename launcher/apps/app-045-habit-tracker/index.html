@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracker - 習慣管理</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Habit Tracker</h1>
+            <p>良い習慣を身につけましょう</p>
+        </header>
+
+        <div class="stats-section">
+            <div class="stat-card">
+                <div class="stat-number" id="total-habits">0</div>
+                <div class="stat-label">習慣</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="completed-today">0</div>
+                <div class="stat-label">今日完了</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="streak-count">0</div>
+                <div class="stat-label">連続日数</div>
+            </div>
+        </div>
+
+        <div class="add-habit-section">
+            <h2>新しい習慣を追加</h2>
+            <form id="habit-form" class="habit-form">
+                <div class="form-row">
+                    <input type="text" id="habit-name" placeholder="習慣名" required>
+                    <select id="habit-icon">
+                        <option value="💪">💪 運動</option>
+                        <option value="📚">📚 読書</option>
+                        <option value="💧">💧 水を飲む</option>
+                        <option value="🧘">🧘 瞑想</option>
+                        <option value="🏃">🏃 ランニング</option>
+                        <option value="🎨">🎨 創作</option>
+                        <option value="🌱">🌱 その他</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <input type="number" id="habit-target" placeholder="目標回数" min="1" value="1">
+                    <select id="habit-frequency">
+                        <option value="daily">毎日</option>
+                        <option value="weekly">週単位</option>
+                    </select>
+                </div>
+                <button type="submit" class="add-btn">追加</button>
+            </form>
+        </div>
+
+        <div class="calendar-section">
+            <div class="calendar-header">
+                <button id="prev-month" class="nav-btn">‹</button>
+                <h3 id="current-month">2024年1月</h3>
+                <button id="next-month" class="nav-btn">›</button>
+            </div>
+            <div class="calendar-grid" id="calendar-grid">
+                <!-- カレンダーがここに表示される -->
+            </div>
+        </div>
+
+        <div class="habits-section">
+            <h2>今日の習慣</h2>
+            <div class="habits-list" id="habits-list">
+                <!-- 習慣リストがここに表示される -->
+            </div>
+            <div class="empty-habits" id="empty-habits" style="display: none;">
+                <div class="empty-icon">🎯</div>
+                <p>まだ習慣がありません</p>
+                <p>上のフォームから新しい習慣を追加してください</p>
+            </div>
+        </div>
+
+        <div class="progress-section">
+            <h2>進捗状況</h2>
+            <div class="progress-charts" id="progress-charts">
+                <!-- プログレスチャートがここに表示される -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

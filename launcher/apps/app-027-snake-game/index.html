@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <h1>🐍 Snake Game</h1>
+            <div class="game-info">
+                <div class="score">Score: <span id="score">0</span></div>
+                <div class="high-score">High Score: <span id="high-score">0</span></div>
+            </div>
+        </header>
+        
+        <div class="game-content">
+            <div class="game-board-container">
+                <canvas id="gameCanvas" width="400" height="400"></canvas>
+                <div class="game-overlay" id="gameOverlay">
+                    <div class="game-message">
+                        <h2 id="gameMessage">Press SPACE to Start</h2>
+                        <p id="gameInstructions">Use arrow keys to control the snake</p>
+                        <button id="startButton" class="game-button">Start Game</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="game-controls">
+                <div class="control-section">
+                    <h3>Controls</h3>
+                    <div class="control-grid">
+                        <div class="control-item">
+                            <div class="control-key">↑</div>
+                            <span>Up</span>
+                        </div>
+                        <div class="control-item">
+                            <div class="control-key">↓</div>
+                            <span>Down</span>
+                        </div>
+                        <div class="control-item">
+                            <div class="control-key">←</div>
+                            <span>Left</span>
+                        </div>
+                        <div class="control-item">
+                            <div class="control-key">→</div>
+                            <span>Right</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="control-section">
+                    <h3>Game Options</h3>
+                    <div class="option-item">
+                        <label for="difficulty">Difficulty:</label>
+                        <select id="difficulty">
+                            <option value="easy">Easy</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    </div>
+                    <div class="option-item">
+                        <label for="boardSize">Board Size:</label>
+                        <select id="boardSize">
+                            <option value="small">Small (20x20)</option>
+                            <option value="medium" selected>Medium (25x25)</option>
+                            <option value="large">Large (30x30)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="control-section">
+                    <h3>Statistics</h3>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Games Played:</span>
+                            <span id="gamesPlayed">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Best Score:</span>
+                            <span id="bestScore">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Average Score:</span>
+                            <span id="avgScore">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mobile-controls">
+            <div class="mobile-control-row">
+                <button class="mobile-btn" id="upBtn">↑</button>
+            </div>
+            <div class="mobile-control-row">
+                <button class="mobile-btn" id="leftBtn">←</button>
+                <button class="mobile-btn" id="pauseBtn">⏸️</button>
+                <button class="mobile-btn" id="rightBtn">→</button>
+            </div>
+            <div class="mobile-control-row">
+                <button class="mobile-btn" id="downBtn">↓</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Game - 単語ゲーム</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Word Game</h1>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-label">Score</span>
+                    <span class="stat-value" id="score">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Level</span>
+                    <span class="stat-value" id="level">1</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Time</span>
+                    <span class="stat-value" id="timer">60</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="game-area">
+            <div class="scrambled-word" id="scrambled-word">LOADING...</div>
+            <div class="hint" id="hint">ヒントが表示されます</div>
+            
+            <div class="input-area">
+                <input type="text" id="guess-input" placeholder="正しい単語を入力してください" maxlength="20">
+                <button id="submit-btn">Submit</button>
+            </div>
+
+            <div class="controls">
+                <button id="skip-btn" class="control-btn">Skip</button>
+                <button id="hint-btn" class="control-btn">Hint</button>
+                <button id="shuffle-btn" class="control-btn">Shuffle</button>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+
+            <div class="feedback" id="feedback"></div>
+        </main>
+
+        <div class="game-over" id="game-over" style="display: none;">
+            <h2>Game Over!</h2>
+            <p>Final Score: <span id="final-score">0</span></p>
+            <p>Words Solved: <span id="words-solved">0</span></p>
+            <button id="play-again-btn" class="primary-btn">Play Again</button>
+        </div>
+
+        <div class="word-list">
+            <h3>Recently Solved</h3>
+            <div id="solved-words"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

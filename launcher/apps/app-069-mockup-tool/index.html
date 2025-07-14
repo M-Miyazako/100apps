@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mockup Tool</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <h1><i class="fas fa-palette"></i> Mockup Tool</h1>
+            </div>
+            <div class="header-center">
+                <div class="toolbar">
+                    <button class="tool-btn active" data-tool="select" title="Select">
+                        <i class="fas fa-mouse-pointer"></i>
+                    </button>
+                    <button class="tool-btn" data-tool="text" title="Text">
+                        <i class="fas fa-font"></i>
+                    </button>
+                    <button class="tool-btn" data-tool="image" title="Image">
+                        <i class="fas fa-image"></i>
+                    </button>
+                    <button class="tool-btn" data-tool="shape" title="Shape">
+                        <i class="fas fa-shapes"></i>
+                    </button>
+                    <button class="tool-btn" data-tool="icon" title="Icon">
+                        <i class="fas fa-star"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="view-mode">
+                    <button class="view-btn active" data-view="design" title="Design Mode">
+                        <i class="fas fa-paint-brush"></i>
+                    </button>
+                    <button class="view-btn" data-view="preview" title="Preview Mode">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                <div class="device-selector">
+                    <select id="device-select">
+                        <option value="desktop">Desktop</option>
+                        <option value="tablet">Tablet</option>
+                        <option value="mobile">Mobile</option>
+                        <option value="watch">Smart Watch</option>
+                    </select>
+                </div>
+                <button class="action-btn" id="export-png" title="Export PNG">
+                    <i class="fas fa-download"></i> PNG
+                </button>
+                <button class="action-btn" id="export-pdf" title="Export PDF">
+                    <i class="fas fa-file-pdf"></i> PDF
+                </button>
+                <button class="action-btn" id="share-mockup" title="Share">
+                    <i class="fas fa-share-alt"></i> Share
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Components Panel -->
+            <aside class="components-panel">
+                <div class="panel-tabs">
+                    <button class="tab-btn active" data-tab="components">Components</button>
+                    <button class="tab-btn" data-tab="assets">Assets</button>
+                    <button class="tab-btn" data-tab="styles">Styles</button>
+                </div>
+
+                <!-- Components Tab -->
+                <div class="tab-content active" id="components-tab">
+                    <div class="panel">
+                        <h3>UI Components</h3>
+                        <div class="components-grid">
+                            <div class="component-item" data-component="button" draggable="true">
+                                <div class="component-preview">
+                                    <div class="preview-button">Button</div>
+                                </div>
+                                <span>Button</span>
+                            </div>
+                            <div class="component-item" data-component="input" draggable="true">
+                                <div class="component-preview">
+                                    <div class="preview-input">Input field</div>
+                                </div>
+                                <span>Input</span>
+                            </div>
+                            <div class="component-item" data-component="card" draggable="true">
+                                <div class="component-preview">
+                                    <div class="preview-card">Card</div>
+                                </div>
+                                <span>Card</span>
+                            </div>
+                            <div class="component-item" data-component="modal" draggable="true">
+                                <div class="component-preview">
+                                    <div class="preview-modal">Modal</div>
+                                </div>
+                                <span>Modal</span>
+                            </div>
+                            <div class="component-item" data-component="navbar" draggable="true">
+                                <div class="component-preview">
+                                    <div class="preview-navbar">Nav</div>
+                                </div>
+                                <span>Navbar</span>
+                            </div>
+                            <div class="component-item" data-component="sidebar" draggable="true">
+                                <div class="component-preview">
+                                    <div class="preview-sidebar">Side</div>
+                                </div>
+                                <span>Sidebar</span>
+                            </div>
+                            <div class="component-item" data-component="table" draggable="true">
+                                <div class="component-preview">
+                                    <div class="preview-table">Table</div>
+                                </div>
+                                <span>Table</span>
+                            </div>
+                            <div class="component-item" data-component="chart" draggable="true">
+                                <div class="component-preview">
+                                    <div class="preview-chart">Chart</div>
+                                </div>
+                                <span>Chart</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <h3>Layout</h3>
+                        <div class="layout-grid">
+                            <div class="layout-item" data-layout="container" draggable="true">
+                                <div class="layout-preview container-preview"></div>
+                                <span>Container</span>
+                            </div>
+                            <div class="layout-item" data-layout="grid" draggable="true">
+                                <div class="layout-preview grid-preview"></div>
+                                <span>Grid</span>
+                            </div>
+                            <div class="layout-item" data-layout="flexbox" draggable="true">
+                                <div class="layout-preview flex-preview"></div>
+                                <span>Flexbox</span>
+                            </div>
+                            <div class="layout-item" data-layout="section" draggable="true">
+                                <div class="layout-preview section-preview"></div>
+                                <span>Section</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assets Tab -->
+                <div class="tab-content" id="assets-tab">
+                    <div class="panel">
+                        <h3>Images</h3>
+                        <div class="assets-upload">
+                            <input type="file" id="image-upload" accept="image/*" multiple>
+                            <label for="image-upload" class="upload-btn">
+                                <i class="fas fa-plus"></i> Upload Images
+                            </label>
+                        </div>
+                        <div class="assets-grid" id="images-grid">
+                            <!-- Uploaded images will appear here -->
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <h3>Icons</h3>
+                        <div class="search-box">
+                            <input type="text" id="icon-search" placeholder="Search icons...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="icons-grid" id="icons-grid">
+                            <div class="icon-item" data-icon="fas fa-home" draggable="true">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <div class="icon-item" data-icon="fas fa-user" draggable="true">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="icon-item" data-icon="fas fa-heart" draggable="true">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="icon-item" data-icon="fas fa-star" draggable="true">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="icon-item" data-icon="fas fa-cog" draggable="true">
+                                <i class="fas fa-cog"></i>
+                            </div>
+                            <div class="icon-item" data-icon="fas fa-envelope" draggable="true">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="icon-item" data-icon="fas fa-phone" draggable="true">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="icon-item" data-icon="fas fa-search" draggable="true">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <div class="icon-item" data-icon="fas fa-calendar" draggable="true">
+                                <i class="fas fa-calendar"></i>
+                            </div>
+                            <div class="icon-item" data-icon="fas fa-shopping-cart" draggable="true">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Styles Tab -->
+                <div class="tab-content" id="styles-tab">
+                    <div class="panel">
+                        <h3>Color Palette</h3>
+                        <div class="color-palette">
+                            <div class="color-item" data-color="#007bff" style="background: #007bff;"></div>
+                            <div class="color-item" data-color="#28a745" style="background: #28a745;"></div>
+                            <div class="color-item" data-color="#dc3545" style="background: #dc3545;"></div>
+                            <div class="color-item" data-color="#ffc107" style="background: #ffc107;"></div>
+                            <div class="color-item" data-color="#6f42c1" style="background: #6f42c1;"></div>
+                            <div class="color-item" data-color="#fd7e14" style="background: #fd7e14;"></div>
+                            <div class="color-item" data-color="#20c997" style="background: #20c997;"></div>
+                            <div class="color-item" data-color="#6c757d" style="background: #6c757d;"></div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <h3>Typography</h3>
+                        <div class="typography-list">
+                            <div class="font-item" data-font="Inter">
+                                <span style="font-family: Inter;">Inter</span>
+                            </div>
+                            <div class="font-item" data-font="Arial">
+                                <span style="font-family: Arial;">Arial</span>
+                            </div>
+                            <div class="font-item" data-font="Georgia">
+                                <span style="font-family: Georgia;">Georgia</span>
+                            </div>
+                            <div class="font-item" data-font="Times New Roman">
+                                <span style="font-family: Times New Roman;">Times New Roman</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <h3>Shadows</h3>
+                        <div class="shadows-list">
+                            <div class="shadow-item" data-shadow="0 2px 4px rgba(0,0,0,0.1)">
+                                <div class="shadow-preview" style="box-shadow: 0 2px 4px rgba(0,0,0,0.1);"></div>
+                                <span>Light</span>
+                            </div>
+                            <div class="shadow-item" data-shadow="0 4px 8px rgba(0,0,0,0.15)">
+                                <div class="shadow-preview" style="box-shadow: 0 4px 8px rgba(0,0,0,0.15);"></div>
+                                <span>Medium</span>
+                            </div>
+                            <div class="shadow-item" data-shadow="0 8px 16px rgba(0,0,0,0.2)">
+                                <div class="shadow-preview" style="box-shadow: 0 8px 16px rgba(0,0,0,0.2);"></div>
+                                <span>Heavy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Canvas Area -->
+            <div class="canvas-area">
+                <div class="canvas-header">
+                    <div class="canvas-info">
+                        <span class="device-name">Desktop</span>
+                        <span class="canvas-dimensions">1440 x 900</span>
+                    </div>
+                    <div class="canvas-controls">
+                        <button class="zoom-btn" id="zoom-in" title="Zoom In">
+                            <i class="fas fa-search-plus"></i>
+                        </button>
+                        <span class="zoom-level" id="zoom-level">100%</span>
+                        <button class="zoom-btn" id="zoom-out" title="Zoom Out">
+                            <i class="fas fa-search-minus"></i>
+                        </button>
+                        <button class="zoom-btn" id="zoom-fit" title="Fit to Screen">
+                            <i class="fas fa-expand-arrows-alt"></i>
+                        </button>
+                        <label class="grid-toggle">
+                            <input type="checkbox" id="show-grid">
+                            <i class="fas fa-th"></i> Grid
+                        </label>
+                        <label class="ruler-toggle">
+                            <input type="checkbox" id="show-rulers">
+                            <i class="fas fa-ruler"></i> Rulers
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="canvas-container">
+                    <div class="rulers" id="rulers">
+                        <div class="ruler-horizontal"></div>
+                        <div class="ruler-vertical"></div>
+                    </div>
+                    <div class="canvas-wrapper" id="canvas-wrapper">
+                        <div class="mockup-canvas" id="mockup-canvas">
+                            <div class="grid-overlay" id="grid-overlay"></div>
+                            <div class="drop-zone" id="drop-zone">
+                                <i class="fas fa-plus"></i>
+                                <p>Drop components here or click to add</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Properties Panel -->
+            <aside class="properties-panel">
+                <div class="panel">
+                    <h3>Properties</h3>
+                    <div class="properties-content" id="properties-content">
+                        <div class="no-selection">
+                            <i class="fas fa-mouse-pointer"></i>
+                            <p>Select an element to edit properties</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <h3>Layers</h3>
+                    <div class="layers-header">
+                        <button class="layer-action-btn" id="add-layer" title="Add Layer">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <button class="layer-action-btn" id="delete-layer" title="Delete Layer">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                        <button class="layer-action-btn" id="duplicate-layer" title="Duplicate Layer">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <div class="layers-container" id="layers-list">
+                        <!-- Layers will be populated here -->
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <h3>History</h3>
+                    <div class="history-container">
+                        <button class="history-btn" id="undo-btn" title="Undo">
+                            <i class="fas fa-undo"></i>
+                        </button>
+                        <button class="history-btn" id="redo-btn" title="Redo">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                        <div class="history-list" id="history-list">
+                            <!-- History items will be shown here -->
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Context Menu -->
+        <div class="context-menu" id="context-menu">
+            <div class="context-item" data-action="copy">
+                <i class="fas fa-copy"></i> Copy
+            </div>
+            <div class="context-item" data-action="paste">
+                <i class="fas fa-paste"></i> Paste
+            </div>
+            <div class="context-item" data-action="duplicate">
+                <i class="fas fa-clone"></i> Duplicate
+            </div>
+            <div class="context-item" data-action="delete">
+                <i class="fas fa-trash"></i> Delete
+            </div>
+            <div class="context-divider"></div>
+            <div class="context-item" data-action="bring-front">
+                <i class="fas fa-arrow-up"></i> Bring to Front
+            </div>
+            <div class="context-item" data-action="send-back">
+                <i class="fas fa-arrow-down"></i> Send to Back
+            </div>
+            <div class="context-divider"></div>
+            <div class="context-item" data-action="group">
+                <i class="fas fa-object-group"></i> Group
+            </div>
+            <div class="context-item" data-action="ungroup">
+                <i class="fas fa-object-ungroup"></i> Ungroup
+            </div>
+        </div>
+
+        <!-- Modals -->
+        <div class="modal" id="text-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Edit Text</h3>
+                    <button class="modal-close" id="close-text-modal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-editor">
+                        <div class="editor-toolbar">
+                            <button class="editor-btn" data-command="bold">
+                                <i class="fas fa-bold"></i>
+                            </button>
+                            <button class="editor-btn" data-command="italic">
+                                <i class="fas fa-italic"></i>
+                            </button>
+                            <button class="editor-btn" data-command="underline">
+                                <i class="fas fa-underline"></i>
+                            </button>
+                            <div class="editor-divider"></div>
+                            <select class="font-size-select" id="font-size-select">
+                                <option value="12">12px</option>
+                                <option value="14">14px</option>
+                                <option value="16" selected>16px</option>
+                                <option value="18">18px</option>
+                                <option value="20">20px</option>
+                                <option value="24">24px</option>
+                                <option value="32">32px</option>
+                                <option value="48">48px</option>
+                            </select>
+                            <input type="color" class="text-color-picker" id="text-color-picker" value="#000000">
+                        </div>
+                        <div class="editor-content" id="text-editor" contenteditable="true">
+                            Edit your text here...
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" id="cancel-text">Cancel</button>
+                    <button class="btn btn-primary" id="save-text">Save</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="share-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Share Mockup</h3>
+                    <button class="modal-close" id="close-share-modal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="share-options">
+                        <div class="share-option">
+                            <i class="fas fa-link"></i>
+                            <div>
+                                <h4>Share Link</h4>
+                                <p>Generate a shareable link</p>
+                                <input type="text" id="share-link" readonly value="https://mockup.tool/share/abc123">
+                                <button class="btn btn-sm" id="copy-link">Copy Link</button>
+                            </div>
+                        </div>
+                        <div class="share-option">
+                            <i class="fas fa-download"></i>
+                            <div>
+                                <h4>Export</h4>
+                                <p>Download as image or PDF</p>
+                                <div class="export-buttons">
+                                    <button class="btn btn-sm">PNG</button>
+                                    <button class="btn btn-sm">JPG</button>
+                                    <button class="btn btn-sm">PDF</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="share-option">
+                            <i class="fas fa-code"></i>
+                            <div>
+                                <h4>Embed Code</h4>
+                                <p>Embed in your website</p>
+                                <textarea readonly>&lt;iframe src="https://mockup.tool/embed/abc123" width="800" height="600"&gt;&lt;/iframe&gt;</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

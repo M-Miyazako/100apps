@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Bot - AI アシスタント</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">🤖</div>
+                    <h1>ChatBot AI</h1>
+                </div>
+                <div class="status-indicator">
+                    <div class="status-dot online"></div>
+                    <span>オンライン</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="main">
+            <div class="chat-container">
+                <div class="sidebar">
+                    <div class="sidebar-header">
+                        <h3>チャット履歴</h3>
+                        <button class="new-chat-btn">新しいチャット</button>
+                    </div>
+                    <div class="chat-history">
+                        <div class="chat-item active">
+                            <div class="chat-preview">
+                                <div class="chat-title">新しいチャット</div>
+                                <div class="chat-snippet">チャットを開始しましょう</div>
+                            </div>
+                            <div class="chat-time">今</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chat-main">
+                    <div class="chat-header">
+                        <div class="bot-info">
+                            <div class="bot-avatar">
+                                <div class="avatar-image">🤖</div>
+                                <div class="status-indicator-small online"></div>
+                            </div>
+                            <div class="bot-details">
+                                <div class="bot-name">ChatBot AI</div>
+                                <div class="bot-status">AI アシスタント</div>
+                            </div>
+                        </div>
+                        <div class="chat-actions">
+                            <button class="action-btn" title="設定">⚙️</button>
+                            <button class="action-btn" title="履歴をクリア">🗑️</button>
+                        </div>
+                    </div>
+                    
+                    <div class="messages-container">
+                        <div class="welcome-message">
+                            <div class="welcome-avatar">🤖</div>
+                            <div class="welcome-content">
+                                <h3>ChatBot AI へようこそ！</h3>
+                                <p>何でもお気軽にお聞きください。以下のような質問にお答えできます：</p>
+                                <div class="suggestion-chips">
+                                    <button class="chip">天気について</button>
+                                    <button class="chip">プログラミング</button>
+                                    <button class="chip">料理のレシピ</button>
+                                    <button class="chip">旅行の計画</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="input-container">
+                        <div class="input-wrapper">
+                            <textarea class="message-input" placeholder="メッセージを入力してください..." rows="1"></textarea>
+                            <div class="input-actions">
+                                <button class="attach-btn" title="ファイルを添付">📎</button>
+                                <button class="emoji-btn" title="絵文字">😊</button>
+                                <button class="send-btn" title="送信">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                        <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="input-footer">
+                            <div class="typing-indicator">
+                                <span class="typing-dots">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </span>
+                                <span class="typing-text">ChatBot AI が入力中...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

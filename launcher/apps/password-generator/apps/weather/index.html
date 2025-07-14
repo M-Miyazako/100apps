@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Weather App</h1>
+            <div class="search-container">
+                <input type="text" id="cityInput" placeholder="Enter city name..." class="search-input">
+                <button id="searchBtn" class="search-btn">Search</button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Current Weather Section -->
+            <section class="current-weather">
+                <div class="weather-info">
+                    <div class="location">
+                        <h2 id="currentCity">New York</h2>
+                        <p id="currentDate"></p>
+                    </div>
+                    <div class="temperature">
+                        <span id="currentTemp">22</span>
+                        <span class="unit">°C</span>
+                        <button id="unitToggle" class="unit-toggle">°F</button>
+                    </div>
+                </div>
+                <div class="weather-details">
+                    <div class="weather-icon">
+                        <div id="mainWeatherIcon" class="weather-icon-display sunny"></div>
+                    </div>
+                    <div class="weather-stats">
+                        <div class="stat">
+                            <span class="stat-label">Condition</span>
+                            <span id="currentCondition" class="stat-value">Sunny</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Humidity</span>
+                            <span id="currentHumidity" class="stat-value">65%</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Wind Speed</span>
+                            <span id="currentWindSpeed" class="stat-value">12 km/h</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Feels Like</span>
+                            <span id="feelsLike" class="stat-value">24°C</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5-Day Forecast Section -->
+            <section class="forecast">
+                <h3>5-Day Forecast</h3>
+                <div class="forecast-container" id="forecastContainer">
+                    <!-- Forecast items will be populated by JavaScript -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Loading Spinner -->
+        <div id="loadingSpinner" class="loading-spinner hidden">
+            <div class="spinner"></div>
+            <p>Loading weather data...</p>
+        </div>
+
+        <!-- Error Message -->
+        <div id="errorMessage" class="error-message hidden">
+            <p>City not found. Please try again.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

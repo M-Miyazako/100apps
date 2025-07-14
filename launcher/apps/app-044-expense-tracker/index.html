@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker - 支出管理</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Expense Tracker</h1>
+            <p>あなたの支出を管理しましょう</p>
+        </header>
+
+        <div class="summary-section">
+            <div class="summary-card income">
+                <div class="summary-icon">💰</div>
+                <div class="summary-info">
+                    <h3>収入</h3>
+                    <p class="summary-amount" id="total-income">¥0</p>
+                </div>
+            </div>
+            <div class="summary-card expense">
+                <div class="summary-icon">💸</div>
+                <div class="summary-info">
+                    <h3>支出</h3>
+                    <p class="summary-amount" id="total-expense">¥0</p>
+                </div>
+            </div>
+            <div class="summary-card balance">
+                <div class="summary-icon">💳</div>
+                <div class="summary-info">
+                    <h3>残高</h3>
+                    <p class="summary-amount" id="balance">¥0</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="add-transaction-section">
+                <h2>取引を追加</h2>
+                <form id="transaction-form" class="transaction-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="transaction-type">種類</label>
+                            <select id="transaction-type" required>
+                                <option value="expense">支出</option>
+                                <option value="income">収入</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="transaction-amount">金額</label>
+                            <input type="number" id="transaction-amount" placeholder="0" required min="0" step="0.01">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="transaction-category">カテゴリ</label>
+                            <select id="transaction-category" required>
+                                <option value="">カテゴリを選択</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="transaction-date">日付</label>
+                            <input type="date" id="transaction-date" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="transaction-description">説明</label>
+                        <input type="text" id="transaction-description" placeholder="取引の説明を入力">
+                    </div>
+                    <button type="submit" class="add-btn">追加</button>
+                </form>
+            </div>
+
+            <div class="charts-section">
+                <div class="chart-container">
+                    <h3>カテゴリ別支出</h3>
+                    <canvas id="category-chart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>月別推移</h3>
+                    <canvas id="monthly-chart"></canvas>
+                </div>
+            </div>
+
+            <div class="transactions-section">
+                <div class="transactions-header">
+                    <h2>取引履歴</h2>
+                    <div class="filter-controls">
+                        <select id="filter-type">
+                            <option value="all">すべて</option>
+                            <option value="income">収入</option>
+                            <option value="expense">支出</option>
+                        </select>
+                        <select id="filter-category">
+                            <option value="all">すべてのカテゴリ</option>
+                        </select>
+                        <input type="month" id="filter-month">
+                    </div>
+                </div>
+
+                <div class="transactions-list" id="transactions-list">
+                    <!-- 取引履歴がここに表示される -->
+                </div>
+
+                <div class="empty-state" id="empty-state" style="display: none;">
+                    <div class="empty-icon">📊</div>
+                    <p>まだ取引がありません</p>
+                    <p>上のフォームから取引を追加してください</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="floating-actions">
+            <button class="fab export-btn" title="データをエクスポート" id="export-btn">📤</button>
+            <button class="fab import-btn" title="データをインポート" id="import-btn">📥</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

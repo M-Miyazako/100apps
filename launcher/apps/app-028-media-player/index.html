@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Player</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="media-player-container">
+        <header class="player-header">
+            <h1>🎵 Media Player</h1>
+            <div class="header-controls">
+                <button id="themeToggle" class="theme-btn">🌙</button>
+                <button id="playlistToggle" class="playlist-btn">📋</button>
+            </div>
+        </header>
+        
+        <div class="player-content">
+            <div class="main-player">
+                <div class="album-art-container">
+                    <div class="album-art" id="albumArt">
+                        <div class="album-placeholder">🎵</div>
+                    </div>
+                    <div class="visualizer" id="visualizer">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                </div>
+                
+                <div class="track-info">
+                    <h2 id="trackTitle">No track selected</h2>
+                    <p id="trackArtist">Unknown Artist</p>
+                    <p id="trackAlbum">Unknown Album</p>
+                </div>
+                
+                <div class="progress-container">
+                    <span id="currentTime">0:00</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                        <div class="progress-handle" id="progressHandle"></div>
+                    </div>
+                    <span id="totalTime">0:00</span>
+                </div>
+                
+                <div class="player-controls">
+                    <button id="shuffleBtn" class="control-btn">🔀</button>
+                    <button id="prevBtn" class="control-btn">⏮️</button>
+                    <button id="playBtn" class="control-btn play-btn">▶️</button>
+                    <button id="nextBtn" class="control-btn">⏭️</button>
+                    <button id="repeatBtn" class="control-btn">🔁</button>
+                </div>
+                
+                <div class="volume-container">
+                    <button id="muteBtn" class="volume-btn">🔊</button>
+                    <div class="volume-slider">
+                        <input type="range" id="volumeSlider" min="0" max="100" value="50">
+                    </div>
+                    <span id="volumeDisplay">50%</span>
+                </div>
+            </div>
+            
+            <div class="side-panel" id="sidePanel">
+                <div class="file-upload">
+                    <h3>Add Music</h3>
+                    <input type="file" id="fileInput" accept="audio/*" multiple>
+                    <label for="fileInput" class="upload-btn">
+                        📁 Choose Files
+                    </label>
+                </div>
+                
+                <div class="playlist">
+                    <h3>Playlist</h3>
+                    <div class="playlist-controls">
+                        <button id="clearPlaylist" class="clear-btn">Clear All</button>
+                        <button id="savePlaylist" class="save-btn">Save</button>
+                    </div>
+                    <div class="playlist-items" id="playlistItems">
+                        <div class="empty-playlist">
+                            <p>No tracks in playlist</p>
+                            <p>Add some music files to get started</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="equalizer-panel" id="equalizerPanel">
+            <h3>Equalizer</h3>
+            <div class="eq-controls">
+                <div class="eq-band">
+                    <label>60Hz</label>
+                    <input type="range" min="-12" max="12" value="0" class="eq-slider" data-frequency="60">
+                    <span>0dB</span>
+                </div>
+                <div class="eq-band">
+                    <label>170Hz</label>
+                    <input type="range" min="-12" max="12" value="0" class="eq-slider" data-frequency="170">
+                    <span>0dB</span>
+                </div>
+                <div class="eq-band">
+                    <label>310Hz</label>
+                    <input type="range" min="-12" max="12" value="0" class="eq-slider" data-frequency="310">
+                    <span>0dB</span>
+                </div>
+                <div class="eq-band">
+                    <label>600Hz</label>
+                    <input type="range" min="-12" max="12" value="0" class="eq-slider" data-frequency="600">
+                    <span>0dB</span>
+                </div>
+                <div class="eq-band">
+                    <label>1kHz</label>
+                    <input type="range" min="-12" max="12" value="0" class="eq-slider" data-frequency="1000">
+                    <span>0dB</span>
+                </div>
+                <div class="eq-band">
+                    <label>3kHz</label>
+                    <input type="range" min="-12" max="12" value="0" class="eq-slider" data-frequency="3000">
+                    <span>0dB</span>
+                </div>
+                <div class="eq-band">
+                    <label>6kHz</label>
+                    <input type="range" min="-12" max="12" value="0" class="eq-slider" data-frequency="6000">
+                    <span>0dB</span>
+                </div>
+                <div class="eq-band">
+                    <label>12kHz</label>
+                    <input type="range" min="-12" max="12" value="0" class="eq-slider" data-frequency="12000">
+                    <span>0dB</span>
+                </div>
+                <div class="eq-band">
+                    <label>14kHz</label>
+                    <input type="range" min="-12" max="12" value="0" class="eq-slider" data-frequency="14000">
+                    <span>0dB</span>
+                </div>
+                <div class="eq-band">
+                    <label>16kHz</label>
+                    <input type="range" min="-12" max="12" value="0" class="eq-slider" data-frequency="16000">
+                    <span>0dB</span>
+                </div>
+            </div>
+            <div class="eq-presets">
+                <button class="preset-btn" data-preset="flat">Flat</button>
+                <button class="preset-btn" data-preset="rock">Rock</button>
+                <button class="preset-btn" data-preset="pop">Pop</button>
+                <button class="preset-btn" data-preset="jazz">Jazz</button>
+                <button class="preset-btn" data-preset="classical">Classical</button>
+            </div>
+        </div>
+    </div>
+    
+    <audio id="audioPlayer" preload="metadata"></audio>
+    
+    <script src="script.js"></script>
+</body>
+</html>

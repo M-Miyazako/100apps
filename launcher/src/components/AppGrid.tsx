@@ -23,7 +23,12 @@ export const AppGrid: React.FC = () => {
       filtered = filtered.filter(app => app.category === state.selectedCategory);
     }
 
-    return filtered.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+    return filtered.sort((a, b) => {
+      // アプリIDを数値として抽出して番号順にソート
+      const aId = parseInt(a.id, 10);
+      const bId = parseInt(b.id, 10);
+      return aId - bId;
+    });
   }, [state.apps, state.searchQuery, state.selectedCategory]);
 
   const getGridStyle = () => {

@@ -3,6 +3,8 @@
   margin-bottom: 30px;
   color: white;
   padding: 40px 20px;
+  width: 100%;
+  max-width: 1600px;
 }
 
 .header-title {

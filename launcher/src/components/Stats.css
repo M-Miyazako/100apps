@@ -4,6 +4,8 @@
   justify-content: center;
   margin-bottom: 30px;
   flex-wrap: wrap;
+  width: 100%;
+  max-width: 1600px;
 }
 
 .stat-item {

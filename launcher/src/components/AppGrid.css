@@ -3,22 +3,47 @@
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
   margin-bottom: 30px;
+  width: 100%;
+  max-width: 1600px;
   justify-content: center;
 }
 
-/* 大画面対応 */
-@media (min-width: 1400px) {
+/* 大画面対応 - より多くの列を表示 */
+@media (min-width: 1600px) {
   .app-grid {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 24px;
   }
 }
 
+@media (min-width: 1200px) and (max-width: 1599px) {
+  .app-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 22px;
+  }
+}
+
 /* タブレット対応 */
-@media (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1199px) {
   .app-grid {
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 18px;
+  }
+}
+
+/* 小さなタブレット・大きなモバイル */
+@media (min-width: 481px) and (max-width: 767px) {
+  .app-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+  }
+}
+
+/* モバイル対応 */
+@media (max-width: 480px) {
+  .app-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 }
 
@@ -54,19 +79,4 @@
   margin-top: 10px;
   font-size: 1rem;
   opacity: 0.8;
-}
-
-@media (max-width: 768px) {
-  .app-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 15px;
-  }
-}
-
-/* モバイル対応 */
-@media (max-width: 480px) {
-  .app-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
 }

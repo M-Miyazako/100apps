@@ -4,14 +4,17 @@ import { SearchBar } from './components/SearchBar'
 import { CategoryFilter } from './components/CategoryFilter'
 import { AppGrid } from './components/AppGrid'
 import { Stats } from './components/Stats'
+import { useBreakpoint } from './hooks/useWindowSize'
 import './App.css'
 
 function App() {
+  const { isMobile } = useBreakpoint();
+
   return (
     <AppProvider>
-      <div className="app">
+      <div className={`app ${isMobile ? 'mobile' : ''}`}>
         <Header />
-        <div className="container">
+        <div className={`container ${isMobile ? 'mobile-container' : ''}`}>
           <SearchBar />
           <CategoryFilter />
           <Stats />

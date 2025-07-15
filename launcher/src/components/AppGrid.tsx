@@ -1,10 +1,12 @@
 import React, { useMemo } from 'react';
 import { useApp } from '../context/AppContext';
 import { AppCard } from './AppCard';
+import { useBreakpoint } from '../hooks/useWindowSize';
 import './AppGrid.css';
 
 export const AppGrid: React.FC = () => {
   const { state } = useApp();
+  const { isMobile, isTablet, width } = useBreakpoint();
 
   const filteredApps = useMemo(() => {
     let filtered = state.apps;
@@ -23,6 +25,45 @@ export const AppGrid: React.FC = () => {
 
     return filtered.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
   }, [state.apps, state.searchQuery, state.selectedCategory]);
+
+  const getGridStyle = () => {
+    let gridTemplateColumns;
+    let gap;
+    let padding;
+
+    if (isMobile) {
+      gridTemplateColumns = '1fr';
+      gap = '12px';
+      padding = '0 10px';
+    } else if (isTablet) {
+      gridTemplateColumns = 'repeat(auto-fill, minmax(260px, 1fr))';
+      gap = '16px';
+      padding = '0 15px';
+    } else if (width < 1200) {
+      gridTemplateColumns = 'repeat(auto-fill, minmax(280px, 1fr))';
+      gap = '18px';
+      padding = '0 20px';
+    } else if (width < 1600) {
+      gridTemplateColumns = 'repeat(auto-fill, minmax(300px, 1fr))';
+      gap = '20px';
+      padding = '0 20px';
+    } else {
+      gridTemplateColumns = 'repeat(auto-fill, minmax(320px, 1fr))';
+      gap = '24px';
+      padding = '0 20px';
+    }
+
+    return {
+      display: 'grid',
+      gridTemplateColumns,
+      gap,
+      padding,
+      width: '100%',
+      maxWidth: isMobile ? '100%' : '1600px',
+      marginBottom: isMobile ? '20px' : '30px',
+      justifyContent: 'center',
+    };
+  };
 
   if (state.isLoading) {
     return (
@@ -51,7 +92,7 @@ export const AppGrid: React.FC = () => {
   }
 
   return (
-    <div className="app-grid">
+    <div className={`app-grid ${isMobile ? 'mobile' : ''}`} style={getGridStyle()}>
       {filteredApps.map(app => (
         <AppCard key={app.id} app={app} />
       ))}

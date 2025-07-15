@@ -4,15 +4,33 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   min-height: 100vh;
   color: #333;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
 }
 
 .app {
   min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-attachment: fixed;
+  width: 100%;
+  position: relative;
+}
+
+.app.mobile {
+  background-attachment: scroll;
+  min-height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .container {
@@ -25,10 +43,21 @@ body {
   align-items: center;
 }
 
+.mobile-container {
+  max-width: 100% !important;
+  padding: 10px !important;
+  margin: 0 !important;
+  width: 100% !important;
+}
+
 @media (max-width: 768px) {
   .container {
     max-width: 100%;
     padding: 10px;
+  }
+  
+  .app {
+    background-attachment: scroll;
   }
 }
 
@@ -36,5 +65,10 @@ body {
   .container {
     max-width: 100%;
     padding: 8px;
+  }
+  
+  .app {
+    background-attachment: scroll;
+    background-size: 100% auto;
   }
 }

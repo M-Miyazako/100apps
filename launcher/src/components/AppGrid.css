@@ -5,6 +5,14 @@
   margin-bottom: 30px;
 }
 
+/* タブレット対応 */
+@media (max-width: 1024px) {
+  .app-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px;
+  }
+}
+
 .loading {
   text-align: center;
   color: white;
@@ -41,7 +49,15 @@
 
 @media (max-width: 768px) {
   .app-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 15px;
+  }
+}
+
+/* モバイル対応 */
+@media (max-width: 480px) {
+  .app-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 }

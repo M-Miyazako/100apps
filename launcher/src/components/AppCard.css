@@ -10,6 +10,19 @@
   height: 100%;
 }
 
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .app-card {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-card {
+    padding: 12px;
+  }
+}
+
 .app-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
@@ -30,6 +43,19 @@
   flex: 1;
 }
 
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .app-card-title {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-card-title {
+    font-size: 1rem;
+  }
+}
+
 .app-card-category {
   color: white;
   padding: 4px 8px;
@@ -45,6 +71,21 @@
   margin-bottom: 15px;
   line-height: 1.5;
   flex: 1;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .app-card-description {
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-card-description {
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+  }
 }
 
 .app-card-tags {
@@ -104,4 +145,39 @@
 .app-card-launch-btn:disabled {
   background: #ccc;
   cursor: not-allowed;
+}
+
+/* レスポンシブ対応 - ボタンとタグの改善 */
+@media (max-width: 768px) {
+  .app-card-launch-btn {
+    font-size: 0.85rem;
+    padding: 7px 14px;
+  }
+  
+  .app-card-tag {
+    font-size: 0.65rem;
+    padding: 1px 5px;
+  }
+  
+  .app-card-tags {
+    gap: 4px;
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-card-launch-btn {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+  
+  .app-card-tag {
+    font-size: 0.6rem;
+    padding: 1px 4px;
+  }
+  
+  .app-card-tags {
+    gap: 3px;
+    margin-bottom: 10px;
+  }
 }

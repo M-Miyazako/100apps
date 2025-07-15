@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ストップウォッチ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>ストップウォッチ</h1>
+            <p>時間を計測できるストップウォッチアプリ</p>
+        </header>
+        
+        <main class="stopwatch-container">
+            <div class="display">
+                <div class="time-display" id="timeDisplay">00:00:00</div>
+                <div class="milliseconds" id="milliseconds">000</div>
+            </div>
+            
+            <div class="controls">
+                <button class="btn btn-start" id="startBtn">開始</button>
+                <button class="btn btn-stop" id="stopBtn" disabled>停止</button>
+                <button class="btn btn-reset" id="resetBtn">リセット</button>
+                <button class="btn btn-lap" id="lapBtn" disabled>ラップ</button>
+            </div>
+            
+            <div class="lap-times" id="lapTimes">
+                <h3>ラップタイム</h3>
+                <div class="lap-list" id="lapList">
+                    <!-- ラップタイムがここに表示されます -->
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

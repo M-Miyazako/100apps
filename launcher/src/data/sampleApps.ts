@@ -289,7 +289,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-029-translation-tool/index.html',
     tags: ['翻訳', '多言語', 'ツール', '言語', '029'],
     createdAt: new Date('2024-01-28'),
-    isTestedWorking: false,
+    isTestedWorking: true,
   },
   {
     id: '030',
@@ -589,7 +589,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-059-url-shortener/index.html',
     tags: ['URL', '短縮', 'リンク', 'ユーティリティ', '059'],
     createdAt: new Date('2024-01-29'),
-    isTestedWorking: false,
+    isTestedWorking: true,
   },
   {
     id: '060',

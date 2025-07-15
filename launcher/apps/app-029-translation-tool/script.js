@@ -636,30 +636,30 @@ class TranslationTool {
                 { en: 'See you later', es: 'Hasta luego', fr: 'À bientôt', de: 'Bis später', it: 'A dopo', pt: 'Até logo' }
             ],
             travel: [
-                { en: 'Where is the airport?', es: '¿Dónde está el aeropuerto?', fr: 'Où est l\\'aéroport?', de: 'Wo ist der Flughafen?', it: 'Dove è l\\'aeroporto?', pt: 'Onde fica o aeroporto?' },
+                { en: 'Where is the airport?', es: '¿Dónde está el aeropuerto?', fr: 'Où est l\'aéroport?', de: 'Wo ist der Flughafen?', it: 'Dove è l\'aeroporto?', pt: 'Onde fica o aeroporto?' },
                 { en: 'How much does it cost?', es: '¿Cuánto cuesta?', fr: 'Combien ça coûte?', de: 'Wie viel kostet es?', it: 'Quanto costa?', pt: 'Quanto custa?' },
-                { en: 'I need a taxi', es: 'Necesito un taxi', fr: 'J\\'ai besoin d\\'un taxi', de: 'Ich brauche ein Taxi', it: 'Ho bisogno di un taxi', pt: 'Preciso de um táxi' },
-                { en: 'Where is the hotel?', es: '¿Dónde está el hotel?', fr: 'Où est l\\'hôtel?', de: 'Wo ist das Hotel?', it: 'Dove è l\\'hotel?', pt: 'Onde fica o hotel?' },
+                { en: 'I need a taxi', es: 'Necesito un taxi', fr: 'J\'ai besoin d\'un taxi', de: 'Ich brauche ein Taxi', it: 'Ho bisogno di un taxi', pt: 'Preciso de um táxi' },
+                { en: 'Where is the hotel?', es: '¿Dónde está el hotel?', fr: 'Où est l\'hôtel?', de: 'Wo ist das Hotel?', it: 'Dove è l\'hotel?', pt: 'Onde fica o hotel?' },
                 { en: 'Do you speak English?', es: '¿Habla inglés?', fr: 'Parlez-vous anglais?', de: 'Sprechen Sie Englisch?', it: 'Parla inglese?', pt: 'Você fala inglês?' }
             ],
             food: [
                 { en: 'I would like to order', es: 'Me gustaría pedir', fr: 'Je voudrais commander', de: 'Ich möchte bestellen', it: 'Vorrei ordinare', pt: 'Gostaria de pedir' },
-                { en: 'The bill, please', es: 'La cuenta, por favor', fr: 'L\\'addition, s\\'il vous plaît', de: 'Die Rechnung, bitte', it: 'Il conto, per favore', pt: 'A conta, por favor' },
+                { en: 'The bill, please', es: 'La cuenta, por favor', fr: 'L\'addition, s\'il vous plaît', de: 'Die Rechnung, bitte', it: 'Il conto, per favore', pt: 'A conta, por favor' },
                 { en: 'I am vegetarian', es: 'Soy vegetariano', fr: 'Je suis végétarien', de: 'Ich bin Vegetarier', it: 'Sono vegetariano', pt: 'Sou vegetariano' },
-                { en: 'This is delicious', es: 'Esto está delicioso', fr: 'C\\'est délicieux', de: 'Das ist lecker', it: 'È delizioso', pt: 'Está delicioso' },
+                { en: 'This is delicious', es: 'Esto está delicioso', fr: 'C\'est délicieux', de: 'Das ist lecker', it: 'È delizioso', pt: 'Está delicioso' },
                 { en: 'Where is the restaurant?', es: '¿Dónde está el restaurante?', fr: 'Où est le restaurant?', de: 'Wo ist das Restaurant?', it: 'Dove è il ristorante?', pt: 'Onde fica o restaurante?' }
             ],
             business: [
                 { en: 'Nice to meet you', es: 'Mucho gusto', fr: 'Enchanté de vous rencontrer', de: 'Freut mich, Sie kennenzulernen', it: 'Piacere di conoscerti', pt: 'Prazer em conhecê-lo' },
-                { en: 'I have a meeting', es: 'Tengo una reunión', fr: 'J\\'ai une réunion', de: 'Ich habe ein Meeting', it: 'Ho una riunione', pt: 'Tenho uma reunião' },
+                { en: 'I have a meeting', es: 'Tengo una reunión', fr: 'J\'ai une réunion', de: 'Ich habe ein Meeting', it: 'Ho una riunione', pt: 'Tenho uma reunião' },
                 { en: 'Can I have your business card?', es: '¿Puedo tener su tarjeta de presentación?', fr: 'Puis-je avoir votre carte de visite?', de: 'Kann ich Ihre Visitenkarte haben?', it: 'Posso avere il suo biglietto da visita?', pt: 'Posso ter seu cartão de visita?' },
                 { en: 'When is the deadline?', es: '¿Cuándo es la fecha límite?', fr: 'Quelle est la date limite?', de: 'Wann ist der Termin?', it: 'Quando è la scadenza?', pt: 'Quando é o prazo?' }
             ],
             emergency: [
                 { en: 'Help!', es: '¡Ayuda!', fr: 'Au secours!', de: 'Hilfe!', it: 'Aiuto!', pt: 'Socorro!' },
                 { en: 'Call the police', es: 'Llame a la policía', fr: 'Appelez la police', de: 'Rufen Sie die Polizei', it: 'Chiama la polizia', pt: 'Chame a polícia' },
-                { en: 'I need a doctor', es: 'Necesito un médico', fr: 'J\\'ai besoin d\\'un médecin', de: 'Ich brauche einen Arzt', it: 'Ho bisogno di un medico', pt: 'Preciso de um médico' },
-                { en: 'Where is the hospital?', es: '¿Dónde está el hospital?', fr: 'Où est l\\'hôpital?', de: 'Wo ist das Krankenhaus?', it: 'Dove è l\\'ospedale?', pt: 'Onde fica o hospital?' },
+                { en: 'I need a doctor', es: 'Necesito un médico', fr: 'J\'ai besoin d\'un médecin', de: 'Ich brauche einen Arzt', it: 'Ho bisogno di un medico', pt: 'Preciso de um médico' },
+                { en: 'Where is the hospital?', es: '¿Dónde está el hospital?', fr: 'Où est l\'hôpital?', de: 'Wo ist das Krankenhaus?', it: 'Dove è l\'ospedale?', pt: 'Onde fica o hospital?' },
                 { en: 'I am lost', es: 'Estoy perdido', fr: 'Je suis perdu', de: 'Ich bin verloren', it: 'Sono perso', pt: 'Estou perdido' }
             ]
         };

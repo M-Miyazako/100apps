@@ -3,45 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Color Game - rSf���</title>
+    <title>Color Game - 色覚ゲーム</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header class="header">
             <h1>Color Game</h1>
-            <p>h:U��r�Sf����gY</p>
+            <p>正しい色を選んでください</p>
         </header>
         
         <main class="game-area">
             <div class="game-stats">
                 <div class="stat-item">
-                    <span class="stat-label">���</span>
+                    <span class="stat-label">スコア</span>
                     <span class="stat-value" id="score">0</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-label">���</span>
+                    <span class="stat-label">レベル</span>
                     <span class="stat-value" id="level">1</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-label">��B�</span>
+                    <span class="stat-label">残り時間</span>
                     <span class="stat-value" id="time">30</span>
                 </div>
             </div>
             
             <div class="color-display" id="colorDisplay">
                 <div class="color-circle" id="colorCircle"></div>
-                <div class="color-name" id="colorName">���</div>
+                <div class="color-name" id="colorName">色を選択</div>
             </div>
             
             <div class="game-controls">
                 <div class="options-container" id="optionsContainer">
-                    <!-- x��LSSkՄk��U�~Y -->
+                    <!-- 選択肢がここに表示されます -->
                 </div>
                 
                 <div class="game-buttons">
-                    <button class="btn btn-primary" id="startBtn">�����</button>
-                    <button class="btn btn-secondary" id="resetBtn">���</button>
+                    <button class="btn btn-primary" id="startBtn">ゲーム開始</button>
+                    <button class="btn btn-secondary" id="resetBtn">リセット</button>
                 </div>
             </div>
             
@@ -49,27 +49,27 @@
         </main>
         
         <section class="settings">
-            <h3>-�</h3>
+            <h3>設定</h3>
             <div class="settings-group">
                 <label>
                     <input type="radio" name="difficulty" value="easy" checked>
-                    <span>!X4r	</span>
+                    <span>簡単</span>
                 </label>
                 <label>
                     <input type="radio" name="difficulty" value="medium">
-                    <span>n6r	</span>
+                    <span>普通</span>
                 </label>
                 <label>
                     <input type="radio" name="difficulty" value="hard">
-                    <span>�WD8r	</span>
+                    <span>難しい</span>
                 </label>
             </div>
         </section>
         
         <section class="highscore">
-            <h3>Ϥ���</h3>
+            <h3>ハイスコア</h3>
             <div class="highscore-list" id="highscoreList">
-                <!-- Ϥ���LSSkh:U�~Y -->
+                <!-- ハイスコアリストがここに表示されます -->
             </div>
         </section>
     </div>

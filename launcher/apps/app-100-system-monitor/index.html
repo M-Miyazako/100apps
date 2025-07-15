@@ -1,1 +1,62 @@
-<\!DOCTYPE html><html><head><title>System Monitor</title><link rel="stylesheet" href="styles.css"></head><body><div class="container"><h1>System Monitor</h1><p>A comprehensive system monitoring dashboard.</p></div><script src="script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Monitor - システムモニター</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>System Monitor</h1>
+            <p>システムの包括的な監視ダッシュボード</p>
+        </header>
+        
+        <main class="main-content">
+            <div class="system-overview">
+                <div class="metric-card">
+                    <h3>CPU使用率</h3>
+                    <div class="metric-value" id="cpuUsage">0%</div>
+                    <div class="metric-bar">
+                        <div class="metric-fill" id="cpuBar"></div>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <h3>メモリ使用率</h3>
+                    <div class="metric-value" id="memoryUsage">0%</div>
+                    <div class="metric-bar">
+                        <div class="metric-fill" id="memoryBar"></div>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <h3>ディスク使用率</h3>
+                    <div class="metric-value" id="diskUsage">0%</div>
+                    <div class="metric-bar">
+                        <div class="metric-fill" id="diskBar"></div>
+                    </div>
+                </div>
+                
+                <div class="metric-card">
+                    <h3>ネットワーク</h3>
+                    <div class="metric-value" id="networkUsage">0 KB/s</div>
+                </div>
+            </div>
+            
+            <div class="process-list">
+                <h3>プロセス一覧</h3>
+                <div class="process-table" id="processTable">
+                    <div class="process-item">
+                        <span class="process-name">サンプルプロセス</span>
+                        <span class="process-cpu">5%</span>
+                        <span class="process-memory">128MB</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

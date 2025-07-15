@@ -3,130 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping List - �������</title>
+    <title>Shopping List - ショッピングリスト</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header class="header">
             <h1>Shopping List</h1>
-            <p>J�Di�Ȓ�W~W�F</p>
+            <p>買い物リストを管理しましょう</p>
         </header>
         
         <main class="main-content">
-            <!-- ����������� -->
+            <!-- アイテム追加セクション -->
             <section class="add-item-section">
                 <div class="add-item-form">
                     <div class="input-group">
                         <input 
                             type="text" 
                             id="itemInput" 
-                            placeholder="�����e�"
+                            placeholder="アイテム名を入力"
                             maxlength="50"
                         >
                         <select id="categorySelect">
-                            <option value="��">��</option>
-                            <option value="�i">�i</option>
-                            <option value="�(�">�(�</option>
-                            <option value="[(�">[(�</option>
-                            <option value="����">����</option>
-                            <option value="�P">�P</option>
-                            <option value="]n�">]n�</option>
+                            <option value="食品">食品</option>
+                            <option value="飲料">飲料</option>
+                            <option value="日用品">日用品</option>
+                            <option value="衣類">衣類</option>
+                            <option value="電子機器">電子機器</option>
+                            <option value="その他">その他</option>
+                            <option value="薬品">薬品</option>
                         </select>
                         <input 
                             type="number" 
                             id="quantityInput" 
-                            placeholder="p�"
+                            placeholder="数量"
                             min="1"
                             max="100"
                             value="1"
                         >
-                        <button class="btn btn-primary" id="addBtn">��</button>
+                        <button class="btn btn-primary" id="addBtn">追加</button>
                     </div>
                 </div>
                 
                 <div class="quick-add">
-                    <span class="quick-add-label">��ï��:</span>
+                    <span class="quick-add-label">クイック追加:</span>
                     <div class="quick-add-buttons">
-                        <button class="quick-btn" data-item="��" data-category="��">��</button>
-                        <button class="quick-btn" data-item="[s" data-category="�i">[s</button>
-                        <button class="quick-btn" data-item="u" data-category="��">u</button>
-                        <button class="quick-btn" data-item="s" data-category="��">s</button>
-                        <button class="quick-btn" data-item="��" data-category="��">��</button>
-                        <button class="quick-btn" data-item="�" data-category="��">�</button>
+                        <button class="quick-btn" data-item="牛乳" data-category="食品">牛乳</button>
+                        <button class="quick-btn" data-item="パン" data-category="飲料">パン</button>
+                        <button class="quick-btn" data-item="卵" data-category="食品">卵</button>
+                        <button class="quick-btn" data-item="肉" data-category="食品">肉</button>
+                        <button class="quick-btn" data-item="野菜" data-category="食品">野菜</button>
+                        <button class="quick-btn" data-item="米" data-category="食品">米</button>
                     </div>
                 </div>
             </section>
             
-            <!-- գ�����Ȼ���� -->
+            <!-- フィルターと並び替えセクション -->
             <section class="filter-section">
                 <div class="filter-controls">
                     <div class="filter-group">
-                        <label for="categoryFilter">�ƴ��գ��:</label>
+                        <label for="categoryFilter">カテゴリフィルター:</label>
                         <select id="categoryFilter">
-                            <option value="all">Yyf</option>
-                            <option value="��">��</option>
-                            <option value="�i">�i</option>
-                            <option value="�(�">�(�</option>
-                            <option value="[(�">[(�</option>
-                            <option value="����">����</option>
-                            <option value="�P">�P</option>
-                            <option value="]n�">]n�</option>
+                            <option value="all">すべて</option>
+                            <option value="食品">食品</option>
+                            <option value="飲料">飲料</option>
+                            <option value="日用品">日用品</option>
+                            <option value="衣類">衣類</option>
+                            <option value="電子機器">電子機器</option>
+                            <option value="その他">その他</option>
+                            <option value="薬品">薬品</option>
                         </select>
                     </div>
                     
                     <div class="filter-group">
-                        <label for="sortBy">&y�H:</label>
+                        <label for="sortBy">並び替え:</label>
                         <select id="sortBy">
-                            <option value="added">��</option>
-                            <option value="name">M</option>
-                            <option value="category">�ƴ��</option>
-                            <option value="quantity">p�</option>
+                            <option value="added">追加順</option>
+                            <option value="name">名前順</option>
+                            <option value="category">カテゴリ順</option>
+                            <option value="quantity">数量順</option>
                         </select>
                     </div>
                     
                     <div class="filter-group">
                         <label>
                             <input type="checkbox" id="showCompleted">
-                            <span>�e�h:</span>
+                            <span>完了済みを表示</span>
                         </label>
                     </div>
                 </div>
                 
                 <div class="list-actions">
-                    <button class="btn btn-secondary" id="clearCompletedBtn">�e�Jd</button>
-                    <button class="btn btn-warning" id="clearAllBtn">YyfJd</button>
+                    <button class="btn btn-secondary" id="clearCompletedBtn">完了済みを削除</button>
+                    <button class="btn btn-warning" id="clearAllBtn">すべて削除</button>
                 </div>
             </section>
             
-            <!-- ������� -->
+            <!-- ショッピングリスト -->
             <section class="shopping-list-section">
                 <div class="list-header">
-                    <h2>�������</h2>
+                    <h2>ショッピングリスト</h2>
                     <div class="list-stats">
-                        <span class="stat-item">: <span id="totalItems">0</span>�</span>
-                        <span class="stat-item">�e: <span id="completedItems">0</span>�</span>
+                        <span class="stat-item">合計: <span id="totalItems">0</span>件</span>
+                        <span class="stat-item">完了: <span id="completedItems">0</span>件</span>
                     </div>
                 </div>
                 
                 <div class="shopping-list" id="shoppingList">
-                    <!-- ����LSSk��U�~Y -->
+                    <!-- アイテムリストがここに表示されます -->
                 </div>
                 
                 <div class="empty-state" id="emptyState">
-                    <div class="empty-icon">=�</div>
-                    <h3>��LzgY</h3>
-                    <p>
-nթ��K��������WfO`UD</p>
+                    <div class="empty-icon">🛒</div>
+                    <h3>アイテムがありません</h3>
+                    <p>上のフォームからアイテムを追加してください</p>
                 </div>
             </section>
         </main>
         
-        <!-- ��������� -->
+        <!-- カテゴリ集計セクション -->
         <section class="summary-section">
-            <h3>�ƴ��%����</h3>
+            <h3>カテゴリ別集計</h3>
             <div class="category-summary" id="categorySummary">
-                <!-- �ƴ��%����LSSkh:U�~Y -->
+                <!-- カテゴリ別集計リストがここに表示されます -->
             </div>
         </section>
     </div>

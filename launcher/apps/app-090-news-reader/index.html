@@ -1,1 +1,36 @@
-<\!DOCTYPE html><html><head><title>News Reader</title><link rel="stylesheet" href="styles.css"></head><body><div class="container"><h1>News Reader</h1><p>A news aggregation reader.</p></div><script src="script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Reader - ニュースリーダー</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>News Reader</h1>
+            <p>最新ニュースを読むためのアプリケーション</p>
+        </header>
+        
+        <main class="main-content">
+            <div class="news-categories">
+                <button class="category-btn active" data-category="all">すべて</button>
+                <button class="category-btn" data-category="technology">テクノロジー</button>
+                <button class="category-btn" data-category="business">ビジネス</button>
+                <button class="category-btn" data-category="sports">スポーツ</button>
+                <button class="category-btn" data-category="entertainment">エンタメ</button>
+            </div>
+            
+            <div class="news-list" id="newsList">
+                <div class="news-item">
+                    <h3>サンプルニュース</h3>
+                    <p>これはサンプルニュースの概要です。</p>
+                    <span class="news-date">2024年1月1日</span>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

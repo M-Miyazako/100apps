@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
+    <title>天気アプリ</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header class="header">
-            <h1>Weather App</h1>
+            <h1>天気アプリ</h1>
             <div class="search-container">
-                <input type="text" id="cityInput" placeholder="Enter city name..." class="search-input">
-                <button id="searchBtn" class="search-btn">Search</button>
+                <input type="text" id="cityInput" placeholder="都市名を入力..." class="search-input">
+                <button id="searchBtn" class="search-btn">検索</button>
             </div>
         </header>
 
@@ -21,7 +21,7 @@
             <section class="current-weather">
                 <div class="weather-info">
                     <div class="location">
-                        <h2 id="currentCity">New York</h2>
+                        <h2 id="currentCity">ニューヨーク</h2>
                         <p id="currentDate"></p>
                     </div>
                     <div class="temperature">
@@ -36,19 +36,19 @@
                     </div>
                     <div class="weather-stats">
                         <div class="stat">
-                            <span class="stat-label">Condition</span>
-                            <span id="currentCondition" class="stat-value">Sunny</span>
+                            <span class="stat-label">天気状態</span>
+                            <span id="currentCondition" class="stat-value">晴れ</span>
                         </div>
                         <div class="stat">
-                            <span class="stat-label">Humidity</span>
+                            <span class="stat-label">湿度</span>
                             <span id="currentHumidity" class="stat-value">65%</span>
                         </div>
                         <div class="stat">
-                            <span class="stat-label">Wind Speed</span>
+                            <span class="stat-label">風速</span>
                             <span id="currentWindSpeed" class="stat-value">12 km/h</span>
                         </div>
                         <div class="stat">
-                            <span class="stat-label">Feels Like</span>
+                            <span class="stat-label">体感温度</span>
                             <span id="feelsLike" class="stat-value">24°C</span>
                         </div>
                     </div>
@@ -57,9 +57,9 @@
 
             <!-- 5-Day Forecast Section -->
             <section class="forecast">
-                <h3>5-Day Forecast</h3>
+                <h3>5日間予報</h3>
                 <div class="forecast-container" id="forecastContainer">
-                    <!-- Forecast items will be populated by JavaScript -->
+                    <!-- 予報アイテムはJavaScriptによって表示されます -->
                 </div>
             </section>
         </main>
@@ -67,12 +67,12 @@
         <!-- Loading Spinner -->
         <div id="loadingSpinner" class="loading-spinner hidden">
             <div class="spinner"></div>
-            <p>Loading weather data...</p>
+            <p>天気データを読み込み中...</p>
         </div>
 
         <!-- Error Message -->
         <div id="errorMessage" class="error-message hidden">
-            <p>City not found. Please try again.</p>
+            <p>都市が見つかりません。再度お試しください。</p>
         </div>
     </div>
 

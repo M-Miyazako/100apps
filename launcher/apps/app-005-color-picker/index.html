@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Color Picker - 100 Web Apps</title>
+    <title>カラーピッカー - 100 Web Apps</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Color Picker</h1>
-            <p>Discover, create, and manage colors with precision</p>
+            <h1>カラーピッカー</h1>
+            <p>精度の高いカラーを発見、作成、管理しましょう</p>
         </header>
 
         <main>
@@ -19,27 +19,27 @@
                 <div class="color-display">
                     <div class="color-preview" id="colorPreview"></div>
                     <div class="color-info">
-                        <h3>Current Color</h3>
+                        <h3>現在のカラー</h3>
                         <div class="color-formats">
                             <div class="format-group">
                                 <label>HEX</label>
                                 <div class="input-copy-group">
                                     <input type="text" id="hexInput" readonly>
-                                    <button class="copy-btn" data-target="hexInput">Copy</button>
+                                    <button class="copy-btn" data-target="hexInput">コピー</button>
                                 </div>
                             </div>
                             <div class="format-group">
                                 <label>RGB</label>
                                 <div class="input-copy-group">
                                     <input type="text" id="rgbInput" readonly>
-                                    <button class="copy-btn" data-target="rgbInput">Copy</button>
+                                    <button class="copy-btn" data-target="rgbInput">コピー</button>
                                 </div>
                             </div>
                             <div class="format-group">
                                 <label>HSL</label>
                                 <div class="input-copy-group">
                                     <input type="text" id="hslInput" readonly>
-                                    <button class="copy-btn" data-target="hslInput">Copy</button>
+                                    <button class="copy-btn" data-target="hslInput">コピー</button>
                                 </div>
                             </div>
                         </div>
@@ -54,17 +54,17 @@
                     
                     <div class="sliders-container">
                         <div class="slider-group">
-                            <label>Hue</label>
+                            <label>色相</label>
                             <input type="range" id="hueSlider" min="0" max="360" value="0">
                             <span id="hueValue">0°</span>
                         </div>
                         <div class="slider-group">
-                            <label>Saturation</label>
+                            <label>彩度</label>
                             <input type="range" id="saturationSlider" min="0" max="100" value="100">
                             <span id="saturationValue">100%</span>
                         </div>
                         <div class="slider-group">
-                            <label>Lightness</label>
+                            <label>明度</label>
                             <input type="range" id="lightnessSlider" min="0" max="100" value="50">
                             <span id="lightnessValue">50%</span>
                         </div>
@@ -74,46 +74,46 @@
 
             <!-- Color Harmony Section -->
             <section class="harmony-section">
-                <h2>Color Harmony</h2>
+                <h2>カラーハーモニー</h2>
                 <div class="harmony-controls">
                     <select id="harmonyType">
-                        <option value="monochromatic">Monochromatic</option>
-                        <option value="analogous">Analogous</option>
-                        <option value="complementary">Complementary</option>
-                        <option value="triadic">Triadic</option>
-                        <option value="tetradic">Tetradic</option>
-                        <option value="split-complementary">Split Complementary</option>
+                        <option value="monochromatic">単色</option>
+                        <option value="analogous">類似色</option>
+                        <option value="complementary">補色</option>
+                        <option value="triadic">三色配色</option>
+                        <option value="tetradic">四色配色</option>
+                        <option value="split-complementary">分裂補色</option>
                     </select>
-                    <button id="generateHarmony">Generate</button>
+                    <button id="generateHarmony">生成</button>
                 </div>
                 <div class="harmony-colors" id="harmonyColors"></div>
             </section>
 
             <!-- Gradient Generator Section -->
             <section class="gradient-section">
-                <h2>Gradient Generator</h2>
+                <h2>グラデーションジェネレーター</h2>
                 <div class="gradient-controls">
                     <div class="gradient-type">
-                        <label>Type:</label>
+                        <label>タイプ:</label>
                         <select id="gradientType">
-                            <option value="linear">Linear</option>
-                            <option value="radial">Radial</option>
+                            <option value="linear">線形</option>
+                            <option value="radial">円形</option>
                         </select>
                     </div>
                     <div class="gradient-direction">
-                        <label>Direction:</label>
+                        <label>方向:</label>
                         <select id="gradientDirection">
-                            <option value="to right">To Right</option>
-                            <option value="to left">To Left</option>
-                            <option value="to bottom">To Bottom</option>
-                            <option value="to top">To Top</option>
-                            <option value="to bottom right">To Bottom Right</option>
-                            <option value="to bottom left">To Bottom Left</option>
-                            <option value="to top right">To Top Right</option>
-                            <option value="to top left">To Top Left</option>
+                            <option value="to right">右へ</option>
+                            <option value="to left">左へ</option>
+                            <option value="to bottom">下へ</option>
+                            <option value="to top">上へ</option>
+                            <option value="to bottom right">右下へ</option>
+                            <option value="to bottom left">左下へ</option>
+                            <option value="to top right">右上へ</option>
+                            <option value="to top left">左上へ</option>
                         </select>
                     </div>
-                    <button id="addGradientColor">Add Color</button>
+                    <button id="addGradientColor">カラーを追加</button>
                 </div>
                 <div class="gradient-preview" id="gradientPreview"></div>
                 <div class="gradient-colors" id="gradientColors">
@@ -132,25 +132,25 @@
                 </div>
                 <div class="gradient-output">
                     <input type="text" id="gradientCSS" readonly>
-                    <button class="copy-btn" data-target="gradientCSS">Copy CSS</button>
+                    <button class="copy-btn" data-target="gradientCSS">CSSをコピー</button>
                 </div>
             </section>
 
             <!-- Color History Section -->
             <section class="history-section">
-                <h2>Color History</h2>
+                <h2>カラー履歴</h2>
                 <div class="history-controls">
-                    <button id="addToFavorites">Add to Favorites</button>
-                    <button id="clearHistory">Clear History</button>
+                    <button id="addToFavorites">お気に入りに追加</button>
+                    <button id="clearHistory">履歴を消去</button>
                 </div>
                 <div class="color-history" id="colorHistory"></div>
             </section>
 
             <!-- Favorites Section -->
             <section class="favorites-section">
-                <h2>Favorites</h2>
+                <h2>お気に入り</h2>
                 <div class="favorites-controls">
-                    <button id="clearFavorites">Clear Favorites</button>
+                    <button id="clearFavorites">お気に入りを消去</button>
                 </div>
                 <div class="color-favorites" id="colorFavorites"></div>
             </section>

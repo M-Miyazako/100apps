@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Time Tracker</title>
+    <title>プロフェッショナル時間トラッカー</title>
     <style>
         * {
             margin: 0;
@@ -474,72 +474,72 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>⏱️ Professional Time Tracker</h1>
-            <p>Track your time, boost your productivity</p>
+            <h1>⏱️ プロフェッショナル時間トラッカー</h1>
+            <p>時間を記録し、生産性を向上させましょう</p>
         </div>
 
         <div class="stats-section">
             <div class="stat-card">
                 <div class="stat-number" id="todayTime">0h 0m</div>
-                <div class="stat-label">Today's Total</div>
+                <div class="stat-label">今日の合計</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number" id="weekTime">0h 0m</div>
-                <div class="stat-label">This Week</div>
+                <div class="stat-label">今週</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number" id="activeTasks">0</div>
-                <div class="stat-label">Active Tasks</div>
+                <div class="stat-label">アクティブなタスク</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number" id="totalProjects">0</div>
-                <div class="stat-label">Projects</div>
+                <div class="stat-label">プロジェクト</div>
             </div>
         </div>
 
         <div class="main-grid">
             <div class="timer-section">
                 <div class="current-timer">
-                    <h3 id="currentTaskName">No task selected</h3>
+                    <h3 id="currentTaskName">タスクが選択されていません</h3>
                     <div class="timer-display" id="timerDisplay">00:00:00</div>
                     <div class="timer-controls">
-                        <button class="timer-btn start" id="startBtn">Start</button>
-                        <button class="timer-btn pause" id="pauseBtn" disabled>Pause</button>
-                        <button class="timer-btn stop" id="stopBtn" disabled>Stop</button>
+                        <button class="timer-btn start" id="startBtn">開始</button>
+                        <button class="timer-btn pause" id="pauseBtn" disabled>一時停止</button>
+                        <button class="timer-btn stop" id="stopBtn" disabled>停止</button>
                     </div>
-                    <div id="timerStatus">Ready to start</div>
+                    <div id="timerStatus">開始する準備ができています</div>
                 </div>
             </div>
 
             <div class="task-input-section">
-                <h3 style="margin-bottom: 20px; color: #333;">Add New Task</h3>
+                <h3 style="margin-bottom: 20px; color: #333;">新しいタスクを追加</h3>
                 <form class="task-form" id="taskForm">
                     <div class="form-group">
-                        <label for="taskName">Task Name</label>
-                        <input type="text" id="taskName" required placeholder="Enter task name">
+                        <label for="taskName">タスク名</label>
+                        <input type="text" id="taskName" required placeholder="タスク名を入力してください">
                     </div>
                     
                     <div class="form-group">
-                        <label for="projectName">Project</label>
-                        <input type="text" id="projectName" placeholder="Project name (optional)">
+                        <label for="projectName">プロジェクト</label>
+                        <input type="text" id="projectName" placeholder="プロジェクト名（任意）">
                     </div>
 
                     <div class="form-group">
-                        <label for="taskDescription">Description</label>
-                        <textarea id="taskDescription" rows="3" placeholder="Task description (optional)"></textarea>
+                        <label for="taskDescription">説明</label>
+                        <textarea id="taskDescription" rows="3" placeholder="タスクの説明（任意）"></textarea>
                     </div>
 
                     <div class="form-group">
-                        <label for="taskPriority">Priority</label>
+                        <label for="taskPriority">優先度</label>
                         <select id="taskPriority">
-                            <option value="low">Low</option>
-                            <option value="medium" selected>Medium</option>
-                            <option value="high">High</option>
+                            <option value="low">低</option>
+                            <option value="medium" selected>中</option>
+                            <option value="high">高</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label>Project Color</label>
+                        <label>プロジェクトの色</label>
                         <div class="project-colors">
                             <div class="color-option selected" style="background: #667eea" data-color="#667eea"></div>
                             <div class="color-option" style="background: #00b894" data-color="#00b894"></div>
@@ -550,48 +550,48 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="add-task-btn">Add Task</button>
+                    <button type="submit" class="add-task-btn">タスクを追加</button>
                 </form>
             </div>
         </div>
 
         <div class="tasks-section">
             <div class="section-header">
-                <h3 class="section-title">Tasks</h3>
+                <h3 class="section-title">タスク</h3>
                 <div class="filter-controls">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="today">Today</button>
-                    <button class="filter-btn" data-filter="week">This Week</button>
-                    <button class="filter-btn" data-filter="high">High Priority</button>
+                    <button class="filter-btn active" data-filter="all">すべて</button>
+                    <button class="filter-btn" data-filter="today">今日</button>
+                    <button class="filter-btn" data-filter="week">今週</button>
+                    <button class="filter-btn" data-filter="high">高優先度</button>
                 </div>
             </div>
             <div class="tasks-list" id="tasksList">
                 <div style="text-align: center; padding: 40px; color: #666;">
-                    <h4>No tasks yet</h4>
-                    <p>Add your first task using the form above</p>
+                    <h4>まだタスクがありません</h4>
+                    <p>上のフォームから最初のタスクを追加してください</p>
                 </div>
             </div>
         </div>
 
         <div class="reports-section">
             <div class="report-card">
-                <h3 class="section-title">Daily Overview</h3>
+                <h3 class="section-title">日別概要</h3>
                 <div class="chart-container">
-                    <div id="dailyChart">Chart will be displayed here</div>
+                    <div id="dailyChart">ここにチャートが表示されます</div>
                 </div>
             </div>
             <div class="report-card">
-                <h3 class="section-title">Project Distribution</h3>
+                <h3 class="section-title">プロジェクト分布</h3>
                 <div class="chart-container">
-                    <div id="projectChart">Chart will be displayed here</div>
+                    <div id="projectChart">ここにチャートが表示されます</div>
                 </div>
             </div>
         </div>
 
         <div class="export-section">
-            <h3 style="margin-bottom: 20px; color: #333;">Export Data</h3>
-            <button class="export-btn" id="exportCSV">Export to CSV</button>
-            <button class="export-btn" id="exportJSON">Export to JSON</button>
+            <h3 style="margin-bottom: 20px; color: #333;">データをエクスポート</h3>
+            <button class="export-btn" id="exportCSV">CSVとしてエクスポート</button>
+            <button class="export-btn" id="exportJSON">JSONとしてエクスポート</button>
         </div>
     </div>
 
@@ -647,7 +647,7 @@
                 const task = {
                     id: Date.now(),
                     name: document.getElementById('taskName').value,
-                    project: document.getElementById('projectName').value || 'Personal',
+                    project: document.getElementById('projectName').value || '個人',
                     description: document.getElementById('taskDescription').value,
                     priority: document.getElementById('taskPriority').value,
                     color: this.selectedColor,
@@ -664,18 +664,18 @@
                 document.getElementById('taskForm').reset();
                 this.selectColor('#667eea');
 
-                this.showNotification('Task added successfully!');
+                this.showNotification('タスクが正常に追加されました！');
             }
 
             selectTask(taskId) {
                 this.currentTask = this.tasks.find(task => task.id === taskId);
-                document.getElementById('currentTaskName').textContent = this.currentTask ? this.currentTask.name : 'No task selected';
+                document.getElementById('currentTaskName').textContent = this.currentTask ? this.currentTask.name : 'タスクが選択されていません';
                 this.renderTasks();
             }
 
             startTimer() {
                 if (!this.currentTask) {
-                    alert('Please select a task first');
+                    alert('最初にタスクを選択してください');
                     return;
                 }
 
@@ -690,7 +690,7 @@
                 document.getElementById('startBtn').disabled = true;
                 document.getElementById('pauseBtn').disabled = false;
                 document.getElementById('stopBtn').disabled = false;
-                document.getElementById('timerStatus').textContent = 'Running...';
+                document.getElementById('timerStatus').textContent = '実行中...';
             }
 
             pauseTimer() {
@@ -699,7 +699,7 @@
 
                 document.getElementById('startBtn').disabled = false;
                 document.getElementById('pauseBtn').disabled = true;
-                document.getElementById('timerStatus').textContent = 'Paused';
+                document.getElementById('timerStatus').textContent = '一時停止中';
             }
 
             stopTimer() {
@@ -727,7 +727,7 @@
                 document.getElementById('startBtn').disabled = false;
                 document.getElementById('pauseBtn').disabled = true;
                 document.getElementById('stopBtn').disabled = true;
-                document.getElementById('timerStatus').textContent = 'Ready to start';
+                document.getElementById('timerStatus').textContent = '開始する準備ができています';
 
                 this.updateTimerDisplay();
                 this.saveData();
@@ -735,25 +735,25 @@
                 this.updateStats();
 
                 if (this.currentTask) {
-                    this.showNotification(`Time logged for "${this.currentTask.name}"`);
+                    this.showNotification(`「${this.currentTask.name}」の時間を記録しました`);
                 }
             }
 
             deleteTask(taskId) {
-                if (confirm('Are you sure you want to delete this task?')) {
+                if (confirm('このタスクを削除してもよろしいですか？')) {
                     this.tasks = this.tasks.filter(task => task.id !== taskId);
                     this.timeEntries = this.timeEntries.filter(entry => entry.taskId !== taskId);
                     
                     if (this.currentTask && this.currentTask.id === taskId) {
                         this.stopTimer();
                         this.currentTask = null;
-                        document.getElementById('currentTaskName').textContent = 'No task selected';
+                        document.getElementById('currentTaskName').textContent = 'タスクが選択されていません';
                     }
 
                     this.saveData();
                     this.renderTasks();
                     this.updateStats();
-                    this.showNotification('Task deleted');
+                    this.showNotification('タスクが削除されました');
                 }
             }
 
@@ -761,7 +761,7 @@
                 const task = this.tasks.find(t => t.id === taskId);
                 if (!task) return;
 
-                const newName = prompt('Edit task name:', task.name);
+                const newName = prompt('タスク名を編集:', task.name);
                 if (newName && newName !== task.name) {
                     task.name = newName;
                     this.saveData();
@@ -819,8 +819,8 @@
                 if (filteredTasks.length === 0) {
                     tasksList.innerHTML = `
                         <div style="text-align: center; padding: 40px; color: #666;">
-                            <h4>No tasks found</h4>
-                            <p>No tasks match the current filter</p>
+                            <h4>タスクが見つかりません</h4>
+                            <p>現在のフィルターに一致するタスクがありません</p>
                         </div>
                     `;
                     return;
@@ -835,12 +835,12 @@
                         <div class="task-details">
                             <div>
                                 <span class="task-project" style="background: ${task.color}">${task.project}</span>
-                                <span style="margin-left: 10px; font-size: 12px;">Priority: ${task.priority}</span>
+                                <span style="margin-left: 10px; font-size: 12px;">優先度: ${task.priority}</span>
                             </div>
                             <div class="task-actions">
-                                <button class="action-btn start-btn" onclick="timeTracker.selectTask(${task.id})">Select</button>
-                                <button class="action-btn edit-btn" onclick="timeTracker.editTask(${task.id})">Edit</button>
-                                <button class="action-btn delete-btn" onclick="timeTracker.deleteTask(${task.id})">Delete</button>
+                                <button class="action-btn start-btn" onclick="timeTracker.selectTask(${task.id})">選択</button>
+                                <button class="action-btn edit-btn" onclick="timeTracker.editTask(${task.id})">編集</button>
+                                <button class="action-btn delete-btn" onclick="timeTracker.deleteTask(${task.id})">削除</button>
                             </div>
                         </div>
                         ${task.description ? `<div style="margin-top: 10px; font-size: 14px; color: #666;">${task.description}</div>` : ''}
@@ -901,7 +901,7 @@
 
             exportCSV() {
                 const csvContent = [
-                    ['Task Name', 'Project', 'Start Time', 'End Time', 'Duration (minutes)', 'Date'],
+                    ['タスク名', 'プロジェクト', '開始時間', '終了時間', '継続時間（分）', '日付'],
                     ...this.timeEntries.map(entry => [
                         entry.taskName,
                         entry.project,
@@ -933,7 +933,7 @@
                 a.download = filename;
                 a.click();
                 URL.revokeObjectURL(url);
-                this.showNotification('Export completed!');
+                this.showNotification('エクスポートが完了しました！');
             }
 
             showNotification(message) {

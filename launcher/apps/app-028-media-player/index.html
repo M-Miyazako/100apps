@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Media Player</title>
+    <title>メディアプレイヤー</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="media-player-container">
         <header class="player-header">
-            <h1>🎵 Media Player</h1>
+            <h1>🎵 メディアプレイヤー</h1>
             <div class="header-controls">
                 <button id="themeToggle" class="theme-btn">🌙</button>
                 <button id="playlistToggle" class="playlist-btn">📋</button>
@@ -35,9 +35,9 @@
                 </div>
                 
                 <div class="track-info">
-                    <h2 id="trackTitle">No track selected</h2>
-                    <p id="trackArtist">Unknown Artist</p>
-                    <p id="trackAlbum">Unknown Album</p>
+                    <h2 id="trackTitle">トラックが選択されていません</h2>
+                    <p id="trackArtist">不明なアーティスト</p>
+                    <p id="trackAlbum">不明なアルバム</p>
                 </div>
                 
                 <div class="progress-container">
@@ -68,23 +68,23 @@
             
             <div class="side-panel" id="sidePanel">
                 <div class="file-upload">
-                    <h3>Add Music</h3>
+                    <h3>音楽を追加</h3>
                     <input type="file" id="fileInput" accept="audio/*" multiple>
                     <label for="fileInput" class="upload-btn">
-                        📁 Choose Files
+                        📁 ファイルを選択
                     </label>
                 </div>
                 
                 <div class="playlist">
-                    <h3>Playlist</h3>
+                    <h3>プレイリスト</h3>
                     <div class="playlist-controls">
-                        <button id="clearPlaylist" class="clear-btn">Clear All</button>
-                        <button id="savePlaylist" class="save-btn">Save</button>
+                        <button id="clearPlaylist" class="clear-btn">すべてクリア</button>
+                        <button id="savePlaylist" class="save-btn">保存</button>
                     </div>
                     <div class="playlist-items" id="playlistItems">
                         <div class="empty-playlist">
-                            <p>No tracks in playlist</p>
-                            <p>Add some music files to get started</p>
+                            <p>プレイリストにトラックがありません</p>
+                            <p>音楽ファイルを追加して始めましょう</p>
                         </div>
                     </div>
                 </div>
@@ -92,7 +92,7 @@
         </div>
         
         <div class="equalizer-panel" id="equalizerPanel">
-            <h3>Equalizer</h3>
+            <h3>イコライザー</h3>
             <div class="eq-controls">
                 <div class="eq-band">
                     <label>60Hz</label>
@@ -146,11 +146,11 @@
                 </div>
             </div>
             <div class="eq-presets">
-                <button class="preset-btn" data-preset="flat">Flat</button>
-                <button class="preset-btn" data-preset="rock">Rock</button>
-                <button class="preset-btn" data-preset="pop">Pop</button>
-                <button class="preset-btn" data-preset="jazz">Jazz</button>
-                <button class="preset-btn" data-preset="classical">Classical</button>
+                <button class="preset-btn" data-preset="flat">フラット</button>
+                <button class="preset-btn" data-preset="rock">ロック</button>
+                <button class="preset-btn" data-preset="pop">ポップ</button>
+                <button class="preset-btn" data-preset="jazz">ジャズ</button>
+                <button class="preset-btn" data-preset="classical">クラシック</button>
             </div>
         </div>
     </div>

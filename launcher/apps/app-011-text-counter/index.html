@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text Counter - Analyze Your Text</title>
+    <title>テキストカウンター - テキストを分析しましょう</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header class="header">
-            <h1 class="title">Text Counter</h1>
-            <p class="subtitle">Analyze your text with detailed statistics</p>
+            <h1 class="title">テキストカウンター</h1>
+            <p class="subtitle">詳細な統計でテキストを分析しましょう</p>
         </header>
 
         <main class="main-content">
@@ -18,14 +18,14 @@
                 <div class="textarea-container">
                     <textarea 
                         id="textInput" 
-                        placeholder="Paste or type your text here to analyze..."
+                        placeholder="分析したいテキストをここにペーストまたは入力..."
                         class="text-input"
                         spellcheck="false"
                     ></textarea>
                     <div class="textarea-actions">
-                        <button id="clearBtn" class="btn btn-secondary">Clear</button>
-                        <button id="copyBtn" class="btn btn-secondary">Copy</button>
-                        <button id="pasteBtn" class="btn btn-secondary">Paste</button>
+                        <button id="clearBtn" class="btn btn-secondary">クリア</button>
+                        <button id="copyBtn" class="btn btn-secondary">コピー</button>
+                        <button id="pasteBtn" class="btn btn-secondary">ペースト</button>
                     </div>
                 </div>
             </div>
@@ -34,45 +34,45 @@
                 <div class="stats-grid">
                     <div class="stat-card">
                         <div class="stat-value" id="charCount">0</div>
-                        <div class="stat-label">Characters</div>
+                        <div class="stat-label">文字数</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-value" id="charCountNoSpaces">0</div>
-                        <div class="stat-label">Characters (no spaces)</div>
+                        <div class="stat-label">文字数 (スペース除く)</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-value" id="wordCount">0</div>
-                        <div class="stat-label">Words</div>
+                        <div class="stat-label">単語数</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-value" id="paragraphCount">0</div>
-                        <div class="stat-label">Paragraphs</div>
+                        <div class="stat-label">段落数</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-value" id="sentenceCount">0</div>
-                        <div class="stat-label">Sentences</div>
+                        <div class="stat-label">文数</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-value" id="readingTime">0</div>
-                        <div class="stat-label">Reading Time (min)</div>
+                        <div class="stat-label">読み上げ時間 (分)</div>
                     </div>
                 </div>
 
                 <div class="additional-stats">
                     <div class="stat-row">
-                        <span class="stat-label">Average words per sentence:</span>
+                        <span class="stat-label">一文あたりの平均単語数:</span>
                         <span class="stat-value" id="avgWordsPerSentence">0</span>
                     </div>
                     <div class="stat-row">
-                        <span class="stat-label">Average characters per word:</span>
+                        <span class="stat-label">一単語あたりの平均文字数:</span>
                         <span class="stat-value" id="avgCharsPerWord">0</span>
                     </div>
                     <div class="stat-row">
-                        <span class="stat-label">Longest word:</span>
+                        <span class="stat-label">最長単語:</span>
                         <span class="stat-value" id="longestWord">-</span>
                     </div>
                     <div class="stat-row">
-                        <span class="stat-label">Most frequent word:</span>
+                        <span class="stat-label">最頻出単語:</span>
                         <span class="stat-value" id="mostFrequentWord">-</span>
                     </div>
                 </div>
@@ -80,44 +80,44 @@
 
             <div class="analysis-section">
                 <div class="analysis-tabs">
-                    <button class="tab-btn active" data-tab="frequency">Character Frequency</button>
-                    <button class="tab-btn" data-tab="words">Word Analysis</button>
-                    <button class="tab-btn" data-tab="readability">Readability</button>
+                    <button class="tab-btn active" data-tab="frequency">文字頻度</button>
+                    <button class="tab-btn" data-tab="words">単語分析</button>
+                    <button class="tab-btn" data-tab="readability">読みやすさ</button>
                 </div>
 
                 <div class="tab-content">
                     <div id="frequency-tab" class="tab-panel active">
-                        <h3>Character Frequency</h3>
+                        <h3>文字頻度</h3>
                         <div id="charFrequency" class="frequency-chart"></div>
                     </div>
 
                     <div id="words-tab" class="tab-panel">
-                        <h3>Word Analysis</h3>
+                        <h3>単語分析</h3>
                         <div id="wordAnalysis" class="word-analysis">
                             <div class="word-frequency">
-                                <h4>Most Common Words</h4>
+                                <h4>最頻出単語</h4>
                                 <div id="wordFrequency" class="frequency-list"></div>
                             </div>
                             <div class="word-length">
-                                <h4>Word Length Distribution</h4>
+                                <h4>単語長分布</h4>
                                 <div id="wordLengthChart" class="chart"></div>
                             </div>
                         </div>
                     </div>
 
                     <div id="readability-tab" class="tab-panel">
-                        <h3>Readability Analysis</h3>
+                        <h3>読みやすさ分析</h3>
                         <div id="readabilityAnalysis" class="readability-stats">
                             <div class="readability-metric">
-                                <span class="metric-label">Flesch Reading Ease:</span>
+                                <span class="metric-label">Flesch読みやすさスコア:</span>
                                 <span id="fleschScore" class="metric-value">-</span>
                             </div>
                             <div class="readability-metric">
-                                <span class="metric-label">Reading Level:</span>
+                                <span class="metric-label">読みやすさレベル:</span>
                                 <span id="readingLevel" class="metric-value">-</span>
                             </div>
                             <div class="readability-metric">
-                                <span class="metric-label">Complexity:</span>
+                                <span class="metric-label">複雑さ:</span>
                                 <span id="complexity" class="metric-value">-</span>
                             </div>
                         </div>

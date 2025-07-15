@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dice Game</title>
+    <title>サイコロゲーム</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>🎲 Dice Game</h1>
+            <h1>🎲 サイコロゲーム</h1>
             <div class="stats">
                 <div class="stat">
-                    <span class="stat-label">Score:</span>
+                    <span class="stat-label">スコア:</span>
                     <span class="stat-value" id="currentScore">0</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-label">Best:</span>
+                    <span class="stat-label">ベスト:</span>
                     <span class="stat-value" id="bestScore">0</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-label">Rolls:</span>
+                    <span class="stat-label">回数:</span>
                     <span class="stat-value" id="rollCount">0</span>
                 </div>
             </div>
@@ -29,71 +29,71 @@
         <main>
             <div class="game-controls">
                 <div class="control-group">
-                    <label for="gameMode">Game Mode:</label>
+                    <label for="gameMode">ゲームモード:</label>
                     <select id="gameMode">
-                        <option value="simple">Simple Rolling</option>
-                        <option value="yahtzee">Yahtzee Style</option>
-                        <option value="target">Target Score</option>
+                        <option value="simple">シンプルロール</option>
+                        <option value="yahtzee">ヨットゲーム</option>
+                        <option value="target">目標スコア</option>
                     </select>
                 </div>
                 
                 <div class="control-group">
-                    <label for="diceCount">Number of Dice:</label>
+                    <label for="diceCount">サイコロの数:</label>
                     <input type="range" id="diceCount" min="1" max="6" value="5">
                     <span id="diceCountLabel">5</span>
                 </div>
             </div>
 
             <div class="dice-container" id="diceContainer">
-                <!-- Dice will be generated here -->
+                <!-- サイコロがここに生成されます -->
             </div>
 
             <div class="game-actions">
-                <button id="rollBtn" class="btn btn-primary">Roll Dice</button>
-                <button id="holdBtn" class="btn btn-secondary" disabled>Hold Selected</button>
-                <button id="resetBtn" class="btn btn-tertiary">Reset Game</button>
+                <button id="rollBtn" class="btn btn-primary">サイコロを振る</button>
+                <button id="holdBtn" class="btn btn-secondary" disabled>選択をキープ</button>
+                <button id="resetBtn" class="btn btn-tertiary">ゲームリセット</button>
             </div>
 
             <div class="scoring-panel">
                 <div class="current-combination">
-                    <h3>Current Combination:</h3>
-                    <div id="currentCombination">Roll the dice to see combinations</div>
+                    <h3>現在の組み合わせ:</h3>
+                    <div id="currentCombination">サイコロを振って組み合わせを確認</div>
                 </div>
                 
                 <div class="score-options" id="scoreOptions">
-                    <!-- Score options will be populated here -->
+                    <!-- スコアオプションがここに表示されます -->
                 </div>
             </div>
 
             <div class="game-info">
                 <div class="roll-history">
-                    <h3>Roll History</h3>
+                    <h3>ロール履歴</h3>
                     <div id="rollHistory" class="history-list">
-                        <p>No rolls yet</p>
+                        <p>まだロールしていません</p>
                     </div>
                 </div>
                 
                 <div class="achievements">
-                    <h3>Achievements</h3>
+                    <h3>実績</h3>
                     <div id="achievements" class="achievement-list">
                         <div class="achievement">
                             <span class="achievement-icon">🎯</span>
-                            <span class="achievement-text">First Roll</span>
+                            <span class="achievement-text">初回ロール</span>
                             <span class="achievement-status" id="firstRoll">🔒</span>
                         </div>
                         <div class="achievement">
                             <span class="achievement-icon">🎲</span>
-                            <span class="achievement-text">Yahtzee!</span>
+                            <span class="achievement-text">ヨット!</span>
                             <span class="achievement-status" id="yahtzee">🔒</span>
                         </div>
                         <div class="achievement">
                             <span class="achievement-icon">🔥</span>
-                            <span class="achievement-text">Hot Streak</span>
+                            <span class="achievement-text">連続成功</span>
                             <span class="achievement-status" id="hotStreak">🔒</span>
                         </div>
                         <div class="achievement">
                             <span class="achievement-icon">💯</span>
-                            <span class="achievement-text">Century Club</span>
+                            <span class="achievement-text">100点クラブ</span>
                             <span class="achievement-status" id="centuryClub">🔒</span>
                         </div>
                     </div>
@@ -105,7 +105,7 @@
             <div class="sound-toggle">
                 <label>
                     <input type="checkbox" id="soundToggle" checked>
-                    <span>🔊 Sound Effects</span>
+                    <span>🔊 効果音</span>
                 </label>
             </div>
         </footer>

@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bingo Game</title>
+    <title>ビンゴゲーム</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header class="header">
-            <h1>BINGO GAME</h1>
+            <h1>ビンゴゲーム</h1>
             <div class="game-controls">
-                <button id="newGame" class="btn btn-primary">New Game</button>
-                <button id="newCard" class="btn btn-secondary">New Card</button>
-                <button id="callNumber" class="btn btn-success">Call Number</button>
+                <button id="newGame" class="btn btn-primary">新しいゲーム</button>
+                <button id="newCard" class="btn btn-secondary">新しいカード</button>
+                <button id="callNumber" class="btn btn-success">番号をコール</button>
             </div>
         </header>
 
         <div class="game-area">
             <div class="left-panel">
                 <div class="current-call">
-                    <h2>Current Call</h2>
+                    <h2>現在のコール</h2>
                     <div id="currentNumber" class="current-number">
                         <span class="letter">B</span>
                         <span class="number">7</span>
@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="called-numbers">
-                    <h3>Called Numbers</h3>
+                    <h3>コールされた番号</h3>
                     <div class="numbers-grid">
                         <div class="column">
                             <div class="column-header">B</div>
@@ -54,22 +54,22 @@
                 </div>
 
                 <div class="game-stats">
-                    <h3>Game Statistics</h3>
+                    <h3>ゲーム統計</h3>
                     <div class="stats-grid">
                         <div class="stat">
-                            <span class="stat-label">Numbers Called:</span>
+                            <span class="stat-label">コールされた番号:</span>
                             <span id="numbersCalledCount">0</span>
                         </div>
                         <div class="stat">
-                            <span class="stat-label">Games Played:</span>
+                            <span class="stat-label">プレイしたゲーム:</span>
                             <span id="gamesPlayedCount">0</span>
                         </div>
                         <div class="stat">
-                            <span class="stat-label">Games Won:</span>
+                            <span class="stat-label">勝利したゲーム:</span>
                             <span id="gamesWonCount">0</span>
                         </div>
                         <div class="stat">
-                            <span class="stat-label">Win Rate:</span>
+                            <span class="stat-label">勝率:</span>
                             <span id="winRate">0%</span>
                         </div>
                     </div>
@@ -91,23 +91,23 @@
                 </div>
 
                 <div class="win-patterns">
-                    <h3>Win Patterns</h3>
+                    <h3>勝利パターン</h3>
                     <div class="patterns-grid">
                         <div class="pattern-option">
                             <input type="radio" id="linePattern" name="winPattern" value="line" checked>
-                            <label for="linePattern">Line (Row/Column)</label>
+                            <label for="linePattern">ライン（行/列）</label>
                         </div>
                         <div class="pattern-option">
                             <input type="radio" id="diagonalPattern" name="winPattern" value="diagonal">
-                            <label for="diagonalPattern">Diagonal</label>
+                            <label for="diagonalPattern">対角線</label>
                         </div>
                         <div class="pattern-option">
                             <input type="radio" id="fullHousePattern" name="winPattern" value="fullhouse">
-                            <label for="fullHousePattern">Full House</label>
+                            <label for="fullHousePattern">フルハウス</label>
                         </div>
                         <div class="pattern-option">
                             <input type="radio" id="anyPattern" name="winPattern" value="any">
-                            <label for="anyPattern">Any Pattern</label>
+                            <label for="anyPattern">任意のパターン</label>
                         </div>
                     </div>
                 </div>
@@ -122,11 +122,11 @@
     <!-- Win Animation Modal -->
     <div id="winModal" class="modal">
         <div class="modal-content">
-            <h2>🎉 BINGO! 🎉</h2>
-            <p id="winMessage">Congratulations! You won with a line pattern!</p>
+            <h2>🎉 ビンゴ！ 🎉</h2>
+            <p id="winMessage">おめでとうございます！ラインパターンで勝利しました！</p>
             <div class="modal-actions">
-                <button id="playAgain" class="btn btn-primary">Play Again</button>
-                <button id="closeModal" class="btn btn-secondary">Close</button>
+                <button id="playAgain" class="btn btn-primary">もう一度プレイ</button>
+                <button id="closeModal" class="btn btn-secondary">閉じる</button>
             </div>
         </div>
     </div>

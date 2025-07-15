@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Password Generator</title>
+    <title>パスワード生成ツール</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header class="header">
-            <h1>Password Generator</h1>
-            <p>Generate secure passwords with customizable options</p>
+            <h1>パスワード生成ツール</h1>
+            <p>カスタマイズ可能なオプションで安全なパスワードを生成</p>
         </header>
 
         <main class="main-content">
@@ -18,8 +18,8 @@
             <section class="password-section">
                 <div class="password-output">
                     <div class="password-display">
-                        <input type="text" id="passwordDisplay" readonly placeholder="Generated password will appear here">
-                        <button id="copyBtn" class="copy-btn" title="Copy to clipboard">
+                        <input type="text" id="passwordDisplay" readonly placeholder="生成されたパスワードがここに表示されます">
+                        <button id="copyBtn" class="copy-btn" title="クリップボードにコピー">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -31,7 +31,7 @@
                             <div class="strength-bar">
                                 <div class="strength-fill" id="strengthFill"></div>
                             </div>
-                            <span class="strength-text" id="strengthText">No password generated</span>
+                            <span class="strength-text" id="strengthText">パスワードが未生成</span>
                         </div>
                     </div>
                 </div>
@@ -39,78 +39,78 @@
 
             <!-- Password Options Section -->
             <section class="options-section">
-                <h2>Password Options</h2>
+                <h2>パスワード設定</h2>
                 
                 <div class="option-group">
-                    <label for="passwordLength">Password Length: <span id="lengthValue">12</span></label>
+                    <label for="passwordLength">パスワードの長さ: <span id="lengthValue">12</span></label>
                     <input type="range" id="passwordLength" min="4" max="128" value="12" class="slider">
                 </div>
 
                 <div class="option-group">
-                    <h3>Character Types</h3>
+                    <h3>文字の種類</h3>
                     <div class="checkbox-group">
                         <label class="checkbox-label">
                             <input type="checkbox" id="includeUppercase" checked>
                             <span class="checkmark"></span>
-                            Uppercase Letters (A-Z)
+                            大文字 (A-Z)
                         </label>
                         <label class="checkbox-label">
                             <input type="checkbox" id="includeLowercase" checked>
                             <span class="checkmark"></span>
-                            Lowercase Letters (a-z)
+                            小文字 (a-z)
                         </label>
                         <label class="checkbox-label">
                             <input type="checkbox" id="includeNumbers" checked>
                             <span class="checkmark"></span>
-                            Numbers (0-9)
+                            数字 (0-9)
                         </label>
                         <label class="checkbox-label">
                             <input type="checkbox" id="includeSymbols">
                             <span class="checkmark"></span>
-                            Special Characters (!@#$%^&*)
+                            特殊文字 (!@#$%^&*)
                         </label>
                     </div>
                 </div>
 
                 <div class="option-group">
-                    <h3>Advanced Options</h3>
+                    <h3>高度なオプション</h3>
                     <div class="checkbox-group">
                         <label class="checkbox-label">
                             <input type="checkbox" id="excludeSimilar">
                             <span class="checkmark"></span>
-                            Exclude Similar Characters (0, O, l, I, 1)
+                            紛らわしい文字を除外 (0, O, l, I, 1)
                         </label>
                         <label class="checkbox-label">
                             <input type="checkbox" id="excludeAmbiguous">
                             <span class="checkmark"></span>
-                            Exclude Ambiguous Characters ({} [] () /\ ~,;.&lt;&gt;)
+                            曖昧な文字を除外 ({} [] () /\ ~,;.&lt;&gt;)
                         </label>
                     </div>
                 </div>
 
                 <div class="option-group">
-                    <label for="passwordCount">Number of Passwords: <span id="countValue">1</span></label>
+                    <label for="passwordCount">パスワードの数: <span id="countValue">1</span></label>
                     <input type="range" id="passwordCount" min="1" max="10" value="1" class="slider">
                 </div>
             </section>
 
             <!-- Action Buttons -->
             <section class="actions-section">
-                <button id="generateBtn" class="generate-btn">Generate Password</button>
-                <button id="clearHistoryBtn" class="clear-btn">Clear History</button>
+                <button id="generateBtn" class="generate-btn">パスワードを生成</button>
+                <button id="clearHistoryBtn" class="clear-btn">履歴を消去</button>
             </section>
 
             <!-- Multiple Passwords Display -->
             <section class="multiple-passwords" id="multiplePasswords" style="display: none;">
-                <h3>Generated Passwords</h3>
+                <h3>生成されたパスワード</h3>
                 <div id="passwordList" class="password-list"></div>
             </section>
 
             <!-- Password History Section -->
             <section class="history-section">
-                <h3>Password History</h3>
+                <h3>パスワード履歴</h3>
                 <div id="passwordHistory" class="history-list">
-                    <p class="empty-history">No passwords generated yet</p>
+                    <p class="empty-history">まだパスワードが生成されていません</p>
                 </div>
             </section>
         </main>
@@ -120,7 +120,7 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M20 6L9 17l-5-5"></path>
             </svg>
-            <span>Password copied to clipboard!</span>
+            <span>パスワードをクリップボードにコピーしました！</span>
         </div>
     </div>
 

@@ -1,48 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Number Guessing Game</title>
+    <title>数字当てゲーム</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header class="header">
-            <h1>Number Guessing Game</h1>
-            <p class="subtitle">Test your guessing skills!</p>
+            <h1>数字当てゲーム</h1>
+            <p class="subtitle">予想スキルをテストしよう！</p>
         </header>
 
         <main class="main-content">
             <!-- Game Setup -->
             <div class="setup-section" id="setupSection">
-                <h2>Game Setup</h2>
+                <h2>ゲーム設定</h2>
                 <div class="setup-options">
                     <div class="option-group">
-                        <label for="difficultySelect">Choose Difficulty:</label>
+                        <label for="difficultySelect">難易度を選択:</label>
                         <select id="difficultySelect">
-                            <option value="easy">Easy (1-10)</option>
-                            <option value="medium">Medium (1-50)</option>
-                            <option value="hard">Hard (1-100)</option>
-                            <option value="expert">Expert (1-500)</option>
-                            <option value="custom">Custom Range</option>
+                            <option value="easy">簡単 (1-10)</option>
+                            <option value="medium">普通 (1-50)</option>
+                            <option value="hard">困難 (1-100)</option>
+                            <option value="expert">エキスパート (1-500)</option>
+                            <option value="custom">カスタム範囲</option>
                         </select>
                     </div>
 
                     <div class="custom-range" id="customRange" style="display: none;">
                         <div class="range-inputs">
                             <div class="input-group">
-                                <label for="minNumber">Min:</label>
+                                <label for="minNumber">最小:</label>
                                 <input type="number" id="minNumber" value="1" min="1">
                             </div>
                             <div class="input-group">
-                                <label for="maxNumber">Max:</label>
+                                <label for="maxNumber">最大:</label>
                                 <input type="number" id="maxNumber" value="100" min="2">
                             </div>
                         </div>
                     </div>
 
-                    <button class="start-btn" id="startBtn">Start Game</button>
+                    <button class="start-btn" id="startBtn">ゲーム開始</button>
                 </div>
             </div>
 
@@ -50,24 +50,24 @@
             <div class="game-section" id="gameSection" style="display: none;">
                 <div class="game-info">
                     <div class="info-item">
-                        <span class="info-label">Range:</span>
+                        <span class="info-label">範囲:</span>
                         <span class="info-value" id="rangeDisplay"></span>
                     </div>
                     <div class="info-item">
-                        <span class="info-label">Attempts:</span>
+                        <span class="info-label">試行回数:</span>
                         <span class="info-value" id="attemptsDisplay">0</span>
                     </div>
                     <div class="info-item">
-                        <span class="info-label">Score:</span>
+                        <span class="info-label">スコア:</span>
                         <span class="info-value" id="scoreDisplay">0</span>
                     </div>
                 </div>
 
                 <div class="guess-area">
-                    <h3>Make Your Guess</h3>
+                    <h3>予想してみてください</h3>
                     <div class="guess-input-group">
-                        <input type="number" id="guessInput" placeholder="Enter your guess">
-                        <button class="guess-btn" id="guessBtn">Guess</button>
+                        <input type="number" id="guessInput" placeholder="予想を入力">
+                        <button class="guess-btn" id="guessBtn">予想</button>
                     </div>
                 </div>
 
@@ -77,7 +77,7 @@
                 </div>
 
                 <div class="attempts-history" id="attemptsHistory">
-                    <h4>Your Attempts</h4>
+                    <h4>あなたの試行</h4>
                     <div class="attempts-list" id="attemptsList"></div>
                 </div>
             </div>
@@ -85,20 +85,20 @@
             <!-- Game Over -->
             <div class="game-over-section" id="gameOverSection" style="display: none;">
                 <div class="celebration" id="celebration">
-                    <h2 class="celebration-title">Congratulations!</h2>
+                    <h2 class="celebration-title">おめでとうございます！</h2>
                     <div class="celebration-content">
                         <p class="celebration-message" id="celebrationMessage"></p>
                         <div class="final-stats">
                             <div class="stat-item">
-                                <span class="stat-label">Number was:</span>
+                                <span class="stat-label">正解は:</span>
                                 <span class="stat-value" id="finalNumber"></span>
                             </div>
                             <div class="stat-item">
-                                <span class="stat-label">Attempts:</span>
+                                <span class="stat-label">試行回数:</span>
                                 <span class="stat-value" id="finalAttempts"></span>
                             </div>
                             <div class="stat-item">
-                                <span class="stat-label">Score:</span>
+                                <span class="stat-label">スコア:</span>
                                 <span class="stat-value" id="finalScore"></span>
                             </div>
                         </div>
@@ -106,46 +106,46 @@
                 </div>
 
                 <div class="game-over-actions">
-                    <button class="play-again-btn" id="playAgainBtn">Play Again</button>
-                    <button class="new-game-btn" id="newGameBtn">New Game</button>
+                    <button class="play-again-btn" id="playAgainBtn">もう一度プレイ</button>
+                    <button class="new-game-btn" id="newGameBtn">新しいゲーム</button>
                 </div>
             </div>
         </main>
 
         <!-- Best Scores -->
         <aside class="best-scores" id="bestScores">
-            <h3>Best Scores</h3>
+            <h3>ベストスコア</h3>
             <div class="scores-list" id="scoresList">
                 <div class="score-item">
-                    <span class="score-difficulty">Easy:</span>
+                    <span class="score-difficulty">簡単:</span>
                     <span class="score-value" id="bestEasy">-</span>
                 </div>
                 <div class="score-item">
-                    <span class="score-difficulty">Medium:</span>
+                    <span class="score-difficulty">普通:</span>
                     <span class="score-value" id="bestMedium">-</span>
                 </div>
                 <div class="score-item">
-                    <span class="score-difficulty">Hard:</span>
+                    <span class="score-difficulty">困難:</span>
                     <span class="score-value" id="bestHard">-</span>
                 </div>
                 <div class="score-item">
-                    <span class="score-difficulty">Expert:</span>
+                    <span class="score-difficulty">エキスパート:</span>
                     <span class="score-value" id="bestExpert">-</span>
                 </div>
             </div>
-            <button class="clear-scores-btn" id="clearScoresBtn">Clear All Scores</button>
+            <button class="clear-scores-btn" id="clearScoresBtn">すべてのスコアをクリア</button>
         </aside>
 
         <!-- Instructions -->
         <footer class="instructions">
-            <h4>How to Play</h4>
+            <h4>遊び方</h4>
             <ol>
-                <li>Choose your difficulty level or set a custom range</li>
-                <li>Click "Start Game" to begin</li>
-                <li>Enter your guess and click "Guess"</li>
-                <li>Follow the hints to narrow down the correct number</li>
-                <li>Try to guess the number in as few attempts as possible</li>
-                <li>Higher scores are awarded for fewer attempts</li>
+                <li>難易度を選択するか、カスタム範囲を設定します</li>
+                <li>「ゲーム開始」をクリックして開始します</li>
+                <li>予想を入力して「予想」をクリックします</li>
+                <li>ヒントに従って正解の数字を絞り込みます</li>
+                <li>できるだけ少ない試行回数で数字を当ててください</li>
+                <li>試行回数が少ないほど高いスコアが与えられます</li>
             </ol>
         </footer>
     </div>

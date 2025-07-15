@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat App</title>
+    <title>チャットアプリ</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -11,11 +11,11 @@
         <!-- Sidebar with contacts/rooms -->
         <div class="sidebar">
             <div class="sidebar-header">
-                <h2>Chats</h2>
+                <h2>チャット</h2>
                 <button class="new-chat-btn" id="newChatBtn">+</button>
             </div>
             <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Search chats..." class="search-input">
+                <input type="text" id="searchInput" placeholder="チャットを検索..." class="search-input">
             </div>
             <div class="contacts-list" id="contactsList">
                 <!-- Contacts will be dynamically added here -->
@@ -28,8 +28,8 @@
                 <div class="chat-info">
                     <div class="avatar" id="chatAvatar"></div>
                     <div class="chat-details">
-                        <h3 id="chatName">Select a chat</h3>
-                        <span class="status" id="chatStatus">Click on a contact to start chatting</span>
+                        <h3 id="chatName">チャットを選択</h3>
+                        <span class="status" id="chatStatus">連絡先をクリックしてチャットを開始</span>
                     </div>
                 </div>
                 <div class="chat-actions">
@@ -42,8 +42,8 @@
             <div class="messages-container" id="messagesContainer">
                 <div class="welcome-message">
                     <div class="welcome-icon">💬</div>
-                    <h3>Welcome to Chat App</h3>
-                    <p>Select a contact from the sidebar to start messaging</p>
+                    <h3>チャットアプリへようこそ</h3>
+                    <p>サイドバーから連絡先を選択してメッセージを開始</p>
                 </div>
             </div>
 
@@ -53,13 +53,13 @@
                     <span></span>
                     <span></span>
                 </span>
-                <span class="typing-text">Someone is typing...</span>
+                <span class="typing-text">誰かが入力中...</span>
             </div>
 
             <div class="message-input-container" id="messageInputContainer">
                 <button class="attachment-btn" id="attachmentBtn">📎</button>
                 <div class="input-wrapper">
-                    <input type="text" id="messageInput" placeholder="Type a message..." class="message-input">
+                    <input type="text" id="messageInput" placeholder="メッセージを入力..." class="message-input">
                     <button class="emoji-btn" id="emojiBtn">😊</button>
                 </div>
                 <button class="send-btn" id="sendBtn">
@@ -74,7 +74,7 @@
     <!-- Emoji Picker Modal -->
     <div class="emoji-picker" id="emojiPicker">
         <div class="emoji-header">
-            <h4>Emojis</h4>
+            <h4>絵文字</h4>
             <button class="close-emoji" id="closeEmoji">×</button>
         </div>
         <div class="emoji-grid" id="emojiGrid">
@@ -86,21 +86,21 @@
     <div class="modal-overlay" id="newChatModal">
         <div class="modal">
             <div class="modal-header">
-                <h3>New Chat</h3>
+                <h3>新しいチャット</h3>
                 <button class="close-modal" id="closeModal">×</button>
             </div>
             <div class="modal-body">
-                <input type="text" id="newContactName" placeholder="Enter contact name..." class="modal-input">
+                <input type="text" id="newContactName" placeholder="連絡先名を入力..." class="modal-input">
                 <div class="avatar-selection">
-                    <h4>Choose Avatar:</h4>
+                    <h4>アバターを選択:</h4>
                     <div class="avatar-options" id="avatarOptions">
                         <!-- Avatar options will be populated -->
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn-secondary" id="cancelBtn">Cancel</button>
-                <button class="btn-primary" id="createChatBtn">Create Chat</button>
+                <button class="btn-secondary" id="cancelBtn">キャンセル</button>
+                <button class="btn-primary" id="createChatBtn">チャットを作成</button>
             </div>
         </div>
     </div>

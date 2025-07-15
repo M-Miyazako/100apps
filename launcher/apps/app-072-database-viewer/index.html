@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Database Viewer</title>
+    <title>データベースビューアー</title>
     <style>
         * {
             margin: 0;
@@ -468,19 +468,19 @@
     <div class="app-container">
         <div class="sidebar">
             <div class="sidebar-header">
-                <h1>🗄️ Database Viewer</h1>
+                <h1>🗄️ データベースビューアー</h1>
                 <div class="connection-status">
                     <div class="status-indicator" id="statusIndicator"></div>
-                    <span id="connectionStatus">Disconnected</span>
+                    <span id="connectionStatus">接続されていません</span>
                 </div>
             </div>
 
             <div class="connection-section">
                 <form class="connection-form" id="connectionForm">
                     <div class="form-group">
-                        <label for="dbType">Database Type</label>
+                        <label for="dbType">データベースタイプ</label>
                         <select id="dbType">
-                            <option value="sample">Sample Data</option>
+                            <option value="sample">サンプルデータ</option>
                             <option value="mysql">MySQL</option>
                             <option value="postgresql">PostgreSQL</option>
                             <option value="sqlite">SQLite</option>
@@ -489,40 +489,40 @@
                     </div>
                     
                     <div class="form-group connection-fields">
-                        <label for="host">Host</label>
+                        <label for="host">ホスト</label>
                         <input type="text" id="host" value="localhost" placeholder="localhost">
                     </div>
                     
                     <div class="form-group connection-fields">
-                        <label for="port">Port</label>
+                        <label for="port">ポート</label>
                         <input type="number" id="port" value="3306" placeholder="3306">
                     </div>
                     
                     <div class="form-group connection-fields">
-                        <label for="database">Database</label>
-                        <input type="text" id="database" placeholder="database_name">
+                        <label for="database">データベース</label>
+                        <input type="text" id="database" placeholder="データベース名">
                     </div>
                     
                     <div class="form-group connection-fields">
-                        <label for="username">Username</label>
-                        <input type="text" id="username" placeholder="username">
+                        <label for="username">ユーザー名</label>
+                        <input type="text" id="username" placeholder="ユーザー名">
                     </div>
                     
                     <div class="form-group connection-fields">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" placeholder="password">
+                        <label for="password">パスワード</label>
+                        <input type="password" id="password" placeholder="パスワード">
                     </div>
 
-                    <button type="submit" class="connect-btn" id="connectBtn">Connect</button>
+                    <button type="submit" class="connect-btn" id="connectBtn">接続</button>
                 </form>
             </div>
 
             <div class="tables-section">
                 <div class="tables-list">
-                    <h3>Tables</h3>
+                    <h3>テーブル</h3>
                     <div id="tablesList">
                         <div style="color: rgba(255,255,255,0.6); font-size: 12px; text-align: center; padding: 20px;">
-                            Connect to view tables
+                            接続してテーブルを表示
                         </div>
                     </div>
                 </div>
@@ -532,37 +532,37 @@
         <div class="main-content">
             <div class="toolbar">
                 <div class="toolbar-left">
-                    <input type="text" class="query-input" id="queryInput" placeholder="SELECT * FROM table_name">
-                    <button class="toolbar-btn" id="executeBtn">Execute</button>
-                    <button class="toolbar-btn secondary" id="clearBtn">Clear</button>
+                    <input type="text" class="query-input" id="queryInput" placeholder="SELECT * FROM テーブル名">
+                    <button class="toolbar-btn" id="executeBtn">実行</button>
+                    <button class="toolbar-btn secondary" id="clearBtn">クリア</button>
                 </div>
                 
                 <div class="export-options">
-                    <button class="toolbar-btn secondary" id="exportCSV">Export CSV</button>
-                    <button class="toolbar-btn secondary" id="exportJSON">Export JSON</button>
+                    <button class="toolbar-btn secondary" id="exportCSV">CSVエクスポート</button>
+                    <button class="toolbar-btn secondary" id="exportJSON">JSONエクスポート</button>
                 </div>
             </div>
 
             <div class="tabs">
-                <div class="tab active" data-tab="data">Data</div>
-                <div class="tab" data-tab="schema">Schema</div>
-                <div class="tab" data-tab="history">Query History</div>
-                <div class="tab" data-tab="stats">Statistics</div>
+                <div class="tab active" data-tab="data">データ</div>
+                <div class="tab" data-tab="schema">スキーマ</div>
+                <div class="tab" data-tab="history">クエリ履歴</div>
+                <div class="tab" data-tab="stats">統計</div>
             </div>
 
             <div class="content-area">
                 <div class="tab-content" id="dataTab">
                     <div id="resultsContainer">
                         <div style="text-align: center; color: #666; padding: 40px;">
-                            <h3>Welcome to Database Viewer</h3>
-                            <p>Connect to a database and execute queries to view results here</p>
+                            <h3>データベースビューアーへようこそ</h3>
+                            <p>データベースに接続してクエリを実行し、結果をここに表示します</p>
                             
                             <div class="sample-data-section">
-                                <h3>Try Sample Data</h3>
-                                <p style="margin-bottom: 15px; color: #666;">Click a button below to load sample data and explore the features:</p>
-                                <button class="sample-btn" onclick="dbViewer.loadSampleData('users')">Sample Users</button>
-                                <button class="sample-btn" onclick="dbViewer.loadSampleData('products')">Sample Products</button>
-                                <button class="sample-btn" onclick="dbViewer.loadSampleData('orders')">Sample Orders</button>
+                                <h3>サンプルデータを試す</h3>
+                                <p style="margin-bottom: 15px; color: #666;">下のボタンをクリックしてサンプルデータを読み込み、機能を探索してください：</p>
+                                <button class="sample-btn" onclick="dbViewer.loadSampleData('users')">サンプルユーザー</button>
+                                <button class="sample-btn" onclick="dbViewer.loadSampleData('products')">サンプル商品</button>
+                                <button class="sample-btn" onclick="dbViewer.loadSampleData('orders')">サンプル注文</button>
                             </div>
                         </div>
                     </div>
@@ -571,8 +571,8 @@
                 <div class="tab-content hidden" id="schemaTab">
                     <div class="schema-view" id="schemaView">
                         <div style="text-align: center; color: #666; padding: 40px;">
-                            <h3>Database Schema</h3>
-                            <p>Connect to a database to view table schemas</p>
+                            <h3>データベーススキーマ</h3>
+                            <p>データベースに接続してテーブルスキーマを表示します</p>
                         </div>
                     </div>
                 </div>
@@ -580,8 +580,8 @@
                 <div class="tab-content hidden" id="historyTab">
                     <div class="query-history" id="queryHistory">
                         <div style="text-align: center; color: #666; padding: 40px;">
-                            <h3>Query History</h3>
-                            <p>Your executed queries will appear here</p>
+                            <h3>クエリ履歴</h3>
+                            <p>実行されたクエリがここに表示されます</p>
                         </div>
                     </div>
                 </div>
@@ -591,25 +591,25 @@
                         <div class="stats-section">
                             <div class="stat-card">
                                 <div class="stat-number" id="totalTables">0</div>
-                                <div class="stat-label">Tables</div>
+                                <div class="stat-label">テーブル</div>
                             </div>
                             <div class="stat-card">
                                 <div class="stat-number" id="totalRows">0</div>
-                                <div class="stat-label">Total Rows</div>
+                                <div class="stat-label">合計行数</div>
                             </div>
                             <div class="stat-card">
                                 <div class="stat-number" id="queriesExecuted">0</div>
-                                <div class="stat-label">Queries Executed</div>
+                                <div class="stat-label">実行クエリ数</div>
                             </div>
                             <div class="stat-card">
                                 <div class="stat-number" id="avgQueryTime">0ms</div>
-                                <div class="stat-label">Avg Query Time</div>
+                                <div class="stat-label">平均クエリ時間</div>
                             </div>
                         </div>
                         
                         <div style="text-align: center; color: #666; padding: 40px;">
-                            <h3>Database Statistics</h3>
-                            <p>Detailed analytics about your database usage</p>
+                            <h3>データベース統計</h3>
+                            <p>データベースの使用状況に関する詳細な分析</p>
                         </div>
                     </div>
                 </div>
@@ -757,10 +757,10 @@
             connectToSampleData() {
                 this.isConnected = true;
                 this.currentDatabase = 'sample';
-                this.updateConnectionStatus(true, 'Connected to Sample Data');
+                this.updateConnectionStatus(true, 'サンプルデータに接続しました');
                 this.loadTables(Object.keys(this.sampleData));
                 this.updateStats();
-                this.showMessage('Connected to sample database successfully!', 'success');
+                this.showMessage('サンプルデータベースに正常に接続しました！', 'success');
             }
 
             connectToRealDatabase() {
@@ -769,18 +769,18 @@
                 const database = document.getElementById('database').value;
                 
                 if (!host || !database) {
-                    this.showMessage('Please fill in all required fields', 'error');
+                    this.showMessage('すべての必須フィールドを入力してください', 'error');
                     return;
                 }
 
                 // Simulate connection delay
-                document.getElementById('connectBtn').textContent = 'Connecting...';
+                document.getElementById('connectBtn').textContent = '接続中...';
                 document.getElementById('connectBtn').disabled = true;
 
                 setTimeout(() => {
                     // Simulate connection failure for demo
-                    this.showMessage('Connection failed: This is a demo version. Use "Sample Data" to explore features.', 'error');
-                    document.getElementById('connectBtn').textContent = 'Connect';
+                    this.showMessage('接続に失敗しました：これはデモ版です。機能を探索するには「サンプルデータ」を使用してください。', 'error');
+                    document.getElementById('connectBtn').textContent = '接続';
                     document.getElementById('connectBtn').disabled = false;
                 }, 2000);
             }
@@ -833,13 +833,13 @@
 
             executeQuery() {
                 if (!this.isConnected) {
-                    this.showMessage('Please connect to a database first', 'error');
+                    this.showMessage('最初にデータベースに接続してください', 'error');
                     return;
                 }
 
                 const query = document.getElementById('queryInput').value.trim();
                 if (!query) {
-                    this.showMessage('Please enter a query', 'error');
+                    this.showMessage('クエリを入力してください', 'error');
                     return;
                 }
 
@@ -854,9 +854,9 @@
                     this.addToHistory(query, queryTime);
                     this.updateStats();
                     
-                    this.showMessage(`Query executed successfully (${queryTime}ms)`, 'success');
+                    this.showMessage(`クエリが正常に実行されました (${queryTime}ms)`, 'success');
                 } catch (error) {
-                    this.showMessage(`Query error: ${error.message}`, 'error');
+                    this.showMessage(`クエリエラー: ${error.message}`, 'error');
                 }
             }
 
@@ -867,7 +867,7 @@
                 if (normalizedQuery.startsWith('select')) {
                     return this.processSelectQuery(query);
                 } else {
-                    throw new Error('Only SELECT queries are supported in demo mode');
+                    throw new Error('デモモードではSELECTクエリのみサポートされています');
                 }
             }
 
@@ -877,12 +877,12 @@
                 // Extract table name (very basic parsing)
                 const fromMatch = normalizedQuery.match(/from\s+(\w+)/);
                 if (!fromMatch) {
-                    throw new Error('Invalid SELECT query: missing FROM clause');
+                    throw new Error('無効なSELECTクエリ: FROM句がありません');
                 }
 
                 const tableName = fromMatch[1];
                 if (!this.sampleData[tableName]) {
-                    throw new Error(`Table '${tableName}' not found`);
+                    throw new Error(`テーブル '${tableName}' が見つかりません`);
                 }
 
                 const table = this.sampleData[tableName];
@@ -901,8 +901,8 @@
                 if (!results || !results.rows || results.rows.length === 0) {
                     container.innerHTML = `
                         <div style="text-align: center; color: #666; padding: 40px;">
-                            <h3>No Results</h3>
-                            <p>The query returned no results</p>
+                            <h3>結果なし</h3>
+                            <p>クエリは結果を返しませんでした</p>
                         </div>
                     `;
                     return;
@@ -934,7 +934,7 @@
 
                 container.innerHTML = `
                     <div style="margin-bottom: 15px; color: #666; font-size: 14px;">
-                        Query returned ${results.rowCount} row(s)
+                        クエリが${results.rowCount}行を返しました
                     </div>
                 `;
                 container.appendChild(table);
@@ -988,8 +988,8 @@
                 if (this.queryHistory.length === 0) {
                     container.innerHTML = `
                         <div style="text-align: center; color: #666; padding: 40px;">
-                            <h3>Query History</h3>
-                            <p>Your executed queries will appear here</p>
+                            <h3>クエリ履歴</h3>
+                            <p>実行されたクエリがここに表示されます</p>
                         </div>
                     `;
                     return;
@@ -1036,8 +1036,8 @@
                 if (!this.isConnected) {
                     container.innerHTML = `
                         <div style="text-align: center; color: #666; padding: 40px;">
-                            <h3>Database Schema</h3>
-                            <p>Connect to a database to view table schemas</p>
+                            <h3>データベーススキーマ</h3>
+                            <p>データベースに接続してテーブルスキーマを表示します</p>
                         </div>
                     `;
                     return;
@@ -1071,7 +1071,7 @@
 
             exportResults(format) {
                 if (!this.currentResults) {
-                    this.showMessage('No data to export', 'error');
+                    this.showMessage('エクスポートするデータがありません', 'error');
                     return;
                 }
 

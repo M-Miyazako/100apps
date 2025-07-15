@@ -1,69 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Generator</title>
+    <title>QRコード生成ツール</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header class="header">
-            <h1>QR Code Generator</h1>
-            <p>Generate QR codes for any text or URL</p>
+            <h1>QRコード生成ツール</h1>
+            <p>テキストやURLのQRコードを生成します</p>
         </header>
 
         <main class="main">
             <div class="input-section">
                 <div class="input-group">
-                    <label for="text-input">Enter text or URL:</label>
+                    <label for="text-input">テキストまたはURLを入力:</label>
                     <textarea 
                         id="text-input" 
-                        placeholder="Enter your text, URL, or any content here..."
+                        placeholder="テキスト、URL、または任意のコンテンツをここに入力..."
                         maxlength="1000"
                         rows="4"
                     ></textarea>
                     <div class="character-count">
-                        <span id="char-count">0</span>/1000 characters
+                        <span id="char-count">0</span>/1000 文字
                     </div>
                 </div>
 
                 <div class="options-section">
                     <div class="option-group">
-                        <label for="size-select">QR Code Size:</label>
+                        <label for="size-select">QRコードサイズ:</label>
                         <select id="size-select">
-                            <option value="200">Small (200x200)</option>
-                            <option value="300" selected>Medium (300x300)</option>
-                            <option value="400">Large (400x400)</option>
-                            <option value="500">Extra Large (500x500)</option>
+                            <option value="200">小 (200x200)</option>
+                            <option value="300" selected>中 (300x300)</option>
+                            <option value="400">大 (400x400)</option>
+                            <option value="500">特大 (500x500)</option>
                         </select>
                     </div>
 
                     <div class="option-group">
-                        <label for="error-correction">Error Correction:</label>
+                        <label for="error-correction">エラー修正:</label>
                         <select id="error-correction">
-                            <option value="L">Low (7%)</option>
-                            <option value="M" selected>Medium (15%)</option>
-                            <option value="Q">Quartile (25%)</option>
-                            <option value="H">High (30%)</option>
+                            <option value="L">低 (7%)</option>
+                            <option value="M" selected>中 (15%)</option>
+                            <option value="Q">高 (25%)</option>
+                            <option value="H">最高 (30%)</option>
                         </select>
                     </div>
 
                     <div class="color-options">
                         <div class="color-group">
-                            <label for="fg-color">Foreground Color:</label>
+                            <label for="fg-color">前景色:</label>
                             <input type="color" id="fg-color" value="#000000">
                         </div>
                         <div class="color-group">
-                            <label for="bg-color">Background Color:</label>
+                            <label for="bg-color">背景色:</label>
                             <input type="color" id="bg-color" value="#ffffff">
                         </div>
                     </div>
                 </div>
 
                 <div class="button-group">
-                    <button id="generate-btn" class="btn btn-primary">Generate QR Code</button>
-                    <button id="clear-btn" class="btn btn-secondary">Clear</button>
+                    <button id="generate-btn" class="btn btn-primary">QRコードを生成</button>
+                    <button id="clear-btn" class="btn btn-secondary">クリア</button>
                 </div>
             </div>
 
@@ -79,7 +79,7 @@
                                     <rect x="3" y="14" width="7" height="7"/>
                                 </svg>
                             </div>
-                            <p>Your QR code will appear here</p>
+                            <p>QRコードがここに表示されます</p>
                         </div>
                         <canvas id="qr-canvas" style="display: none;"></canvas>
                     </div>
@@ -87,17 +87,17 @@
 
                 <div class="download-section">
                     <button id="download-btn" class="btn btn-success" disabled>
-                        Download QR Code
+                        QRコードをダウンロード
                     </button>
                     <div class="download-info">
-                        <small>Download as PNG image</small>
+                        <small>PNG画像としてダウンロード</small>
                     </div>
                 </div>
             </div>
         </main>
 
         <footer class="footer">
-            <p>Enter text above and click "Generate QR Code" to create your QR code</p>
+            <p>上のテキストを入力し「QRコードを生成」をクリックしてQRコードを作成しましょう</p>
         </footer>
     </div>
 

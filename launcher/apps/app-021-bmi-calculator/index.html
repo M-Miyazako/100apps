@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BMI Calculator - Health & Fitness Tool</title>
+    <title>BMI計算器 - 健康・フィットネスツール</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>BMI Calculator</h1>
-            <p>Calculate your Body Mass Index and get health insights</p>
+            <h1>BMI計算器</h1>
+            <p>ボディマスインデックスを計算し、健康に関する洞察を得る</p>
         </header>
 
         <main>
             <!-- BMI Calculator Form -->
             <section class="calculator-section">
                 <div class="card">
-                    <h2>Calculate Your BMI</h2>
+                    <h2>あなたのBMIを計算</h2>
                     
                     <!-- Unit Toggle -->
                     <div class="unit-toggle">
@@ -26,15 +26,15 @@
                             <span class="slider"></span>
                         </label>
                         <span class="unit-label">
-                            <span class="metric active">Metric</span>
-                            <span class="imperial">Imperial</span>
+                            <span class="metric active">メートル法</span>
+                            <span class="imperial">ヤードポンド法</span>
                         </span>
                     </div>
 
                     <form id="bmiForm">
                         <!-- Height Input -->
                         <div class="input-group">
-                            <label for="height">Height</label>
+                            <label for="height">身長</label>
                             <div class="input-container">
                                 <input type="number" id="height" placeholder="170" step="0.1" min="0" required>
                                 <span class="unit" id="heightUnit">cm</span>
@@ -43,7 +43,7 @@
 
                         <!-- Weight Input -->
                         <div class="input-group">
-                            <label for="weight">Weight</label>
+                            <label for="weight">体重</label>
                             <div class="input-container">
                                 <input type="number" id="weight" placeholder="70" step="0.1" min="0" required>
                                 <span class="unit" id="weightUnit">kg</span>
@@ -52,7 +52,7 @@
 
                         <!-- Age Input (optional) -->
                         <div class="input-group">
-                            <label for="age">Age (optional)</label>
+                            <label for="age">年齢（オプション）</label>
                             <div class="input-container">
                                 <input type="number" id="age" placeholder="25" min="1" max="120">
                                 <span class="unit">years</span>
@@ -61,22 +61,22 @@
 
                         <!-- Gender Selection -->
                         <div class="input-group">
-                            <label>Gender</label>
+                            <label>性別</label>
                             <div class="radio-group">
                                 <label class="radio-label">
                                     <input type="radio" name="gender" value="male" checked>
                                     <span class="radio-custom"></span>
-                                    Male
+                                    男性
                                 </label>
                                 <label class="radio-label">
                                     <input type="radio" name="gender" value="female">
                                     <span class="radio-custom"></span>
-                                    Female
+                                    女性
                                 </label>
                             </div>
                         </div>
 
-                        <button type="submit" class="calculate-btn">Calculate BMI</button>
+                        <button type="submit" class="calculate-btn">BMIを計算</button>
                     </form>
                 </div>
             </section>
@@ -84,32 +84,32 @@
             <!-- Results Section -->
             <section class="results-section" id="resultsSection" style="display: none;">
                 <div class="card">
-                    <h2>Your BMI Result</h2>
+                    <h2>あなたのBMI結果</h2>
                     <div class="bmi-result">
                         <div class="bmi-value">
                             <span class="bmi-number" id="bmiValue">0.0</span>
                             <span class="bmi-unit">kg/m²</span>
                         </div>
-                        <div class="bmi-category" id="bmiCategory">Normal</div>
+                        <div class="bmi-category" id="bmiCategory">標準</div>
                     </div>
 
                     <!-- BMI Scale -->
                     <div class="bmi-scale">
                         <div class="scale-bar">
                             <div class="scale-segment underweight" data-category="Underweight">
-                                <span class="scale-label">Underweight</span>
+                                <span class="scale-label">低体重</span>
                                 <span class="scale-range">&lt; 18.5</span>
                             </div>
                             <div class="scale-segment normal" data-category="Normal">
-                                <span class="scale-label">Normal</span>
+                                <span class="scale-label">標準</span>
                                 <span class="scale-range">18.5 - 24.9</span>
                             </div>
                             <div class="scale-segment overweight" data-category="Overweight">
-                                <span class="scale-label">Overweight</span>
+                                <span class="scale-label">過体重</span>
                                 <span class="scale-range">25 - 29.9</span>
                             </div>
                             <div class="scale-segment obese" data-category="Obese">
-                                <span class="scale-label">Obese</span>
+                                <span class="scale-label">肥満</span>
                                 <span class="scale-range">≥ 30</span>
                             </div>
                         </div>
@@ -118,7 +118,7 @@
 
                     <!-- Health Recommendations -->
                     <div class="health-recommendations">
-                        <h3>Health Recommendations</h3>
+                        <h3>健康推奨事項</h3>
                         <div class="recommendations-content" id="recommendationsContent">
                             <!-- Recommendations will be populated by JavaScript -->
                         </div>
@@ -126,7 +126,7 @@
 
                     <!-- Ideal Weight Range -->
                     <div class="ideal-weight">
-                        <h3>Ideal Weight Range</h3>
+                        <h3>理想体重範囲</h3>
                         <div class="weight-range" id="idealWeightRange">
                             <!-- Ideal weight range will be populated by JavaScript -->
                         </div>
@@ -137,12 +137,12 @@
             <!-- BMI History -->
             <section class="history-section">
                 <div class="card">
-                    <h2>BMI History</h2>
+                    <h2>BMI履歴</h2>
                     <div class="history-controls">
-                        <button id="clearHistory" class="clear-btn">Clear History</button>
+                        <button id="clearHistory" class="clear-btn">履歴をクリア</button>
                     </div>
                     <div class="history-list" id="historyList">
-                        <p class="no-history">No BMI calculations yet. Start by calculating your BMI above.</p>
+                        <p class="no-history">まだBMI計算がありません。上記でBMIを計算してください。</p>
                     </div>
                 </div>
             </section>
@@ -150,28 +150,28 @@
             <!-- Health Information -->
             <section class="info-section">
                 <div class="card">
-                    <h2>About BMI</h2>
+                    <h2>BMIについて</h2>
                     <div class="info-content">
-                        <p>Body Mass Index (BMI) is a measure of body fat based on height and weight. It's a useful screening tool, but it doesn't directly measure body fat percentage.</p>
+                        <p>ボディマスインデックス（BMI）は身長と体重に基づいた体脂肪の指標です。有用なスクリーニングツールですが、体脂肪率を直接測定するものではありません。</p>
                         
                         <div class="info-grid">
                             <div class="info-item">
-                                <h4>BMI Categories</h4>
+                                <h4>BMIカテゴリ</h4>
                                 <ul>
-                                    <li><strong>Underweight:</strong> BMI below 18.5</li>
-                                    <li><strong>Normal:</strong> BMI 18.5 - 24.9</li>
-                                    <li><strong>Overweight:</strong> BMI 25 - 29.9</li>
-                                    <li><strong>Obese:</strong> BMI 30 and above</li>
+                                    <li><strong>低体重:</strong> BMI 18.5未満</li>
+                                    <li><strong>標準:</strong> BMI 18.5 - 24.9</li>
+                                    <li><strong>過体重:</strong> BMI 25 - 29.9</li>
+                                    <li><strong>肥満:</strong> BMI 30以上</li>
                                 </ul>
                             </div>
                             
                             <div class="info-item">
-                                <h4>Important Notes</h4>
+                                <h4>重要な注意事項</h4>
                                 <ul>
-                                    <li>BMI may not be accurate for athletes with high muscle mass</li>
-                                    <li>Age, gender, and body composition affect interpretation</li>
-                                    <li>Consult healthcare professionals for personalized advice</li>
-                                    <li>BMI is a screening tool, not a diagnostic measure</li>
+                                    <li>筋肉量の多いアスリートの場合、BMIは正確ではない可能性があります</li>
+                                    <li>年齢、性別、体組成が解釈に影響します</li>
+                                    <li>個別のアドバイスについては医療専門家に相談してください</li>
+                                    <li>BMIはスクリーニングツールであり、診断測定ではありません</li>
                                 </ul>
                             </div>
                         </div>
@@ -181,7 +181,7 @@
         </main>
 
         <footer>
-            <p>&copy; 2024 BMI Calculator. For educational purposes only. Consult healthcare professionals for medical advice.</p>
+            <p>&copy; 2024 BMI計算器。教育目的のみ。医学的アドバイスについては医療専門家に相談してください。</p>
         </footer>
     </div>
 

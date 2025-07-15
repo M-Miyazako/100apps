@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bookmark Manager</title>
+    <title>ブックマークマネージャー</title>
     <style>
         * {
             margin: 0;
@@ -412,90 +412,90 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>📚 Bookmark Manager</h1>
-            <p>Organize and manage your favorite websites with ease</p>
+            <h1>📚 ブックマークマネージャー</h1>
+            <p>お気に入りのウェブサイトを簡単に整理・管理</p>
         </div>
 
         <div class="stats-section">
             <div class="stat-card">
                 <div class="stat-number" id="totalBookmarks">0</div>
-                <div class="stat-label">Total Bookmarks</div>
+                <div class="stat-label">ブックマーク総数</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number" id="totalCategories">0</div>
-                <div class="stat-label">Categories</div>
+                <div class="stat-label">カテゴリー数</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number" id="recentlyAdded">0</div>
-                <div class="stat-label">Added This Week</div>
+                <div class="stat-label">今週追加数</div>
             </div>
         </div>
 
         <div class="add-bookmark-section">
-            <h3 style="margin-bottom: 20px;">Add New Bookmark</h3>
+            <h3 style="margin-bottom: 20px;">新しいブックマークを追加</h3>
             <form class="add-bookmark-form" id="addBookmarkForm">
                 <div class="form-group">
-                    <label for="bookmarkTitle">Title</label>
-                    <input type="text" id="bookmarkTitle" required placeholder="Enter bookmark title">
+                    <label for="bookmarkTitle">タイトル</label>
+                    <input type="text" id="bookmarkTitle" required placeholder="ブックマークタイトルを入力">
                 </div>
                 <div class="form-group">
                     <label for="bookmarkUrl">URL</label>
                     <input type="url" id="bookmarkUrl" required placeholder="https://example.com">
                 </div>
-                <button type="submit" class="add-btn">Add Bookmark</button>
+                <button type="submit" class="add-btn">ブックマーク追加</button>
             </form>
             <div style="margin-top: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                 <div class="form-group">
-                    <label for="bookmarkDescription">Description (Optional)</label>
-                    <input type="text" id="bookmarkDescription" placeholder="Brief description">
+                    <label for="bookmarkDescription">説明 (オプション)</label>
+                    <input type="text" id="bookmarkDescription" placeholder="簡単な説明">
                 </div>
                 <div class="form-group">
-                    <label for="bookmarkCategory">Category</label>
+                    <label for="bookmarkCategory">カテゴリー</label>
                     <select id="bookmarkCategory">
-                        <option value="General">General</option>
-                        <option value="Work">Work</option>
-                        <option value="Personal">Personal</option>
-                        <option value="Education">Education</option>
-                        <option value="Entertainment">Entertainment</option>
-                        <option value="Tools">Tools</option>
-                        <option value="News">News</option>
-                        <option value="Social">Social</option>
+                        <option value="General">一般</option>
+                        <option value="Work">仕事</option>
+                        <option value="Personal">個人</option>
+                        <option value="Education">教育</option>
+                        <option value="Entertainment">エンターテイメント</option>
+                        <option value="Tools">ツール</option>
+                        <option value="News">ニュース</option>
+                        <option value="Social">ソーシャル</option>
                     </select>
                 </div>
             </div>
         </div>
 
         <div class="filters-section">
-            <input type="text" class="search-box" id="searchBox" placeholder="Search bookmarks...">
+            <input type="text" class="search-box" id="searchBox" placeholder="ブックマークを検索...">
             <select class="filter-select" id="categoryFilter">
-                <option value="all">All Categories</option>
-                <option value="General">General</option>
-                <option value="Work">Work</option>
-                <option value="Personal">Personal</option>
-                <option value="Education">Education</option>
-                <option value="Entertainment">Entertainment</option>
-                <option value="Tools">Tools</option>
-                <option value="News">News</option>
-                <option value="Social">Social</option>
+                <option value="all">すべてのカテゴリー</option>
+                <option value="General">一般</option>
+                <option value="Work">仕事</option>
+                <option value="Personal">個人</option>
+                <option value="Education">教育</option>
+                <option value="Entertainment">エンターテイメント</option>
+                <option value="Tools">ツール</option>
+                <option value="News">ニュース</option>
+                <option value="Social">ソーシャル</option>
             </select>
             <div class="sort-buttons">
-                <button class="sort-btn active" data-sort="newest">Newest</button>
-                <button class="sort-btn" data-sort="oldest">Oldest</button>
-                <button class="sort-btn" data-sort="title">A-Z</button>
+                <button class="sort-btn active" data-sort="newest">新しい順</button>
+                <button class="sort-btn" data-sort="oldest">古い順</button>
+                <button class="sort-btn" data-sort="title">タイトル順</button>
             </div>
         </div>
 
         <div class="bookmarks-grid" id="bookmarksGrid">
             <div class="no-bookmarks">
-                <h3>No bookmarks yet!</h3>
-                <p>Add your first bookmark using the form above.</p>
+                <h3>まだブックマークがありません！</h3>
+                <p>上のフォームで最初のブックマークを追加してください。</p>
             </div>
         </div>
 
         <div class="export-import-section">
-            <button class="export-btn" id="exportBtn">Export Bookmarks</button>
+            <button class="export-btn" id="exportBtn">ブックマークエクスポート</button>
             <input type="file" id="importFile" accept=".json" class="hidden">
-            <button class="import-btn" id="importBtn">Import Bookmarks</button>
+            <button class="import-btn" id="importBtn">ブックマークインポート</button>
         </div>
     </div>
 

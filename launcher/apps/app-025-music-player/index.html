@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music Player</title>
+    <title>ミュージックプレイヤー</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,8 +12,8 @@
 <body>
     <div class="container">
         <header class="header">
-            <h1 class="app-title">Music Player</h1>
-            <div class="app-subtitle">Upload and play your favorite songs</div>
+            <h1 class="app-title">ミュージックプレイヤー</h1>
+            <div class="app-subtitle">お気に入りの音楽をアップロードして再生</div>
         </header>
 
         <main class="main-content">
@@ -22,8 +22,8 @@
                 <div class="upload-area" id="uploadArea">
                     <div class="upload-icon">🎵</div>
                     <div class="upload-text">
-                        <div class="upload-title">Drop your music files here</div>
-                        <div class="upload-subtitle">or click to browse</div>
+                        <div class="upload-title">音楽ファイルをここにドロップ</div>
+                        <div class="upload-subtitle">またはクリックして参照</div>
                     </div>
                     <input type="file" id="fileInput" accept="audio/*" multiple>
                 </div>
@@ -38,8 +38,8 @@
                             <div class="artwork-placeholder">🎵</div>
                         </div>
                         <div class="track-info">
-                            <div class="track-title" id="trackTitle">No track selected</div>
-                            <div class="track-artist" id="trackArtist">Unknown Artist</div>
+                            <div class="track-title" id="trackTitle">トラックが選択されていません</div>
+                            <div class="track-artist" id="trackArtist">不明なアーティスト</div>
                             <div class="track-duration" id="trackDuration">0:00 / 0:00</div>
                         </div>
                     </div>
@@ -58,16 +58,16 @@
 
                     <!-- Player Controls -->
                     <div class="player-controls">
-                        <button class="control-btn" id="shuffleBtn" title="Shuffle">🔀</button>
-                        <button class="control-btn" id="prevBtn" title="Previous">⏮️</button>
-                        <button class="control-btn primary" id="playBtn" title="Play/Pause">▶️</button>
-                        <button class="control-btn" id="nextBtn" title="Next">⏭️</button>
-                        <button class="control-btn" id="repeatBtn" title="Repeat">🔁</button>
+                        <button class="control-btn" id="shuffleBtn" title="シャッフル">🔀</button>
+                        <button class="control-btn" id="prevBtn" title="前へ">⏮️</button>
+                        <button class="control-btn primary" id="playBtn" title="再生/一時停止">▶️</button>
+                        <button class="control-btn" id="nextBtn" title="次へ">⏭️</button>
+                        <button class="control-btn" id="repeatBtn" title="リピート">🔁</button>
                     </div>
 
                     <!-- Volume Control -->
                     <div class="volume-control">
-                        <button class="control-btn" id="muteBtn" title="Mute">🔊</button>
+                        <button class="control-btn" id="muteBtn" title="ミュート">🔊</button>
                         <div class="volume-slider">
                             <input type="range" id="volumeSlider" min="0" max="100" value="50">
                         </div>
@@ -78,7 +78,7 @@
             <!-- Visualizer Section -->
             <section class="visualizer-section">
                 <div class="visualizer-container">
-                    <div class="visualizer-title">Audio Visualizer</div>
+                    <div class="visualizer-title">オーディオビジュアライザー</div>
                     <canvas id="visualizer" width="800" height="200"></canvas>
                 </div>
             </section>
@@ -86,17 +86,17 @@
             <!-- Playlist Section -->
             <section class="playlist-section">
                 <div class="playlist-header">
-                    <h2>Playlist</h2>
+                    <h2>プレイリスト</h2>
                     <div class="playlist-actions">
-                        <button class="action-btn" id="clearPlaylistBtn">Clear All</button>
+                        <button class="action-btn" id="clearPlaylistBtn">すべてクリア</button>
                     </div>
                 </div>
                 <div class="playlist-container">
                     <div class="playlist" id="playlist">
                         <div class="empty-playlist">
                             <div class="empty-icon">🎵</div>
-                            <div class="empty-text">No songs in playlist</div>
-                            <div class="empty-subtext">Upload some music files to get started</div>
+                            <div class="empty-text">プレイリストに楽曲がありません</div>
+                            <div class="empty-subtext">音楽ファイルをアップロードして始めましょう</div>
                         </div>
                     </div>
                 </div>

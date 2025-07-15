@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo List App</title>
+    <title>やることリスト</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Todo List</h1>
-            <p class="subtitle">Stay organized and productive</p>
+            <h1>やることリスト</h1>
+            <p class="subtitle">整理して生産性を高めよう</p>
         </header>
 
         <main>
@@ -19,39 +19,39 @@
                     <input 
                         type="text" 
                         id="todo-input" 
-                        placeholder="What needs to be done?" 
+                        placeholder="何をする必要がありますか？" 
                         required
                         autocomplete="off"
                     >
-                    <button type="submit" class="add-btn">Add Task</button>
+                    <button type="submit" class="add-btn">タスクを追加</button>
                 </form>
             </section>
 
             <section class="todo-list-section">
                 <div class="todo-controls">
                     <div class="todo-stats">
-                        <span id="task-count">0 tasks remaining</span>
+                        <span id="task-count">残りタスク：0</span>
                     </div>
                     
                     <div class="todo-filters">
-                        <button class="filter-btn active" data-filter="all">All</button>
-                        <button class="filter-btn" data-filter="active">Active</button>
-                        <button class="filter-btn" data-filter="completed">Completed</button>
+                        <button class="filter-btn active" data-filter="all">すべて</button>
+                        <button class="filter-btn" data-filter="active">未完了</button>
+                        <button class="filter-btn" data-filter="completed">完了</button>
                     </div>
                 </div>
 
                 <ul id="todo-list" class="todo-list">
-                    <!-- Todo items will be dynamically inserted here -->
+                    <!-- タスク項目はここに動的に挿入されます -->
                 </ul>
 
                 <div class="todo-actions">
-                    <button id="clear-completed" class="clear-btn">Clear Completed</button>
+                    <button id="clear-completed" class="clear-btn">完了済みを削除</button>
                 </div>
             </section>
         </main>
 
         <footer>
-            <p>&copy; 2024 Todo List App - Part of 100 Web Apps Project</p>
+            <p>&copy; 2024 やることリスト - 100 Web Apps プロジェクトの一部</p>
         </footer>
     </div>
 

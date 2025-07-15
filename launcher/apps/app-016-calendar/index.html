@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendar App</title>
+    <title>カレンダーアプリ</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header class="header">
-            <h1>Calendar</h1>
+            <h1>カレンダー</h1>
             <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Search events..." />
-                <button id="searchBtn">Search</button>
+                <input type="text" id="searchInput" placeholder="イベントを検索..." />
+                <button id="searchBtn">検索</button>
             </div>
         </header>
 
@@ -25,57 +25,57 @@
 
             <div class="calendar-grid">
                 <div class="weekdays">
-                    <div class="weekday">Sun</div>
-                    <div class="weekday">Mon</div>
-                    <div class="weekday">Tue</div>
-                    <div class="weekday">Wed</div>
-                    <div class="weekday">Thu</div>
-                    <div class="weekday">Fri</div>
-                    <div class="weekday">Sat</div>
+                    <div class="weekday">日</div>
+                    <div class="weekday">月</div>
+                    <div class="weekday">火</div>
+                    <div class="weekday">水</div>
+                    <div class="weekday">木</div>
+                    <div class="weekday">金</div>
+                    <div class="weekday">土</div>
                 </div>
                 <div id="calendarDays" class="calendar-days"></div>
             </div>
 
             <div class="quick-actions">
-                <button id="todayBtn" class="quick-btn">Today</button>
-                <button id="addEventBtn" class="quick-btn primary">Add Event</button>
+                <button id="todayBtn" class="quick-btn">今日</button>
+                <button id="addEventBtn" class="quick-btn primary">イベントを追加</button>
             </div>
         </div>
 
         <div class="sidebar">
             <div class="events-section">
-                <h3>Today's Events</h3>
+                <h3>今日のイベント</h3>
                 <div id="todayEvents" class="events-list"></div>
             </div>
 
             <div class="categories-section">
-                <h3>Categories</h3>
+                <h3>カテゴリ</h3>
                 <div class="category-list">
                     <div class="category-item">
                         <span class="category-color work"></span>
-                        <span>Work</span>
+                        <span>仕事</span>
                     </div>
                     <div class="category-item">
                         <span class="category-color personal"></span>
-                        <span>Personal</span>
+                        <span>プライベート</span>
                     </div>
                     <div class="category-item">
                         <span class="category-color health"></span>
-                        <span>Health</span>
+                        <span>健康</span>
                     </div>
                     <div class="category-item">
                         <span class="category-color social"></span>
-                        <span>Social</span>
+                        <span>社交</span>
                     </div>
                     <div class="category-item">
                         <span class="category-color reminder"></span>
-                        <span>Reminder</span>
+                        <span>リマインダー</span>
                     </div>
                 </div>
             </div>
 
             <div class="notifications-section">
-                <h3>Notifications</h3>
+                <h3>通知</h3>
                 <div id="notificationsList" class="notifications-list"></div>
             </div>
         </div>
@@ -85,58 +85,58 @@
     <div id="eventModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 id="modalTitle">Add Event</h3>
+                <h3 id="modalTitle">イベントを追加</h3>
                 <button id="closeModal" class="close-btn">&times;</button>
             </div>
             <div class="modal-body">
                 <form id="eventForm">
                     <div class="form-group">
-                        <label for="eventTitle">Event Title *</label>
+                        <label for="eventTitle">イベントタイトル *</label>
                         <input type="text" id="eventTitle" required />
                     </div>
                     
                     <div class="form-group">
-                        <label for="eventDate">Date *</label>
+                        <label for="eventDate">日付 *</label>
                         <input type="date" id="eventDate" required />
                     </div>
                     
                     <div class="form-group">
-                        <label for="eventTime">Time</label>
+                        <label for="eventTime">時間</label>
                         <input type="time" id="eventTime" />
                     </div>
                     
                     <div class="form-group">
-                        <label for="eventCategory">Category</label>
+                        <label for="eventCategory">カテゴリ</label>
                         <select id="eventCategory">
-                            <option value="work">Work</option>
-                            <option value="personal">Personal</option>
-                            <option value="health">Health</option>
-                            <option value="social">Social</option>
-                            <option value="reminder">Reminder</option>
+                            <option value="work">仕事</option>
+                            <option value="personal">プライベート</option>
+                            <option value="health">健康</option>
+                            <option value="social">社交</option>
+                            <option value="reminder">リマインダー</option>
                         </select>
                     </div>
                     
                     <div class="form-group">
-                        <label for="eventDescription">Description</label>
+                        <label for="eventDescription">詳細</label>
                         <textarea id="eventDescription" rows="3"></textarea>
                     </div>
                     
                     <div class="form-group">
-                        <label for="eventReminder">Reminder</label>
+                        <label for="eventReminder">リマインダー</label>
                         <select id="eventReminder">
-                            <option value="none">No reminder</option>
-                            <option value="5">5 minutes before</option>
-                            <option value="15">15 minutes before</option>
-                            <option value="30">30 minutes before</option>
-                            <option value="60">1 hour before</option>
-                            <option value="1440">1 day before</option>
+                            <option value="none">リマインダーなし</option>
+                            <option value="5">5分前</option>
+                            <option value="15">15分前</option>
+                            <option value="30">30分前</option>
+                            <option value="60">1時間前</option>
+                            <option value="1440">1日前</option>
                         </select>
                     </div>
                     
                     <div class="form-actions">
-                        <button type="button" id="cancelEvent" class="btn-secondary">Cancel</button>
-                        <button type="submit" id="saveEvent" class="btn-primary">Save Event</button>
-                        <button type="button" id="deleteEvent" class="btn-danger" style="display: none;">Delete</button>
+                        <button type="button" id="cancelEvent" class="btn-secondary">キャンセル</button>
+                        <button type="submit" id="saveEvent" class="btn-primary">イベントを保存</button>
+                        <button type="button" id="deleteEvent" class="btn-danger" style="display: none;">削除</button>
                     </div>
                 </form>
             </div>
@@ -147,14 +147,14 @@
     <div id="eventDetailsModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 id="eventDetailsTitle">Event Details</h3>
+                <h3 id="eventDetailsTitle">イベント詳細</h3>
                 <button id="closeDetailsModal" class="close-btn">&times;</button>
             </div>
             <div class="modal-body">
                 <div id="eventDetailsContent"></div>
                 <div class="details-actions">
-                    <button id="editEventBtn" class="btn-primary">Edit</button>
-                    <button id="deleteEventBtn" class="btn-danger">Delete</button>
+                    <button id="editEventBtn" class="btn-primary">編集</button>
+                    <button id="deleteEventBtn" class="btn-danger">削除</button>
                 </div>
             </div>
         </div>

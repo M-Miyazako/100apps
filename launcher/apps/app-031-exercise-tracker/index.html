@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercise Tracker</title>
+    <title>エクササイズトラッカー</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="tracker-container">
         <header class="tracker-header">
-            <h1>🏃 Exercise Tracker</h1>
+            <h1>🏃 エクササイズトラッカー</h1>
             <div class="header-controls">
                 <button id="themeToggle" class="theme-btn">🌙</button>
                 <button id="profileBtn" class="profile-btn">👤</button>
@@ -21,39 +21,39 @@
                 <div class="quick-stats">
                     <div class="stat-card">
                         <div class="stat-value" id="todayWorkouts">0</div>
-                        <div class="stat-label">Today's Workouts</div>
+                        <div class="stat-label">今日のワークアウト</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-value" id="totalWorkouts">0</div>
-                        <div class="stat-label">Total Workouts</div>
+                        <div class="stat-label">総ワークアウト数</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-value" id="currentStreak">0</div>
-                        <div class="stat-label">Day Streak</div>
+                        <div class="stat-label">連続日数</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-value" id="caloriesBurned">0</div>
-                        <div class="stat-label">Calories Burned</div>
+                        <div class="stat-label">消費カロリー</div>
                     </div>
                 </div>
 
                 <div class="workout-actions">
                     <button id="startWorkoutBtn" class="action-btn primary">
                         <span>▶️</span>
-                        Start Workout
+                        ワークアウト開始
                     </button>
                     <button id="addExerciseBtn" class="action-btn">
                         <span>➕</span>
-                        Add Exercise
+                        エクササイズ追加
                     </button>
                     <button id="viewHistoryBtn" class="action-btn">
                         <span>📊</span>
-                        View History
+                        履歴表示
                     </button>
                 </div>
 
                 <div class="current-workout" id="currentWorkout">
-                    <h2>Current Workout</h2>
+                    <h2>現在のワークアウト</h2>
                     <div class="workout-timer">
                         <div class="timer-display" id="timerDisplay">00:00:00</div>
                         <div class="timer-controls">
@@ -63,39 +63,39 @@
                         </div>
                     </div>
                     <div class="exercise-list" id="currentExercises">
-                        <p class="no-exercises">No exercises added yet</p>
+                        <p class="no-exercises">まだエクササイズが追加されていません</p>
                     </div>
-                    <button id="completeWorkout" class="complete-btn">Complete Workout</button>
+                    <button id="completeWorkout" class="complete-btn">ワークアウト完了</button>
                 </div>
 
                 <div class="exercise-templates">
-                    <h3>Exercise Templates</h3>
+                    <h3>エクササイズテンプレート</h3>
                     <div class="template-grid" id="templateGrid">
-                        <!-- Templates will be loaded here -->
+                        <!-- テンプレートがここに読み込まれます -->
                     </div>
                 </div>
             </div>
 
             <div class="side-panel">
                 <div class="panel-section">
-                    <h3>Recent Workouts</h3>
+                    <h3>最近のワークアウト</h3>
                     <div class="recent-workouts" id="recentWorkouts">
-                        <p class="no-data">No recent workouts</p>
+                        <p class="no-data">最近のワークアウトはありません</p>
                     </div>
                 </div>
 
                 <div class="panel-section">
-                    <h3>Progress Chart</h3>
+                    <h3>進捗チャート</h3>
                     <div class="chart-container">
                         <canvas id="progressChart" width="300" height="200"></canvas>
                     </div>
                 </div>
 
                 <div class="panel-section">
-                    <h3>Goals</h3>
+                    <h3>目標</h3>
                     <div class="goals-list" id="goalsList">
                         <div class="goal-item">
-                            <div class="goal-text">Weekly Workouts</div>
+                            <div class="goal-text">週間ワークアウト</div>
                             <div class="goal-progress">
                                 <div class="progress-bar">
                                     <div class="progress-fill" id="weeklyProgress"></div>
@@ -104,7 +104,7 @@
                             </div>
                         </div>
                         <div class="goal-item">
-                            <div class="goal-text">Monthly Calories</div>
+                            <div class="goal-text">月間カロリー</div>
                             <div class="goal-progress">
                                 <div class="progress-bar">
                                     <div class="progress-fill" id="caloriesProgress"></div>
@@ -122,49 +122,49 @@
     <div class="modal" id="addExerciseModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Add Exercise</h3>
+                <h3>エクササイズ追加</h3>
                 <button class="close-btn" id="closeModal">&times;</button>
             </div>
             <div class="modal-body">
                 <form id="exerciseForm">
                     <div class="form-group">
-                        <label for="exerciseName">Exercise Name</label>
+                        <label for="exerciseName">エクササイズ名</label>
                         <input type="text" id="exerciseName" required>
                     </div>
                     <div class="form-group">
-                        <label for="exerciseType">Type</label>
+                        <label for="exerciseType">タイプ</label>
                         <select id="exerciseType">
-                            <option value="cardio">Cardio</option>
-                            <option value="strength">Strength</option>
-                            <option value="flexibility">Flexibility</option>
-                            <option value="sports">Sports</option>
+                            <option value="cardio">有酸素運動</option>
+                            <option value="strength">筋力トレーニング</option>
+                            <option value="flexibility">柔軟性</option>
+                            <option value="sports">スポーツ</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="duration">Duration (minutes)</label>
+                        <label for="duration">時間 (分)</label>
                         <input type="number" id="duration" min="1" required>
                     </div>
                     <div class="form-group">
-                        <label for="sets">Sets</label>
+                        <label for="sets">セット数</label>
                         <input type="number" id="sets" min="1">
                     </div>
                     <div class="form-group">
-                        <label for="reps">Reps</label>
+                        <label for="reps">回数</label>
                         <input type="number" id="reps" min="1">
                     </div>
                     <div class="form-group">
-                        <label for="weight">Weight (lbs)</label>
+                        <label for="weight">重量 (lbs)</label>
                         <input type="number" id="weight" min="0" step="0.5">
                     </div>
                     <div class="form-group">
-                        <label for="notes">Notes</label>
+                        <label for="notes">メモ</label>
                         <textarea id="notes"></textarea>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn-cancel" id="cancelAdd">Cancel</button>
-                <button type="submit" form="exerciseForm" class="btn-primary">Add Exercise</button>
+                <button type="button" class="btn-cancel" id="cancelAdd">キャンセル</button>
+                <button type="submit" form="exerciseForm" class="btn-primary">エクササイズ追加</button>
             </div>
         </div>
     </div>
@@ -173,20 +173,20 @@
     <div class="modal" id="historyModal">
         <div class="modal-content large">
             <div class="modal-header">
-                <h3>Workout History</h3>
+                <h3>ワークアウト履歴</h3>
                 <button class="close-btn" id="closeHistoryModal">&times;</button>
             </div>
             <div class="modal-body">
                 <div class="history-filters">
                     <input type="date" id="dateFilter">
                     <select id="typeFilter">
-                        <option value="">All Types</option>
-                        <option value="cardio">Cardio</option>
-                        <option value="strength">Strength</option>
-                        <option value="flexibility">Flexibility</option>
-                        <option value="sports">Sports</option>
+                        <option value="">すべてのタイプ</option>
+                        <option value="cardio">有酸素運動</option>
+                        <option value="strength">筋力トレーニング</option>
+                        <option value="flexibility">柔軟性</option>
+                        <option value="sports">スポーツ</option>
                     </select>
-                    <button id="exportData" class="btn-export">Export Data</button>
+                    <button id="exportData" class="btn-export">データエクスポート</button>
                 </div>
                 <div class="history-list" id="historyList">
                     <!-- History items will be loaded here -->

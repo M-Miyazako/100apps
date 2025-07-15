@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Translation Tool</title>
+    <title>翻訳ツール</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="translator-container">
         <header class="translator-header">
-            <h1>🌐 Translation Tool</h1>
+            <h1>🌐 翻訳ツール</h1>
             <div class="header-controls">
                 <button id="themeToggle" class="theme-btn">🌙</button>
                 <button id="historyToggle" class="history-btn">📜</button>
@@ -22,7 +22,7 @@
                     <div class="input-section">
                         <div class="language-selector">
                             <select id="sourceLang" class="language-select">
-                                <option value="auto">Auto-detect</option>
+                                <option value="auto">自動検出</option>
                                 <option value="en">English</option>
                                 <option value="es">Spanish</option>
                                 <option value="fr">French</option>
@@ -131,7 +131,7 @@
                             <button id="swapLangs" class="swap-btn">🔄</button>
                         </div>
                         <div class="input-area">
-                            <textarea id="sourceText" placeholder="Enter text to translate..." maxlength="5000"></textarea>
+                            <textarea id="sourceText" placeholder="翻訳するテキストを入力..." maxlength="5000"></textarea>
                             <div class="input-controls">
                                 <button id="clearInput" class="clear-btn">🗑️</button>
                                 <button id="pasteText" class="paste-btn">📋</button>
@@ -143,7 +143,7 @@
                     
                     <div class="divider">
                         <button id="translateBtn" class="translate-btn">
-                            <span>Translate</span>
+                            <span>翻訳</span>
                             <div class="loading-spinner" id="loadingSpinner"></div>
                         </button>
                     </div>
@@ -258,13 +258,13 @@
                             </select>
                         </div>
                         <div class="output-area">
-                            <div id="translatedText" class="translated-text">Translation will appear here...</div>
+                            <div id="translatedText" class="translated-text">翻訳結果がここに表示されます...</div>
                             <div class="output-controls">
                                 <button id="copyTranslation" class="copy-btn">📋</button>
                                 <button id="saveTranslation" class="save-btn">💾</button>
                                 <button id="speakTranslation" class="speak-btn">🔊</button>
                                 <div class="confidence-indicator">
-                                    <span>Confidence: </span>
+                                    <span>信頼度: </span>
                                     <div class="confidence-bar">
                                         <div class="confidence-fill" id="confidenceFill"></div>
                                     </div>
@@ -276,27 +276,27 @@
                 </div>
                 
                 <div class="quick-actions">
-                    <h3>Quick Actions</h3>
+                    <h3>クイックアクション</h3>
                     <div class="action-buttons">
-                        <button class="quick-btn" data-action="common-phrases">Common Phrases</button>
-                        <button class="quick-btn" data-action="dictionary">Dictionary</button>
-                        <button class="quick-btn" data-action="favorites">Favorites</button>
-                        <button class="quick-btn" data-action="camera">Camera Translate</button>
+                        <button class="quick-btn" data-action="common-phrases">よく使うフレーズ</button>
+                        <button class="quick-btn" data-action="dictionary">辞書</button>
+                        <button class="quick-btn" data-action="favorites">お気に入り</button>
+                        <button class="quick-btn" data-action="camera">カメラ翻訳</button>
                     </div>
                 </div>
             </div>
             
             <div class="side-panel" id="sidePanel">
                 <div class="panel-content">
-                    <h3>Translation History</h3>
+                    <h3>翻訳履歴</h3>
                     <div class="history-controls">
-                        <button id="clearHistory" class="clear-history-btn">Clear All</button>
-                        <button id="exportHistory" class="export-btn">Export</button>
+                        <button id="clearHistory" class="clear-history-btn">すべてクリア</button>
+                        <button id="exportHistory" class="export-btn">エクスポート</button>
                     </div>
                     <div class="history-list" id="historyList">
                         <div class="empty-history">
-                            <p>No translation history</p>
-                            <p>Start translating to see history</p>
+                            <p>翻訳履歴はありません</p>
+                            <p>翻訳を開始して履歴を表示</p>
                         </div>
                     </div>
                 </div>
@@ -304,23 +304,23 @@
         </div>
         
         <div class="favorites-panel" id="favoritesPanel">
-            <h3>Favorite Translations</h3>
+            <h3>お気に入りの翻訳</h3>
             <div class="favorites-list" id="favoritesList">
                 <div class="empty-favorites">
-                    <p>No favorite translations</p>
-                    <p>Save translations to access them quickly</p>
+                    <p>お気に入りの翻訳はありません</p>
+                    <p>翻訳を保存して簡単にアクセス</p>
                 </div>
             </div>
         </div>
         
         <div class="common-phrases-panel" id="commonPhrasesPanel">
-            <h3>Common Phrases</h3>
+            <h3>よく使うフレーズ</h3>
             <div class="phrases-categories">
-                <button class="category-btn active" data-category="greetings">Greetings</button>
-                <button class="category-btn" data-category="travel">Travel</button>
-                <button class="category-btn" data-category="food">Food</button>
-                <button class="category-btn" data-category="business">Business</button>
-                <button class="category-btn" data-category="emergency">Emergency</button>
+                <button class="category-btn active" data-category="greetings">あいさつ</button>
+                <button class="category-btn" data-category="travel">旅行</button>
+                <button class="category-btn" data-category="food">食べ物</button>
+                <button class="category-btn" data-category="business">ビジネス</button>
+                <button class="category-btn" data-category="emergency">緊急時</button>
             </div>
             <div class="phrases-list" id="phrasesList">
                 <!-- Phrases will be loaded here -->
@@ -328,14 +328,14 @@
         </div>
         
         <div class="dictionary-panel" id="dictionaryPanel">
-            <h3>Dictionary</h3>
+            <h3>辞書</h3>
             <div class="dictionary-search">
-                <input type="text" id="dictionaryInput" placeholder="Search for a word...">
+                <input type="text" id="dictionaryInput" placeholder="単語を検索...">
                 <button id="dictionarySearchBtn">🔍</button>
             </div>
             <div class="dictionary-results" id="dictionaryResults">
                 <div class="empty-dictionary">
-                    <p>Enter a word to see its definition and translations</p>
+                    <p>単語を入力して定義と翻訳を表示</p>
                 </div>
             </div>
         </div>

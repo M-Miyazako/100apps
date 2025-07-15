@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Morse Code Converter</title>
+    <title>モールス信号変換器</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Morse Code Converter</h1>
-            <p class="subtitle">Convert text to morse code and back with audio playback</p>
+            <h1>モールス信号変換器</h1>
+            <p class="subtitle">テキストをモールス信号に変換し、音声再生できます</p>
         </header>
 
         <main>
             <div class="converter-section">
                 <div class="input-group">
-                    <label for="text-input">Text Input:</label>
-                    <textarea id="text-input" placeholder="Enter text to convert to morse code..." rows="4"></textarea>
+                    <label for="text-input">テキスト入力:</label>
+                    <textarea id="text-input" placeholder="モールス信号に変換するテキストを入力..." rows="4"></textarea>
                     <div class="button-group">
-                        <button id="text-to-morse" class="btn primary">Convert to Morse</button>
-                        <button id="copy-morse" class="btn secondary">Copy Morse</button>
+                        <button id="text-to-morse" class="btn primary">モールスに変換</button>
+                        <button id="copy-morse" class="btn secondary">モールスをコピー</button>
                     </div>
                 </div>
 
@@ -31,11 +31,11 @@
                 </div>
 
                 <div class="input-group">
-                    <label for="morse-input">Morse Code Input:</label>
-                    <textarea id="morse-input" placeholder="Enter morse code to convert to text... (use dots, dashes, and spaces)" rows="4"></textarea>
+                    <label for="morse-input">モールス信号入力:</label>
+                    <textarea id="morse-input" placeholder="テキストに変換するモールス信号を入力... (ドット、ダッシュ、スペースを使用)" rows="4"></textarea>
                     <div class="button-group">
-                        <button id="morse-to-text" class="btn primary">Convert to Text</button>
-                        <button id="copy-text" class="btn secondary">Copy Text</button>
+                        <button id="morse-to-text" class="btn primary">テキストに変換</button>
+                        <button id="copy-text" class="btn secondary">テキストをコピー</button>
                     </div>
                 </div>
 
@@ -45,27 +45,27 @@
             </div>
 
             <div class="audio-section">
-                <h3>Audio Controls</h3>
+                <h3>音声コントロール</h3>
                 <div class="audio-controls">
                     <button id="play-morse" class="btn audio-btn">
                         <span class="play-icon">▶</span>
-                        Play Morse Code
+                        モールス信号を再生
                     </button>
                     <button id="stop-morse" class="btn audio-btn">
                         <span class="stop-icon">⏹</span>
-                        Stop
+                        停止
                     </button>
                 </div>
                 
                 <div class="speed-control">
-                    <label for="speed-slider">Speed (WPM):</label>
+                    <label for="speed-slider">速度 (WPM):</label>
                     <input type="range" id="speed-slider" min="5" max="30" value="15" step="1">
                     <span id="speed-value">15</span>
                 </div>
             </div>
 
             <div class="morse-reference">
-                <h3>Morse Code Reference</h3>
+                <h3>モールス信号リファレンス</h3>
                 <div class="reference-grid" id="morse-reference-grid">
                     <!-- Reference will be populated by JavaScript -->
                 </div>
@@ -73,7 +73,7 @@
         </main>
 
         <footer>
-            <p>&copy; 2024 Morse Code Converter - Part of 100 Web Apps</p>
+            <p>&copy; 2024 モールス信号変換器 - 100個のウェブアプリの一部</p>
         </footer>
     </div>
 

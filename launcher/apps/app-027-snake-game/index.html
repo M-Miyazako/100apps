@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snake Game</title>
+    <title>スネークゲーム</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="game-container">
         <header class="game-header">
-            <h1>🐍 Snake Game</h1>
+            <h1>🐍 スネークゲーム</h1>
             <div class="game-info">
-                <div class="score">Score: <span id="score">0</span></div>
-                <div class="high-score">High Score: <span id="high-score">0</span></div>
+                <div class="score">スコア: <span id="score">0</span></div>
+                <div class="high-score">ハイスコア: <span id="high-score">0</span></div>
             </div>
         </header>
         
@@ -21,69 +21,69 @@
                 <canvas id="gameCanvas" width="400" height="400"></canvas>
                 <div class="game-overlay" id="gameOverlay">
                     <div class="game-message">
-                        <h2 id="gameMessage">Press SPACE to Start</h2>
-                        <p id="gameInstructions">Use arrow keys to control the snake</p>
-                        <button id="startButton" class="game-button">Start Game</button>
+                        <h2 id="gameMessage">スペースキーでスタート</h2>
+                        <p id="gameInstructions">矢印キーでスネークを操作</p>
+                        <button id="startButton" class="game-button">ゲームスタート</button>
                     </div>
                 </div>
             </div>
             
             <div class="game-controls">
                 <div class="control-section">
-                    <h3>Controls</h3>
+                    <h3>操作方法</h3>
                     <div class="control-grid">
                         <div class="control-item">
                             <div class="control-key">↑</div>
-                            <span>Up</span>
+                            <span>上</span>
                         </div>
                         <div class="control-item">
                             <div class="control-key">↓</div>
-                            <span>Down</span>
+                            <span>下</span>
                         </div>
                         <div class="control-item">
                             <div class="control-key">←</div>
-                            <span>Left</span>
+                            <span>左</span>
                         </div>
                         <div class="control-item">
                             <div class="control-key">→</div>
-                            <span>Right</span>
+                            <span>右</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="control-section">
-                    <h3>Game Options</h3>
+                    <h3>ゲームオプション</h3>
                     <div class="option-item">
-                        <label for="difficulty">Difficulty:</label>
+                        <label for="difficulty">難易度:</label>
                         <select id="difficulty">
-                            <option value="easy">Easy</option>
-                            <option value="medium" selected>Medium</option>
-                            <option value="hard">Hard</option>
+                            <option value="easy">簡単</option>
+                            <option value="medium" selected>中級</option>
+                            <option value="hard">困難</option>
                         </select>
                     </div>
                     <div class="option-item">
-                        <label for="boardSize">Board Size:</label>
+                        <label for="boardSize">ボードサイズ:</label>
                         <select id="boardSize">
-                            <option value="small">Small (20x20)</option>
-                            <option value="medium" selected>Medium (25x25)</option>
-                            <option value="large">Large (30x30)</option>
+                            <option value="small">小 (20x20)</option>
+                            <option value="medium" selected>中 (25x25)</option>
+                            <option value="large">大 (30x30)</option>
                         </select>
                     </div>
                 </div>
                 
                 <div class="control-section">
-                    <h3>Statistics</h3>
+                    <h3>統計</h3>
                     <div class="stats">
                         <div class="stat-item">
-                            <span class="stat-label">Games Played:</span>
+                            <span class="stat-label">プレイ回数:</span>
                             <span id="gamesPlayed">0</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-label">Best Score:</span>
+                            <span class="stat-label">ベストスコア:</span>
                             <span id="bestScore">0</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-label">Average Score:</span>
+                            <span class="stat-label">平均スコア:</span>
                             <span id="avgScore">0</span>
                         </div>
                     </div>

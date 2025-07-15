@@ -1,38 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memory Game</title>
+    <title>メモリーゲーム</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="game-container">
         <header class="game-header">
-            <h1>Memory Game</h1>
+            <h1>メモリーゲーム</h1>
             <div class="game-controls">
                 <div class="difficulty-selector">
-                    <label for="difficulty">Difficulty:</label>
+                    <label for="difficulty">難易度:</label>
                     <select id="difficulty">
-                        <option value="easy">Easy (4x4)</option>
-                        <option value="hard">Hard (6x6)</option>
+                        <option value="easy">簡単 (4x4)</option>
+                        <option value="hard">難しい (6x6)</option>
                     </select>
                 </div>
-                <button id="new-game-btn" class="btn btn-primary">New Game</button>
+                <button id="new-game-btn" class="btn btn-primary">新しいゲーム</button>
             </div>
         </header>
 
         <div class="game-stats">
             <div class="stat-item">
-                <span class="stat-label">Moves:</span>
+                <span class="stat-label">手数:</span>
                 <span id="moves" class="stat-value">0</span>
             </div>
             <div class="stat-item">
-                <span class="stat-label">Time:</span>
+                <span class="stat-label">時間:</span>
                 <span id="time" class="stat-value">0:00</span>
             </div>
             <div class="stat-item">
-                <span class="stat-label">Best Score:</span>
+                <span class="stat-label">ベストスコア:</span>
                 <span id="best-score" class="stat-value">--</span>
             </div>
         </div>
@@ -42,8 +42,8 @@
         </div>
 
         <div class="game-footer">
-            <button id="pause-btn" class="btn btn-secondary">Pause</button>
-            <button id="reset-btn" class="btn btn-secondary">Reset</button>
+            <button id="pause-btn" class="btn btn-secondary">一時停止</button>
+            <button id="reset-btn" class="btn btn-secondary">リセット</button>
         </div>
     </div>
 
@@ -51,12 +51,12 @@
     <div id="win-modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Congratulations!</h2>
+                <h2>おめでとうございます！</h2>
                 <span class="close">&times;</span>
             </div>
             <div class="modal-body">
                 <div class="celebration-icon">🎉</div>
-                <p>You completed the game!</p>
+                <p>ゲームをクリアしました！</p>
                 <div class="final-stats">
                     <div class="final-stat">
                         <span class="stat-label">Moves:</span>
@@ -76,7 +76,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button id="play-again-btn" class="btn btn-primary">Play Again</button>
+                <button id="play-again-btn" class="btn btn-primary">もう一度プレイ</button>
             </div>
         </div>
     </div>
@@ -85,13 +85,13 @@
     <div id="pause-modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Game Paused</h2>
+                <h2>ゲーム一時停止</h2>
             </div>
             <div class="modal-body">
-                <p>Game is paused. Click resume to continue.</p>
+                <p>ゲームが一時停止されています。続けるには再開をクリックしてください。</p>
             </div>
             <div class="modal-footer">
-                <button id="resume-btn" class="btn btn-primary">Resume</button>
+                <button id="resume-btn" class="btn btn-primary">再開</button>
             </div>
         </div>
     </div>

@@ -1,34 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tetris Game</title>
+    <title>テトリス</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="game-container">
         <div class="game-header">
-            <h1>TETRIS</h1>
+            <h1>テトリス</h1>
         </div>
         
         <div class="game-content">
             <div class="side-panel left-panel">
                 <div class="hold-section">
-                    <h3>HOLD</h3>
+                    <h3>ホールド</h3>
                     <canvas id="holdCanvas" width="120" height="120"></canvas>
                 </div>
                 <div class="info-section">
                     <div class="info-item">
-                        <span class="label">SCORE</span>
+                        <span class="label">スコア</span>
                         <span id="score" class="value">0</span>
                     </div>
                     <div class="info-item">
-                        <span class="label">LINES</span>
+                        <span class="label">ライン</span>
                         <span id="lines" class="value">0</span>
                     </div>
                     <div class="info-item">
-                        <span class="label">LEVEL</span>
+                        <span class="label">レベル</span>
                         <span id="level" class="value">1</span>
                     </div>
                 </div>
@@ -37,51 +37,51 @@
             <div class="main-game">
                 <canvas id="gameCanvas" width="300" height="600"></canvas>
                 <div class="game-over" id="gameOver" style="display: none;">
-                    <h2>GAME OVER</h2>
-                    <p>Final Score: <span id="finalScore">0</span></p>
-                    <button id="restartBtn">RESTART</button>
+                    <h2>ゲームオーバー</h2>
+                    <p>最終スコア: <span id="finalScore">0</span></p>
+                    <button id="restartBtn">リスタート</button>
                 </div>
             </div>
             
             <div class="side-panel right-panel">
                 <div class="next-section">
-                    <h3>NEXT</h3>
+                    <h3>ネクスト</h3>
                     <canvas id="nextCanvas" width="120" height="120"></canvas>
                 </div>
                 <div class="controls-section">
-                    <h3>CONTROLS</h3>
+                    <h3>操作方法</h3>
                     <div class="control-item">
                         <span class="key">←→</span>
-                        <span>Move</span>
+                        <span>移動</span>
                     </div>
                     <div class="control-item">
                         <span class="key">↓</span>
-                        <span>Soft Drop</span>
+                        <span>ソフトドロップ</span>
                     </div>
                     <div class="control-item">
                         <span class="key">↑</span>
-                        <span>Rotate</span>
+                        <span>回転</span>
                     </div>
                     <div class="control-item">
                         <span class="key">Space</span>
-                        <span>Hard Drop</span>
+                        <span>ハードドロップ</span>
                     </div>
                     <div class="control-item">
                         <span class="key">C</span>
-                        <span>Hold</span>
+                        <span>ホールド</span>
                     </div>
                     <div class="control-item">
                         <span class="key">P</span>
-                        <span>Pause</span>
+                        <span>一時停止</span>
                     </div>
                 </div>
             </div>
         </div>
         
         <div class="game-controls">
-            <button id="startBtn">START</button>
-            <button id="pauseBtn" disabled>PAUSE</button>
-            <button id="resetBtn">RESET</button>
+            <button id="startBtn">スタート</button>
+            <button id="pauseBtn" disabled>一時停止</button>
+            <button id="resetBtn">リセット</button>
         </div>
     </div>
     

@@ -7,7 +7,7 @@ export interface App {
   thumbnail?: string;
   tags: string[];
   createdAt: Date;
-  isCompleted: boolean;
+  isTestedWorking: boolean | null;
 }
 
 export interface AppCategory {

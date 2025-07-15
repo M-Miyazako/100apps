@@ -9,7 +9,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-001-calculator/index.html',
     tags: ['計算', '数学', 'ユーティリティ', '001'],
     createdAt: new Date('2024-01-15'),
-    isCompleted: true,
+    isTestedWorking: true,
   },
   {
     id: '002',
@@ -19,7 +19,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-002-todo/index.html',
     tags: ['タスク管理', '生産性', 'リスト', '002'],
     createdAt: new Date('2024-01-16'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '003',
@@ -29,7 +29,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-003-stopwatch/index.html',
     tags: ['時間', '計測', 'スポーツ', '003'],
     createdAt: new Date('2024-01-17'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '004',
@@ -39,7 +39,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-004-rock-paper-scissors/index.html',
     tags: ['ゲーム', 'じゃんけん', '対戦', '004'],
     createdAt: new Date('2024-01-18'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '005',
@@ -49,7 +49,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-005-color-picker/index.html',
     tags: ['カラー', 'デザイン', 'ツール', '005'],
     createdAt: new Date('2024-01-19'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '006',
@@ -59,7 +59,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-006-weather/index.html',
     tags: ['天気', '予報', 'ユーティリティ', '006'],
     createdAt: new Date('2024-01-20'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '007',
@@ -69,7 +69,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-007-notes/index.html',
     tags: ['メモ', 'テキスト', 'エディタ', '生産性', '007'],
     createdAt: new Date('2024-01-21'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '008',
@@ -79,7 +79,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-008-timer/index.html',
     tags: ['タイマー', '時間管理', '生産性', '008'],
     createdAt: new Date('2024-01-22'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '009',
@@ -89,7 +89,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-009-password-generator/index.html',
     tags: ['パスワード', 'セキュリティ', 'ジェネレーター', '009'],
     createdAt: new Date('2024-01-23'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '010',
@@ -99,7 +99,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-010-qr-generator/index.html',
     tags: ['QR', 'ジェネレーター', 'ツール', '010'],
     createdAt: new Date('2024-01-24'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '011',
@@ -109,7 +109,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-011-text-counter/index.html',
     tags: ['テキスト', '分析', 'カウンター', '統計', '011'],
     createdAt: new Date('2024-01-25'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '012',
@@ -119,7 +119,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-012-coin-flip/index.html',
     tags: ['ゲーム', 'コイン', 'フリップ', '統計', '012'],
     createdAt: new Date('2024-01-26'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '013',
@@ -129,7 +129,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-013-form-validator/index.html',
     tags: ['フォーム', 'バリデーション', 'ユーティリティ', 'セキュリティ', '013'],
     createdAt: new Date('2024-01-27'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '014',
@@ -139,7 +139,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-014-unit-converter/index.html',
     tags: ['単位変換', 'ユーティリティ', '変換', '計算', '014'],
     createdAt: new Date('2024-01-27'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '015',
@@ -149,7 +149,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-015-name-generator/index.html',
     tags: ['名前', 'ジェネレーター', 'ランダム', 'ツール', '015'],
     createdAt: new Date('2024-01-27'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '016',
@@ -159,7 +159,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-016-calendar/index.html',
     tags: ['カレンダー', 'イベント', 'スケジュール', '生産性', '016'],
     createdAt: new Date('2024-01-27'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '017',
@@ -169,7 +169,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-017-morse-code/index.html',
     tags: ['モールス符号', '変換', 'ツール', '暗号化', '017'],
     createdAt: new Date('2024-01-27'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '018',
@@ -179,7 +179,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-018-bingo/index.html',
     tags: ['ビンゴ', 'ゲーム', 'パーティー', 'エンターテイメント', '018'],
     createdAt: new Date('2024-01-27'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '019',
@@ -189,7 +189,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-019-memory-game/index.html',
     tags: ['メモリー', 'ゲーム', '記憶力', 'カード', '019'],
     createdAt: new Date('2024-01-27'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '020',
@@ -199,7 +199,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-020-number-guessing/index.html',
     tags: ['ゲーム', '数字', '推測', '難易度', '020'],
     createdAt: new Date('2024-01-27'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '021',
@@ -209,7 +209,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-021-bmi-calculator/index.html',
     tags: ['BMI', '健康', '計算機', 'ユーティリティ', '021'],
     createdAt: new Date('2024-01-27'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '022',
@@ -219,7 +219,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-022-hash-generator/index.html',
     tags: ['ハッシュ', 'セキュリティ', '暗号化', 'ジェネレーター', '022'],
     createdAt: new Date('2024-01-27'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '023',
@@ -229,7 +229,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-023-dice-game/index.html',
     tags: ['ダイス', 'ゲーム', 'ヤッツィー', '3D', '023'],
     createdAt: new Date('2024-01-27'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '024',
@@ -239,7 +239,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-024-tetris/index.html',
     tags: ['テトリス', 'ゲーム', 'パズル', 'アクション', '024'],
     createdAt: new Date('2024-01-27'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '025',
@@ -249,7 +249,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-025-music-player/index.html',
     tags: ['音楽', 'プレイヤー', 'オーディオ', 'エンターテイメント', '025'],
     createdAt: new Date('2024-01-27'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '026',
@@ -259,7 +259,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-026-chat-app/index.html',
     tags: ['チャット', 'メッセージング', 'コミュニケーション', 'ソーシャル', '026'],
     createdAt: new Date('2024-01-27'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '027',
@@ -269,7 +269,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-027-snake-game/index.html',
     tags: ['スネーク', 'ゲーム', 'アクション', 'レトロ', '027'],
     createdAt: new Date('2024-01-28'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '028',
@@ -279,7 +279,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-028-media-player/index.html',
     tags: ['メディア', 'プレイヤー', '動画', '音楽', '028'],
     createdAt: new Date('2024-01-28'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '029',
@@ -289,7 +289,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-029-translation-tool/index.html',
     tags: ['翻訳', '多言語', 'ツール', '言語', '029'],
     createdAt: new Date('2024-01-28'),
-    isCompleted: true,
+    isTestedWorking: false,
   },
   {
     id: '030',
@@ -299,7 +299,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-030-quiz-app/index.html',
     tags: ['クイズ', 'ゲーム', '教育', '学習', '030'],
     createdAt: new Date('2024-01-28'),
-    isCompleted: true,
+    isTestedWorking: false,
   },
   {
     id: '031',
@@ -309,7 +309,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-031-exercise-tracker/index.html',
     tags: ['エクササイズ', 'フィットネス', 'トラッカー', '健康', '031'],
     createdAt: new Date('2024-01-28'),
-    isCompleted: true,
+    isTestedWorking: false,
   },
   {
     id: '032',
@@ -319,7 +319,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-032-color-game/index.html',
     tags: ['カラー', 'ゲーム', '色', '記憶', '032'],
     createdAt: new Date('2024-01-28'),
-    isCompleted: true,
+    isTestedWorking: false,
   },
   {
     id: '033',
@@ -329,7 +329,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-033-barcode-generator/index.html',
     tags: ['バーコード', 'ジェネレーター', 'ツール', '033'],
     createdAt: new Date('2024-01-28'),
-    isCompleted: true,
+    isTestedWorking: false,
   },
   {
     id: '034',
@@ -339,7 +339,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-034-shopping-list/index.html',
     tags: ['ショッピング', 'リスト', '買い物', '管理', '034'],
     createdAt: new Date('2024-01-28'),
-    isCompleted: true,
+    isTestedWorking: false,
   },
   {
     id: '035',
@@ -349,7 +349,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-035-recipe-finder/index.html',
     tags: ['レシピ', '料理', '検索', '食事', '035'],
     createdAt: new Date('2024-01-28'),
-    isCompleted: true,
+    isTestedWorking: false,
   },
   {
     id: '036',
@@ -359,7 +359,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-036-rock-game/index.html',
     tags: ['ロック', 'ゲーム', 'アクション', '岩石', '036'],
     createdAt: new Date('2024-01-28'),
-    isCompleted: true,
+    isTestedWorking: false,
   },
   {
     id: '037',
@@ -369,7 +369,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-037-simple-game/index.html',
     tags: ['シンプル', 'ゲーム', 'カジュアル', '037'],
     createdAt: new Date('2024-01-28'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '038',
@@ -379,7 +379,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-038-modern-game/index.html',
     tags: ['モダン', 'ゲーム', 'UI', 'スタイリッシュ', '038'],
     createdAt: new Date('2024-01-28'),
-    isCompleted: true,
+    isTestedWorking: false,
   },
   {
     id: '039',
@@ -389,7 +389,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-039-fantasy-game/index.html',
     tags: ['ファンタジー', 'ゲーム', 'RPG', '冒険', '039'],
     createdAt: new Date('2024-01-28'),
-    isCompleted: true,
+    isTestedWorking: false,
   },
   {
     id: '040',
@@ -399,7 +399,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-040-adventure-game/index.html',
     tags: ['アドベンチャー', 'ゲーム', '冒険', '探検', '040'],
     createdAt: new Date('2024-01-28'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '041',
@@ -409,7 +409,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-041-shooting-game/index.html',
     tags: ['シューティング', 'ゲーム', 'アクション', '射撃', '041'],
     createdAt: new Date('2024-01-28'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '042',
@@ -419,7 +419,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-042-word-game/index.html',
     tags: ['ワード', 'ゲーム', '単語', '言葉', '042'],
     createdAt: new Date('2024-01-28'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '043',
@@ -429,7 +429,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-043-weather-widget/index.html',
     tags: ['天気', 'ウィジェット', '情報', '予報', '043'],
     createdAt: new Date('2024-01-28'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '044',
@@ -439,7 +439,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-044-expense-tracker/index.html',
     tags: ['支出', '家計簿', '管理', '家計', '044'],
     createdAt: new Date('2024-01-28'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '045',
@@ -449,7 +449,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-045-habit-tracker/index.html',
     tags: ['習慣', 'トラッカー', '管理', '継続', '045'],
     createdAt: new Date('2024-01-28'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '046',
@@ -459,7 +459,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-046-drawing-app/index.html',
     tags: ['お絵かき', 'アート', '描画', 'ツール', '046'],
     createdAt: new Date('2024-01-28'),
-    isCompleted: true,
+    isTestedWorking: false,
   },
   {
     id: '047',
@@ -469,7 +469,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-047-voice-recorder/index.html',
     tags: ['音声', 'レコーダー', '録音', '再生', '047'],
     createdAt: new Date('2024-01-28'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '048',
@@ -479,7 +479,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-048-file-manager/index.html',
     tags: ['ファイル', 'マネージャー', '管理', 'ユーティリティ', '048'],
     createdAt: new Date('2024-01-28'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '049',
@@ -489,7 +489,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-049-image-editor/index.html',
     tags: ['画像', 'エディター', '編集', '加工', '049'],
     createdAt: new Date('2024-01-28'),
-    isCompleted: true,
+    isTestedWorking: false,
   },
   {
     id: '050',
@@ -499,7 +499,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-050-pdf-viewer/index.html',
     tags: ['PDF', 'ビューアー', '閲覧', 'ドキュメント', '050'],
     createdAt: new Date('2024-01-28'),
-    isCompleted: true,
+    isTestedWorking: false,
   },
   {
     id: '051',
@@ -509,7 +509,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-051-spreadsheet/index.html',
     tags: ['スプレッドシート', '表計算', '計算', 'データ', '051'],
     createdAt: new Date('2024-01-28'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '052',
@@ -519,7 +519,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-052-presentation-tool/index.html',
     tags: ['プレゼン', 'スライド', '発表', 'ツール', '052'],
     createdAt: new Date('2024-01-28'),
-    isCompleted: true,
+    isTestedWorking: false,
   },
   {
     id: '053',
@@ -529,7 +529,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-053-code-editor/index.html',
     tags: ['コード', 'エディター', 'プログラミング', '開発', '053'],
     createdAt: new Date('2024-01-28'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '054',
@@ -539,7 +539,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-054-terminal-emulator/index.html',
     tags: ['ターミナル', 'エミュレーター', 'コマンドライン', '開発', '054'],
     createdAt: new Date('2024-01-28'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '055',
@@ -549,7 +549,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-055-video-player/index.html',
     tags: ['ビデオ', 'プレイヤー', '動画', '再生', '055'],
     createdAt: new Date('2024-01-28'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '056',
@@ -559,7 +559,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-056-audio-editor/index.html',
     tags: ['オーディオ', 'エディター', '音声', '編集', '056'],
     createdAt: new Date('2024-01-28'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '057',
@@ -569,7 +569,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-057-social-network/index.html',
     tags: ['SNS', 'ソーシャル', 'ネットワーク', 'コミュニケーション', '057'],
     createdAt: new Date('2024-01-29'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '058',
@@ -579,7 +579,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-058-chat-bot/index.html',
     tags: ['チャットボット', 'AI', '会話', 'アシスタント', '058'],
     createdAt: new Date('2024-01-29'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '059',
@@ -589,7 +589,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-059-url-shortener/index.html',
     tags: ['URL', '短縮', 'リンク', 'ユーティリティ', '059'],
     createdAt: new Date('2024-01-29'),
-    isCompleted: true,
+    isTestedWorking: false,
   },
   {
     id: '060',
@@ -599,7 +599,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-060-bookmark-manager/index.html',
     tags: ['ブックマーク', '管理', 'お気に入り', '整理', '060'],
     createdAt: new Date('2024-01-29'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '061',
@@ -609,7 +609,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-061-note-taking/index.html',
     tags: ['ノート', 'メモ', '作成', '管理', '061'],
     createdAt: new Date('2024-01-29'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '062',
@@ -619,7 +619,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-062-time-tracker/index.html',
     tags: ['時間', 'トラッカー', '作業', '追跡', '062'],
     createdAt: new Date('2024-01-29'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '063',
@@ -629,7 +629,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-063-project-manager/index.html',
     tags: ['プロジェクト', '管理', '進捗', 'チーム', '063'],
     createdAt: new Date('2024-01-29'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '064',
@@ -639,7 +639,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-064-kanban-board/index.html',
     tags: ['カンバン', 'ボード', 'タスク', '管理', '064'],
     createdAt: new Date('2024-01-29'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '065',
@@ -649,7 +649,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-065-gantt-chart/index.html',
     tags: ['ガント', 'チャート', 'スケジュール', 'プロジェクト', '065'],
     createdAt: new Date('2024-01-29'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '066',
@@ -659,7 +659,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-066-mind-map/index.html',
     tags: ['マインドマップ', 'アイデア', '整理', 'ブレスト', '066'],
     createdAt: new Date('2024-01-29'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '067',
@@ -669,7 +669,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-067-flow-chart/index.html',
     tags: ['フローチャート', '図', '作成', 'プロセス', '067'],
     createdAt: new Date('2024-01-29'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '068',
@@ -679,7 +679,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-068-wireframe-tool/index.html',
     tags: ['ワイヤーフレーム', 'UI', 'デザイン', 'プロトタイプ', '068'],
     createdAt: new Date('2024-01-29'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '069',
@@ -689,7 +689,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-069-mockup-tool/index.html',
     tags: ['モックアップ', 'UI', 'デザイン', 'プロトタイプ', '069'],
     createdAt: new Date('2024-01-29'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '070',
@@ -699,7 +699,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-070-design-system/index.html',
     tags: ['デザインシステム', 'UI', 'コンポーネント', '管理', '070'],
     createdAt: new Date('2024-01-29'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '071',
@@ -709,7 +709,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-071-style-guide/index.html',
     tags: ['スタイルガイド', 'デザイン', 'ガイドライン', 'ブランド', '071'],
     createdAt: new Date('2024-01-29'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '072',
@@ -719,7 +719,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-072-database-viewer/index.html',
     tags: ['データベース', 'ビューアー', 'SQL', 'データ', '072'],
     createdAt: new Date('2024-01-29'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '073',
@@ -729,7 +729,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-073-api-tester/index.html',
     tags: ['API', 'テスター', 'デバッグ', '開発', '073'],
     createdAt: new Date('2024-01-29'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '074',
@@ -739,7 +739,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-074-json-formatter/index.html',
     tags: ['JSON', 'フォーマッター', '整形', '検証', '074'],
     createdAt: new Date('2024-01-29'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '075',
@@ -749,7 +749,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-075-regex-tester/index.html',
     tags: ['正規表現', 'テスター', 'パターン', 'デバッグ', '075'],
     createdAt: new Date('2024-01-29'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '076',
@@ -759,7 +759,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-076-color-palette/index.html',
     tags: ['カラー', 'パレット', 'デザイン', '色彩', '076'],
     createdAt: new Date('2024-01-29'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '077',
@@ -769,7 +769,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-077-font-manager/index.html',
     tags: ['フォント', '管理', 'タイポグラフィ', 'デザイン', '077'],
     createdAt: new Date('2024-01-29'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '078',
@@ -779,7 +779,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-078-icon-library/index.html',
     tags: ['アイコン', 'ライブラリ', 'デザイン', 'UI', '078'],
     createdAt: new Date('2024-01-29'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '079',
@@ -789,7 +789,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-079-gradient-generator/index.html',
     tags: ['グラデーション', 'CSS', '生成', 'デザイン', '079'],
     createdAt: new Date('2024-01-29'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '080',
@@ -799,7 +799,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-080-css-generator/index.html',
     tags: ['CSS', '生成', 'コード', 'ウェブ開発', '080'],
     createdAt: new Date('2024-01-29'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '081',
@@ -809,7 +809,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-081-html-builder/index.html',
     tags: ['HTML', 'ビルダー', 'ウェブ開発', 'ページ作成', '081'],
     createdAt: new Date('2024-01-29'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '082',
@@ -819,7 +819,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-082-javascript-playground/index.html',
     tags: ['JavaScript', '実行環境', 'コード', 'テスト', '082'],
     createdAt: new Date('2024-01-29'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '083',
@@ -829,7 +829,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-083-markdown-editor/index.html',
     tags: ['Markdown', 'エディター', '編集', 'プレビュー', '083'],
     createdAt: new Date('2024-01-29'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '084',
@@ -839,7 +839,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-084-latex-editor/index.html',
     tags: ['LaTeX', 'エディター', '文書', '数式', '084'],
     createdAt: new Date('2024-01-29'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '085',
@@ -849,7 +849,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-085-documentation-tool/index.html',
     tags: ['ドキュメント', '作成', '管理', '文書', '085'],
     createdAt: new Date('2024-01-29'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '086',
@@ -859,7 +859,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-086-blog-platform/index.html',
     tags: ['ブログ', 'プラットフォーム', 'CMS', '投稿', '086'],
     createdAt: new Date('2024-01-29'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '087',
@@ -869,7 +869,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-087-cms-tool/index.html',
     tags: ['CMS', 'コンテンツ', '管理', 'システム', '087'],
     createdAt: new Date('2024-01-30'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '088',
@@ -879,7 +879,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-088-forum-app/index.html',
     tags: ['フォーラム', 'ディスカッション', 'コミュニティ', '掲示板', '088'],
     createdAt: new Date('2024-01-30'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '089',
@@ -889,7 +889,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-089-wiki-editor/index.html',
     tags: ['Wiki', 'エディター', '共同編集', 'ナレッジ', '089'],
     createdAt: new Date('2024-01-30'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '090',
@@ -899,7 +899,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-090-news-reader/index.html',
     tags: ['ニュース', 'リーダー', '配信', '情報', '090'],
     createdAt: new Date('2024-01-30'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '091',
@@ -909,7 +909,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-091-rss-reader/index.html',
     tags: ['RSS', 'フィード', '購読', '情報収集', '091'],
     createdAt: new Date('2024-01-30'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '092',
@@ -919,7 +919,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-092-podcast-player/index.html',
     tags: ['ポッドキャスト', 'プレイヤー', '音声', 'エンターテイメント', '092'],
     createdAt: new Date('2024-01-30'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '093',
@@ -929,7 +929,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-093-video-streamer/index.html',
     tags: ['ビデオ', 'ストリーミング', '動画', '配信', '093'],
     createdAt: new Date('2024-01-30'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '094',
@@ -939,7 +939,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-094-live-stream/index.html',
     tags: ['ライブ', 'ストリーム', '配信', 'リアルタイム', '094'],
     createdAt: new Date('2024-01-30'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '095',
@@ -949,7 +949,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-095-webrtc-chat/index.html',
     tags: ['WebRTC', 'チャット', 'ビデオ', 'リアルタイム', '095'],
     createdAt: new Date('2024-01-30'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '096',
@@ -959,7 +959,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-096-conference-tool/index.html',
     tags: ['会議', 'ビデオ', 'オンライン', 'コラボレーション', '096'],
     createdAt: new Date('2024-01-30'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '097',
@@ -969,7 +969,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-097-screen-share/index.html',
     tags: ['画面共有', 'リモート', 'アクセス', '共有', '097'],
     createdAt: new Date('2024-01-30'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '098',
@@ -979,7 +979,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-098-remote-desktop/index.html',
     tags: ['リモートデスクトップ', 'アクセス', '遠隔操作', 'ツール', '098'],
     createdAt: new Date('2024-01-30'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '099',
@@ -989,7 +989,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-099-vnc-viewer/index.html',
     tags: ['VNC', 'ビューアー', 'リモート', 'アクセス', '099'],
     createdAt: new Date('2024-01-30'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
   {
     id: '100',
@@ -999,6 +999,6 @@ export const sampleApps: App[] = [
     path: '/apps/app-100-system-monitor/index.html',
     tags: ['システム', 'モニター', '監視', 'ダッシュボード', '100'],
     createdAt: new Date('2024-01-30'),
-    isCompleted: true,
+    isTestedWorking: null,
   },
 ];

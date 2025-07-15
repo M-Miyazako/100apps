@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タイマー</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>⏰ タイマー</h1>
+            <p>カウントダウンタイマーアプリ</p>
+        </header>
+        
+        <div class="timer-container">
+            <div class="time-display">
+                <span id="timeDisplay">00:00:00</span>
+            </div>
+            
+            <div class="time-input">
+                <div class="input-group">
+                    <label for="hours">時間</label>
+                    <input type="number" id="hours" min="0" max="23" value="0">
+                </div>
+                <div class="input-group">
+                    <label for="minutes">分</label>
+                    <input type="number" id="minutes" min="0" max="59" value="5">
+                </div>
+                <div class="input-group">
+                    <label for="seconds">秒</label>
+                    <input type="number" id="seconds" min="0" max="59" value="0">
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button id="startBtn" class="btn btn-start">開始</button>
+                <button id="pauseBtn" class="btn btn-pause" disabled>一時停止</button>
+                <button id="resetBtn" class="btn btn-reset">リセット</button>
+            </div>
+            
+            <div class="progress-bar">
+                <div id="progressFill" class="progress-fill"></div>
+            </div>
+        </div>
+        
+        <div class="presets">
+            <h3>プリセット</h3>
+            <div class="preset-buttons">
+                <button class="preset-btn" data-time="60">1分</button>
+                <button class="preset-btn" data-time="300">5分</button>
+                <button class="preset-btn" data-time="600">10分</button>
+                <button class="preset-btn" data-time="900">15分</button>
+                <button class="preset-btn" data-time="1800">30分</button>
+                <button class="preset-btn" data-time="3600">1時間</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

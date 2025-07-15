@@ -19,7 +19,6 @@ const initialState: LauncherState = {
     { id: 'game', name: 'ゲーム', color: '#4CAF50' },
     { id: 'productivity', name: '生産性', color: '#FF9800' },
     { id: 'entertainment', name: 'エンターテイメント', color: '#E91E63' },
-    { id: 'education', name: '教育', color: '#9C27B0' },
     { id: 'tool', name: 'ツール', color: '#607D8B' },
   ],
   searchQuery: '',

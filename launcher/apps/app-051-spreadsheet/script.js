@@ -28,4 +28,170 @@ class Spreadsheet {
         
         for (let col = 0; col < this.cols; col++) {
             const th = document.createElement('th');
-            th.textContent = String.fromCharCode(65 + col); // A, B, C, ...\n            headerRow.appendChild(th);\n        }\n        \n        table.appendChild(headerRow);\n        \n        // Data rows\n        for (let row = 0; row < this.rows; row++) {\n            const tr = document.createElement('tr');\n            \n            // Row header\n            const rowHeader = document.createElement('td');\n            rowHeader.textContent = row + 1;\n            tr.appendChild(rowHeader);\n            \n            // Data cells\n            for (let col = 0; col < this.cols; col++) {\n                const td = document.createElement('td');\n                const input = document.createElement('input');\n                input.type = 'text';\n                input.className = 'cell-input';\n                input.dataset.row = row;\n                input.dataset.col = col;\n                \n                const cellId = this.getCellId(row, col);\n                input.value = this.data[cellId] || '';\n                \n                input.addEventListener('focus', () => this.selectCell(input));\n                input.addEventListener('blur', () => this.updateCell(input));\n                input.addEventListener('keydown', (e) => {\n                    if (e.key === 'Enter') {\n                        this.updateCell(input);\n                        this.moveToNextCell(input);\n                    }\n                });\n                \n                td.appendChild(input);\n                tr.appendChild(td);\n            }\n            \n            table.appendChild(tr);\n        }\n    }\n    \n    getCellId(row, col) {\n        return `${String.fromCharCode(65 + col)}${row + 1}`;\n    }\n    \n    selectCell(input) {\n        if (this.selectedCell) {\n            this.selectedCell.classList.remove('selected-cell');\n        }\n        \n        this.selectedCell = input;\n        input.classList.add('selected-cell');\n        \n        const cellId = this.getCellId(parseInt(input.dataset.row), parseInt(input.dataset.col));\n        document.getElementById('formula-input').value = input.value;\n    }\n    \n    updateCell(input) {\n        const row = parseInt(input.dataset.row);\n        const col = parseInt(input.dataset.col);\n        const cellId = this.getCellId(row, col);\n        \n        this.data[cellId] = input.value;\n        \n        // Simple formula evaluation\n        if (input.value.startsWith('=')) {\n            try {\n                const formula = input.value.substring(1);\n                const result = this.evaluateFormula(formula);\n                input.value = result;\n            } catch (e) {\n                input.value = '#ERROR';\n            }\n        }\n    }\n    \n    evaluateFormula(formula) {\n        // Replace cell references with values\n        const cellPattern = /[A-Z]+[0-9]+/g;\n        const processedFormula = formula.replace(cellPattern, (match) => {\n            const value = this.data[match] || '0';\n            return isNaN(value) ? '0' : value;\n        });\n        \n        // Simple math evaluation (in production, use a proper formula parser)\n        return eval(processedFormula);\n    }\n    \n    moveToNextCell(input) {\n        const row = parseInt(input.dataset.row);\n        const col = parseInt(input.dataset.col);\n        \n        let nextRow = row;\n        let nextCol = col + 1;\n        \n        if (nextCol >= this.cols) {\n            nextCol = 0;\n            nextRow++;\n        }\n        \n        if (nextRow < this.rows) {\n            const nextCell = document.querySelector(`[data-row=\"${nextRow}\"][data-col=\"${nextCol}\"]`);\n            if (nextCell) {\n                nextCell.focus();\n            }\n        }\n    }\n    \n    applyFormula() {\n        const formula = document.getElementById('formula-input').value;\n        if (this.selectedCell && formula) {\n            this.selectedCell.value = formula;\n            this.updateCell(this.selectedCell);\n        }\n    }\n    \n    newSpreadsheet() {\n        if (confirm('Create new spreadsheet? All data will be lost.')) {\n            this.data = {};\n            this.createSpreadsheet();\n        }\n    }\n    \n    saveSpreadsheet() {\n        const dataStr = JSON.stringify(this.data, null, 2);\n        const dataBlob = new Blob([dataStr], { type: 'application/json' });\n        const url = URL.createObjectURL(dataBlob);\n        \n        const link = document.createElement('a');\n        link.href = url;\n        link.download = 'spreadsheet.json';\n        link.click();\n        \n        URL.revokeObjectURL(url);\n    }\n    \n    loadSpreadsheet() {\n        const input = document.createElement('input');\n        input.type = 'file';\n        input.accept = '.json';\n        \n        input.onchange = (e) => {\n            const file = e.target.files[0];\n            if (file) {\n                const reader = new FileReader();\n                reader.onload = (e) => {\n                    try {\n                        this.data = JSON.parse(e.target.result);\n                        this.createSpreadsheet();\n                    } catch (error) {\n                        alert('Invalid file format');\n                    }\n                };\n                reader.readAsText(file);\n            }\n        };\n        \n        input.click();\n    }\n}\n\ndocument.addEventListener('DOMContentLoaded', () => {\n    new Spreadsheet();\n});"
+            th.textContent = String.fromCharCode(65 + col); // A, B, C, ...
+            headerRow.appendChild(th);
+        }
+        
+        table.appendChild(headerRow);
+        
+        // Data rows
+        for (let row = 0; row < this.rows; row++) {
+            const tr = document.createElement('tr');
+            
+            // Row header
+            const rowHeader = document.createElement('td');
+            rowHeader.textContent = row + 1;
+            tr.appendChild(rowHeader);
+            
+            // Data cells
+            for (let col = 0; col < this.cols; col++) {
+                const td = document.createElement('td');
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.className = 'cell-input';
+                input.dataset.row = row;
+                input.dataset.col = col;
+                
+                const cellId = this.getCellId(row, col);
+                input.value = this.data[cellId] || '';
+                
+                input.addEventListener('focus', () => this.selectCell(input));
+                input.addEventListener('blur', () => this.updateCell(input));
+                input.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        this.updateCell(input);
+                        this.moveToNextCell(input);
+                    }
+                });
+                
+                td.appendChild(input);
+                tr.appendChild(td);
+            }
+            
+            table.appendChild(tr);
+        }
+    }
+    
+    getCellId(row, col) {
+        return `${String.fromCharCode(65 + col)}${row + 1}`;
+    }
+    
+    selectCell(input) {
+        if (this.selectedCell) {
+            this.selectedCell.classList.remove('selected-cell');
+        }
+        
+        this.selectedCell = input;
+        input.classList.add('selected-cell');
+        
+        const cellId = this.getCellId(parseInt(input.dataset.row), parseInt(input.dataset.col));
+        document.getElementById('formula-input').value = input.value;
+    }
+    
+    updateCell(input) {
+        const row = parseInt(input.dataset.row);
+        const col = parseInt(input.dataset.col);
+        const cellId = this.getCellId(row, col);
+        
+        this.data[cellId] = input.value;
+        
+        // Simple formula evaluation
+        if (input.value.startsWith('=')) {
+            try {
+                const formula = input.value.substring(1);
+                const result = this.evaluateFormula(formula);
+                input.value = result;
+            } catch (e) {
+                input.value = '#ERROR';
+            }
+        }
+    }
+    
+    evaluateFormula(formula) {
+        // Replace cell references with values
+        const cellPattern = /[A-Z]+[0-9]+/g;
+        const processedFormula = formula.replace(cellPattern, (match) => {
+            const value = this.data[match] || '0';
+            return isNaN(value) ? '0' : value;
+        });
+        
+        // Simple math evaluation (in production, use a proper formula parser)
+        return eval(processedFormula);
+    }
+    
+    moveToNextCell(input) {
+        const row = parseInt(input.dataset.row);
+        const col = parseInt(input.dataset.col);
+        
+        let nextRow = row;
+        let nextCol = col + 1;
+        
+        if (nextCol >= this.cols) {
+            nextCol = 0;
+            nextRow++;
+        }
+        
+        if (nextRow < this.rows) {
+            const nextCell = document.querySelector(`[data-row="${nextRow}"][data-col="${nextCol}"]`);
+            if (nextCell) {
+                nextCell.focus();
+            }
+        }
+    }
+    
+    applyFormula() {
+        const formula = document.getElementById('formula-input').value;
+        if (this.selectedCell && formula) {
+            this.selectedCell.value = formula;
+            this.updateCell(this.selectedCell);
+        }
+    }
+    
+    newSpreadsheet() {
+        if (confirm('Create new spreadsheet? All data will be lost.')) {
+            this.data = {};
+            this.createSpreadsheet();
+        }
+    }
+    
+    saveSpreadsheet() {
+        const dataStr = JSON.stringify(this.data, null, 2);
+        const dataBlob = new Blob([dataStr], { type: 'application/json' });
+        const url = URL.createObjectURL(dataBlob);
+        
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'spreadsheet.json';
+        link.click();
+        
+        URL.revokeObjectURL(url);
+    }
+    
+    loadSpreadsheet() {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = '.json';
+        
+        input.onchange = (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    try {
+                        this.data = JSON.parse(e.target.result);
+                        this.createSpreadsheet();
+                    } catch (error) {
+                        alert('Invalid file format');
+                    }
+                };
+                reader.readAsText(file);
+            }
+        };
+        
+        input.click();
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    new Spreadsheet();
+});"

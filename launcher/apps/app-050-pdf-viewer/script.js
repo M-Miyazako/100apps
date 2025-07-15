@@ -52,4 +52,73 @@ class PDFViewer {
         reader.readAsDataURL(file);
     }
     
-    displayPDF() {\n        const container = document.getElementById('pdf-container');\n        \n        // シンプルなPDFビューアー（実際にはpdf.jsライブラリを使用します）\n        container.innerHTML = `\n            <div class=\"pdf-page\" style=\"transform: scale(${this.zoom / 100})\">\n                <h2>PDF Document</h2>\n                <p>This is a demo PDF viewer. In a real implementation, you would use PDF.js library to render PDF pages.</p>\n                <p>File loaded successfully!</p>\n                <p>Page ${this.currentPage} of ${this.totalPages}</p>\n                <div style=\"margin-top: 30px; padding: 20px; background: #f0f0f0; border-radius: 5px; color: #333;\">\n                    <h3>Sample Content</h3>\n                    <p>This would be the actual PDF content rendered using PDF.js library.</p>\n                    <p>Navigate using the arrow buttons or keyboard arrows.</p>\n                </div>\n            </div>\n        `;\n        \n        this.updateUI();\n    }\n    \n    prevPage() {\n        if (this.currentPage > 1) {\n            this.currentPage--;\n            this.updateUI();\n        }\n    }\n    \n    nextPage() {\n        if (this.currentPage < this.totalPages) {\n            this.currentPage++;\n            this.updateUI();\n        }\n    }\n    \n    zoomIn() {\n        this.zoom = Math.min(this.zoom + 25, 200);\n        this.updateZoom();\n    }\n    \n    zoomOut() {\n        this.zoom = Math.max(this.zoom - 25, 50);\n        this.updateZoom();\n    }\n    \n    updateZoom() {\n        document.getElementById('zoom-info').textContent = `${this.zoom}%`;\n        if (this.pdfData) {\n            this.displayPDF();\n        }\n    }\n    \n    updateUI() {\n        document.getElementById('page-info').textContent = `Page ${this.currentPage} of ${this.totalPages}`;\n        document.getElementById('prev-btn').disabled = this.currentPage === 1;\n        document.getElementById('next-btn').disabled = this.currentPage === this.totalPages;\n    }\n    \n    toggleFullscreen() {\n        if (document.fullscreenElement) {\n            document.exitFullscreen();\n        } else {\n            document.documentElement.requestFullscreen();\n        }\n    }\n}\n\ndocument.addEventListener('DOMContentLoaded', () => {\n    new PDFViewer();\n});"
+    displayPDF() {
+        const container = document.getElementById('pdf-container');
+        
+        // シンプルなPDFビューアー（実際にはpdf.jsライブラリを使用します）
+        container.innerHTML = `
+            <div class="pdf-page" style="transform: scale(${this.zoom / 100})">
+                <h2>PDF Document</h2>
+                <p>This is a demo PDF viewer. In a real implementation, you would use PDF.js library to render PDF pages.</p>
+                <p>File loaded successfully!</p>
+                <p>Page ${this.currentPage} of ${this.totalPages}</p>
+                <div style="margin-top: 30px; padding: 20px; background: #f0f0f0; border-radius: 5px; color: #333;">
+                    <h3>Sample Content</h3>
+                    <p>This would be the actual PDF content rendered using PDF.js library.</p>
+                    <p>Navigate using the arrow buttons or keyboard arrows.</p>
+                </div>
+            </div>
+        `;
+        
+        this.updateUI();
+    }
+    
+    prevPage() {
+        if (this.currentPage > 1) {
+            this.currentPage--;
+            this.updateUI();
+        }
+    }
+    
+    nextPage() {
+        if (this.currentPage < this.totalPages) {
+            this.currentPage++;
+            this.updateUI();
+        }
+    }
+    
+    zoomIn() {
+        this.zoom = Math.min(this.zoom + 25, 200);
+        this.updateZoom();
+    }
+    
+    zoomOut() {
+        this.zoom = Math.max(this.zoom - 25, 50);
+        this.updateZoom();
+    }
+    
+    updateZoom() {
+        document.getElementById('zoom-info').textContent = `${this.zoom}%`;
+        if (this.pdfData) {
+            this.displayPDF();
+        }
+    }
+    
+    updateUI() {
+        document.getElementById('page-info').textContent = `Page ${this.currentPage} of ${this.totalPages}`;
+        document.getElementById('prev-btn').disabled = this.currentPage === 1;
+        document.getElementById('next-btn').disabled = this.currentPage === this.totalPages;
+    }
+    
+    toggleFullscreen() {
+        if (document.fullscreenElement) {
+            document.exitFullscreen();
+        } else {
+            document.documentElement.requestFullscreen();
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    new PDFViewer();
+});"

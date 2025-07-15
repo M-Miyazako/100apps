@@ -152,7 +152,7 @@ class TranslationTool {
             'thank you': { 'es': 'gracias', 'fr': 'merci', 'de': 'danke', 'it': 'grazie', 'pt': 'obrigado' },
             'yes': { 'es': 'sí', 'fr': 'oui', 'de': 'ja', 'it': 'sì', 'pt': 'sim' },
             'no': { 'es': 'no', 'fr': 'non', 'de': 'nein', 'it': 'no', 'pt': 'não' },
-            'please': { 'es': 'por favor', 'fr': 's\\'il vous plaît', 'de': 'bitte', 'it': 'per favore', 'pt': 'por favor' },
+            'please': { 'es': 'por favor', 'fr': "s'il vous plaît", 'de': 'bitte', 'it': 'per favore', 'pt': 'por favor' },
             'excuse me': { 'es': 'disculpe', 'fr': 'excusez-moi', 'de': 'entschuldigung', 'it': 'scusi', 'pt': 'com licença' },
             'how are you': { 'es': '¿cómo estás?', 'fr': 'comment allez-vous?', 'de': 'wie geht es dir?', 'it': 'come stai?', 'pt': 'como você está?' }
         };

@@ -158,4 +158,148 @@ class ChatBot {
             responseCategory = 'cooking';
         } else if (lowerMessage.includes('旅行') || lowerMessage.includes('観光') || lowerMessage.includes('ホテル')) {
             responseCategory = 'travel';
-        }\n        \n        const responses = this.responses[responseCategory];\n        const randomResponse = responses[Math.floor(Math.random() * responses.length)];\n        \n        this.hideTypingIndicator();\n        this.addMessage(randomResponse, 'bot');\n    }\n    \n    showTypingIndicator() {\n        const typingIndicator = document.querySelector('.typing-indicator');\n        typingIndicator.classList.add('active');\n        this.isTyping = true;\n    }\n    \n    hideTypingIndicator() {\n        const typingIndicator = document.querySelector('.typing-indicator');\n        typingIndicator.classList.remove('active');\n        this.isTyping = false;\n    }\n    \n    scrollToBottom() {\n        const messagesContainer = document.querySelector('.messages-container');\n        messagesContainer.scrollTop = messagesContainer.scrollHeight;\n    }\n    \n    autoResize(textarea) {\n        textarea.style.height = 'auto';\n        textarea.style.height = Math.min(textarea.scrollHeight, 120) + 'px';\n    }\n    \n    startNewChat() {\n        this.clearMessages();\n        this.showWelcomeMessage();\n        this.messages = [];\n        this.showNotification('新しいチャットを開始しました', 'success');\n    }\n    \n    clearHistory() {\n        if (confirm('チャット履歴をクリアしますか？')) {\n            this.clearMessages();\n            this.showWelcomeMessage();\n            this.messages = [];\n            this.showNotification('履歴をクリアしました', 'success');\n        }\n    }\n    \n    clearMessages() {\n        const messagesContainer = document.querySelector('.messages-container');\n        const messages = messagesContainer.querySelectorAll('.message');\n        messages.forEach(message => message.remove());\n    }\n    \n    showWelcomeMessage() {\n        const messagesContainer = document.querySelector('.messages-container');\n        const welcomeExists = document.querySelector('.welcome-message');\n        \n        if (!welcomeExists) {\n            const welcomeMessage = document.createElement('div');\n            welcomeMessage.className = 'welcome-message';\n            welcomeMessage.innerHTML = `\n                <div class="welcome-avatar">🤖</div>\n                <div class="welcome-content">\n                    <h3>ChatBot AI へようこそ！</h3>\n                    <p>何でもお気軽にお聞きください。以下のような質問にお答えできます：</p>\n                    <div class="suggestion-chips">\n                        <button class="chip">天気について</button>\n                        <button class="chip">プログラミング</button>\n                        <button class="chip">料理のレシピ</button>\n                        <button class="chip">旅行の計画</button>\n                    </div>\n                </div>\n            `;\n            messagesContainer.appendChild(welcomeMessage);\n            this.setupSuggestionChips();\n        }\n    }\n    \n    updateChatHistory() {\n        const chatHistory = document.querySelector('.chat-history');\n        const activeChat = chatHistory.querySelector('.chat-item.active');\n        \n        if (this.messages.length > 0) {\n            const lastMessage = this.messages[this.messages.length - 1];\n            const snippet = activeChat.querySelector('.chat-snippet');\n            const time = activeChat.querySelector('.chat-time');\n            \n            snippet.textContent = lastMessage.content.substring(0, 30) + (lastMessage.content.length > 30 ? '...' : '');\n            time.textContent = lastMessage.time;\n        }\n    }\n    \n    showNotification(message, type = 'info') {\n        const notification = document.createElement('div');\n        notification.className = `notification ${type}`;\n        notification.style.cssText = `\n            position: fixed;\n            top: 20px;\n            right: 20px;\n            background: ${type === 'success' ? '#10b981' : type === 'error' ? '#f56565' : '#6366f1'};\n            color: white;\n            padding: 15px 20px;\n            border-radius: 10px;\n            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);\n            z-index: 10000;\n            transform: translateX(100%);\n            transition: transform 0.3s ease;\n        `;\n        notification.textContent = message;\n        \n        document.body.appendChild(notification);\n        \n        setTimeout(() => {\n            notification.style.transform = 'translateX(0)';\n        }, 100);\n        \n        setTimeout(() => {\n            notification.style.transform = 'translateX(100%)';\n            setTimeout(() => {\n                document.body.removeChild(notification);\n            }, 300);\n        }, 3000);\n    }\n}\n\n// Initialize the app\ndocument.addEventListener('DOMContentLoaded', () => {\n    new ChatBot();\n});\n\n// Add keyboard shortcuts\ndocument.addEventListener('keydown', (e) => {\n    if (e.ctrlKey || e.metaKey) {\n        switch (e.key) {\n            case 'n':\n                e.preventDefault();\n                document.querySelector('.new-chat-btn').click();\n                break;\n            case 'l':\n                e.preventDefault();\n                document.querySelector('.message-input').focus();\n                break;\n        }\n    }\n});
+        }
+        
+        const responses = this.responses[responseCategory];
+        const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+        
+        this.hideTypingIndicator();
+        this.addMessage(randomResponse, 'bot');
+    }
+    
+    showTypingIndicator() {
+        const typingIndicator = document.querySelector('.typing-indicator');
+        typingIndicator.classList.add('active');
+        this.isTyping = true;
+    }
+    
+    hideTypingIndicator() {
+        const typingIndicator = document.querySelector('.typing-indicator');
+        typingIndicator.classList.remove('active');
+        this.isTyping = false;
+    }
+    
+    scrollToBottom() {
+        const messagesContainer = document.querySelector('.messages-container');
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+    
+    autoResize(textarea) {
+        textarea.style.height = 'auto';
+        textarea.style.height = Math.min(textarea.scrollHeight, 120) + 'px';
+    }
+    
+    startNewChat() {
+        this.clearMessages();
+        this.showWelcomeMessage();
+        this.messages = [];
+        this.showNotification('新しいチャットを開始しました', 'success');
+    }
+    
+    clearHistory() {
+        if (confirm('チャット履歴をクリアしますか？')) {
+            this.clearMessages();
+            this.showWelcomeMessage();
+            this.messages = [];
+            this.showNotification('履歴をクリアしました', 'success');
+        }
+    }
+    
+    clearMessages() {
+        const messagesContainer = document.querySelector('.messages-container');
+        const messages = messagesContainer.querySelectorAll('.message');
+        messages.forEach(message => message.remove());
+    }
+    
+    showWelcomeMessage() {
+        const messagesContainer = document.querySelector('.messages-container');
+        const welcomeExists = document.querySelector('.welcome-message');
+        
+        if (!welcomeExists) {
+            const welcomeMessage = document.createElement('div');
+            welcomeMessage.className = 'welcome-message';
+            welcomeMessage.innerHTML = `
+                <div class="welcome-avatar">🤖</div>
+                <div class="welcome-content">
+                    <h3>ChatBot AI へようこそ！</h3>
+                    <p>何でもお気軽にお聞きください。以下のような質問にお答えできます：</p>
+                    <div class="suggestion-chips">
+                        <button class="chip">天気について</button>
+                        <button class="chip">プログラミング</button>
+                        <button class="chip">料理のレシピ</button>
+                        <button class="chip">旅行の計画</button>
+                    </div>
+                </div>
+            `;
+            messagesContainer.appendChild(welcomeMessage);
+            this.setupSuggestionChips();
+        }
+    }
+    
+    updateChatHistory() {
+        const chatHistory = document.querySelector('.chat-history');
+        const activeChat = chatHistory.querySelector('.chat-item.active');
+        
+        if (this.messages.length > 0) {
+            const lastMessage = this.messages[this.messages.length - 1];
+            const snippet = activeChat.querySelector('.chat-snippet');
+            const time = activeChat.querySelector('.chat-time');
+            
+            snippet.textContent = lastMessage.content.substring(0, 30) + (lastMessage.content.length > 30 ? '...' : '');
+            time.textContent = lastMessage.time;
+        }
+    }
+    
+    showNotification(message, type = 'info') {
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: ${type === 'success' ? '#10b981' : type === 'error' ? '#f56565' : '#6366f1'};
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 10000;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        `;
+        notification.textContent = message;
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.style.transform = 'translateX(0)';
+        }, 100);
+        
+        setTimeout(() => {
+            notification.style.transform = 'translateX(100%)';
+            setTimeout(() => {
+                document.body.removeChild(notification);
+            }, 300);
+        }, 3000);
+    }
+}
+
+// Initialize the app
+document.addEventListener('DOMContentLoaded', () => {
+    new ChatBot();
+});
+
+// Add keyboard shortcuts
+document.addEventListener('keydown', (e) => {
+    if (e.ctrlKey || e.metaKey) {
+        switch (e.key) {
+            case 'n':
+                e.preventDefault();
+                document.querySelector('.new-chat-btn').click();
+                break;
+            case 'l':
+                e.preventDefault();
+                document.querySelector('.message-input').focus();
+                break;
+        }
+    }
+});

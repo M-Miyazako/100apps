@@ -101,7 +101,8 @@ class QuizApp {
         this.shareResultsBtn.addEventListener('click', () => this.shareResults());
         this.backToResultsBtn.addEventListener('click', () => this.backToResults());
         
-        // UI controls\n        this.themeToggle.addEventListener('click', () => this.toggleTheme());
+        // UI controls
+        this.themeToggle.addEventListener('click', () => this.toggleTheme());
         this.statsToggle.addEventListener('click', () => this.toggleStats());
         
         // Keyboard shortcuts
@@ -152,82 +153,82 @@ class QuizApp {
             general: {
                 easy: [
                     {
-                        question: \"What is the capital of France?\",
-                        answers: [\"London\", \"Berlin\", \"Paris\", \"Madrid\"],
+                        question: "What is the capital of France?",
+                        answers: ["London", "Berlin", "Paris", "Madrid"],
                         correct: 2
                     },
                     {
-                        question: \"What is 2 + 2?\",
-                        answers: [\"3\", \"4\", \"5\", \"6\"],
+                        question: "What is 2 + 2?",
+                        answers: ["3", "4", "5", "6"],
                         correct: 1
                     },
                     {
-                        question: \"What color do you get when you mix red and blue?\",
-                        answers: [\"Green\", \"Purple\", \"Orange\", \"Yellow\"],
+                        question: "What color do you get when you mix red and blue?",
+                        answers: ["Green", "Purple", "Orange", "Yellow"],
                         correct: 1
                     },
                     {
-                        question: \"How many days are in a week?\",
-                        answers: [\"6\", \"7\", \"8\", \"9\"],
+                        question: "How many days are in a week?",
+                        answers: ["6", "7", "8", "9"],
                         correct: 1
                     },
                     {
-                        question: \"What is the largest planet in our solar system?\",
-                        answers: [\"Earth\", \"Mars\", \"Jupiter\", \"Saturn\"],
+                        question: "What is the largest planet in our solar system?",
+                        answers: ["Earth", "Mars", "Jupiter", "Saturn"],
                         correct: 2
                     }
                 ],
                 medium: [
                     {
-                        question: \"Which element has the chemical symbol 'O'?\",
-                        answers: [\"Gold\", \"Silver\", \"Oxygen\", \"Iron\"],
+                        question: "Which element has the chemical symbol 'O'?",
+                        answers: ["Gold", "Silver", "Oxygen", "Iron"],
                         correct: 2
                     },
                     {
-                        question: \"Who painted the Mona Lisa?\",
-                        answers: [\"Vincent van Gogh\", \"Leonardo da Vinci\", \"Pablo Picasso\", \"Michelangelo\"],
+                        question: "Who painted the Mona Lisa?",
+                        answers: ["Vincent van Gogh", "Leonardo da Vinci", "Pablo Picasso", "Michelangelo"],
                         correct: 1
                     },
                     {
-                        question: \"What is the speed of light?\",
-                        answers: [\"300,000 km/s\", \"150,000 km/s\", \"450,000 km/s\", \"600,000 km/s\"],
+                        question: "What is the speed of light?",
+                        answers: ["300,000 km/s", "150,000 km/s", "450,000 km/s", "600,000 km/s"],
                         correct: 0
                     },
                     {
-                        question: \"Which country is home to Machu Picchu?\",
-                        answers: [\"Chile\", \"Peru\", \"Ecuador\", \"Bolivia\"],
+                        question: "Which country is home to Machu Picchu?",
+                        answers: ["Chile", "Peru", "Ecuador", "Bolivia"],
                         correct: 1
                     },
                     {
-                        question: \"What is the smallest country in the world?\",
-                        answers: [\"Monaco\", \"Vatican City\", \"San Marino\", \"Liechtenstein\"],
+                        question: "What is the smallest country in the world?",
+                        answers: ["Monaco", "Vatican City", "San Marino", "Liechtenstein"],
                         correct: 1
                     }
                 ],
                 hard: [
                     {
-                        question: \"What is the Heisenberg Uncertainty Principle?\",
-                        answers: [\"A cooking method\", \"A quantum physics principle\", \"A mathematical theorem\", \"A computer algorithm\"],
+                        question: "What is the Heisenberg Uncertainty Principle?",
+                        answers: ["A cooking method", "A quantum physics principle", "A mathematical theorem", "A computer algorithm"],
                         correct: 1
                     },
                     {
-                        question: \"Which author wrote 'Ulysses'?\",
-                        answers: [\"James Joyce\", \"Virginia Woolf\", \"T.S. Eliot\", \"Samuel Beckett\"],
+                        question: "Which author wrote 'Ulysses'?",
+                        answers: ["James Joyce", "Virginia Woolf", "T.S. Eliot", "Samuel Beckett"],
                         correct: 0
                     },
                     {
-                        question: \"What is the half-life of Carbon-14?\",
-                        answers: [\"5,730 years\", \"1,000 years\", \"10,000 years\", \"50,000 years\"],
+                        question: "What is the half-life of Carbon-14?",
+                        answers: ["5,730 years", "1,000 years", "10,000 years", "50,000 years"],
                         correct: 0
                     },
                     {
-                        question: \"Which battle marked the end of Napoleon's Hundred Days?\",
-                        answers: [\"Battle of Austerlitz\", \"Battle of Waterloo\", \"Battle of Leipzig\", \"Battle of Borodino\"],
+                        question: "Which battle marked the end of Napoleon's Hundred Days?",
+                        answers: ["Battle of Austerlitz", "Battle of Waterloo", "Battle of Leipzig", "Battle of Borodino"],
                         correct: 1
                     },
                     {
-                        question: \"What is the Goldbach Conjecture?\",
-                        answers: [\"Every even number > 2 is sum of two primes\", \"Pi is irrational\", \"There are infinite prime numbers\", \"Fermat's Last Theorem\"],
+                        question: "What is the Goldbach Conjecture?",
+                        answers: ["Every even number > 2 is sum of two primes", "Pi is irrational", "There are infinite prime numbers", "Fermat's Last Theorem"],
                         correct: 0
                     }
                 ]
@@ -235,82 +236,82 @@ class QuizApp {
             science: {
                 easy: [
                     {
-                        question: \"What gas do plants absorb from the atmosphere?\",
-                        answers: [\"Oxygen\", \"Carbon Dioxide\", \"Nitrogen\", \"Hydrogen\"],
+                        question: "What gas do plants absorb from the atmosphere?",
+                        answers: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"],
                         correct: 1
                     },
                     {
-                        question: \"How many bones are in the human body?\",
-                        answers: [\"206\", \"156\", \"306\", \"256\"],
+                        question: "How many bones are in the human body?",
+                        answers: ["206", "156", "306", "256"],
                         correct: 0
                     },
                     {
-                        question: \"What is the chemical symbol for water?\",
-                        answers: [\"H2O\", \"CO2\", \"NaCl\", \"O2\"],
+                        question: "What is the chemical symbol for water?",
+                        answers: ["H2O", "CO2", "NaCl", "O2"],
                         correct: 0
                     },
                     {
-                        question: \"Which organ in the human body produces insulin?\",
-                        answers: [\"Liver\", \"Pancreas\", \"Kidney\", \"Heart\"],
+                        question: "Which organ in the human body produces insulin?",
+                        answers: ["Liver", "Pancreas", "Kidney", "Heart"],
                         correct: 1
                     },
                     {
-                        question: \"What is the hardest natural substance on Earth?\",
-                        answers: [\"Gold\", \"Iron\", \"Diamond\", \"Platinum\"],
+                        question: "What is the hardest natural substance on Earth?",
+                        answers: ["Gold", "Iron", "Diamond", "Platinum"],
                         correct: 2
                     }
                 ],
                 medium: [
                     {
-                        question: \"What is the powerhouse of the cell?\",
-                        answers: [\"Nucleus\", \"Mitochondria\", \"Ribosome\", \"Endoplasmic Reticulum\"],
+                        question: "What is the powerhouse of the cell?",
+                        answers: ["Nucleus", "Mitochondria", "Ribosome", "Endoplasmic Reticulum"],
                         correct: 1
                     },
                     {
-                        question: \"Which scientist developed the theory of evolution?\",
-                        answers: [\"Albert Einstein\", \"Charles Darwin\", \"Isaac Newton\", \"Galileo Galilei\"],
+                        question: "Which scientist developed the theory of evolution?",
+                        answers: ["Albert Einstein", "Charles Darwin", "Isaac Newton", "Galileo Galilei"],
                         correct: 1
                     },
                     {
-                        question: \"What is the pH of pure water?\",
-                        answers: [\"6\", \"7\", \"8\", \"9\"],
+                        question: "What is the pH of pure water?",
+                        answers: ["6", "7", "8", "9"],
                         correct: 1
                     },
                     {
-                        question: \"Which planet is known as the Red Planet?\",
-                        answers: [\"Venus\", \"Mars\", \"Jupiter\", \"Saturn\"],
+                        question: "Which planet is known as the Red Planet?",
+                        answers: ["Venus", "Mars", "Jupiter", "Saturn"],
                         correct: 1
                     },
                     {
-                        question: \"What type of bond holds water molecules together?\",
-                        answers: [\"Ionic\", \"Covalent\", \"Hydrogen\", \"Metallic\"],
+                        question: "What type of bond holds water molecules together?",
+                        answers: ["Ionic", "Covalent", "Hydrogen", "Metallic"],
                         correct: 2
                     }
                 ],
                 hard: [
                     {
-                        question: \"What is the standard model of particle physics?\",
-                        answers: [\"A theory of fundamental particles\", \"A model of the atom\", \"A theory of gravity\", \"A model of the universe\"],
+                        question: "What is the standard model of particle physics?",
+                        answers: ["A theory of fundamental particles", "A model of the atom", "A theory of gravity", "A model of the universe"],
                         correct: 0
                     },
                     {
-                        question: \"Which enzyme breaks down starch?\",
-                        answers: [\"Pepsin\", \"Trypsin\", \"Amylase\", \"Lipase\"],
+                        question: "Which enzyme breaks down starch?",
+                        answers: ["Pepsin", "Trypsin", "Amylase", "Lipase"],
                         correct: 2
                     },
                     {
-                        question: \"What is the Chandrasekhar limit?\",
-                        answers: [\"Maximum mass of a white dwarf\", \"Speed of light\", \"Planck's constant\", \"Avogadro's number\"],
+                        question: "What is the Chandrasekhar limit?",
+                        answers: ["Maximum mass of a white dwarf", "Speed of light", "Planck's constant", "Avogadro's number"],
                         correct: 0
                     },
                     {
-                        question: \"Which organelle is responsible for protein synthesis?\",
-                        answers: [\"Golgi apparatus\", \"Ribosome\", \"Lysosome\", \"Peroxisome\"],
+                        question: "Which organelle is responsible for protein synthesis?",
+                        answers: ["Golgi apparatus", "Ribosome", "Lysosome", "Peroxisome"],
                         correct: 1
                     },
                     {
-                        question: \"What is the most abundant element in the universe?\",
-                        answers: [\"Oxygen\", \"Carbon\", \"Hydrogen\", \"Helium\"],
+                        question: "What is the most abundant element in the universe?",
+                        answers: ["Oxygen", "Carbon", "Hydrogen", "Helium"],
                         correct: 2
                     }
                 ]
@@ -318,82 +319,82 @@ class QuizApp {
             history: {
                 easy: [
                     {
-                        question: \"When did World War II end?\",
-                        answers: [\"1944\", \"1945\", \"1946\", \"1947\"],
+                        question: "When did World War II end?",
+                        answers: ["1944", "1945", "1946", "1947"],
                         correct: 1
                     },
                     {
-                        question: \"Who was the first President of the United States?\",
-                        answers: [\"Thomas Jefferson\", \"George Washington\", \"John Adams\", \"Benjamin Franklin\"],
+                        question: "Who was the first President of the United States?",
+                        answers: ["Thomas Jefferson", "George Washington", "John Adams", "Benjamin Franklin"],
                         correct: 1
                     },
                     {
-                        question: \"In which year did the Berlin Wall fall?\",
-                        answers: [\"1987\", \"1988\", \"1989\", \"1990\"],
+                        question: "In which year did the Berlin Wall fall?",
+                        answers: ["1987", "1988", "1989", "1990"],
                         correct: 2
                     },
                     {
-                        question: \"Which ancient wonder of the world was located in Egypt?\",
-                        answers: [\"Hanging Gardens\", \"Colossus of Rhodes\", \"Great Pyramid of Giza\", \"Lighthouse of Alexandria\"],
+                        question: "Which ancient wonder of the world was located in Egypt?",
+                        answers: ["Hanging Gardens", "Colossus of Rhodes", "Great Pyramid of Giza", "Lighthouse of Alexandria"],
                         correct: 2
                     },
                     {
-                        question: \"Who wrote the Declaration of Independence?\",
-                        answers: [\"George Washington\", \"Thomas Jefferson\", \"Benjamin Franklin\", \"John Adams\"],
+                        question: "Who wrote the Declaration of Independence?",
+                        answers: ["George Washington", "Thomas Jefferson", "Benjamin Franklin", "John Adams"],
                         correct: 1
                     }
                 ],
                 medium: [
                     {
-                        question: \"Which empire was ruled by Julius Caesar?\",
-                        answers: [\"Greek Empire\", \"Roman Empire\", \"Persian Empire\", \"Ottoman Empire\"],
+                        question: "Which empire was ruled by Julius Caesar?",
+                        answers: ["Greek Empire", "Roman Empire", "Persian Empire", "Ottoman Empire"],
                         correct: 1
                     },
                     {
-                        question: \"When did the French Revolution begin?\",
-                        answers: [\"1789\", \"1799\", \"1779\", \"1809\"],
+                        question: "When did the French Revolution begin?",
+                        answers: ["1789", "1799", "1779", "1809"],
                         correct: 0
                     },
                     {
-                        question: \"Who was the leader of the Soviet Union during World War II?\",
-                        answers: [\"Vladimir Lenin\", \"Joseph Stalin\", \"Nikita Khrushchev\", \"Mikhail Gorbachev\"],
+                        question: "Who was the leader of the Soviet Union during World War II?",
+                        answers: ["Vladimir Lenin", "Joseph Stalin", "Nikita Khrushchev", "Mikhail Gorbachev"],
                         correct: 1
                     },
                     {
-                        question: \"Which civilization built Machu Picchu?\",
-                        answers: [\"Aztec\", \"Maya\", \"Inca\", \"Olmec\"],
+                        question: "Which civilization built Machu Picchu?",
+                        answers: ["Aztec", "Maya", "Inca", "Olmec"],
                         correct: 2
                     },
                     {
-                        question: \"In which year did Columbus reach the Americas?\",
-                        answers: [\"1490\", \"1491\", \"1492\", \"1493\"],
+                        question: "In which year did Columbus reach the Americas?",
+                        answers: ["1490", "1491", "1492", "1493"],
                         correct: 2
                     }
                 ],
                 hard: [
                     {
-                        question: \"Which treaty ended World War I?\",
-                        answers: [\"Treaty of Versailles\", \"Treaty of Paris\", \"Treaty of Vienna\", \"Treaty of Westphalia\"],
+                        question: "Which treaty ended World War I?",
+                        answers: ["Treaty of Versailles", "Treaty of Paris", "Treaty of Vienna", "Treaty of Westphalia"],
                         correct: 0
                     },
                     {
-                        question: \"Who was the last Emperor of Russia?\",
-                        answers: [\"Nicholas I\", \"Alexander III\", \"Nicholas II\", \"Alexander II\"],
+                        question: "Who was the last Emperor of Russia?",
+                        answers: ["Nicholas I", "Alexander III", "Nicholas II", "Alexander II"],
                         correct: 2
                     },
                     {
-                        question: \"Which battle is considered the turning point of World War II in Europe?\",
-                        answers: [\"Battle of Britain\", \"Battle of Stalingrad\", \"D-Day\", \"Battle of Kursk\"],
+                        question: "Which battle is considered the turning point of World War II in Europe?",
+                        answers: ["Battle of Britain", "Battle of Stalingrad", "D-Day", "Battle of Kursk"],
                         correct: 1
                     },
                     {
-                        question: \"What was the Silk Road?\",
-                        answers: [\"A trade route\", \"A Chinese dynasty\", \"A type of fabric\", \"A military campaign\"],
+                        question: "What was the Silk Road?",
+                        answers: ["A trade route", "A Chinese dynasty", "A type of fabric", "A military campaign"],
                         correct: 0
                     },
                     {
-                        question: \"Which dynasty unified China for the first time?\",
-                        answers: [\"Han Dynasty\", \"Qin Dynasty\", \"Tang Dynasty\", \"Ming Dynasty\"],
+                        question: "Which dynasty unified China for the first time?",
+                        answers: ["Han Dynasty", "Qin Dynasty", "Tang Dynasty", "Ming Dynasty"],
                         correct: 1
                     }
                 ]
@@ -401,82 +402,82 @@ class QuizApp {
             geography: {
                 easy: [
                     {
-                        question: \"What is the largest continent?\",
-                        answers: [\"Africa\", \"Asia\", \"North America\", \"Europe\"],
+                        question: "What is the largest continent?",
+                        answers: ["Africa", "Asia", "North America", "Europe"],
                         correct: 1
                     },
                     {
-                        question: \"Which river is the longest in the world?\",
-                        answers: [\"Amazon\", \"Nile\", \"Mississippi\", \"Yangtze\"],
+                        question: "Which river is the longest in the world?",
+                        answers: ["Amazon", "Nile", "Mississippi", "Yangtze"],
                         correct: 1
                     },
                     {
-                        question: \"What is the capital of Australia?\",
-                        answers: [\"Sydney\", \"Melbourne\", \"Canberra\", \"Perth\"],
+                        question: "What is the capital of Australia?",
+                        answers: ["Sydney", "Melbourne", "Canberra", "Perth"],
                         correct: 2
                     },
                     {
-                        question: \"Which mountain range contains Mount Everest?\",
-                        answers: [\"Andes\", \"Rocky Mountains\", \"Alps\", \"Himalayas\"],
+                        question: "Which mountain range contains Mount Everest?",
+                        answers: ["Andes", "Rocky Mountains", "Alps", "Himalayas"],
                         correct: 3
                     },
                     {
-                        question: \"What is the smallest ocean?\",
-                        answers: [\"Arctic Ocean\", \"Indian Ocean\", \"Atlantic Ocean\", \"Pacific Ocean\"],
+                        question: "What is the smallest ocean?",
+                        answers: ["Arctic Ocean", "Indian Ocean", "Atlantic Ocean", "Pacific Ocean"],
                         correct: 0
                     }
                 ],
                 medium: [
                     {
-                        question: \"Which country has the most time zones?\",
-                        answers: [\"United States\", \"Russia\", \"China\", \"France\"],
+                        question: "Which country has the most time zones?",
+                        answers: ["United States", "Russia", "China", "France"],
                         correct: 3
                     },
                     {
-                        question: \"What is the deepest point in the ocean?\",
-                        answers: [\"Mariana Trench\", \"Puerto Rico Trench\", \"Java Trench\", \"Philippine Trench\"],
+                        question: "What is the deepest point in the ocean?",
+                        answers: ["Mariana Trench", "Puerto Rico Trench", "Java Trench", "Philippine Trench"],
                         correct: 0
                     },
                     {
-                        question: \"Which desert is the largest in the world?\",
-                        answers: [\"Sahara\", \"Gobi\", \"Antarctica\", \"Arabian\"],
+                        question: "Which desert is the largest in the world?",
+                        answers: ["Sahara", "Gobi", "Antarctica", "Arabian"],
                         correct: 2
                     },
                     {
-                        question: \"What is the longest mountain range in the world?\",
-                        answers: [\"Himalayas\", \"Andes\", \"Rocky Mountains\", \"Alps\"],
+                        question: "What is the longest mountain range in the world?",
+                        answers: ["Himalayas", "Andes", "Rocky Mountains", "Alps"],
                         correct: 1
                     },
                     {
-                        question: \"Which country is completely surrounded by South Africa?\",
-                        answers: [\"Swaziland\", \"Lesotho\", \"Botswana\", \"Namibia\"],
+                        question: "Which country is completely surrounded by South Africa?",
+                        answers: ["Swaziland", "Lesotho", "Botswana", "Namibia"],
                         correct: 1
                     }
                 ],
                 hard: [
                     {
-                        question: \"Which strait separates Europe and Asia?\",
-                        answers: [\"Strait of Gibraltar\", \"Bosphorus\", \"Strait of Hormuz\", \"Strait of Malacca\"],
+                        question: "Which strait separates Europe and Asia?",
+                        answers: ["Strait of Gibraltar", "Bosphorus", "Strait of Hormuz", "Strait of Malacca"],
                         correct: 1
                     },
                     {
-                        question: \"What is the highest waterfall in the world?\",
-                        answers: [\"Niagara Falls\", \"Victoria Falls\", \"Angel Falls\", \"Iguazu Falls\"],
+                        question: "What is the highest waterfall in the world?",
+                        answers: ["Niagara Falls", "Victoria Falls", "Angel Falls", "Iguazu Falls"],
                         correct: 2
                     },
                     {
-                        question: \"Which tectonic plate is the largest?\",
-                        answers: [\"Eurasian Plate\", \"Pacific Plate\", \"North American Plate\", \"African Plate\"],
+                        question: "Which tectonic plate is the largest?",
+                        answers: ["Eurasian Plate", "Pacific Plate", "North American Plate", "African Plate"],
                         correct: 1
                     },
                     {
-                        question: \"What is the driest place on Earth?\",
-                        answers: [\"Sahara Desert\", \"Atacama Desert\", \"Death Valley\", \"Gobi Desert\"],
+                        question: "What is the driest place on Earth?",
+                        answers: ["Sahara Desert", "Atacama Desert", "Death Valley", "Gobi Desert"],
                         correct: 1
                     },
                     {
-                        question: \"Which sea is the saltiest?\",
-                        answers: [\"Dead Sea\", \"Red Sea\", \"Mediterranean Sea\", \"Caspian Sea\"],
+                        question: "Which sea is the saltiest?",
+                        answers: ["Dead Sea", "Red Sea", "Mediterranean Sea", "Caspian Sea"],
                         correct: 0
                     }
                 ]
@@ -484,82 +485,82 @@ class QuizApp {
             sports: {
                 easy: [
                     {
-                        question: \"How many players are on a basketball team on the court?\",
-                        answers: [\"4\", \"5\", \"6\", \"7\"],
+                        question: "How many players are on a basketball team on the court?",
+                        answers: ["4", "5", "6", "7"],
                         correct: 1
                     },
                     {
-                        question: \"What sport is played at Wimbledon?\",
-                        answers: [\"Golf\", \"Tennis\", \"Cricket\", \"Rugby\"],
+                        question: "What sport is played at Wimbledon?",
+                        answers: ["Golf", "Tennis", "Cricket", "Rugby"],
                         correct: 1
                     },
                     {
-                        question: \"How often are the Olympic Games held?\",
-                        answers: [\"Every 2 years\", \"Every 3 years\", \"Every 4 years\", \"Every 5 years\"],
+                        question: "How often are the Olympic Games held?",
+                        answers: ["Every 2 years", "Every 3 years", "Every 4 years", "Every 5 years"],
                         correct: 2
                     },
                     {
-                        question: \"What is the maximum score in ten-pin bowling?\",
-                        answers: [\"200\", \"250\", \"300\", \"350\"],
+                        question: "What is the maximum score in ten-pin bowling?",
+                        answers: ["200", "250", "300", "350"],
                         correct: 2
                     },
                     {
-                        question: \"Which sport uses a puck?\",
-                        answers: [\"Soccer\", \"Hockey\", \"Basketball\", \"Tennis\"],
+                        question: "Which sport uses a puck?",
+                        answers: ["Soccer", "Hockey", "Basketball", "Tennis"],
                         correct: 1
                     }
                 ],
                 medium: [
                     {
-                        question: \"Who has won the most Grand Slam tennis titles?\",
-                        answers: [\"Roger Federer\", \"Rafael Nadal\", \"Novak Djokovic\", \"Serena Williams\"],
+                        question: "Who has won the most Grand Slam tennis titles?",
+                        answers: ["Roger Federer", "Rafael Nadal", "Novak Djokovic", "Serena Williams"],
                         correct: 2
                     },
                     {
-                        question: \"In which sport would you perform a slam dunk?\",
-                        answers: [\"Volleyball\", \"Basketball\", \"Tennis\", \"Badminton\"],
+                        question: "In which sport would you perform a slam dunk?",
+                        answers: ["Volleyball", "Basketball", "Tennis", "Badminton"],
                         correct: 1
                     },
                     {
-                        question: \"What is the term for three strikes in a row in bowling?\",
-                        answers: [\"Turkey\", \"Spare\", \"Split\", \"Gutter\"],
+                        question: "What is the term for three strikes in a row in bowling?",
+                        answers: ["Turkey", "Spare", "Split", "Gutter"],
                         correct: 0
                     },
                     {
-                        question: \"Which country has won the most FIFA World Cups?\",
-                        answers: [\"Germany\", \"Argentina\", \"Brazil\", \"Italy\"],
+                        question: "Which country has won the most FIFA World Cups?",
+                        answers: ["Germany", "Argentina", "Brazil", "Italy"],
                         correct: 2
                     },
                     {
-                        question: \"What is the length of a marathon?\",
-                        answers: [\"26.2 miles\", \"25 miles\", \"27 miles\", \"24.5 miles\"],
+                        question: "What is the length of a marathon?",
+                        answers: ["26.2 miles", "25 miles", "27 miles", "24.5 miles"],
                         correct: 0
                     }
                 ],
                 hard: [
                     {
-                        question: \"Who holds the record for most home runs in a single MLB season?\",
-                        answers: [\"Babe Ruth\", \"Hank Aaron\", \"Barry Bonds\", \"Mark McGwire\"],
+                        question: "Who holds the record for most home runs in a single MLB season?",
+                        answers: ["Babe Ruth", "Hank Aaron", "Barry Bonds", "Mark McGwire"],
                         correct: 2
                     },
                     {
-                        question: \"What is the Fosbury Flop?\",
-                        answers: [\"Swimming technique\", \"High jump technique\", \"Diving technique\", \"Gymnastics move\"],
+                        question: "What is the Fosbury Flop?",
+                        answers: ["Swimming technique", "High jump technique", "Diving technique", "Gymnastics move"],
                         correct: 1
                     },
                     {
-                        question: \"Which Formula 1 driver has won the most championships?\",
-                        answers: [\"Ayrton Senna\", \"Michael Schumacher\", \"Lewis Hamilton\", \"Sebastian Vettel\"],
+                        question: "Which Formula 1 driver has won the most championships?",
+                        answers: ["Ayrton Senna", "Michael Schumacher", "Lewis Hamilton", "Sebastian Vettel"],
                         correct: 1
                     },
                     {
-                        question: \"What is the maximum number of clubs a golfer can carry?\",
-                        answers: [\"12\", \"14\", \"16\", \"18\"],
+                        question: "What is the maximum number of clubs a golfer can carry?",
+                        answers: ["12", "14", "16", "18"],
                         correct: 1
                     },
                     {
-                        question: \"Which boxer was known as 'The Greatest'?\",
-                        answers: [\"Joe Frazier\", \"George Foreman\", \"Muhammad Ali\", \"Mike Tyson\"],
+                        question: "Which boxer was known as 'The Greatest'?",
+                        answers: ["Joe Frazier", "George Foreman", "Muhammad Ali", "Mike Tyson"],
                         correct: 2
                     }
                 ]
@@ -567,82 +568,82 @@ class QuizApp {
             entertainment: {
                 easy: [
                     {
-                        question: \"Which movie features the song 'My Heart Will Go On'?\",
-                        answers: [\"Titanic\", \"The Bodyguard\", \"Ghost\", \"Dirty Dancing\"],
+                        question: "Which movie features the song 'My Heart Will Go On'?",
+                        answers: ["Titanic", "The Bodyguard", "Ghost", "Dirty Dancing"],
                         correct: 0
                     },
                     {
-                        question: \"Who directed the movie 'Jaws'?\",
-                        answers: [\"George Lucas\", \"Steven Spielberg\", \"Martin Scorsese\", \"Francis Ford Coppola\"],
+                        question: "Who directed the movie 'Jaws'?",
+                        answers: ["George Lucas", "Steven Spielberg", "Martin Scorsese", "Francis Ford Coppola"],
                         correct: 1
                     },
                     {
-                        question: \"Which Disney movie features the song 'Let It Go'?\",
-                        answers: [\"Moana\", \"Frozen\", \"Tangled\", \"The Little Mermaid\"],
+                        question: "Which Disney movie features the song 'Let It Go'?",
+                        answers: ["Moana", "Frozen", "Tangled", "The Little Mermaid"],
                         correct: 1
                     },
                     {
-                        question: \"What is the highest-grossing film of all time?\",
-                        answers: [\"Avatar\", \"Titanic\", \"Avengers: Endgame\", \"Star Wars: The Force Awakens\"],
+                        question: "What is the highest-grossing film of all time?",
+                        answers: ["Avatar", "Titanic", "Avengers: Endgame", "Star Wars: The Force Awakens"],
                         correct: 2
                     },
                     {
-                        question: \"Which TV show features the character Sherlock Holmes?\",
-                        answers: [\"Elementary\", \"Sherlock\", \"Both\", \"Neither\"],
+                        question: "Which TV show features the character Sherlock Holmes?",
+                        answers: ["Elementary", "Sherlock", "Both", "Neither"],
                         correct: 2
                     }
                 ],
                 medium: [
                     {
-                        question: \"Who composed the music for 'The Lion King'?\",
-                        answers: [\"Alan Menken\", \"Hans Zimmer\", \"John Williams\", \"Danny Elfman\"],
+                        question: "Who composed the music for 'The Lion King'?",
+                        answers: ["Alan Menken", "Hans Zimmer", "John Williams", "Danny Elfman"],
                         correct: 1
                     },
                     {
-                        question: \"Which actor played Iron Man in the Marvel Cinematic Universe?\",
-                        answers: [\"Chris Evans\", \"Robert Downey Jr.\", \"Mark Ruffalo\", \"Chris Hemsworth\"],
+                        question: "Which actor played Iron Man in the Marvel Cinematic Universe?",
+                        answers: ["Chris Evans", "Robert Downey Jr.", "Mark Ruffalo", "Chris Hemsworth"],
                         correct: 1
                     },
                     {
-                        question: \"What is the name of the coffee shop in the TV show 'Friends'?\",
-                        answers: [\"Central Perk\", \"The Grind\", \"Java Joe's\", \"Bean There\"],
+                        question: "What is the name of the coffee shop in the TV show 'Friends'?",
+                        answers: ["Central Perk", "The Grind", "Java Joe's", "Bean There"],
                         correct: 0
                     },
                     {
-                        question: \"Which film won the first Academy Award for Best Picture?\",
-                        answers: [\"Wings\", \"The Jazz Singer\", \"Sunrise\", \"The Circus\"],
+                        question: "Which film won the first Academy Award for Best Picture?",
+                        answers: ["Wings", "The Jazz Singer", "Sunrise", "The Circus"],
                         correct: 0
                     },
                     {
-                        question: \"Who wrote the 'Harry Potter' book series?\",
-                        answers: [\"J.R.R. Tolkien\", \"J.K. Rowling\", \"C.S. Lewis\", \"Roald Dahl\"],
+                        question: "Who wrote the 'Harry Potter' book series?",
+                        answers: ["J.R.R. Tolkien", "J.K. Rowling", "C.S. Lewis", "Roald Dahl"],
                         correct: 1
                     }
                 ],
                 hard: [
                     {
-                        question: \"Which director is known for the films 'Vertigo' and 'Psycho'?\",
-                        answers: [\"Alfred Hitchcock\", \"Orson Welles\", \"Billy Wilder\", \"John Ford\"],
+                        question: "Which director is known for the films 'Vertigo' and 'Psycho'?",
+                        answers: ["Alfred Hitchcock", "Orson Welles", "Billy Wilder", "John Ford"],
                         correct: 0
                     },
                     {
-                        question: \"What was the first feature-length animated film?\",
-                        answers: [\"Fantasia\", \"Snow White and the Seven Dwarfs\", \"Pinocchio\", \"Bambi\"],
+                        question: "What was the first feature-length animated film?",
+                        answers: ["Fantasia", "Snow White and the Seven Dwarfs", "Pinocchio", "Bambi"],
                         correct: 1
                     },
                     {
-                        question: \"Which composer wrote 'The Four Seasons'?\",
-                        answers: [\"Bach\", \"Mozart\", \"Vivaldi\", \"Beethoven\"],
+                        question: "Which composer wrote 'The Four Seasons'?",
+                        answers: ["Bach", "Mozart", "Vivaldi", "Beethoven"],
                         correct: 2
                     },
                     {
-                        question: \"What is the longest-running Broadway show?\",
-                        answers: [\"The Lion King\", \"Chicago\", \"The Phantom of the Opera\", \"Cats\"],
+                        question: "What is the longest-running Broadway show?",
+                        answers: ["The Lion King", "Chicago", "The Phantom of the Opera", "Cats"],
                         correct: 2
                     },
                     {
-                        question: \"Which video game franchise features Master Chief?\",
-                        answers: [\"Call of Duty\", \"Halo\", \"Destiny\", \"Gears of War\"],
+                        question: "Which video game franchise features Master Chief?",
+                        answers: ["Call of Duty", "Halo", "Destiny", "Gears of War"],
                         correct: 1
                     }
                 ]
@@ -650,82 +651,82 @@ class QuizApp {
             technology: {
                 easy: [
                     {
-                        question: \"What does 'WWW' stand for?\",
-                        answers: [\"World Wide Web\", \"World Wide Website\", \"Web World Wide\", \"Website World Wide\"],
+                        question: "What does 'WWW' stand for?",
+                        answers: ["World Wide Web", "World Wide Website", "Web World Wide", "Website World Wide"],
                         correct: 0
                     },
                     {
-                        question: \"Which company created the iPhone?\",
-                        answers: [\"Samsung\", \"Google\", \"Apple\", \"Microsoft\"],
+                        question: "Which company created the iPhone?",
+                        answers: ["Samsung", "Google", "Apple", "Microsoft"],
                         correct: 2
                     },
                     {
-                        question: \"What does 'CPU' stand for?\",
-                        answers: [\"Central Processing Unit\", \"Computer Processing Unit\", \"Central Program Unit\", \"Computer Program Unit\"],
+                        question: "What does 'CPU' stand for?",
+                        answers: ["Central Processing Unit", "Computer Processing Unit", "Central Program Unit", "Computer Program Unit"],
                         correct: 0
                     },
                     {
-                        question: \"Which programming language is known for its use in web development?\",
-                        answers: [\"Python\", \"JavaScript\", \"C++\", \"Java\"],
+                        question: "Which programming language is known for its use in web development?",
+                        answers: ["Python", "JavaScript", "C++", "Java"],
                         correct: 1
                     },
                     {
-                        question: \"What is the most popular social media platform?\",
-                        answers: [\"Twitter\", \"Instagram\", \"Facebook\", \"TikTok\"],
+                        question: "What is the most popular social media platform?",
+                        answers: ["Twitter", "Instagram", "Facebook", "TikTok"],
                         correct: 2
                     }
                 ],
                 medium: [
                     {
-                        question: \"Who founded Microsoft?\",
-                        answers: [\"Steve Jobs\", \"Bill Gates\", \"Mark Zuckerberg\", \"Larry Page\"],
+                        question: "Who founded Microsoft?",
+                        answers: ["Steve Jobs", "Bill Gates", "Mark Zuckerberg", "Larry Page"],
                         correct: 1
                     },
                     {
-                        question: \"What does 'AI' stand for?\",
-                        answers: [\"Automated Intelligence\", \"Artificial Intelligence\", \"Advanced Intelligence\", \"Algorithmic Intelligence\"],
+                        question: "What does 'AI' stand for?",
+                        answers: ["Automated Intelligence", "Artificial Intelligence", "Advanced Intelligence", "Algorithmic Intelligence"],
                         correct: 1
                     },
                     {
-                        question: \"Which protocol is used for secure web browsing?\",
-                        answers: [\"HTTP\", \"HTTPS\", \"FTP\", \"SMTP\"],
+                        question: "Which protocol is used for secure web browsing?",
+                        answers: ["HTTP", "HTTPS", "FTP", "SMTP"],
                         correct: 1
                     },
                     {
-                        question: \"What is the most widely used operating system?\",
-                        answers: [\"Windows\", \"macOS\", \"Linux\", \"Android\"],
+                        question: "What is the most widely used operating system?",
+                        answers: ["Windows", "macOS", "Linux", "Android"],
                         correct: 3
                     },
                     {
-                        question: \"Which company developed the Android operating system?\",
-                        answers: [\"Apple\", \"Microsoft\", \"Google\", \"Samsung\"],
+                        question: "Which company developed the Android operating system?",
+                        answers: ["Apple", "Microsoft", "Google", "Samsung"],
                         correct: 2
                     }
                 ],
                 hard: [
                     {
-                        question: \"What is the difference between RAM and ROM?\",
-                        answers: [\"RAM is permanent, ROM is temporary\", \"RAM is temporary, ROM is permanent\", \"No difference\", \"RAM is faster, ROM is slower\"],
+                        question: "What is the difference between RAM and ROM?",
+                        answers: ["RAM is permanent, ROM is temporary", "RAM is temporary, ROM is permanent", "No difference", "RAM is faster, ROM is slower"],
                         correct: 1
                     },
                     {
-                        question: \"Which algorithm is commonly used for encryption?\",
-                        answers: [\"Bubble Sort\", \"RSA\", \"Linear Search\", \"Binary Search\"],
+                        question: "Which algorithm is commonly used for encryption?",
+                        answers: ["Bubble Sort", "RSA", "Linear Search", "Binary Search"],
                         correct: 1
                     },
                     {
-                        question: \"What is the primary function of a compiler?\",
-                        answers: [\"Execute programs\", \"Store data\", \"Translate source code\", \"Manage memory\"],
+                        question: "What is the primary function of a compiler?",
+                        answers: ["Execute programs", "Store data", "Translate source code", "Manage memory"],
                         correct: 2
                     },
                     {
-                        question: \"Which data structure uses LIFO (Last In, First Out)?\",
-                        answers: [\"Queue\", \"Stack\", \"Array\", \"Linked List\"],
+                        question: "Which data structure uses LIFO (Last In, First Out)?",
+                        answers: ["Queue", "Stack", "Array", "Linked List"],
                         correct: 1
                     },
                     {
-                        question: \"What is the purpose of DNS?\",
-                        answers: [\"Data encryption\", \"Domain name resolution\", \"Data storage\", \"Network routing\"],
+                        question: "What is the purpose of DNS?",
+                        answers: ["Data encryption", "Domain name resolution", "Data storage", "Network routing"],
                         correct: 1
                     }
                 ]
@@ -747,7 +748,7 @@ class QuizApp {
         question.answers.forEach((answer, index) => {
             const answerEl = document.createElement('div');
             answerEl.className = 'answer-option';
-            answerEl.innerHTML = `<span class=\"answer-text\">${answer}</span>`;
+            answerEl.innerHTML = `<span class="answer-text">${answer}</span>`;
             answerEl.addEventListener('click', () => this.selectAnswer(index));
             this.answersContainer.appendChild(answerEl);
         });
@@ -943,11 +944,11 @@ class QuizApp {
             const correctAnswerText = answer.answers[answer.correctAnswer];
             
             return `
-                <div class=\"review-item\">
-                    <div class=\"review-question\">${index + 1}. ${answer.question}</div>
-                    <div class=\"review-answers\">
-                        <div class=\"review-answer correct\">✓ Correct: ${correctAnswerText}</div>
-                        <div class=\"review-answer ${answer.isCorrect ? 'correct' : (answer.skipped ? 'user-answer' : 'incorrect')}\">
+                <div class="review-item">
+                    <div class="review-question">${index + 1}. ${answer.question}</div>
+                    <div class="review-answers">
+                        <div class="review-answer correct">✓ Correct: ${correctAnswerText}</div>
+                        <div class="review-answer ${answer.isCorrect ? 'correct' : (answer.skipped ? 'user-answer' : 'incorrect')}">
                             ${answer.skipped ? '⏭️' : (answer.isCorrect ? '✓' : '✗')} Your answer: ${userAnswerText}
                         </div>
                     </div>
@@ -1064,12 +1065,12 @@ class QuizApp {
             const percentage = stats.total > 0 ? Math.round((stats.correct / stats.total) * 100) : 0;
             
             return `
-                <div class=\"category-bar\">
-                    <div class=\"category-name\">${category}</div>
-                    <div class=\"category-progress\">
-                        <div class=\"category-progress-fill\" style=\"width: ${percentage}%\"></div>
+                <div class="category-bar">
+                    <div class="category-name">${category}</div>
+                    <div class="category-progress">
+                        <div class="category-progress-fill" style="width: ${percentage}%"></div>
                     </div>
-                    <div class=\"category-percentage\">${percentage}%</div>
+                    <div class="category-percentage">${percentage}%</div>
                 </div>
             `;
         }).join('');
@@ -1079,9 +1080,9 @@ class QuizApp {
         const recentScores = this.getRecentScores();
         
         this.recentScores.innerHTML = recentScores.map(score => `
-            <div class=\"score-item\">
-                <div class=\"score-info\">${score.category} - ${score.difficulty}</div>
-                <div class=\"score-value\">${score.score}</div>
+            <div class="score-item">
+                <div class="score-info">${score.category} - ${score.difficulty}</div>
+                <div class="score-value">${score.score}</div>
             </div>
         `).join('');
     }

@@ -31,4 +31,134 @@ class VoiceRecorder {
         try {
             const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
             this.mediaRecorder = new MediaRecorder(stream);
-            this.audioChunks = [];\n            \n            this.mediaRecorder.ondataavailable = (e) => {\n                this.audioChunks.push(e.data);\n            };\n            \n            this.mediaRecorder.onstop = () => {\n                const audioBlob = new Blob(this.audioChunks, { type: 'audio/wav' });\n                const audioUrl = URL.createObjectURL(audioBlob);\n                \n                const recording = {\n                    id: Date.now(),\n                    url: audioUrl,\n                    duration: this.formatTime(Date.now() - this.startTime),\n                    timestamp: new Date().toLocaleString()\n                };\n                \n                this.recordings.unshift(recording);\n                localStorage.setItem('recordings', JSON.stringify(this.recordings));\n                this.renderRecordings();\n                \n                this.playBtn.disabled = false;\n            };\n            \n            this.mediaRecorder.start();\n            this.isRecording = true;\n            this.startTime = Date.now();\n            \n            this.recordBtn.disabled = true;\n            this.stopBtn.disabled = false;\n            \n            this.startTimer();\n            this.startVisualizer();\n            \n        } catch (error) {\n            alert('マイクへのアクセスが許可されていません');\n        }\n    }\n    \n    stopRecording() {\n        if (this.mediaRecorder && this.isRecording) {\n            this.mediaRecorder.stop();\n            this.isRecording = false;\n            \n            this.recordBtn.disabled = false;\n            this.stopBtn.disabled = true;\n            \n            this.stopTimer();\n            this.stopVisualizer();\n        }\n    }\n    \n    playLastRecording() {\n        if (this.recordings.length > 0) {\n            const audio = new Audio(this.recordings[0].url);\n            audio.play();\n        }\n    }\n    \n    startTimer() {\n        this.timerInterval = setInterval(() => {\n            const elapsed = Date.now() - this.startTime;\n            this.timer.textContent = this.formatTime(elapsed);\n        }, 1000);\n    }\n    \n    stopTimer() {\n        if (this.timerInterval) {\n            clearInterval(this.timerInterval);\n            this.timerInterval = null;\n        }\n    }\n    \n    formatTime(ms) {\n        const seconds = Math.floor(ms / 1000);\n        const minutes = Math.floor(seconds / 60);\n        const secs = seconds % 60;\n        return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;\n    }\n    \n    startVisualizer() {\n        this.visualizer.innerHTML = '<div style=\"color: #ff6b6b; font-size: 1.5rem; animation: pulse 1s infinite;\">🎙️ 録音中...</div>';\n    }\n    \n    stopVisualizer() {\n        this.visualizer.innerHTML = '<div style=\"color: #666;\">録音停止</div>';\n    }\n    \n    renderRecordings() {\n        this.recordingsList.innerHTML = '';\n        \n        this.recordings.forEach((recording, index) => {\n            const item = document.createElement('div');\n            item.className = 'recording-item';\n            \n            item.innerHTML = `\n                <div>\n                    <strong>Recording ${index + 1}</strong><br>\n                    <small>${recording.timestamp} • ${recording.duration}</small>\n                </div>\n                <div class=\"recording-controls\">\n                    <button class=\"play-recording\" onclick=\"voiceRecorder.playRecording(${recording.id})\">▶️ Play</button>\n                    <button class=\"delete-recording\" onclick=\"voiceRecorder.deleteRecording(${recording.id})\">🗑️ Delete</button>\n                </div>\n            `;\n            \n            this.recordingsList.appendChild(item);\n        });\n    }\n    \n    playRecording(id) {\n        const recording = this.recordings.find(r => r.id === id);\n        if (recording) {\n            const audio = new Audio(recording.url);\n            audio.play();\n        }\n    }\n    \n    deleteRecording(id) {\n        if (confirm('この録音を削除しますか？')) {\n            this.recordings = this.recordings.filter(r => r.id !== id);\n            localStorage.setItem('recordings', JSON.stringify(this.recordings));\n            this.renderRecordings();\n        }\n    }\n}\n\nlet voiceRecorder;\ndocument.addEventListener('DOMContentLoaded', () => {\n    voiceRecorder = new VoiceRecorder();\n});"
+            this.audioChunks = [];
+            
+            this.mediaRecorder.ondataavailable = (e) => {
+                this.audioChunks.push(e.data);
+            };
+            
+            this.mediaRecorder.onstop = () => {
+                const audioBlob = new Blob(this.audioChunks, { type: 'audio/wav' });
+                const audioUrl = URL.createObjectURL(audioBlob);
+                
+                const recording = {
+                    id: Date.now(),
+                    url: audioUrl,
+                    duration: this.formatTime(Date.now() - this.startTime),
+                    timestamp: new Date().toLocaleString()
+                };
+                
+                this.recordings.unshift(recording);
+                localStorage.setItem('recordings', JSON.stringify(this.recordings));
+                this.renderRecordings();
+                
+                this.playBtn.disabled = false;
+            };
+            
+            this.mediaRecorder.start();
+            this.isRecording = true;
+            this.startTime = Date.now();
+            
+            this.recordBtn.disabled = true;
+            this.stopBtn.disabled = false;
+            
+            this.startTimer();
+            this.startVisualizer();
+            
+        } catch (error) {
+            alert('マイクへのアクセスが許可されていません');
+        }
+    }
+    
+    stopRecording() {
+        if (this.mediaRecorder && this.isRecording) {
+            this.mediaRecorder.stop();
+            this.isRecording = false;
+            
+            this.recordBtn.disabled = false;
+            this.stopBtn.disabled = true;
+            
+            this.stopTimer();
+            this.stopVisualizer();
+        }
+    }
+    
+    playLastRecording() {
+        if (this.recordings.length > 0) {
+            const audio = new Audio(this.recordings[0].url);
+            audio.play();
+        }
+    }
+    
+    startTimer() {
+        this.timerInterval = setInterval(() => {
+            const elapsed = Date.now() - this.startTime;
+            this.timer.textContent = this.formatTime(elapsed);
+        }, 1000);
+    }
+    
+    stopTimer() {
+        if (this.timerInterval) {
+            clearInterval(this.timerInterval);
+            this.timerInterval = null;
+        }
+    }
+    
+    formatTime(ms) {
+        const seconds = Math.floor(ms / 1000);
+        const minutes = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }
+    
+    startVisualizer() {
+        this.visualizer.innerHTML = '<div style="color: #ff6b6b; font-size: 1.5rem; animation: pulse 1s infinite;">🎙️ 録音中...</div>';
+    }
+    
+    stopVisualizer() {
+        this.visualizer.innerHTML = '<div style="color: #666;">録音停止</div>';
+    }
+    
+    renderRecordings() {
+        this.recordingsList.innerHTML = '';
+        
+        this.recordings.forEach((recording, index) => {
+            const item = document.createElement('div');
+            item.className = 'recording-item';
+            
+            item.innerHTML = `
+                <div>
+                    <strong>Recording ${index + 1}</strong><br>
+                    <small>${recording.timestamp} • ${recording.duration}</small>
+                </div>
+                <div class="recording-controls">
+                    <button class="play-recording" onclick="voiceRecorder.playRecording(${recording.id})">▶️ Play</button>
+                    <button class="delete-recording" onclick="voiceRecorder.deleteRecording(${recording.id})">🗑️ Delete</button>
+                </div>
+            `;
+            
+            this.recordingsList.appendChild(item);
+        });
+    }
+    
+    playRecording(id) {
+        const recording = this.recordings.find(r => r.id === id);
+        if (recording) {
+            const audio = new Audio(recording.url);
+            audio.play();
+        }
+    }
+    
+    deleteRecording(id) {
+        if (confirm('この録音を削除しますか？')) {
+            this.recordings = this.recordings.filter(r => r.id !== id);
+            localStorage.setItem('recordings', JSON.stringify(this.recordings));
+            this.renderRecordings();
+        }
+    }
+}
+
+let voiceRecorder;
+document.addEventListener('DOMContentLoaded', () => {
+    voiceRecorder = new VoiceRecorder();
+});"

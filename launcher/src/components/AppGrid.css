@@ -43,7 +43,8 @@
 @media (max-width: 480px) {
   .app-grid {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 10px;
+    padding: 0 5px;
   }
 }
 

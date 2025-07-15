@@ -34,14 +34,41 @@
 @media (max-width: 768px) {
   .stats {
     gap: 15px;
+    margin-bottom: 20px;
+    padding: 0 10px;
   }
   
   .stat-item {
-    min-width: 100px;
-    padding: 15px;
+    min-width: 90px;
+    padding: 12px;
   }
   
   .stat-number {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats {
+    gap: 10px;
+    margin-bottom: 15px;
+    padding: 0 5px;
+  }
+  
+  .stat-item {
+    min-width: 80px;
+    padding: 10px;
+  }
+  
+  .stat-number {
+    font-size: 1.2rem;
+  }
+  
+  .stat-label {
+    font-size: 0.75rem;
   }
 }

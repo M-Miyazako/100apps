@@ -22,11 +22,32 @@
 }
 
 @media (max-width: 768px) {
+  .header {
+    padding: 20px 10px;
+    margin-bottom: 20px;
+  }
+  
   .header-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   
   .header-description {
-    font-size: 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 15px 5px;
+    margin-bottom: 15px;
+  }
+  
+  .header-title {
+    font-size: 1.5rem;
+  }
+  
+  .header-description {
+    font-size: 0.85rem;
+    max-width: 100%;
   }
 }

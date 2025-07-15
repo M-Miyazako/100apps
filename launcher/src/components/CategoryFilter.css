@@ -36,11 +36,28 @@
     justify-content: flex-start;
     overflow-x: auto;
     flex-wrap: nowrap;
-    padding-bottom: 5px;
+    padding: 0 10px 5px;
+    margin-bottom: 15px;
+    gap: 8px;
   }
   
   .category-btn {
     white-space: nowrap;
     flex-shrink: 0;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-filter {
+    padding: 0 5px 5px;
+    margin-bottom: 12px;
+    gap: 6px;
+  }
+  
+  .category-btn {
+    padding: 5px 10px;
+    font-size: 0.8rem;
   }
 }

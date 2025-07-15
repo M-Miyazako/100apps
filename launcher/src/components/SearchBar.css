@@ -52,7 +52,36 @@
 }
 
 @media (max-width: 768px) {
+  .search-container {
+    margin-bottom: 15px;
+    padding: 0 10px;
+  }
+  
   .search-input-wrapper {
     max-width: 100%;
+  }
+  
+  .search-input {
+    padding: 10px 14px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-container {
+    margin-bottom: 12px;
+    padding: 0 5px;
+  }
+  
+  .search-input {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+  
+  .clear-button {
+    right: 8px;
+    width: 20px;
+    height: 20px;
+    font-size: 1rem;
   }
 }

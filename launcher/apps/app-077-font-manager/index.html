@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>077 - フォント管理</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>077 - フォント管理</h1>
+        <p>フォント管理・プレビューツール</p>
+        <div class="font-controls">
+            <div class="upload-section">
+                <h3>フォントのアップロード</h3>
+                <input type="file" id="fontUpload" accept=".ttf,.otf,.woff,.woff2" multiple>
+                <button id="uploadBtn">フォントをアップロード</button>
+            </div>
+            
+            <div class="font-list">
+                <h3>インストール済みフォント</h3>
+                <div id="fontListContainer"></div>
+            </div>
+            
+            <div class="preview-section">
+                <h3>フォントプレビュー</h3>
+                <div class="preview-controls">
+                    <select id="fontSelect">
+                        <option value="">フォントを選択</option>
+                    </select>
+                    <input type="range" id="fontSizeSlider" min="12" max="72" value="24">
+                    <span id="fontSizeDisplay">24px</span>
+                </div>
+                <textarea id="previewText" placeholder="ここにテキストを入力してフォントをプレビュー...">The quick brown fox jumps over the lazy dog.
+あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん</textarea>
+                <div id="previewDisplay"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

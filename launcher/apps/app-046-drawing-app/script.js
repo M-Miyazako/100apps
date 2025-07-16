@@ -73,8 +73,8 @@ class DrawingApp {
         // Drawing events
         this.canvas.addEventListener('mousedown', (e) => this.startDrawing(e));
         this.canvas.addEventListener('mousemove', (e) => this.draw(e));
-        this.canvas.addEventListener('mouseup', () => this.stopDrawing());
-        this.canvas.addEventListener('mouseout', () => this.stopDrawing());
+        this.canvas.addEventListener('mouseup', (e) => this.stopDrawing(e));
+        this.canvas.addEventListener('mouseout', (e) => this.stopDrawing(e));
         
         // Touch events
         this.canvas.addEventListener('touchstart', (e) => {
@@ -89,7 +89,7 @@ class DrawingApp {
         
         this.canvas.addEventListener('touchend', (e) => {
             e.preventDefault();
-            this.stopDrawing();
+            this.stopDrawing(e.changedTouches[0]);
         });
     }
     
@@ -130,23 +130,26 @@ class DrawingApp {
         }
     }
     
-    stopDrawing() {
+    stopDrawing(e) {
         if (!this.isDrawing) return;
         this.isDrawing = false;
         
-        if (this.currentTool === 'line') {
+        if (this.currentTool === 'line' && e) {
+            const pos = this.getMousePos(e);
             this.ctx.beginPath();
             this.ctx.moveTo(this.startX, this.startY);
-            this.ctx.lineTo(this.startX, this.startY);
+            this.ctx.lineTo(pos.x, pos.y);
             this.ctx.stroke();
-        } else if (this.currentTool === 'circle') {
-            const radius = Math.sqrt(Math.pow(this.startX - this.startX, 2) + Math.pow(this.startY - this.startY, 2));
+        } else if (this.currentTool === 'circle' && e) {
+            const pos = this.getMousePos(e);
+            const radius = Math.sqrt(Math.pow(pos.x - this.startX, 2) + Math.pow(pos.y - this.startY, 2));
             this.ctx.beginPath();
-            this.ctx.arc(this.startX, this.startY, 50, 0, 2 * Math.PI);
+            this.ctx.arc(this.startX, this.startY, radius, 0, 2 * Math.PI);
             this.ctx.stroke();
-        } else if (this.currentTool === 'rect') {
+        } else if (this.currentTool === 'rect' && e) {
+            const pos = this.getMousePos(e);
             this.ctx.beginPath();
-            this.ctx.rect(this.startX, this.startY, 100, 80);
+            this.ctx.rect(this.startX, this.startY, pos.x - this.startX, pos.y - this.startY);
             this.ctx.stroke();
         }
     }

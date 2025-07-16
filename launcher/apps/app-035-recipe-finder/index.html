@@ -16,6 +16,16 @@
         <main class="main-content">
             <!-- 検索セクション -->
             <section class="search-section">
+                <div class="quick-search">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="レシピ名、材料、タグで検索"
+                        class="quick-search-input"
+                    >
+                    <button class="btn btn-primary" id="clearBtn">クリア</button>
+                </div>
+                
                 <div class="search-form">
                     <div class="search-tabs">
                         <button class="tab-btn active" data-tab="ingredients">材料で検索</button>
@@ -75,9 +85,20 @@
             <section class="filter-section">
                 <div class="filter-controls">
                     <div class="filter-group">
+                        <label for="categoryFilter">カテゴリ:</label>
+                        <select id="categoryFilter">
+                            <option value="all">すべて</option>
+                            <option value="和食">和食</option>
+                            <option value="洋食">洋食</option>
+                            <option value="中華">中華</option>
+                            <option value="サラダ">サラダ</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
                         <label for="difficultyFilter">難易度:</label>
                         <select id="difficultyFilter">
-                            <option value="">すべて</option>
+                            <option value="all">すべて</option>
                             <option value="簡単">簡単</option>
                             <option value="普通">普通</option>
                             <option value="難しい">難しい</option>
@@ -111,7 +132,7 @@
             <section class="results-section">
                 <div class="results-header">
                     <h2>検索結果</h2>
-                    <span class="results-count" id="resultsCount">0件のレシピが見つかりました</span>
+                    <span class="results-count" id="resultsCount">合計: <span id="totalRecipes">0</span>件のレシピ</span>
                 </div>
                 
                 <div class="recipes-grid" id="recipesGrid">
@@ -123,14 +144,28 @@
                     <h3>レシピが見つかりません</h3>
                     <p>材料や条件を変更して検索してください</p>
                 </div>
+                
+                <div class="no-results" id="noResults" style="display: none;">
+                    <div class="empty-icon">🔍</div>
+                    <h3>検索結果がありません</h3>
+                    <p>別のキーワードで検索してください</p>
+                </div>
             </section>
         </main>
         
         <!-- お気に入りセクション -->
         <section class="favorites-section">
-            <h3>お気に入り</h3>
+            <h3>お気に入り (<span id="favoriteCount">0</span>)</h3>
             <div class="favorites-list" id="favoritesList">
                 <!-- お気に入りリストがここに表示されます -->
+            </div>
+        </section>
+        
+        <!-- 検索履歴セクション -->
+        <section class="search-history-section">
+            <h3>検索履歴</h3>
+            <div class="search-history" id="searchHistory">
+                <!-- 検索履歴がここに表示されます -->
             </div>
         </section>
     </div>
@@ -143,7 +178,7 @@
                 <button class="close-btn" id="closeModal">&times;</button>
             </div>
             
-            <div class="modal-body" id="modalBody">
+            <div class="modal-body" id="selectedRecipe">
                 <!-- レシピ詳細リストがここに表示されます -->
             </div>
         </div>

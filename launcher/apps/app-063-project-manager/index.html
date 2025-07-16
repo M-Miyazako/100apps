@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プロジェクト管理アプリ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 プロジェクト管理</h1>
+            <p>プロジェクトの進捗を管理し、チームと協力しましょう</p>
+        </div>
+
+        <div class="stats-section">
+            <div class="stat-card">
+                <div class="stat-number" id="totalProjects">0</div>
+                <div class="stat-label">プロジェクト</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="activeTasks">0</div>
+                <div class="stat-label">アクティブなタスク</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="completedTasks">0</div>
+                <div class="stat-label">完了したタスク</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="teamMembers">0</div>
+                <div class="stat-label">チームメンバー</div>
+            </div>
+        </div>
+
+        <div class="main-grid">
+            <div class="project-creation-section">
+                <h3>新しいプロジェクトを作成</h3>
+                <form class="project-form" id="projectForm">
+                    <div class="form-group">
+                        <label for="projectName">プロジェクト名</label>
+                        <input type="text" id="projectName" required placeholder="プロジェクト名を入力">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="projectDescription">説明</label>
+                        <textarea id="projectDescription" rows="3" placeholder="プロジェクトの説明"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projectDeadline">期限</label>
+                        <input type="date" id="projectDeadline">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projectPriority">優先度</label>
+                        <select id="projectPriority">
+                            <option value="low">低</option>
+                            <option value="medium" selected>中</option>
+                            <option value="high">高</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>プロジェクトの色</label>
+                        <div class="project-colors">
+                            <div class="color-option selected" style="background: #667eea" data-color="#667eea"></div>
+                            <div class="color-option" style="background: #00b894" data-color="#00b894"></div>
+                            <div class="color-option" style="background: #e74c3c" data-color="#e74c3c"></div>
+                            <div class="color-option" style="background: #f39c12" data-color="#f39c12"></div>
+                            <div class="color-option" style="background: #9b59b6" data-color="#9b59b6"></div>
+                            <div class="color-option" style="background: #34495e" data-color="#34495e"></div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="create-project-btn">プロジェクトを作成</button>
+                </form>
+            </div>
+
+            <div class="task-creation-section">
+                <h3>新しいタスクを追加</h3>
+                <form class="task-form" id="taskForm">
+                    <div class="form-group">
+                        <label for="taskName">タスク名</label>
+                        <input type="text" id="taskName" required placeholder="タスク名を入力">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="taskProject">プロジェクト</label>
+                        <select id="taskProject">
+                            <option value="">プロジェクトを選択</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="taskAssignee">担当者</label>
+                        <input type="text" id="taskAssignee" placeholder="担当者名">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="taskDueDate">期限</label>
+                        <input type="date" id="taskDueDate">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="taskStatus">ステータス</label>
+                        <select id="taskStatus">
+                            <option value="todo">ToDo</option>
+                            <option value="inprogress">進行中</option>
+                            <option value="review">レビュー</option>
+                            <option value="completed">完了</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="add-task-btn">タスクを追加</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="projects-section">
+            <div class="section-header">
+                <h3 class="section-title">プロジェクト一覧</h3>
+                <div class="filter-controls">
+                    <button class="filter-btn active" data-filter="all">すべて</button>
+                    <button class="filter-btn" data-filter="active">アクティブ</button>
+                    <button class="filter-btn" data-filter="completed">完了</button>
+                    <button class="filter-btn" data-filter="overdue">期限切れ</button>
+                </div>
+            </div>
+            <div class="projects-list" id="projectsList">
+                <div style="text-align: center; padding: 40px; color: #666;">
+                    <h4>まだプロジェクトがありません</h4>
+                    <p>上のフォームから最初のプロジェクトを作成してください</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="tasks-section">
+            <div class="section-header">
+                <h3 class="section-title">タスク一覧</h3>
+                <div class="filter-controls">
+                    <button class="filter-btn active" data-filter="all">すべて</button>
+                    <button class="filter-btn" data-filter="todo">ToDo</button>
+                    <button class="filter-btn" data-filter="inprogress">進行中</button>
+                    <button class="filter-btn" data-filter="review">レビュー</button>
+                    <button class="filter-btn" data-filter="completed">完了</button>
+                </div>
+            </div>
+            <div class="tasks-list" id="tasksList">
+                <div style="text-align: center; padding: 40px; color: #666;">
+                    <h4>まだタスクがありません</h4>
+                    <p>上のフォームから最初のタスクを追加してください</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="reports-section">
+            <div class="report-card">
+                <h3 class="section-title">進捗概要</h3>
+                <div class="chart-container">
+                    <div id="progressChart">ここにチャートが表示されます</div>
+                </div>
+            </div>
+            <div class="report-card">
+                <h3 class="section-title">プロジェクト分布</h3>
+                <div class="chart-container">
+                    <div id="projectChart">ここにチャートが表示されます</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="export-section">
+            <h3 style="margin-bottom: 20px; color: #333;">データをエクスポート</h3>
+            <button class="export-btn" id="exportCSV">CSVとしてエクスポート</button>
+            <button class="export-btn" id="exportJSON">JSONとしてエクスポート</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

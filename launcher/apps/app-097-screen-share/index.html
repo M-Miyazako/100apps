@@ -1,1 +1,179 @@
-<\!DOCTYPE html><html><head><title>Screen Share</title><link rel="stylesheet" href="styles.css"></head><body><div class="container"><h1>Screen Share</h1><p>A screen sharing application.</p></div><script src="script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screen Share</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Screen Share</h1>
+        
+        <div class="main-content">
+            <div class="control-panel">
+                <h2>Screen Sharing Controls</h2>
+                
+                <div class="share-options">
+                    <div class="option-group">
+                        <h3>Share Type</h3>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="shareType" value="screen" checked>
+                                <span class="radio-label">Entire Screen</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="shareType" value="window">
+                                <span class="radio-label">Application Window</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="shareType" value="tab">
+                                <span class="radio-label">Browser Tab</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="option-group">
+                        <h3>Audio</h3>
+                        <label class="checkbox-option">
+                            <input type="checkbox" id="includeAudio">
+                            <span class="checkbox-label">Include System Audio</span>
+                        </label>
+                    </div>
+                    
+                    <div class="option-group">
+                        <h3>Quality</h3>
+                        <select id="qualitySelect">
+                            <option value="low">Low (360p)</option>
+                            <option value="medium" selected>Medium (720p)</option>
+                            <option value="high">High (1080p)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button id="startShareBtn" class="btn primary">Start Sharing</button>
+                    <button id="stopShareBtn" class="btn danger" disabled>Stop Sharing</button>
+                    <button id="pauseShareBtn" class="btn secondary" disabled>Pause</button>
+                    <button id="recordBtn" class="btn info">Start Recording</button>
+                </div>
+                
+                <div class="status-info">
+                    <div class="status-item">
+                        <span class="status-label">Status:</span>
+                        <span id="shareStatus" class="status-value">Not sharing</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Duration:</span>
+                        <span id="shareDuration" class="status-value">00:00:00</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Resolution:</span>
+                        <span id="shareResolution" class="status-value">-</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="preview-panel">
+                <h2>Preview</h2>
+                <div class="video-container">
+                    <video id="screenVideo" autoplay muted></video>
+                    <div class="video-overlay" id="videoOverlay">
+                        <div class="overlay-content">
+                            <div class="share-icon">🖥️</div>
+                            <p>Click "Start Sharing" to begin screen sharing</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="preview-controls">
+                    <button id="fullscreenBtn" class="control-btn" title="Fullscreen">⛶</button>
+                    <button id="pipBtn" class="control-btn" title="Picture-in-Picture">📺</button>
+                    <button id="snapshotBtn" class="control-btn" title="Take Screenshot">📸</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sharing-panel" id="sharingPanel" style="display: none;">
+            <h2>Share Your Screen</h2>
+            <div class="share-methods">
+                <div class="share-method">
+                    <h3>Share Link</h3>
+                    <div class="input-group">
+                        <input type="text" id="shareLink" readonly placeholder="Share link will appear here">
+                        <button id="copyLinkBtn" class="btn small">Copy</button>
+                    </div>
+                </div>
+                
+                <div class="share-method">
+                    <h3>QR Code</h3>
+                    <div class="qr-container">
+                        <canvas id="qrCanvas" width="150" height="150"></canvas>
+                    </div>
+                </div>
+                
+                <div class="share-method">
+                    <h3>Room Code</h3>
+                    <div class="room-code">
+                        <span id="roomCode">-</span>
+                        <button id="copyCodeBtn" class="btn small">Copy</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="viewers-list">
+                <h3>Active Viewers (<span id="viewerCount">0</span>)</h3>
+                <div class="viewers" id="viewersList">
+                    <!-- Viewers will be added here -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="recording-panel" id="recordingPanel" style="display: none;">
+            <h2>Recording</h2>
+            <div class="recording-status">
+                <div class="recording-indicator">
+                    <span class="recording-dot"></span>
+                    <span>Recording in progress...</span>
+                </div>
+                <div class="recording-time" id="recordingTime">00:00:00</div>
+            </div>
+            
+            <div class="recording-controls">
+                <button id="stopRecordBtn" class="btn danger">Stop Recording</button>
+                <button id="pauseRecordBtn" class="btn secondary">Pause</button>
+            </div>
+            
+            <div class="recording-settings">
+                <div class="setting-group">
+                    <label for="recordFormat">Format:</label>
+                    <select id="recordFormat">
+                        <option value="webm">WebM</option>
+                        <option value="mp4">MP4</option>
+                    </select>
+                </div>
+                
+                <div class="setting-group">
+                    <label for="recordQuality">Quality:</label>
+                    <select id="recordQuality">
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="recordings-list" id="recordingsList">
+            <h2>Saved Recordings</h2>
+            <div class="recordings" id="recordingsContainer">
+                <!-- Recordings will be added here -->
+            </div>
+        </div>
+        
+        <div class="notification" id="notification"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

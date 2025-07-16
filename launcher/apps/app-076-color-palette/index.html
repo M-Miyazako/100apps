@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カラーパレット</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎨 カラーパレット</h1>
+            <p>カラーパレット作成・管理ツール</p>
+        </div>
+
+        <div class="stats-section">
+            <div class="stat-card">
+                <div class="stat-number" id="totalPalettes">0</div>
+                <div class="stat-label">パレット</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalColors">0</div>
+                <div class="stat-label">カラー</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="favoriteColors">0</div>
+                <div class="stat-label">お気に入り</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="recentColors">0</div>
+                <div class="stat-label">最近使用</div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="sidebar">
+                <div class="color-input-section">
+                    <h3>カラー入力</h3>
+                    <div class="color-inputs">
+                        <div class="input-group">
+                            <label for="colorPicker">カラーピッカー</label>
+                            <input type="color" id="colorPicker" value="#667eea">
+                        </div>
+                        <div class="input-group">
+                            <label for="hexInput">HEX</label>
+                            <input type="text" id="hexInput" placeholder="#667eea">
+                        </div>
+                        <div class="input-group">
+                            <label for="rgbInput">RGB</label>
+                            <input type="text" id="rgbInput" placeholder="102, 126, 234">
+                        </div>
+                        <div class="input-group">
+                            <label for="hslInput">HSL</label>
+                            <input type="text" id="hslInput" placeholder="230, 77%, 66%">
+                        </div>
+                    </div>
+                    <button class="add-color-btn" id="addColorBtn">カラーを追加</button>
+                </div>
+
+                <div class="palette-creation">
+                    <h3>パレット作成</h3>
+                    <div class="palette-form">
+                        <input type="text" id="paletteName" placeholder="パレット名">
+                        <textarea id="paletteDescription" placeholder="説明（任意）" rows="3"></textarea>
+                        <button class="create-palette-btn" id="createPaletteBtn">パレット作成</button>
+                    </div>
+                </div>
+
+                <div class="color-tools">
+                    <h3>カラーツール</h3>
+                    <div class="tools-list">
+                        <button class="tool-btn" id="randomColorBtn">ランダムカラー</button>
+                        <button class="tool-btn" id="complementaryBtn">補色生成</button>
+                        <button class="tool-btn" id="analogousBtn">類似色生成</button>
+                        <button class="tool-btn" id="triadicBtn">三原色生成</button>
+                        <button class="tool-btn" id="monochromaticBtn">単色バリエーション</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-panel">
+                <div class="current-color-section">
+                    <h3>現在のカラー</h3>
+                    <div class="current-color-display">
+                        <div class="color-preview" id="currentColorPreview"></div>
+                        <div class="color-info">
+                            <div class="color-values">
+                                <div class="value-item">
+                                    <span class="label">HEX:</span>
+                                    <span class="value" id="currentHex">#667eea</span>
+                                    <button class="copy-btn" data-value="hex">📋</button>
+                                </div>
+                                <div class="value-item">
+                                    <span class="label">RGB:</span>
+                                    <span class="value" id="currentRgb">102, 126, 234</span>
+                                    <button class="copy-btn" data-value="rgb">📋</button>
+                                </div>
+                                <div class="value-item">
+                                    <span class="label">HSL:</span>
+                                    <span class="value" id="currentHsl">230, 77%, 66%</span>
+                                    <button class="copy-btn" data-value="hsl">📋</button>
+                                </div>
+                                <div class="value-item">
+                                    <span class="label">HSV:</span>
+                                    <span class="value" id="currentHsv">230, 56%, 92%</span>
+                                    <button class="copy-btn" data-value="hsv">📋</button>
+                                </div>
+                            </div>
+                            <div class="color-actions">
+                                <button class="action-btn" id="favoriteBtn">⭐ お気に入り</button>
+                                <button class="action-btn" id="saveColorBtn">💾 保存</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="palettes-section">
+                    <div class="section-header">
+                        <h3>パレット一覧</h3>
+                        <div class="filter-controls">
+                            <button class="filter-btn active" data-filter="all">すべて</button>
+                            <button class="filter-btn" data-filter="recent">最近作成</button>
+                            <button class="filter-btn" data-filter="favorite">お気に入り</button>
+                            <button class="filter-btn" data-filter="custom">カスタム</button>
+                        </div>
+                    </div>
+                    <div class="palettes-grid" id="palettesGrid">
+                        <div style="text-align: center; padding: 40px; color: #666;">
+                            <h4>まだパレットがありません</h4>
+                            <p>左のフォームから最初のパレットを作成してください</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="color-harmony-section">
+                    <h3>カラーハーモニー</h3>
+                    <div class="harmony-display" id="harmonyDisplay">
+                        <div class="harmony-colors" id="harmonyColors"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="export-section">
+            <h3>エクスポート</h3>
+            <div class="export-controls">
+                <button class="export-btn" id="exportCSS">CSS</button>
+                <button class="export-btn" id="exportSCSS">SCSS</button>
+                <button class="export-btn" id="exportJSON">JSON</button>
+                <button class="export-btn" id="exportASE">ASE</button>
+                <button class="export-btn" id="exportPNG">PNG</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Palette Detail Modal -->
+    <div class="modal" id="paletteModal">
+        <div class="modal-content">
+            <span class="close" id="closePaletteModal">&times;</span>
+            <h2 id="modalPaletteTitle">パレット詳細</h2>
+            <div class="modal-body">
+                <div class="palette-info">
+                    <div class="info-item">
+                        <label>名前:</label>
+                        <input type="text" id="modalPaletteName">
+                    </div>
+                    <div class="info-item">
+                        <label>説明:</label>
+                        <textarea id="modalPaletteDescription" rows="3"></textarea>
+                    </div>
+                    <div class="info-item">
+                        <label>作成日:</label>
+                        <span id="modalPaletteDate"></span>
+                    </div>
+                </div>
+                <div class="palette-colors">
+                    <h4>カラー一覧</h4>
+                    <div class="colors-grid" id="modalColorsGrid"></div>
+                </div>
+                <div class="modal-actions">
+                    <button class="modal-btn save" id="savePaletteBtn">保存</button>
+                    <button class="modal-btn delete" id="deletePaletteBtn">削除</button>
+                    <button class="modal-btn export" id="exportPaletteBtn">エクスポート</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

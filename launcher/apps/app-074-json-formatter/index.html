@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>074 - JSONフォーマッター</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>JSON Formatter</h1>
+            <p>JSON整形・検証ツール</p>
+        </header>
+        
+        <div class="main-content">
+            <div class="input-section">
+                <h3>入力JSON</h3>
+                <textarea id="jsonInput" placeholder="JSONを入力してください...">{
+  "name": "田中太郎",
+  "age": 30,
+  "city": "東京",
+  "skills": ["JavaScript", "Python", "Java"],
+  "active": true,
+  "projects": [
+    {
+      "name": "プロジェクトA",
+      "status": "完了",
+      "members": 5
+    },
+    {
+      "name": "プロジェクトB",
+      "status": "進行中",
+      "members": 3
+    }
+  ]
+}</textarea>
+                <div class="input-controls">
+                    <button id="formatBtn" class="btn btn-primary">整形</button>
+                    <button id="validateBtn" class="btn btn-secondary">検証</button>
+                    <button id="minifyBtn" class="btn btn-warning">圧縮</button>
+                    <button id="clearBtn" class="btn btn-danger">クリア</button>
+                </div>
+            </div>
+            
+            <div class="output-section">
+                <h3>出力結果</h3>
+                <div class="output-controls">
+                    <button id="copyBtn" class="btn btn-success">コピー</button>
+                    <button id="downloadBtn" class="btn btn-info">ダウンロード</button>
+                    <select id="indentSelect">
+                        <option value="2">2スペース</option>
+                        <option value="4">4スペース</option>
+                        <option value="tab">タブ</option>
+                    </select>
+                </div>
+                <pre id="jsonOutput" class="output-area"></pre>
+            </div>
+        </div>
+        
+        <div class="status-section">
+            <div class="status-item">
+                <label>状態:</label>
+                <span id="validationStatus" class="status-valid">準備完了</span>
+            </div>
+            <div class="status-item">
+                <label>文字数:</label>
+                <span id="charCount">0</span>
+            </div>
+            <div class="status-item">
+                <label>行数:</label>
+                <span id="lineCount">0</span>
+            </div>
+            <div class="status-item">
+                <label>サイズ:</label>
+                <span id="sizeInfo">0 bytes</span>
+            </div>
+        </div>
+        
+        <div class="features-section">
+            <h3>機能</h3>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>JSON整形</h4>
+                    <p>読みやすい形式でJSONを整形</p>
+                </div>
+                <div class="feature-card">
+                    <h4>構文検証</h4>
+                    <p>JSONの構文エラーを検出</p>
+                </div>
+                <div class="feature-card">
+                    <h4>圧縮</h4>
+                    <p>余分な空白を除去してサイズを最適化</p>
+                </div>
+                <div class="feature-card">
+                    <h4>エクスポート</h4>
+                    <p>整形済みJSONをファイルとして保存</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="error-section" id="errorSection" style="display: none;">
+            <h3>エラー詳細</h3>
+            <div id="errorDetails" class="error-details"></div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

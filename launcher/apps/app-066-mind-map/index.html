@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マインドマップ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧠 マインドマップ</h1>
+            <p>アイデアを整理し、創造性を発揮しましょう</p>
+        </div>
+
+        <div class="stats-section">
+            <div class="stat-card">
+                <div class="stat-number" id="totalNodes">0</div>
+                <div class="stat-label">ノード</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalConnections">0</div>
+                <div class="stat-label">接続</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="mapDepth">0</div>
+                <div class="stat-label">深さ</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="savedMaps">0</div>
+                <div class="stat-label">保存済み</div>
+            </div>
+        </div>
+
+        <div class="toolbar">
+            <div class="tool-group">
+                <button class="tool-btn active" id="selectTool" data-tool="select">
+                    📍 選択
+                </button>
+                <button class="tool-btn" id="addNodeTool" data-tool="add">
+                    ➕ ノード追加
+                </button>
+                <button class="tool-btn" id="connectTool" data-tool="connect">
+                    🔗 接続
+                </button>
+                <button class="tool-btn" id="textTool" data-tool="text">
+                    📝 テキスト
+                </button>
+            </div>
+
+            <div class="tool-group">
+                <button class="action-btn" id="undoBtn">⤴️ 元に戻す</button>
+                <button class="action-btn" id="redoBtn">⤵️ やり直し</button>
+                <button class="action-btn" id="clearBtn">🗑️ クリア</button>
+            </div>
+
+            <div class="tool-group">
+                <button class="view-btn" id="zoomInBtn">🔍+ 拡大</button>
+                <button class="view-btn" id="zoomOutBtn">🔍- 縮小</button>
+                <button class="view-btn" id="fitViewBtn">🖼️ 全体表示</button>
+            </div>
+
+            <div class="tool-group">
+                <input type="text" id="nodeText" placeholder="ノードテキスト...">
+                <select id="nodeColor">
+                    <option value="#667eea">青</option>
+                    <option value="#00b894">緑</option>
+                    <option value="#e74c3c">赤</option>
+                    <option value="#f39c12">オレンジ</option>
+                    <option value="#9b59b6">紫</option>
+                    <option value="#34495e">グレー</option>
+                </select>
+                <select id="nodeSize">
+                    <option value="small">小</option>
+                    <option value="medium" selected>中</option>
+                    <option value="large">大</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="canvas-container">
+                <canvas id="mindMapCanvas" width="1200" height="800"></canvas>
+                <div class="canvas-overlay">
+                    <div class="zoom-controls">
+                        <span id="zoomLevel">100%</span>
+                    </div>
+                    <div class="instructions" id="instructions">
+                        クリックしてノードを追加するか、既存のノードを選択してください
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3>マインドマップ</h3>
+                    <div class="map-controls">
+                        <input type="text" id="mapName" placeholder="マップ名...">
+                        <button class="control-btn" id="saveMapBtn">💾 保存</button>
+                        <button class="control-btn" id="loadMapBtn">📂 読み込み</button>
+                        <button class="control-btn" id="newMapBtn">🆕 新規</button>
+                    </div>
+                    <div class="saved-maps" id="savedMaps">
+                        <div class="no-maps">保存されたマップがありません</div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>ノード情報</h3>
+                    <div class="node-info" id="nodeInfo">
+                        <div class="no-selection">ノードが選択されていません</div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>スタイル</h3>
+                    <div class="style-controls">
+                        <div class="style-group">
+                            <label>背景色</label>
+                            <input type="color" id="nodeBackgroundColor" value="#667eea">
+                        </div>
+                        <div class="style-group">
+                            <label>テキスト色</label>
+                            <input type="color" id="nodeTextColor" value="#ffffff">
+                        </div>
+                        <div class="style-group">
+                            <label>枠線の色</label>
+                            <input type="color" id="nodeBorderColor" value="#333333">
+                        </div>
+                        <div class="style-group">
+                            <label>線の色</label>
+                            <input type="color" id="connectionColor" value="#666666">
+                        </div>
+                        <div class="style-group">
+                            <label>線の太さ</label>
+                            <input type="range" id="connectionWidth" min="1" max="10" value="2">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>エクスポート</h3>
+                    <div class="export-controls">
+                        <button class="export-btn" id="exportPNG">🖼️ PNG</button>
+                        <button class="export-btn" id="exportSVG">📄 SVG</button>
+                        <button class="export-btn" id="exportJSON">📋 JSON</button>
+                        <button class="export-btn" id="exportPDF">📄 PDF</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Node Edit Modal -->
+    <div class="modal" id="nodeModal">
+        <div class="modal-content">
+            <span class="close" id="closeNodeModal">&times;</span>
+            <h2>ノード編集</h2>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="modalNodeText">テキスト</label>
+                    <input type="text" id="modalNodeText">
+                </div>
+                <div class="form-group">
+                    <label for="modalNodeDescription">説明</label>
+                    <textarea id="modalNodeDescription" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="modalNodeColor">色</label>
+                    <input type="color" id="modalNodeColor">
+                </div>
+                <div class="form-group">
+                    <label for="modalNodeShape">形状</label>
+                    <select id="modalNodeShape">
+                        <option value="circle">円</option>
+                        <option value="rectangle">長方形</option>
+                        <option value="diamond">菱形</option>
+                        <option value="triangle">三角形</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button class="modal-btn save" id="saveNodeBtn">保存</button>
+                    <button class="modal-btn delete" id="deleteNodeBtn">削除</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

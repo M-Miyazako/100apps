@@ -1,1 +1,92 @@
-<\!DOCTYPE html><html><head><title>Live Stream</title><link rel="stylesheet" href="styles.css"></head><body><div class="container"><h1>Live Stream</h1><p>A live streaming application.</p></div><script src="script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Stream</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Live Stream</h1>
+        
+        <div class="stream-controls">
+            <button id="startStreamBtn" class="control-btn">配信開始</button>
+            <button id="stopStreamBtn" class="control-btn disabled">配信停止</button>
+            <button id="toggleCameraBtn" class="control-btn">カメラ ON/OFF</button>
+            <button id="toggleMicBtn" class="control-btn">マイク ON/OFF</button>
+        </div>
+        
+        <div class="stream-info">
+            <div class="status-indicator">
+                <span id="streamStatus" class="status offline">オフライン</span>
+                <span id="viewerCount" class="viewer-count">視聴者: 0</span>
+            </div>
+            <div class="stream-quality">
+                <select id="qualitySelect">
+                    <option value="480">480p</option>
+                    <option value="720" selected>720p</option>
+                    <option value="1080">1080p</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="video-container">
+            <video id="localVideo" autoplay muted></video>
+            <canvas id="streamCanvas" style="display: none;"></canvas>
+        </div>
+        
+        <div class="stream-settings">
+            <h3>配信設定</h3>
+            <div class="setting-group">
+                <label for="streamTitle">配信タイトル:</label>
+                <input type="text" id="streamTitle" placeholder="今日の配信タイトルを入力">
+            </div>
+            <div class="setting-group">
+                <label for="streamCategory">カテゴリー:</label>
+                <select id="streamCategory">
+                    <option value="gaming">ゲーム</option>
+                    <option value="music">音楽</option>
+                    <option value="talk">雑談</option>
+                    <option value="cooking">料理</option>
+                    <option value="study">勉強</option>
+                    <option value="other">その他</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="chat-container">
+            <h3>チャット</h3>
+            <div id="chatMessages" class="chat-messages"></div>
+            <div class="chat-input">
+                <input type="text" id="chatInput" placeholder="メッセージを入力...">
+                <button id="sendChatBtn">送信</button>
+            </div>
+        </div>
+        
+        <div class="stream-stats">
+            <h3>配信統計</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-label">配信時間</span>
+                    <span id="streamTime" class="stat-value">00:00:00</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">フレームレート</span>
+                    <span id="frameRate" class="stat-value">0 fps</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">ビットレート</span>
+                    <span id="bitRate" class="stat-value">0 kbps</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">解像度</span>
+                    <span id="resolution" class="stat-value">0x0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

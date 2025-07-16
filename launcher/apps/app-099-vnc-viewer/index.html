@@ -1,1 +1,132 @@
-<\!DOCTYPE html><html><head><title>VNC Viewer</title><link rel="stylesheet" href="styles.css"></head><body><div class="container"><h1>VNC Viewer</h1><p>A VNC remote access viewer.</p></div><script src="script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>099 - VNC Viewer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>099 - VNC Viewer</h1>
+            <p>VNCリモートアクセスビューアー</p>
+        </header>
+        
+        <div class="main-content">
+            <div class="connection-panel">
+                <h2>接続設定</h2>
+                <div class="connection-form">
+                    <div class="form-group">
+                        <label for="serverAddress">サーバーアドレス:</label>
+                        <input type="text" id="serverAddress" placeholder="192.168.1.100" value="demo.server.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="serverPort">ポート:</label>
+                        <input type="number" id="serverPort" value="5900" min="1" max="65535">
+                    </div>
+                    <div class="form-group">
+                        <label for="username">ユーザー名:</label>
+                        <input type="text" id="username" placeholder="username" value="demo">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">パスワード:</label>
+                        <input type="password" id="password" placeholder="password" value="demo">
+                    </div>
+                    <div class="form-group">
+                        <label for="quality">画質:</label>
+                        <select id="quality">
+                            <option value="high">高画質</option>
+                            <option value="medium" selected>中画質</option>
+                            <option value="low">低画質</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="viewOnly"> 表示のみ（操作無効）
+                        </label>
+                    </div>
+                </div>
+                <div class="connection-buttons">
+                    <button id="connectBtn" class="btn btn-primary">接続</button>
+                    <button id="disconnectBtn" class="btn btn-secondary" disabled>切断</button>
+                </div>
+                <div class="connection-status">
+                    <span id="statusIndicator" class="status-indicator disconnected">切断中</span>
+                    <span id="statusText">サーバーに接続していません</span>
+                </div>
+            </div>
+            
+            <div class="viewer-panel">
+                <div class="viewer-header">
+                    <h2>リモートデスクトップ</h2>
+                    <div class="viewer-controls">
+                        <button id="fullscreenBtn" class="btn btn-small">フルスクリーン</button>
+                        <button id="screenshotBtn" class="btn btn-small">スクリーンショット</button>
+                        <button id="refreshBtn" class="btn btn-small">更新</button>
+                    </div>
+                </div>
+                
+                <div class="viewer-container">
+                    <div id="vncViewer" class="vnc-viewer">
+                        <div class="no-connection">
+                            <div class="connection-icon">🖥️</div>
+                            <p>サーバーに接続してください</p>
+                        </div>
+                        <canvas id="vncCanvas" style="display: none;"></canvas>
+                    </div>
+                </div>
+                
+                <div class="viewer-info">
+                    <div class="info-item">
+                        <span class="info-label">解像度:</span>
+                        <span id="resolution">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">色深度:</span>
+                        <span id="colorDepth">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">遅延:</span>
+                        <span id="latency">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="toolbar">
+            <div class="toolbar-section">
+                <h3>キーボードショートカット</h3>
+                <div class="shortcuts">
+                    <button class="shortcut-btn" data-keys="ctrl+alt+del">Ctrl+Alt+Del</button>
+                    <button class="shortcut-btn" data-keys="ctrl+c">Ctrl+C</button>
+                    <button class="shortcut-btn" data-keys="ctrl+v">Ctrl+V</button>
+                    <button class="shortcut-btn" data-keys="alt+tab">Alt+Tab</button>
+                    <button class="shortcut-btn" data-keys="win">Windows</button>
+                </div>
+            </div>
+            
+            <div class="toolbar-section">
+                <h3>ファイル転送</h3>
+                <div class="file-transfer">
+                    <input type="file" id="fileInput" multiple>
+                    <button id="uploadBtn" class="btn btn-small">アップロード</button>
+                    <button id="downloadBtn" class="btn btn-small">ダウンロード</button>
+                </div>
+            </div>
+            
+            <div class="toolbar-section">
+                <h3>接続履歴</h3>
+                <div class="connection-history">
+                    <select id="historySelect">
+                        <option value="">接続履歴を選択</option>
+                    </select>
+                    <button id="clearHistoryBtn" class="btn btn-small">履歴削除</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

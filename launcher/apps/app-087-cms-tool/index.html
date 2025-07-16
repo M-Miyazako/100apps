@@ -1,1 +1,196 @@
-<\!DOCTYPE html><html><head><title>CMS Tool</title><link rel="stylesheet" href="styles.css"></head><body><div class="container"><h1>CMS Tool</h1><p>A simple content management system.</p></div><script src="script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>087 - CMSツール</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>CMS Tool</h1>
+            <p>コンテンツ管理システム</p>
+        </header>
+        
+        <div class="main-content">
+            <div class="sidebar">
+                <h3>メニュー</h3>
+                <nav class="cms-menu">
+                    <button class="menu-item active" data-section="dashboard">ダッシュボード</button>
+                    <button class="menu-item" data-section="posts">投稿</button>
+                    <button class="menu-item" data-section="pages">ページ</button>
+                    <button class="menu-item" data-section="media">メディア</button>
+                    <button class="menu-item" data-section="users">ユーザー</button>
+                    <button class="menu-item" data-section="settings">設定</button>
+                </nav>
+            </div>
+            
+            <div class="content-area">
+                <div id="dashboard" class="section active">
+                    <h2>ダッシュボード</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3>投稿数</h3>
+                            <div class="stat-number">12</div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>ページ数</h3>
+                            <div class="stat-number">8</div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>ユーザー数</h3>
+                            <div class="stat-number">5</div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>コメント数</h3>
+                            <div class="stat-number">24</div>
+                        </div>
+                    </div>
+                    <div class="recent-activity">
+                        <h3>最新の活動</h3>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <span class="time">2時間前</span>
+                                <span class="action">新しい投稿を公開しました</span>
+                            </div>
+                            <div class="activity-item">
+                                <span class="time">1日前</span>
+                                <span class="action">ユーザーが登録しました</span>
+                            </div>
+                            <div class="activity-item">
+                                <span class="time">2日前</span>
+                                <span class="action">ページを更新しました</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="posts" class="section">
+                    <h2>投稿管理</h2>
+                    <div class="posts-controls">
+                        <button class="btn btn-primary" id="newPostBtn">新しい投稿</button>
+                        <input type="search" id="postSearch" placeholder="投稿を検索...">
+                    </div>
+                    <div class="posts-list">
+                        <div class="post-item">
+                            <h4>サンプル投稿1</h4>
+                            <p>公開日: 2024-01-15</p>
+                            <div class="post-actions">
+                                <button class="btn btn-small">編集</button>
+                                <button class="btn btn-small btn-danger">削除</button>
+                            </div>
+                        </div>
+                        <div class="post-item">
+                            <h4>サンプル投稿2</h4>
+                            <p>公開日: 2024-01-14</p>
+                            <div class="post-actions">
+                                <button class="btn btn-small">編集</button>
+                                <button class="btn btn-small btn-danger">削除</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="pages" class="section">
+                    <h2>ページ管理</h2>
+                    <div class="pages-controls">
+                        <button class="btn btn-primary" id="newPageBtn">新しいページ</button>
+                    </div>
+                    <div class="pages-list">
+                        <div class="page-item">
+                            <h4>ホーム</h4>
+                            <p>最終更新: 2024-01-10</p>
+                            <div class="page-actions">
+                                <button class="btn btn-small">編集</button>
+                                <button class="btn btn-small btn-danger">削除</button>
+                            </div>
+                        </div>
+                        <div class="page-item">
+                            <h4>お問い合わせ</h4>
+                            <p>最終更新: 2024-01-08</p>
+                            <div class="page-actions">
+                                <button class="btn btn-small">編集</button>
+                                <button class="btn btn-small btn-danger">削除</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="media" class="section">
+                    <h2>メディア管理</h2>
+                    <div class="media-controls">
+                        <button class="btn btn-primary" id="uploadBtn">ファイルアップロード</button>
+                        <input type="file" id="fileInput" multiple style="display: none;">
+                    </div>
+                    <div class="media-grid">
+                        <div class="media-item">
+                            <div class="media-thumbnail">📷</div>
+                            <p>sample1.jpg</p>
+                        </div>
+                        <div class="media-item">
+                            <div class="media-thumbnail">📄</div>
+                            <p>document.pdf</p>
+                        </div>
+                        <div class="media-item">
+                            <div class="media-thumbnail">🎵</div>
+                            <p>audio.mp3</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="users" class="section">
+                    <h2>ユーザー管理</h2>
+                    <div class="users-controls">
+                        <button class="btn btn-primary" id="newUserBtn">新しいユーザー</button>
+                    </div>
+                    <div class="users-list">
+                        <div class="user-item">
+                            <h4>管理者</h4>
+                            <p>admin@example.com</p>
+                            <span class="role">管理者</span>
+                            <div class="user-actions">
+                                <button class="btn btn-small">編集</button>
+                                <button class="btn btn-small btn-danger">削除</button>
+                            </div>
+                        </div>
+                        <div class="user-item">
+                            <h4>編集者</h4>
+                            <p>editor@example.com</p>
+                            <span class="role">編集者</span>
+                            <div class="user-actions">
+                                <button class="btn btn-small">編集</button>
+                                <button class="btn btn-small btn-danger">削除</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="settings" class="section">
+                    <h2>設定</h2>
+                    <div class="settings-form">
+                        <div class="form-group">
+                            <label>サイト名</label>
+                            <input type="text" value="My CMS Site" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>サイト説明</label>
+                            <textarea class="form-control" rows="3">サイトの説明をここに入力</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>言語</label>
+                            <select class="form-control">
+                                <option value="ja">日本語</option>
+                                <option value="en">English</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary">設定を保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

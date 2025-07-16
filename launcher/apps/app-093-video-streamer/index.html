@@ -1,1 +1,88 @@
-<\!DOCTYPE html><html><head><title>Video Streamer</title><link rel="stylesheet" href="styles.css"></head><body><div class="container"><h1>Video Streamer</h1><p>A video streaming platform.</p></div><script src="script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>093 - Video Streamer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>093 - Video Streamer</h1>
+            <p>動画ストリーミングプラットフォーム</p>
+        </header>
+        
+        <div class="main-content">
+            <div class="video-section">
+                <div class="featured-video">
+                    <video id="mainVideo" controls poster="https://via.placeholder.com/800x450?text=Featured+Video">
+                        <source src="" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-info">
+                        <h2 id="videoTitle">動画を選択してください</h2>
+                        <p id="videoDescription">下のリストから動画を選んでください</p>
+                        <div class="video-stats">
+                            <span id="viewCount">0 views</span>
+                            <span id="uploadDate">-</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-controls">
+                    <button id="playBtn" class="control-btn">再生</button>
+                    <button id="pauseBtn" class="control-btn">一時停止</button>
+                    <button id="stopBtn" class="control-btn">停止</button>
+                    <button id="fullscreenBtn" class="control-btn">フルスクリーン</button>
+                    <div class="volume-control">
+                        <label for="volumeSlider">音量:</label>
+                        <input type="range" id="volumeSlider" min="0" max="100" value="50">
+                        <span id="volumeValue">50%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar">
+                <div class="upload-section">
+                    <h3>動画アップロード</h3>
+                    <input type="file" id="videoUpload" accept="video/*" multiple>
+                    <button id="uploadBtn">アップロード</button>
+                </div>
+                
+                <div class="video-list">
+                    <h3>動画リスト</h3>
+                    <div id="videoListContainer">
+                        <!-- Video items will be displayed here -->
+                    </div>
+                </div>
+                
+                <div class="streaming-section">
+                    <h3>ライブストリーミング</h3>
+                    <button id="startStreamBtn" class="stream-btn">配信開始</button>
+                    <button id="stopStreamBtn" class="stream-btn disabled">配信停止</button>
+                    <div class="stream-info">
+                        <div class="status">
+                            <span id="streamStatus">オフライン</span>
+                            <span id="viewerCount">視聴者: 0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat-section">
+            <h3>チャット</h3>
+            <div id="chatContainer">
+                <div id="chatMessages" class="chat-messages"></div>
+                <div class="chat-input">
+                    <input type="text" id="chatInput" placeholder="メッセージを入力...">
+                    <button id="sendChatBtn">送信</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

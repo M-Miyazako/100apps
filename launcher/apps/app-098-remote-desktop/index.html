@@ -1,1 +1,262 @@
-<\!DOCTYPE html><html><head><title>Remote Desktop</title><link rel="stylesheet" href="styles.css"></head><body><div class="container"><h1>Remote Desktop</h1><p>A remote desktop access tool.</p></div><script src="script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>リモートデスクトップ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🖥️ リモートデスクトップ</h1>
+            <p>リモートデスクトップアクセスツール</p>
+        </div>
+
+        <div class="stats-section">
+            <div class="stat-card">
+                <div class="stat-number" id="totalConnections">0</div>
+                <div class="stat-label">接続数</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="activeConnections">0</div>
+                <div class="stat-label">アクティブ</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalSessions">0</div>
+                <div class="stat-label">セッション</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="dataTransferred">0</div>
+                <div class="stat-label">データ転送(MB)</div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="sidebar">
+                <div class="connection-form">
+                    <h3>新規接続</h3>
+                    <form id="connectionForm">
+                        <div class="form-group">
+                            <label for="serverAddress">サーバーアドレス</label>
+                            <input type="text" id="serverAddress" placeholder="192.168.1.100" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="port">ポート</label>
+                            <input type="number" id="port" value="3389" min="1" max="65535" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="username">ユーザー名</label>
+                            <input type="text" id="username" placeholder="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">パスワード</label>
+                            <input type="password" id="password" placeholder="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="protocol">プロトコル</label>
+                            <select id="protocol" required>
+                                <option value="rdp">RDP</option>
+                                <option value="vnc">VNC</option>
+                                <option value="ssh">SSH</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="connect-btn">接続</button>
+                    </form>
+                </div>
+
+                <div class="saved-connections">
+                    <h3>保存済み接続</h3>
+                    <div class="connections-list" id="connectionsList">
+                        <div class="no-connections">
+                            <p>保存された接続がありません</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="connection-settings">
+                    <h3>接続設定</h3>
+                    <div class="settings-form">
+                        <div class="form-group">
+                            <label for="screenSize">画面サイズ</label>
+                            <select id="screenSize">
+                                <option value="auto">自動</option>
+                                <option value="1920x1080">1920x1080</option>
+                                <option value="1366x768">1366x768</option>
+                                <option value="1024x768">1024x768</option>
+                                <option value="800x600">800x600</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="colorDepth">色深度</label>
+                            <select id="colorDepth">
+                                <option value="32">32ビット</option>
+                                <option value="24">24ビット</option>
+                                <option value="16">16ビット</option>
+                                <option value="8">8ビット</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" id="enableAudio"> 音声を有効にする
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" id="enableClipboard"> クリップボード共有
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" id="enableFileTransfer"> ファイル転送を有効にする
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-panel">
+                <div class="desktop-container" id="desktopContainer">
+                    <div class="connection-status" id="connectionStatus">
+                        <div class="status-icon">🔌</div>
+                        <h3>接続されていません</h3>
+                        <p>左のフォームから接続先を選択してください</p>
+                    </div>
+                    
+                    <div class="desktop-screen" id="desktopScreen" style="display: none;">
+                        <div class="screen-header">
+                            <div class="connection-info">
+                                <span class="server-name" id="serverName"></span>
+                                <span class="connection-quality" id="connectionQuality"></span>
+                            </div>
+                            <div class="screen-controls">
+                                <button class="control-btn" id="fullscreenBtn" title="フルスクリーン">⛶</button>
+                                <button class="control-btn" id="screenshotBtn" title="スクリーンショット">📷</button>
+                                <button class="control-btn" id="refreshBtn" title="更新">🔄</button>
+                                <button class="control-btn" id="settingsBtn" title="設定">⚙️</button>
+                                <button class="control-btn" id="disconnectBtn" title="切断">❌</button>
+                            </div>
+                        </div>
+                        <div class="screen-content">
+                            <canvas id="desktopCanvas" width="1024" height="768"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="session-info" id="sessionInfo">
+                    <h3>セッション情報</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">接続時間:</span>
+                            <span class="info-value" id="connectionTime">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">解像度:</span>
+                            <span class="info-value" id="resolution">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">フレームレート:</span>
+                            <span class="info-value" id="frameRate">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">遅延:</span>
+                            <span class="info-value" id="latency">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">帯域幅:</span>
+                            <span class="info-value" id="bandwidth">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">転送済み:</span>
+                            <span class="info-value" id="transferred">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 接続保存モーダル -->
+    <div class="modal" id="saveConnectionModal">
+        <div class="modal-content">
+            <span class="close" id="closeSaveModal">&times;</span>
+            <h2>接続を保存</h2>
+            <form id="saveConnectionForm">
+                <div class="form-group">
+                    <label for="connectionName">接続名</label>
+                    <input type="text" id="connectionName" placeholder="マイPC" required>
+                </div>
+                <div class="form-group">
+                    <label for="connectionDescription">説明</label>
+                    <textarea id="connectionDescription" placeholder="接続の説明" rows="3"></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="cancel-btn" id="cancelSaveBtn">キャンセル</button>
+                    <button type="submit" class="save-btn">保存</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 設定モーダル -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <span class="close" id="closeSettingsModal">&times;</span>
+            <h2>接続設定</h2>
+            <div class="settings-tabs">
+                <button class="tab-btn active" data-tab="display">表示</button>
+                <button class="tab-btn" data-tab="input">入力</button>
+                <button class="tab-btn" data-tab="advanced">詳細</button>
+            </div>
+            <div class="tab-content">
+                <div class="tab-panel active" id="displayTab">
+                    <h4>表示設定</h4>
+                    <div class="form-group">
+                        <label for="quality">画質</label>
+                        <select id="quality">
+                            <option value="high">高画質</option>
+                            <option value="medium">中画質</option>
+                            <option value="low">低画質</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="compression">圧縮レベル</label>
+                        <input type="range" id="compression" min="1" max="10" value="5">
+                        <span id="compressionValue">5</span>
+                    </div>
+                </div>
+                <div class="tab-panel" id="inputTab">
+                    <h4>入力設定</h4>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="enableKeyboard"> キーボード入力を有効にする
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="enableMouse"> マウス入力を有効にする
+                        </label>
+                    </div>
+                </div>
+                <div class="tab-panel" id="advancedTab">
+                    <h4>詳細設定</h4>
+                    <div class="form-group">
+                        <label for="timeout">タイムアウト (秒)</label>
+                        <input type="number" id="timeout" value="30" min="5" max="300">
+                    </div>
+                    <div class="form-group">
+                        <label for="retryCount">再試行回数</label>
+                        <input type="number" id="retryCount" value="3" min="1" max="10">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="cancel-btn" id="cancelSettingsBtn">キャンセル</button>
+                <button type="button" class="save-btn" id="saveSettingsBtn">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

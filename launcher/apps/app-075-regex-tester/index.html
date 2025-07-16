@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>075 - 正規表現テスター</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Regex Tester</h1>
+            <p>正規表現パターンテスト・デバッグツール</p>
+        </header>
+        
+        <div class="main-content">
+            <div class="pattern-section">
+                <h3>正規表現パターン</h3>
+                <div class="pattern-input">
+                    <input type="text" id="regexInput" placeholder="正規表現を入力..." value="[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,}">
+                    <div class="flags">
+                        <label><input type="checkbox" id="globalFlag" checked> g (グローバル)</label>
+                        <label><input type="checkbox" id="ignoreFlag"> i (大文字小文字を無視)</label>
+                        <label><input type="checkbox" id="multilineFlag"> m (マルチライン)</label>
+                    </div>
+                </div>
+                <div class="pattern-controls">
+                    <button id="testBtn" class="btn btn-primary">テスト</button>
+                    <button id="clearBtn" class="btn btn-secondary">クリア</button>
+                    <button id="exampleBtn" class="btn btn-info">例を表示</button>
+                </div>
+            </div>
+            
+            <div class="test-section">
+                <h3>テスト文字列</h3>
+                <textarea id="testInput" placeholder="テスト文字列を入力...">
+user@example.com
+test123@gmail.com
+invalid-email
+admin@company.co.jp
+no-at-symbol.com
+support@test-site.org</textarea>
+                <div class="test-results" id="testResults">
+                    <h4>マッチ結果</h4>
+                    <div id="matchResults"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info-section">
+            <div class="pattern-info">
+                <h3>パターン情報</h3>
+                <div class="info-item">
+                    <label>パターン:</label>
+                    <span id="patternDisplay">未設定</span>
+                </div>
+                <div class="info-item">
+                    <label>フラグ:</label>
+                    <span id="flagsDisplay">なし</span>
+                </div>
+                <div class="info-item">
+                    <label>マッチ数:</label>
+                    <span id="matchCount">0</span>
+                </div>
+                <div class="info-item">
+                    <label>状態:</label>
+                    <span id="validationStatus" class="status-valid">準備完了</span>
+                </div>
+            </div>
+            
+            <div class="replacement-section">
+                <h3>置換テスト</h3>
+                <div class="replacement-input">
+                    <input type="text" id="replacementInput" placeholder="置換文字列">
+                    <button id="replaceBtn" class="btn btn-warning">置換</button>
+                </div>
+                <div class="replacement-result" id="replacementResult"></div>
+            </div>
+        </div>
+        
+        <div class="examples-section">
+            <h3>正規表現の例</h3>
+            <div class="example-grid">
+                <div class="example-card" data-pattern="[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,}" data-description="メールアドレス">
+                    <h4>メールアドレス</h4>
+                    <code>[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,}</code>
+                </div>
+                <div class="example-card" data-pattern="^[0-9]{3}-[0-9]{4}-[0-9]{4}$" data-description="電話番号">
+                    <h4>電話番号</h4>
+                    <code>^[0-9]{3}-[0-9]{4}-[0-9]{4}$</code>
+                </div>
+                <div class="example-card" data-pattern="^[0-9]{4}/[0-9]{2}/[0-9]{2}$" data-description="日付">
+                    <h4>日付 (YYYY/MM/DD)</h4>
+                    <code>^[0-9]{4}/[0-9]{2}/[0-9]{2}$</code>
+                </div>
+                <div class="example-card" data-pattern="^https?://[^\s]+$" data-description="URL">
+                    <h4>URL</h4>
+                    <code>^https?://[^\s]+$</code>
+                </div>
+                <div class="example-card" data-pattern="^\d{3}-\d{4}$" data-description="郵便番号">
+                    <h4>郵便番号</h4>
+                    <code>^\d{3}-\d{4}$</code>
+                </div>
+                <div class="example-card" data-pattern="^[a-zA-Z0-9_]{3,16}$" data-description="ユーザー名">
+                    <h4>ユーザー名</h4>
+                    <code>^[a-zA-Z0-9_]{3,16}$</code>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cheatsheet-section">
+            <h3>正規表現チートシート</h3>
+            <div class="cheatsheet-grid">
+                <div class="cheat-item">
+                    <code>.</code>
+                    <span>任意の一文字</span>
+                </div>
+                <div class="cheat-item">
+                    <code>*</code>
+                    <span>0回以上の繰り返し</span>
+                </div>
+                <div class="cheat-item">
+                    <code>+</code>
+                    <span>1回以上の繰り返し</span>
+                </div>
+                <div class="cheat-item">
+                    <code>?</code>
+                    <span>0回または1回</span>
+                </div>
+                <div class="cheat-item">
+                    <code>^</code>
+                    <span>行の開始</span>
+                </div>
+                <div class="cheat-item">
+                    <code>$</code>
+                    <span>行の終了</span>
+                </div>
+                <div class="cheat-item">
+                    <code>\d</code>
+                    <span>数字 [0-9]</span>
+                </div>
+                <div class="cheat-item">
+                    <code>\w</code>
+                    <span>単語文字 [a-zA-Z0-9_]</span>
+                </div>
+                <div class="cheat-item">
+                    <code>\s</code>
+                    <span>空白文字</span>
+                </div>
+                <div class="cheat-item">
+                    <code>[abc]</code>
+                    <span>文字クラス</span>
+                </div>
+                <div class="cheat-item">
+                    <code>{n}</code>
+                    <span>n回の繰り返し</span>
+                </div>
+                <div class="cheat-item">
+                    <code>{n,m}</code>
+                    <span>n回からm回の繰り返し</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

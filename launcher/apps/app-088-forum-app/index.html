@@ -1,1 +1,139 @@
-<\!DOCTYPE html><html><head><title>Forum App</title><link rel="stylesheet" href="styles.css"></head><body><div class="container"><h1>Forum App</h1><p>A discussion forum platform.</p></div><script src="script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>フォーラムアプリ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💬 フォーラムアプリ</h1>
+            <p>ディスカッションフォーラムプラットフォーム</p>
+        </div>
+
+        <div class="stats-section">
+            <div class="stat-card">
+                <div class="stat-number" id="totalTopics">0</div>
+                <div class="stat-label">トピック</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalPosts">0</div>
+                <div class="stat-label">投稿</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="activeUsers">0</div>
+                <div class="stat-label">アクティブユーザー</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalCategories">0</div>
+                <div class="stat-label">カテゴリ</div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="sidebar">
+                <div class="categories-section">
+                    <h3>カテゴリ</h3>
+                    <div class="categories-list" id="categoriesList">
+                        <div class="category-item active" data-category="all">
+                            すべて
+                        </div>
+                        <div class="category-item" data-category="general">
+                            一般
+                        </div>
+                        <div class="category-item" data-category="tech">
+                            技術
+                        </div>
+                        <div class="category-item" data-category="news">
+                            ニュース
+                        </div>
+                        <div class="category-item" data-category="help">
+                            ヘルプ
+                        </div>
+                    </div>
+                </div>
+
+                <div class="user-section">
+                    <h3>ユーザー情報</h3>
+                    <div class="user-login" id="userLogin">
+                        <input type="text" id="username" placeholder="ユーザー名">
+                        <button class="login-btn" id="loginBtn">ログイン</button>
+                    </div>
+                    <div class="user-info" id="userInfo" style="display: none;">
+                        <div class="user-avatar"></div>
+                        <div class="user-name" id="currentUser"></div>
+                        <button class="logout-btn" id="logoutBtn">ログアウト</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="forum-content">
+                <div class="topic-creation">
+                    <h3>新しいトピックを作成</h3>
+                    <form class="topic-form" id="topicForm">
+                        <input type="text" id="topicTitle" placeholder="トピックのタイトル" required>
+                        <select id="topicCategory">
+                            <option value="general">一般</option>
+                            <option value="tech">技術</option>
+                            <option value="news">ニュース</option>
+                            <option value="help">ヘルプ</option>
+                        </select>
+                        <textarea id="topicContent" placeholder="トピックの内容" rows="4" required></textarea>
+                        <button type="submit" class="create-topic-btn">トピック作成</button>
+                    </form>
+                </div>
+
+                <div class="topics-section">
+                    <div class="section-header">
+                        <h3>トピック一覧</h3>
+                        <div class="sort-controls">
+                            <select id="sortBy">
+                                <option value="newest">最新順</option>
+                                <option value="oldest">古い順</option>
+                                <option value="popular">人気順</option>
+                                <option value="activity">アクティビティ順</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="topics-list" id="topicsList">
+                        <div style="text-align: center; padding: 40px; color: #666;">
+                            <h4>まだトピックがありません</h4>
+                            <p>上のフォームから最初のトピックを作成してください</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Topic Detail Modal -->
+    <div class="modal" id="topicModal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <div class="topic-detail">
+                <h2 id="modalTopicTitle"></h2>
+                <div class="topic-meta">
+                    <span id="modalTopicAuthor"></span>
+                    <span id="modalTopicDate"></span>
+                    <span id="modalTopicCategory"></span>
+                </div>
+                <div class="topic-content" id="modalTopicContent"></div>
+            </div>
+
+            <div class="posts-section">
+                <h3>返信</h3>
+                <div class="posts-list" id="postsList"></div>
+                
+                <div class="reply-form">
+                    <textarea id="replyContent" placeholder="返信を入力してください..." rows="3"></textarea>
+                    <button class="reply-btn" id="replyBtn">返信</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -127,6 +127,11 @@
   color: #f57c00;
 }
 
+.status-badge.error {
+  background: #ffebee;
+  color: #d32f2f;
+}
+
 .app-card-launch-btn {
   background: #2196F3;
   color: white;

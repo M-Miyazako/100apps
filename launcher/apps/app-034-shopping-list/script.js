@@ -1,7 +1,14 @@
 class ShoppingList {
     constructor() {
         this.items = [];
-        this.currentEditId = null;
+        this.categories = ['食品', '日用品', '衣類', '電子機器', 'その他'];
+        this.quickAddItems = {
+            '食品': ['牛乳', 'パン', '卵', 'お米', '野菜', '肉', '魚'],
+            '日用品': ['洗剤', 'シャンプー', 'トイレットペーパー', '歯ブラシ', '石鹸'],
+            '衣類': ['シャツ', 'ズボン', '靴下', '下着', '靴'],
+            '電子機器': ['充電器', 'イヤホン', '電池', 'USBケーブル'],
+            'その他': ['薬', '本', '文房具', 'プレゼント']
+        };
         
         this.initializeElements();
         this.bindEvents();
@@ -31,13 +38,13 @@ class ShoppingList {
     }
     
     bindEvents() {
-        // ������
+        // 追加ボタン
         this.elements.addBtn.addEventListener('click', () => this.addItem());
         this.elements.itemInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') this.addItem();
         });
         
-        // ��ï��ܿ�
+        // クイック追加ボタン
         document.querySelectorAll('.quick-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const item = e.target.dataset.item;
@@ -48,16 +55,16 @@ class ShoppingList {
             });
         });
         
-        // գ������
+        // フィルターとソート
         this.elements.categoryFilter.addEventListener('change', () => this.renderList());
         this.elements.sortBy.addEventListener('change', () => this.renderList());
         this.elements.showCompleted.addEventListener('change', () => this.renderList());
         
-        // �Ȣ����
+        // クリアボタン
         this.elements.clearCompletedBtn.addEventListener('click', () => this.clearCompleted());
         this.elements.clearAllBtn.addEventListener('click', () => this.clearAll());
         
-        // e��������
+        // 入力検証
         this.elements.itemInput.addEventListener('input', () => this.validateInput());
     }
     
@@ -72,11 +79,11 @@ class ShoppingList {
         const quantity = parseInt(this.elements.quantityInput.value) || 1;
         
         if (!itemName) {
-            alert('�����e�WfO`UD');
+            alert('商品名を入力してください');
             return;
         }
         
-        // ���ï
+        // 重複チェック
         const existingItem = this.items.find(item => 
             item.name.toLowerCase() === itemName.toLowerCase() && 
             item.category === category &&
@@ -92,7 +99,8 @@ class ShoppingList {
                 category: category,
                 quantity: quantity,
                 completed: false,
-                addedAt: new Date().toISOString()
+                addedAt: new Date().toISOString(),
+                completedAt: null
             };
             this.items.push(newItem);
         }
@@ -108,40 +116,38 @@ class ShoppingList {
         this.elements.itemInput.value = '';
         this.elements.quantityInput.value = '1';
         this.elements.itemInput.focus();
-        this.validateInput();
     }
     
     renderList() {
-        let filteredItems = this.getFilteredItems();
-        filteredItems = this.getSortedItems(filteredItems);
+        const filteredItems = this.getFilteredItems();
+        const sortedItems = this.getSortedItems(filteredItems);
         
-        if (filteredItems.length === 0) {
+        if (sortedItems.length === 0) {
             this.elements.shoppingList.style.display = 'none';
             this.elements.emptyState.style.display = 'block';
-            return;
+        } else {
+            this.elements.shoppingList.style.display = 'block';
+            this.elements.emptyState.style.display = 'none';
         }
         
-        this.elements.shoppingList.style.display = 'block';
-        this.elements.emptyState.style.display = 'none';
-        
-        this.elements.shoppingList.innerHTML = filteredItems
+        this.elements.shoppingList.innerHTML = sortedItems
             .map(item => this.createItemHTML(item))
             .join('');
         
-        // ��������Ф��
+        // イベントバインド
         this.bindItemEvents();
     }
     
     getFilteredItems() {
         let filtered = this.items;
         
-        // �ƴ��գ��
+        // カテゴリフィルター
         const categoryFilter = this.elements.categoryFilter.value;
         if (categoryFilter !== 'all') {
             filtered = filtered.filter(item => item.category === categoryFilter);
         }
         
-        // ������գ��
+        // 完了済みアイテムの表示/非表示
         const showCompleted = this.elements.showCompleted.checked;
         if (!showCompleted) {
             filtered = filtered.filter(item => !item.completed);
@@ -171,29 +177,27 @@ class ShoppingList {
     createItemHTML(item) {
         return `
             <div class="shopping-item ${item.completed ? 'completed' : ''}">
-                <input 
-                    type="checkbox" 
-                    class="item-checkbox" 
+                <input type="checkbox" class="item-checkbox" 
                     ${item.completed ? 'checked' : ''}
                     data-id="${item.id}"
                 >
                 <div class="item-details">
                     <div class="item-name">${item.name}</div>
-                    <div class="item-info">
+                    <div class="item-meta">
                         <span class="item-category">${item.category}</span>
-                        <span class="item-quantity">�${item.quantity}</span>
+                        <span class="item-quantity">×${item.quantity}</span>
                     </div>
                 </div>
                 <div class="item-actions">
-                    <button class="item-btn edit-btn" data-id="${item.id}">��</button>
-                    <button class="item-btn delete-btn" data-id="${item.id}">Jd</button>
+                    <button class="edit-btn" data-id="${item.id}">編集</button>
+                    <button class="delete-btn" data-id="${item.id}">削除</button>
                 </div>
             </div>
         `;
     }
     
     bindItemEvents() {
-        // ��ï�ï�
+        // チェックボックス
         document.querySelectorAll('.item-checkbox').forEach(checkbox => {
             checkbox.addEventListener('change', (e) => {
                 const id = parseInt(e.target.dataset.id);
@@ -201,7 +205,7 @@ class ShoppingList {
             });
         });
         
-        // ��ܿ�
+        // 編集ボタン
         document.querySelectorAll('.edit-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const id = parseInt(e.target.dataset.id);
@@ -209,7 +213,7 @@ class ShoppingList {
             });
         });
         
-        // Jdܿ�
+        // 削除ボタン
         document.querySelectorAll('.delete-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const id = parseInt(e.target.dataset.id);
@@ -222,6 +226,8 @@ class ShoppingList {
         const item = this.items.find(item => item.id === id);
         if (item) {
             item.completed = !item.completed;
+            item.completedAt = item.completed ? new Date().toISOString() : null;
+            
             this.saveData();
             this.renderList();
             this.updateStats();
@@ -233,11 +239,11 @@ class ShoppingList {
         const item = this.items.find(item => item.id === id);
         if (!item) return;
         
-        const newName = prompt('�������:', item.name);
+        const newName = prompt('商品名を編集:', item.name);
         if (newName && newName.trim()) {
             item.name = newName.trim();
             
-            const newQuantity = prompt('pϒ��:', item.quantity);
+            const newQuantity = prompt('数量を編集:', item.quantity);
             if (newQuantity && !isNaN(newQuantity) && parseInt(newQuantity) > 0) {
                 item.quantity = parseInt(newQuantity);
             }
@@ -250,7 +256,7 @@ class ShoppingList {
     }
     
     deleteItem(id) {
-        if (confirm('Sn�����JdW~YK')) {
+        if (confirm('このアイテムを削除しますか？')) {
             this.items = this.items.filter(item => item.id !== id);
             this.saveData();
             this.renderList();
@@ -262,11 +268,11 @@ class ShoppingList {
     clearCompleted() {
         const completedCount = this.items.filter(item => item.completed).length;
         if (completedCount === 0) {
-            alert('�en����LB�~[�');
+            alert('完了済みのアイテムがありません');
             return;
         }
         
-        if (confirm(`${completedCount}�n�e�����JdW~YK`)) {
+        if (confirm(`${completedCount}個の完了済みアイテムを削除しますか？`)) {
             this.items = this.items.filter(item => !item.completed);
             this.saveData();
             this.renderList();
@@ -277,11 +283,11 @@ class ShoppingList {
     
     clearAll() {
         if (this.items.length === 0) {
-            alert('��LzgY');
+            alert('削除するアイテムがありません');
             return;
         }
         
-        if (confirm('Yyfn�����JdW~YK')) {
+        if (confirm('すべてのアイテムを削除しますか？')) {
             this.items = [];
             this.saveData();
             this.renderList();
@@ -300,78 +306,68 @@ class ShoppingList {
     
     updateCategorySummary() {
         const categoryCounts = {};
-        
         this.items.forEach(item => {
             if (!item.completed) {
                 categoryCounts[item.category] = (categoryCounts[item.category] || 0) + 1;
             }
         });
         
-        const categories = Object.keys(categoryCounts);
+        const categories = Object.keys(categoryCounts).sort();
         
         if (categories.length === 0) {
-            this.elements.categorySummary.innerHTML = '<p style="text-align: center; color: #999;">����LB�~[�</p>';
+            this.elements.categorySummary.innerHTML = '<p style="text-align: center; color: #999;">カテゴリ別の統計がありません</p>';
             return;
         }
         
         this.elements.categorySummary.innerHTML = categories
             .map(category => `
-                <div class="category-item">
+                <div class="category-stat">
                     <div class="category-name">${category}</div>
-                    <div class="category-count">${categoryCounts[category]}�</div>
+                    <div class="category-count">${categoryCounts[category]}個</div>
                 </div>
             `)
             .join('');
     }
     
     saveData() {
-        localStorage.setItem('shoppingListData', JSON.stringify(this.items));
+        try {
+            localStorage.setItem('shoppingListData', JSON.stringify(this.items));
+        } catch (error) {
+            console.error('データの保存に失敗しました:', error);
+            alert('データの保存に失敗しました');
+        }
     }
     
     loadData() {
-        const savedData = localStorage.getItem('shoppingListData');
-        if (savedData) {
-            this.items = JSON.parse(savedData);
+        try {
+            const saved = localStorage.getItem('shoppingListData');
+            if (saved) {
+                this.items = JSON.parse(saved);
+            }
+        } catch (error) {
+            console.error('データの読み込みに失敗しました:', error);
+            alert('データの読み込みに失敗しました');
         }
     }
     
     exportData() {
-        const dataStr = JSON.stringify(this.items, null, 2);
-        const dataBlob = new Blob([dataStr], { type: 'application/json' });
-        const url = URL.createObjectURL(dataBlob);
-        
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = `shopping-list-${new Date().toISOString().split('T')[0]}.json`;
-        link.click();
-        
-        URL.revokeObjectURL(url);
-    }
-    
-    importData(file) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            try {
-                const importedItems = JSON.parse(e.target.result);
-                if (Array.isArray(importedItems)) {
-                    this.items = importedItems;
-                    this.saveData();
-                    this.renderList();
-                    this.updateStats();
-                    this.updateCategorySummary();
-                    alert('���n�����L��W~W_');
-                } else {
-                    alert('!�jա��bgY');
-                }
-            } catch (error) {
-                alert('ա��n��k1WW~W_');
-            }
+        const data = {
+            items: this.items,
+            exported: new Date().toISOString(),
+            version: '1.0'
         };
-        reader.readAsText(file);
+        
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `shopping-list-${new Date().toISOString().split('T')[0]}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
     }
 }
 
-// �������
+// アプリ初期化
 document.addEventListener('DOMContentLoaded', () => {
     new ShoppingList();
 });

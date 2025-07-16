@@ -1,1 +1,48 @@
-<\!DOCTYPE html><html><head><title>Wiki Editor</title><link rel="stylesheet" href="styles.css"></head><body><div class="container"><h1>Wiki Editor</h1><p>A collaborative wiki editor.</p></div><script src="script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiki Editor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Wiki Editor</h1>
+        <div class="wiki-controls">
+            <button id="newPageBtn">新規ページ</button>
+            <button id="saveBtn">保存</button>
+            <button id="previewBtn">プレビュー</button>
+            <input type="text" id="searchInput" placeholder="ページを検索...">
+        </div>
+        
+        <div class="wiki-content">
+            <div class="sidebar">
+                <h3>ページ一覧</h3>
+                <ul id="pageList"></ul>
+            </div>
+            
+            <div class="editor-area">
+                <div class="page-header">
+                    <input type="text" id="pageTitle" placeholder="ページタイトル">
+                </div>
+                
+                <div class="editor-tabs">
+                    <button class="tab-btn active" data-tab="edit">編集</button>
+                    <button class="tab-btn" data-tab="preview">プレビュー</button>
+                </div>
+                
+                <div class="tab-content">
+                    <div id="editTab" class="tab-pane active">
+                        <textarea id="editor" placeholder="Markdownで記述してください..."></textarea>
+                    </div>
+                    <div id="previewTab" class="tab-pane">
+                        <div id="preview"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

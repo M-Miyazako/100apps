@@ -1,1 +1,55 @@
-<\!DOCTYPE html><html><head><title>WebRTC Chat</title><link rel="stylesheet" href="styles.css"></head><body><div class="container"><h1>WebRTC Chat</h1><p>A real-time video chat application.</p></div><script src="script.js"></script></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebRTC Chat</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>WebRTC Chat</h1>
+        
+        <div class="connection-section">
+            <div class="user-info">
+                <input type="text" id="username" placeholder="Enter your name..." />
+                <button id="connect-btn">Connect</button>
+            </div>
+            <div class="room-info">
+                <input type="text" id="room-id" placeholder="Room ID (optional)" />
+                <button id="create-room-btn">Create Room</button>
+                <button id="join-room-btn">Join Room</button>
+            </div>
+        </div>
+
+        <div class="chat-section" id="chat-section" style="display: none;">
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <video id="local-video" autoplay muted></video>
+                    <div class="video-label">You</div>
+                </div>
+                <div class="video-wrapper">
+                    <video id="remote-video" autoplay></video>
+                    <div class="video-label">Remote User</div>
+                </div>
+            </div>
+            
+            <div class="chat-container">
+                <div class="chat-messages" id="chat-messages"></div>
+                <div class="chat-input">
+                    <input type="text" id="message-input" placeholder="Type your message..." />
+                    <button id="send-btn">Send</button>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button id="toggle-video" class="control-btn">📷</button>
+                <button id="toggle-audio" class="control-btn">🎤</button>
+                <button id="screen-share" class="control-btn">🖥️</button>
+                <button id="disconnect-btn" class="control-btn disconnect">📞</button>
+            </div>
+        </div>
+
+        <div class="status" id="status">Ready to connect</div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

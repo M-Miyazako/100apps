@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カンバンボード</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📋 カンバンボード</h1>
+            <p>タスクを視覚的に管理し、ワークフローを最適化しましょう</p>
+        </div>
+
+        <div class="stats-section">
+            <div class="stat-card">
+                <div class="stat-number" id="todoCount">0</div>
+                <div class="stat-label">ToDo</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="inProgressCount">0</div>
+                <div class="stat-label">進行中</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="reviewCount">0</div>
+                <div class="stat-label">レビュー</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="doneCount">0</div>
+                <div class="stat-label">完了</div>
+            </div>
+        </div>
+
+        <div class="controls-section">
+            <div class="task-input">
+                <form class="task-form" id="taskForm">
+                    <input type="text" id="taskTitle" placeholder="新しいタスクを入力..." required>
+                    <select id="taskPriority">
+                        <option value="low">低</option>
+                        <option value="medium" selected>中</option>
+                        <option value="high">高</option>
+                    </select>
+                    <input type="text" id="taskAssignee" placeholder="担当者">
+                    <input type="date" id="taskDueDate">
+                    <button type="submit" class="add-task-btn">追加</button>
+                </form>
+            </div>
+
+            <div class="filter-controls">
+                <button class="filter-btn active" data-filter="all">すべて</button>
+                <button class="filter-btn" data-filter="high">高優先度</button>
+                <button class="filter-btn" data-filter="overdue">期限切れ</button>
+                <button class="filter-btn" data-filter="my-tasks">自分のタスク</button>
+            </div>
+        </div>
+
+        <div class="kanban-board">
+            <div class="kanban-column" data-status="todo">
+                <div class="column-header">
+                    <h3>📝 ToDo</h3>
+                    <span class="task-count" id="todoCountDisplay">0</span>
+                </div>
+                <div class="task-list" id="todoList">
+                    <!-- Tasks will be added here -->
+                </div>
+            </div>
+
+            <div class="kanban-column" data-status="inprogress">
+                <div class="column-header">
+                    <h3>⚡ 進行中</h3>
+                    <span class="task-count" id="inProgressCountDisplay">0</span>
+                </div>
+                <div class="task-list" id="inProgressList">
+                    <!-- Tasks will be added here -->
+                </div>
+            </div>
+
+            <div class="kanban-column" data-status="review">
+                <div class="column-header">
+                    <h3>👁️ レビュー</h3>
+                    <span class="task-count" id="reviewCountDisplay">0</span>
+                </div>
+                <div class="task-list" id="reviewList">
+                    <!-- Tasks will be added here -->
+                </div>
+            </div>
+
+            <div class="kanban-column" data-status="done">
+                <div class="column-header">
+                    <h3>✅ 完了</h3>
+                    <span class="task-count" id="doneCountDisplay">0</span>
+                </div>
+                <div class="task-list" id="doneList">
+                    <!-- Tasks will be added here -->
+                </div>
+            </div>
+        </div>
+
+        <div class="reports-section">
+            <div class="report-card">
+                <h3 class="section-title">進捗概要</h3>
+                <div class="progress-bar-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text" id="progressText">0% 完了</div>
+                </div>
+            </div>
+            <div class="report-card">
+                <h3 class="section-title">生産性チャート</h3>
+                <div class="chart-container">
+                    <div id="productivityChart">ここにチャートが表示されます</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="export-section">
+            <h3 style="margin-bottom: 20px; color: #333;">データをエクスポート</h3>
+            <button class="export-btn" id="exportCSV">CSVとしてエクスポート</button>
+            <button class="export-btn" id="exportJSON">JSONとしてエクスポート</button>
+        </div>
+    </div>
+
+    <!-- Task Detail Modal -->
+    <div class="modal" id="taskModal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2 id="modalTitle">タスク詳細</h2>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="modalTaskTitle">タスク名</label>
+                    <input type="text" id="modalTaskTitle">
+                </div>
+                <div class="form-group">
+                    <label for="modalTaskDescription">説明</label>
+                    <textarea id="modalTaskDescription" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="modalTaskPriority">優先度</label>
+                    <select id="modalTaskPriority">
+                        <option value="low">低</option>
+                        <option value="medium">中</option>
+                        <option value="high">高</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="modalTaskAssignee">担当者</label>
+                    <input type="text" id="modalTaskAssignee">
+                </div>
+                <div class="form-group">
+                    <label for="modalTaskDueDate">期限</label>
+                    <input type="date" id="modalTaskDueDate">
+                </div>
+                <div class="modal-actions">
+                    <button class="modal-btn save" id="saveTask">保存</button>
+                    <button class="modal-btn delete" id="deleteTask">削除</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

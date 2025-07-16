@@ -355,7 +355,7 @@ class ModernTetris {
     
     togglePause() {
         this.gamePaused = !this.gamePaused;
-        this.elements.pauseBtn.textContent = this.gamePaused ? '��' : ' B\b';
+        this.elements.pauseBtn.textContent = this.gamePaused ? "再生" : "一時停止";
     }
     
     resetGame() {
@@ -370,7 +370,7 @@ class ModernTetris {
         
         this.elements.startBtn.disabled = false;
         this.elements.pauseBtn.disabled = true;
-        this.elements.pauseBtn.textContent = ' B\b';
+        this.elements.pauseBtn.textContent = "一時停止";
         this.elements.gameOver.classList.remove('active');
         
         this.generateNextPiece();

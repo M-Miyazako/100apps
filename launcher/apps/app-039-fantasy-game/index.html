@@ -16,7 +16,7 @@
         <div class="game-container">
             <div class="character-panel">
                 <div class="character-info">
-                    <h3 id="characterName"></h3>
+                    <h3 id="characterName">勇者</h3>
                     <div class="stats">
                         <div class="stat-bar">
                             <label>HP</label>
@@ -33,22 +33,22 @@
                             </div>
                         </div>
                         <div class="stat-item">
-                            <label></label>
+                            <label>レベル</label>
                             <span id="level">1</span>
                         </div>
                         <div class="stat-item">
-                            <label>L$</label>
+                            <label>経験値</label>
                             <span id="exp">0/100</span>
                         </div>
                         <div class="stat-item">
-                            <label></label>
+                            <label>ゴールド</label>
                             <span id="gold">100</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="inventory">
-                    <h3></h3>
+                    <h3>インベントリ</h3>
                     <div class="item-list" id="itemList">
                         <div class="item">ポーション x3</div>
                         <div class="item">パン x2</div>
@@ -58,14 +58,21 @@
             
             <div class="game-area">
                 <div class="story-display" id="storyDisplay">
-                    <p>Bj_oTY_kc_gY<br>
+                    <p>あなたは魔法の森の入り口に立っています。<br>
                     どちらへ向かいますか？...</p>
                 </div>
                 
                 <div class="choice-area" id="choiceArea">
-                    <div class="choice-btn" data-choice="forest">森の奥へ</div>
+                    <div class="choice-btn" data-choice="forest">森の奥へ</div>
                     <div class="choice-btn" data-choice="village">村へ</div>
                     <div class="choice-btn" data-choice="shop">商店へ</div>
+                </div>
+                
+                <div class="enemy-area" id="enemyArea" style="display: none;">
+                    <div class="enemy-info">
+                        <img id="enemyImage" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzY2NiIvPgogIDx0ZXh0IHg9IjUwIiB5PSI1MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPuaVteODnOOBrOOCueODiOODqzwvdGV4dD4KPC9zdmc+" alt="敵キャラクター" />
+                        <div id="enemyName">ゴブリン</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -82,14 +89,27 @@
             </div>
             
             <div class="battle-log" id="battleLog">
-                <p>バトル開始！</p>
+                <p>バトル開始！</p>
             </div>
             
             <div class="battle-actions">
                 <button class="action-btn" id="attackBtn">攻撃</button>
                 <button class="action-btn" id="magicBtn">魔法</button>
                 <button class="action-btn" id="healBtn">ポーション</button>
-                <button class="action-btn" id="runBtn">R</button>
+                <button class="action-btn" id="runBtn">逃げる</button>
+            </div>
+        </div>
+        
+        <div class="game-controls">
+            <button class="control-btn" id="resetBtn">ゲームリセット</button>
+            <button class="control-btn" id="saveBtn">セーブ</button>
+            <button class="control-btn" id="loadBtn">ロード</button>
+        </div>
+        
+        <div class="game-log" id="gameLog">
+            <h4>ゲームログ</h4>
+            <div id="logContent">
+                <p>ゲーム開始！</p>
             </div>
         </div>
     </div>

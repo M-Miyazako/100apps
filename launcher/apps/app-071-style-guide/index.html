@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>071 - スタイルガイド</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Design Style Guide</h1>
+            <p>デザインスタイルガイド作成ツール</p>
+        </header>
+        
+        <div class="main-content">
+            <div class="sidebar">
+                <h3>スタイル要素</h3>
+                <div class="style-menu">
+                    <button class="menu-item active" data-section="colors">カラーパレット</button>
+                    <button class="menu-item" data-section="typography">タイポグラフィ</button>
+                    <button class="menu-item" data-section="buttons">ボタン</button>
+                    <button class="menu-item" data-section="forms">フォーム</button>
+                    <button class="menu-item" data-section="components">コンポーネント</button>
+                </div>
+            </div>
+            
+            <div class="content-area">
+                <div id="colors" class="section active">
+                    <h2>カラーパレット</h2>
+                    <div class="color-grid">
+                        <div class="color-card">
+                            <div class="color-swatch" style="background-color: #007bff;"></div>
+                            <div class="color-info">
+                                <h4>プライマリーブルー</h4>
+                                <p>#007bff</p>
+                                <p>RGB(0, 123, 255)</p>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-swatch" style="background-color: #28a745;"></div>
+                            <div class="color-info">
+                                <h4>サクセスグリーン</h4>
+                                <p>#28a745</p>
+                                <p>RGB(40, 167, 69)</p>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-swatch" style="background-color: #dc3545;"></div>
+                            <div class="color-info">
+                                <h4>デンジャーレッド</h4>
+                                <p>#dc3545</p>
+                                <p>RGB(220, 53, 69)</p>
+                            </div>
+                        </div>
+                        <div class="color-card">
+                            <div class="color-swatch" style="background-color: #ffc107;"></div>
+                            <div class="color-info">
+                                <h4>ワーニングイエロー</h4>
+                                <p>#ffc107</p>
+                                <p>RGB(255, 193, 7)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="add-color-btn">カラーを追加</button>
+                </div>
+                
+                <div id="typography" class="section">
+                    <h2>タイポグラフィ</h2>
+                    <div class="typography-samples">
+                        <div class="text-sample">
+                            <h1>見出し1 - Heading 1</h1>
+                            <p>フォント: Arial, sans-serif / サイズ: 2rem / 重さ: bold</p>
+                        </div>
+                        <div class="text-sample">
+                            <h2>見出し2 - Heading 2</h2>
+                            <p>フォント: Arial, sans-serif / サイズ: 1.5rem / 重さ: bold</p>
+                        </div>
+                        <div class="text-sample">
+                            <h3>見出し3 - Heading 3</h3>
+                            <p>フォント: Arial, sans-serif / サイズ: 1.25rem / 重さ: bold</p>
+                        </div>
+                        <div class="text-sample">
+                            <p>本文テキスト - Body Text</p>
+                            <p>フォント: Arial, sans-serif / サイズ: 1rem / 重さ: normal</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="buttons" class="section">
+                    <h2>ボタンスタイル</h2>
+                    <div class="button-samples">
+                        <div class="button-group">
+                            <button class="btn btn-primary">プライマリー</button>
+                            <button class="btn btn-secondary">セカンダリー</button>
+                            <button class="btn btn-success">成功</button>
+                            <button class="btn btn-danger">危険</button>
+                            <button class="btn btn-warning">警告</button>
+                        </div>
+                        <div class="button-group">
+                            <button class="btn btn-outline-primary">アウトライン</button>
+                            <button class="btn btn-text">テキスト</button>
+                            <button class="btn btn-large">大きなボタン</button>
+                            <button class="btn btn-small">小さなボタン</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="forms" class="section">
+                    <h2>フォーム要素</h2>
+                    <div class="form-samples">
+                        <div class="form-group">
+                            <label for="text-input">テキスト入力</label>
+                            <input type="text" id="text-input" class="form-control" placeholder="テキストを入力">
+                        </div>
+                        <div class="form-group">
+                            <label for="select-input">選択</label>
+                            <select id="select-input" class="form-control">
+                                <option>オプション1</option>
+                                <option>オプション2</option>
+                                <option>オプション3</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="textarea-input">テキストエリア</label>
+                            <textarea id="textarea-input" class="form-control" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox"> チェックボックス
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="radio-label">
+                                <input type="radio" name="radio-group"> ラジオボタン1
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="radio-group"> ラジオボタン2
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="components" class="section">
+                    <h2>コンポーネント</h2>
+                    <div class="component-samples">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>カードヘッダー</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>これはサンプルカードです。コンテンツがここに配置されます。</p>
+                                <button class="btn btn-primary">アクション</button>
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-info">
+                            <strong>情報:</strong> これは情報アラートです。
+                        </div>
+                        
+                        <div class="alert alert-success">
+                            <strong>成功:</strong> これは成功アラートです。
+                        </div>
+                        
+                        <div class="alert alert-warning">
+                            <strong>警告:</strong> これは警告アラートです。
+                        </div>
+                        
+                        <div class="alert alert-danger">
+                            <strong>エラー:</strong> これはエラーアラートです。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="export-section">
+            <h3>エクスポート</h3>
+            <div class="export-options">
+                <button class="export-btn" id="exportCss">CSS</button>
+                <button class="export-btn" id="exportJson">JSON</button>
+                <button class="export-btn" id="exportPdf">PDF</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

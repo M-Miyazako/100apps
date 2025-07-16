@@ -13,7 +13,7 @@ export const AppCard: React.FC<AppCardProps> = ({ app }) => {
   const { isMobile, isTablet } = useBreakpoint();
 
   const handleLaunch = () => {
-    if (app.isCompleted) {
+    if (app.isTestedWorking !== false) {
       window.open(app.path, '_blank');
     }
   };
@@ -74,18 +74,18 @@ export const AppCard: React.FC<AppCardProps> = ({ app }) => {
 
       <div className="app-card-footer">
         <div className="app-card-status">
-          <span className={`status-badge ${app.isCompleted ? 'completed' : 'in-progress'}`}>
-            {app.isCompleted ? '完成' : '開発中'}
+          <span className={`status-badge ${app.isTestedWorking === true ? 'completed' : app.isTestedWorking === false ? 'error' : 'in-progress'}`}>
+            {app.isTestedWorking === true ? 'OK' : app.isTestedWorking === false ? 'NG' : '未確認'}
           </span>
         </div>
         
         <button
           className="app-card-launch-btn"
           onClick={handleLaunch}
-          disabled={!app.isCompleted}
+          disabled={app.isTestedWorking === false}
           style={buttonStyle}
         >
-          {app.isCompleted ? '起動' : '開発中'}
+          {app.isTestedWorking === false ? 'NG' : '起動'}
         </button>
       </div>
     </div>

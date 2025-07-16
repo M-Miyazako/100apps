@@ -1,1 +1,27 @@
-<\!DOCTYPE html><html><head><title>RSS Reader</title><link rel="stylesheet" href="styles.css"></head><body><div class="container"><h1>RSS Reader</h1><p>An RSS feed reader application.</p></div><script src="script.js"></script></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RSS Reader</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>RSS Reader</h1>
+        <div class="feed-input">
+            <input type="url" id="rss-url" placeholder="Enter RSS feed URL..." />
+            <button id="add-feed">Add Feed</button>
+        </div>
+        <div class="feeds-container">
+            <div class="feed-list">
+                <h2>Your Feeds</h2>
+                <div id="feeds"></div>
+            </div>
+            <div class="articles-container">
+                <h2>Articles</h2>
+                <div id="articles"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

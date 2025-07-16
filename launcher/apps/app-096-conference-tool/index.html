@@ -1,1 +1,140 @@
-<\!DOCTYPE html><html><head><title>Conference Tool</title><link rel="stylesheet" href="styles.css"></head><body><div class="container"><h1>Conference Tool</h1><p>A video conferencing platform.</p></div><script src="script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conference Tool</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Conference Tool</h1>
+        
+        <div class="join-section" id="joinSection">
+            <div class="join-form">
+                <h2>Join a Conference</h2>
+                <div class="form-group">
+                    <label for="roomId">Room ID:</label>
+                    <input type="text" id="roomId" placeholder="Enter room ID">
+                </div>
+                <div class="form-group">
+                    <label for="userName">Your Name:</label>
+                    <input type="text" id="userName" placeholder="Enter your name">
+                </div>
+                <button id="joinRoomBtn" class="btn primary">Join Room</button>
+            </div>
+            
+            <div class="create-room">
+                <h2>Create New Room</h2>
+                <button id="createRoomBtn" class="btn secondary">Create Room</button>
+            </div>
+        </div>
+        
+        <div class="conference-room" id="conferenceRoom" style="display: none;">
+            <div class="room-header">
+                <div class="room-info">
+                    <h3>Room: <span id="currentRoomId"></span></h3>
+                    <div class="participants-count">
+                        Participants: <span id="participantCount">1</span>
+                    </div>
+                </div>
+                <div class="room-controls">
+                    <button id="inviteBtn" class="btn small">Invite</button>
+                    <button id="leaveRoomBtn" class="btn small danger">Leave</button>
+                </div>
+            </div>
+            
+            <div class="video-grid" id="videoGrid">
+                <div class="video-container local">
+                    <video id="localVideo" autoplay muted></video>
+                    <div class="video-label">You</div>
+                    <div class="video-controls">
+                        <button id="toggleVideoBtn" class="control-btn">📹</button>
+                        <button id="toggleAudioBtn" class="control-btn">🎤</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="conference-controls">
+                <button id="screenShareBtn" class="control-btn">🖥️</button>
+                <button id="chatBtn" class="control-btn">💬</button>
+                <button id="participantsBtn" class="control-btn">👥</button>
+                <button id="settingsBtn" class="control-btn">⚙️</button>
+            </div>
+            
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-content">
+                    <div class="tab-buttons">
+                        <button class="tab-btn active" data-tab="chat">Chat</button>
+                        <button class="tab-btn" data-tab="participants">Participants</button>
+                        <button class="tab-btn" data-tab="settings">Settings</button>
+                    </div>
+                    
+                    <div class="tab-content active" id="chatTab">
+                        <div class="chat-messages" id="chatMessages"></div>
+                        <div class="chat-input">
+                            <input type="text" id="messageInput" placeholder="Type a message...">
+                            <button id="sendMessageBtn">Send</button>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="participantsTab">
+                        <div class="participants-list" id="participantsList"></div>
+                    </div>
+                    
+                    <div class="tab-content" id="settingsTab">
+                        <div class="settings-group">
+                            <h4>Audio Settings</h4>
+                            <div class="setting-item">
+                                <label for="micSelect">Microphone:</label>
+                                <select id="micSelect"></select>
+                            </div>
+                            <div class="setting-item">
+                                <label for="speakerSelect">Speaker:</label>
+                                <select id="speakerSelect"></select>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-group">
+                            <h4>Video Settings</h4>
+                            <div class="setting-item">
+                                <label for="cameraSelect">Camera:</label>
+                                <select id="cameraSelect"></select>
+                            </div>
+                            <div class="setting-item">
+                                <label for="qualitySelect">Quality:</label>
+                                <select id="qualitySelect">
+                                    <option value="low">Low</option>
+                                    <option value="medium" selected>Medium</option>
+                                    <option value="high">High</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="invite-modal" id="inviteModal" style="display: none;">
+            <div class="modal-content">
+                <h3>Invite Others</h3>
+                <p>Share this room ID with others:</p>
+                <div class="invite-code">
+                    <input type="text" id="inviteCode" readonly>
+                    <button id="copyCodeBtn">Copy</button>
+                </div>
+                <p>Or share this link:</p>
+                <div class="invite-link">
+                    <input type="text" id="inviteLink" readonly>
+                    <button id="copyLinkBtn">Copy</button>
+                </div>
+                <button id="closeInviteBtn" class="btn">Close</button>
+            </div>
+        </div>
+        
+        <div class="notification" id="notification"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

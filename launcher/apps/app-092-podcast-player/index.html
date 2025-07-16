@@ -1,1 +1,72 @@
-<\!DOCTYPE html><html><head><title>Podcast Player</title><link rel="stylesheet" href="styles.css"></head><body><div class="container"><h1>Podcast Player</h1><p>A podcast streaming player.</p></div><script src="script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcast Player</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Podcast Player</h1>
+        
+        <div class="podcast-section">
+            <h2>Browse Podcasts</h2>
+            <div class="podcast-list" id="podcastList">
+                <!-- Podcast items will be loaded here -->
+            </div>
+        </div>
+        
+        <div class="current-episode" id="currentEpisode">
+            <div class="episode-info">
+                <img src="https://via.placeholder.com/80x80" alt="Episode artwork" class="episode-artwork">
+                <div class="episode-details">
+                    <h3 class="episode-title">Select an episode to play</h3>
+                    <p class="episode-description">Choose from the podcast episodes above</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="player-controls">
+            <audio id="audioPlayer" controls>
+                <source src="" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            
+            <div class="custom-controls">
+                <button id="playPauseBtn" class="control-btn">
+                    <span class="play-icon">▶</span>
+                    <span class="pause-icon" style="display: none;">⏸</span>
+                </button>
+                <button id="prevBtn" class="control-btn">⏮</button>
+                <button id="nextBtn" class="control-btn">⏭</button>
+                <button id="speed-btn" class="control-btn">1x</button>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="time-info">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+            </div>
+            
+            <div class="volume-control">
+                <button id="volumeBtn" class="control-btn">🔊</button>
+                <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.5">
+            </div>
+        </div>
+        
+        <div class="playlist" id="playlist">
+            <h3>Current Playlist</h3>
+            <div class="playlist-items" id="playlistItems">
+                <!-- Playlist items will be shown here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

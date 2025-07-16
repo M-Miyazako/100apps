@@ -25,7 +25,7 @@ export const Stats: React.FC = () => {
     return filtered;
   }, [state.apps, state.searchQuery, state.selectedCategory]);
 
-  const completedApps = state.apps.filter(app => app.isCompleted).length;
+  const completedApps = state.apps.filter(app => app.isTestedWorking === true).length;
 
   const containerStyle = {
     marginBottom: isMobile ? '15px' : isTablet ? '20px' : '25px',

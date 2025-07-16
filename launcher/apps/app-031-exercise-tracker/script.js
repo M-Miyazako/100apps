@@ -115,7 +115,7 @@ class ExerciseTracker {
     
     startWorkout() {
         if (this.currentWorkout) {
-            this.showNotification('Workout already in progress!', 'warning');
+            this.showNotification('ワークアウトが既に進行中です！', 'warning');
             return;
         }
         
@@ -128,143 +128,18 @@ class ExerciseTracker {
         };
         
         this.currentWorkoutEl.style.display = 'block';
-        this.startWorkoutBtn.textContent = '� Workout in Progress';
+        this.startWorkoutBtn.textContent = '🏃 ワークアウト中';
         this.startWorkoutBtn.disabled = true;
         
         this.updateCurrentWorkoutUI();
-        this.showNotification('Workout started!', 'success');
-    }
-    
-    startTimer() {
-        if (this.timer) return;
-        
-        this.timerStartTime = Date.now() - this.timerDuration;
-        this.timerPaused = false;
-        
-        this.timer = setInterval(() => {
-            if (!this.timerPaused) {
-                this.timerDuration = Date.now() - this.timerStartTime;
-                this.updateTimerDisplay();
-            }
-        }, 1000);
-        
-        this.startTimerBtn.disabled = true;
-        this.pauseTimerBtn.disabled = false;
-    }
-    
-    pauseTimer() {
-        this.timerPaused = true;
-        this.startTimerBtn.disabled = false;
-        this.pauseTimerBtn.disabled = true;
-    }
-    
-    resetTimer() {
-        clearInterval(this.timer);
-        this.timer = null;
-        this.timerDuration = 0;
-        this.timerPaused = false;
-        this.updateTimerDisplay();
-        this.startTimerBtn.disabled = false;
-        this.pauseTimerBtn.disabled = true;
-    }
-    
-    updateTimerDisplay() {
-        const hours = Math.floor(this.timerDuration / 3600000);
-        const minutes = Math.floor((this.timerDuration % 3600000) / 60000);
-        const seconds = Math.floor((this.timerDuration % 60000) / 1000);
-        
-        this.timerDisplay.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-    }
-    
-    showAddExerciseModal() {
-        if (!this.currentWorkout) {
-            this.showNotification('Start a workout first!', 'warning');
-            return;
-        }
-        
-        this.addExerciseModal.classList.add('active');
-        this.exerciseNameInput.focus();
-    }
-    
-    handleExerciseSubmit(e) {
-        e.preventDefault();
-        
-        const exercise = {
-            id: Date.now(),
-            name: this.exerciseNameInput.value,
-            type: this.exerciseTypeSelect.value,
-            duration: parseInt(this.durationInput.value),
-            sets: parseInt(this.setsInput.value) || null,
-            reps: parseInt(this.repsInput.value) || null,
-            weight: parseFloat(this.weightInput.value) || null,
-            notes: this.notesInput.value,
-            timestamp: new Date().toISOString()
-        };
-        
-        this.currentWorkout.exercises.push(exercise);
-        this.updateCurrentWorkoutUI();
-        this.closeModal();
-        this.exerciseForm.reset();
-        this.showNotification('Exercise added!', 'success');
-    }
-    
-    updateCurrentWorkoutUI() {
-        if (!this.currentWorkout || this.currentWorkout.exercises.length === 0) {
-            this.currentExercisesEl.innerHTML = '<p class=\"no-exercises\">No exercises added yet</p>';
-            return;
-        }
-        
-        this.currentExercisesEl.innerHTML = this.currentWorkout.exercises.map(exercise => `
-            <div class=\"exercise-item\" data-id=\"${exercise.id}\">
-                <div class=\"exercise-info\">
-                    <div class=\"exercise-name\">${exercise.name}</div>
-                    <div class=\"exercise-details\">
-                        ${exercise.type} " ${exercise.duration} min
-                        ${exercise.sets ? ` " ${exercise.sets} sets` : ''}
-                        ${exercise.reps ? ` � ${exercise.reps} reps` : ''}
-                        ${exercise.weight ? ` @ ${exercise.weight} lbs` : ''}
-                    </div>
-                </div>
-                <div class=\"exercise-actions\">
-                    <button class=\"btn-small\" onclick=\"tracker.editExercise(${exercise.id})\">Edit</button>
-                    <button class=\"btn-small\" onclick=\"tracker.deleteExercise(${exercise.id})\">Delete</button>
-                </div>
-            </div>
-        `).join('');
-    }
-    
-    editExercise(exerciseId) {
-        const exercise = this.currentWorkout.exercises.find(e => e.id === exerciseId);
-        if (!exercise) return;
-        
-        // Populate form with exercise data
-        this.exerciseNameInput.value = exercise.name;
-        this.exerciseTypeSelect.value = exercise.type;
-        this.durationInput.value = exercise.duration;
-        this.setsInput.value = exercise.sets || '';
-        this.repsInput.value = exercise.reps || '';
-        this.weightInput.value = exercise.weight || '';
-        this.notesInput.value = exercise.notes || '';
-        
-        // Remove exercise from current workout
-        this.currentWorkout.exercises = this.currentWorkout.exercises.filter(e => e.id !== exerciseId);
-        
-        this.showAddExerciseModal();
-    }
-    
-    deleteExercise(exerciseId) {
-        if (confirm('Are you sure you want to delete this exercise?')) {
-            this.currentWorkout.exercises = this.currentWorkout.exercises.filter(e => e.id !== exerciseId);
-            this.updateCurrentWorkoutUI();
-            this.showNotification('Exercise deleted!', 'success');
-        }
+        this.showNotification('ワークアウトを開始しました！', 'success');
     }
     
     completeWorkout() {
         if (!this.currentWorkout) return;
         
         if (this.currentWorkout.exercises.length === 0) {
-            this.showNotification('Add at least one exercise to complete the workout!', 'warning');
+            this.showNotification('エクササイズを追加してからワークアウトを完了してください！', 'warning');
             return;
         }
         
@@ -294,11 +169,11 @@ class ExerciseTracker {
         this.currentWorkoutEl.style.display = 'none';
         
         // Reset UI
-        this.startWorkoutBtn.textContent = '<�B Start Workout';
+        this.startWorkoutBtn.textContent = '🏃 ワークアウト開始';
         this.startWorkoutBtn.disabled = false;
         
         this.updateUI();
-        this.showNotification(`Workout completed! ${totalDuration} minutes, ${totalCalories} calories burned.`, 'success');
+        this.showNotification(`ワークアウト完了！ ${totalDuration}分、${totalCalories}カロリー消費`, 'success');
     }
     
     calculateCalories(exercises) {
@@ -315,112 +190,16 @@ class ExerciseTracker {
         }, 0);
     }
     
-    showHistoryModal() {
-        this.historyModal.classList.add('active');
-        this.displayHistory();
-    }
-    
-    displayHistory() {
-        let filteredWorkouts = [...this.workouts];
-        
-        // Apply date filter
-        if (this.dateFilter.value) {
-            const filterDate = new Date(this.dateFilter.value);
-            filteredWorkouts = filteredWorkouts.filter(workout => {
-                const workoutDate = new Date(workout.date);
-                return workoutDate.toDateString() === filterDate.toDateString();
-            });
-        }
-        
-        // Apply type filter
-        if (this.typeFilter.value) {
-            filteredWorkouts = filteredWorkouts.filter(workout => 
-                workout.exercises.some(exercise => exercise.type === this.typeFilter.value)
-            );
-        }
-        
-        if (filteredWorkouts.length === 0) {
-            this.historyList.innerHTML = '<p class=\"no-data\">No workouts found</p>';
-            return;
-        }
-        
-        this.historyList.innerHTML = filteredWorkouts.map(workout => `
-            <div class=\"history-item\">
-                <div class=\"history-date\">${new Date(workout.date).toLocaleDateString()}</div>
-                <div class=\"history-summary\">
-                    ${workout.exercises.length} exercises " ${workout.duration} min " ${workout.calories} calories
-                </div>
-                <div class=\"history-exercises\">
-                    ${workout.exercises.map(ex => `
-                        <div class=\"history-exercise\">${ex.name} (${ex.duration} min)</div>
-                    `).join('')}
-                </div>
-            </div>
-        `).join('');
-    }
-    
-    filterHistory() {
-        this.displayHistory();
-    }
-    
-    exportData() {
-        const data = {
-            workouts: this.workouts,
-            exported: new Date().toISOString(),
-            version: '1.0'
-        };
-        
-        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `exercise_data_${new Date().toISOString().split('T')[0]}.json`;
-        a.click();
-        URL.revokeObjectURL(url);
-        
-        this.showNotification('Data exported successfully!', 'success');
-    }
-    
-    loadTemplates() {
-        this.templateGridEl.innerHTML = this.templates.map(template => `
-            <div class=\"template-card\" onclick=\"tracker.useTemplate('${template.id}')\">
-                <div class=\"template-icon\">${template.icon}</div>
-                <div class=\"template-name\">${template.name}</div>
-                <div class=\"template-type\">${template.type}</div>
-            </div>
-        `).join('');
-    }
-    
-    useTemplate(templateId) {
-        const template = this.templates.find(t => t.id === templateId);
-        if (!template) return;
-        
-        if (!this.currentWorkout) {
-            this.startWorkout();
-        }
-        
-        // Populate form with template data
-        this.exerciseNameInput.value = template.name;
-        this.exerciseTypeSelect.value = template.type;
-        this.durationInput.value = template.duration;
-        this.setsInput.value = template.sets || '';
-        this.repsInput.value = template.reps || '';
-        this.weightInput.value = template.weight || '';
-        this.notesInput.value = template.notes || '';
-        
-        this.showAddExerciseModal();
-    }
-    
     getExerciseTemplates() {
         return [
-            { id: 'push_ups', name: 'Push-ups', type: 'strength', icon: '=�', duration: 10, sets: 3, reps: 15 },
-            { id: 'running', name: 'Running', type: 'cardio', icon: '<�B', duration: 30 },
-            { id: 'squats', name: 'Squats', type: 'strength', icon: '>�', duration: 15, sets: 3, reps: 20 },
-            { id: 'yoga', name: 'Yoga', type: 'flexibility', icon: '>�@', duration: 45 },
-            { id: 'cycling', name: 'Cycling', type: 'cardio', icon: '=�B', duration: 60 },
-            { id: 'planks', name: 'Planks', type: 'strength', icon: '<�B', duration: 5, sets: 3 },
-            { id: 'swimming', name: 'Swimming', type: 'cardio', icon: '<�B', duration: 45 },
-            { id: 'burpees', name: 'Burpees', type: 'strength', icon: '>8B', duration: 10, sets: 3, reps: 10 }
+            { id: 'push_ups', name: 'プッシュアップ', type: 'strength', icon: '💪', duration: 10, sets: 3, reps: 15 },
+            { id: 'running', name: 'ランニング', type: 'cardio', icon: '🏃', duration: 30 },
+            { id: 'squats', name: 'スクワット', type: 'strength', icon: '🏋️', duration: 15, sets: 3, reps: 20 },
+            { id: 'yoga', name: 'ヨガ', type: 'flexibility', icon: '🧘', duration: 45 },
+            { id: 'cycling', name: 'サイクリング', type: 'cardio', icon: '🚴', duration: 60 },
+            { id: 'planks', name: 'プランク', type: 'strength', icon: '🤸', duration: 5, sets: 3 },
+            { id: 'swimming', name: '水泳', type: 'cardio', icon: '🏊', duration: 45 },
+            { id: 'burpees', name: 'バーピー', type: 'strength', icon: '🏃', duration: 10, sets: 3, reps: 10 }
         ];
     }
     
@@ -428,7 +207,6 @@ class ExerciseTracker {
         this.updateStats();
         this.updateRecentWorkouts();
         this.updateGoalsProgress();
-        this.updateChart();
         this.loadTemplates();
     }
     
@@ -470,96 +248,26 @@ class ExerciseTracker {
         const recentWorkouts = this.workouts.slice(0, 5);
         
         if (recentWorkouts.length === 0) {
-            this.recentWorkoutsEl.innerHTML = '<p class=\"no-data\">No recent workouts</p>';
+            this.recentWorkoutsEl.innerHTML = '<p class="no-data">最近のワークアウトがありません</p>';
             return;
         }
         
         this.recentWorkoutsEl.innerHTML = recentWorkouts.map(workout => `
-            <div class=\"workout-item\">
-                <div class=\"workout-date\">${new Date(workout.date).toLocaleDateString()}</div>
-                <div class=\"workout-summary\">${workout.exercises.length} exercises " ${workout.duration} min</div>
+            <div class="workout-item">
+                <div class="workout-date">${new Date(workout.date).toLocaleDateString()}</div>
+                <div class="workout-summary">${workout.exercises.length}個のエクササイズ • ${workout.duration}分</div>
             </div>
         `).join('');
     }
     
-    updateGoalsProgress() {
-        // Weekly workouts progress
-        const weekStart = new Date();
-        weekStart.setDate(weekStart.getDate() - weekStart.getDay());
-        const weekEnd = new Date(weekStart);
-        weekEnd.setDate(weekEnd.getDate() + 6);
-        
-        const weeklyWorkouts = this.workouts.filter(w => {
-            const workoutDate = new Date(w.date);
-            return workoutDate >= weekStart && workoutDate <= weekEnd;
-        }).length;
-        
-        const weeklyProgress = Math.min((weeklyWorkouts / this.goals.weeklyWorkouts) * 100, 100);
-        this.weeklyProgress.style.width = `${weeklyProgress}%`;
-        this.weeklyGoalText.textContent = `${weeklyWorkouts}/${this.goals.weeklyWorkouts}`;
-        
-        // Monthly calories progress
-        const monthStart = new Date();
-        monthStart.setDate(1);
-        const monthEnd = new Date(monthStart);
-        monthEnd.setMonth(monthEnd.getMonth() + 1);
-        monthEnd.setDate(0);
-        
-        const monthlyCalories = this.workouts.filter(w => {
-            const workoutDate = new Date(w.date);
-            return workoutDate >= monthStart && workoutDate <= monthEnd;
-        }).reduce((sum, w) => sum + (w.calories || 0), 0);
-        
-        const caloriesProgress = Math.min((monthlyCalories / this.goals.monthlyCalories) * 100, 100);
-        this.caloriesProgress.style.width = `${caloriesProgress}%`;
-        this.caloriesGoalText.textContent = `${monthlyCalories}/${this.goals.monthlyCalories}`;
-    }
-    
-    updateChart() {
-        const ctx = this.progressChart.getContext('2d');
-        const last7Days = Array.from({ length: 7 }, (_, i) => {
-            const date = new Date();
-            date.setDate(date.getDate() - i);
-            return date;
-        }).reverse();
-        
-        const workoutCounts = last7Days.map(date => {
-            const dateStr = date.toDateString();
-            return this.workouts.filter(w => new Date(w.date).toDateString() === dateStr).length;
-        });
-        
-        // Simple bar chart
-        ctx.clearRect(0, 0, this.progressChart.width, this.progressChart.height);
-        ctx.fillStyle = '#4f46e5';
-        
-        const barWidth = this.progressChart.width / 7;
-        const maxCount = Math.max(...workoutCounts, 1);
-        
-        workoutCounts.forEach((count, index) => {
-            const barHeight = (count / maxCount) * (this.progressChart.height - 20);
-            ctx.fillRect(index * barWidth + 5, this.progressChart.height - barHeight - 10, barWidth - 10, barHeight);
-        });
-    }
-    
-    closeModal() {
-        this.addExerciseModal.classList.remove('active');
-        this.exerciseForm.reset();
-    }
-    
-    closeHistoryModal() {
-        this.historyModal.classList.remove('active');
-    }
-    
-    toggleTheme() {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', newTheme);
-        this.themeToggle.textContent = newTheme === 'dark' ? ' ' : '<';
-        localStorage.setItem('exerciseTrackerTheme', newTheme);
-    }
-    
-    showProfile() {
-        this.showNotification('Profile feature coming soon!', 'info');
+    loadTemplates() {
+        this.templateGridEl.innerHTML = this.templates.map(template => `
+            <div class="template-card" onclick="tracker.useTemplate('${template.id}')">
+                <div class="template-icon">${template.icon}</div>
+                <div class="template-name">${template.name}</div>
+                <div class="template-type">${template.type}</div>
+            </div>
+        `).join('');
     }
     
     showNotification(message, type = 'info') {
@@ -623,11 +331,6 @@ class ExerciseTracker {
                 this.workouts = data.workouts || [];
                 this.goals = { ...this.goals, ...data.goals };
             }
-            
-            // Load theme
-            const theme = localStorage.getItem('exerciseTrackerTheme') || 'light';
-            document.documentElement.setAttribute('data-theme', theme);
-            this.themeToggle.textContent = theme === 'dark' ? ' ' : '<';
         } catch (error) {
             console.error('Error loading data:', error);
         }

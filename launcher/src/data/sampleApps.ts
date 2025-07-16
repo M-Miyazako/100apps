@@ -299,7 +299,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-030-quiz-app/index.html',
     tags: ['クイズ', 'ゲーム', '教育', '学習', '030'],
     createdAt: new Date('2024-01-28'),
-    isTestedWorking: false,
+    isTestedWorking: true,
   },
   {
     id: '031',

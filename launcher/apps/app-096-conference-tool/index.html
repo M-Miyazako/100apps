@@ -1,53 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conference Tool</title>
+    <title>会議ツール</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Conference Tool</h1>
+        <h1>会議ツール</h1>
         
         <div class="join-section" id="joinSection">
             <div class="join-form">
-                <h2>Join a Conference</h2>
+                <h2>会議に参加</h2>
                 <div class="form-group">
-                    <label for="roomId">Room ID:</label>
-                    <input type="text" id="roomId" placeholder="Enter room ID">
+                    <label for="roomId">ルームID:</label>
+                    <input type="text" id="roomId" placeholder="ルームIDを入力">
                 </div>
                 <div class="form-group">
-                    <label for="userName">Your Name:</label>
-                    <input type="text" id="userName" placeholder="Enter your name">
+                    <label for="userName">お名前:</label>
+                    <input type="text" id="userName" placeholder="お名前を入力">
                 </div>
-                <button id="joinRoomBtn" class="btn primary">Join Room</button>
+                <button id="joinRoomBtn" class="btn primary">参加</button>
             </div>
             
             <div class="create-room">
-                <h2>Create New Room</h2>
-                <button id="createRoomBtn" class="btn secondary">Create Room</button>
+                <h2>新しいルームを作成</h2>
+                <button id="createRoomBtn" class="btn secondary">ルーム作成</button>
             </div>
         </div>
         
         <div class="conference-room" id="conferenceRoom" style="display: none;">
             <div class="room-header">
                 <div class="room-info">
-                    <h3>Room: <span id="currentRoomId"></span></h3>
+                    <h3>ルーム: <span id="currentRoomId"></span></h3>
                     <div class="participants-count">
-                        Participants: <span id="participantCount">1</span>
+                        参加者: <span id="participantCount">1</span>
                     </div>
                 </div>
                 <div class="room-controls">
-                    <button id="inviteBtn" class="btn small">Invite</button>
-                    <button id="leaveRoomBtn" class="btn small danger">Leave</button>
+                    <button id="inviteBtn" class="btn small">招待</button>
+                    <button id="leaveRoomBtn" class="btn small danger">退出</button>
                 </div>
             </div>
             
             <div class="video-grid" id="videoGrid">
                 <div class="video-container local">
                     <video id="localVideo" autoplay muted></video>
-                    <div class="video-label">You</div>
+                    <div class="video-label">あなた</div>
                     <div class="video-controls">
                         <button id="toggleVideoBtn" class="control-btn">📹</button>
                         <button id="toggleAudioBtn" class="control-btn">🎤</button>
@@ -65,16 +65,16 @@
             <div class="sidebar" id="sidebar">
                 <div class="sidebar-content">
                     <div class="tab-buttons">
-                        <button class="tab-btn active" data-tab="chat">Chat</button>
-                        <button class="tab-btn" data-tab="participants">Participants</button>
-                        <button class="tab-btn" data-tab="settings">Settings</button>
+                        <button class="tab-btn active" data-tab="chat">チャット</button>
+                        <button class="tab-btn" data-tab="participants">参加者</button>
+                        <button class="tab-btn" data-tab="settings">設定</button>
                     </div>
                     
                     <div class="tab-content active" id="chatTab">
                         <div class="chat-messages" id="chatMessages"></div>
                         <div class="chat-input">
-                            <input type="text" id="messageInput" placeholder="Type a message...">
-                            <button id="sendMessageBtn">Send</button>
+                            <input type="text" id="messageInput" placeholder="メッセージを入力...">
+                            <button id="sendMessageBtn">送信</button>
                         </div>
                     </div>
                     
@@ -84,29 +84,29 @@
                     
                     <div class="tab-content" id="settingsTab">
                         <div class="settings-group">
-                            <h4>Audio Settings</h4>
+                            <h4>音声設定</h4>
                             <div class="setting-item">
-                                <label for="micSelect">Microphone:</label>
+                                <label for="micSelect">マイク:</label>
                                 <select id="micSelect"></select>
                             </div>
                             <div class="setting-item">
-                                <label for="speakerSelect">Speaker:</label>
+                                <label for="speakerSelect">スピーカー:</label>
                                 <select id="speakerSelect"></select>
                             </div>
                         </div>
                         
                         <div class="settings-group">
-                            <h4>Video Settings</h4>
+                            <h4>映像設定</h4>
                             <div class="setting-item">
-                                <label for="cameraSelect">Camera:</label>
+                                <label for="cameraSelect">カメラ:</label>
                                 <select id="cameraSelect"></select>
                             </div>
                             <div class="setting-item">
-                                <label for="qualitySelect">Quality:</label>
+                                <label for="qualitySelect">画質:</label>
                                 <select id="qualitySelect">
-                                    <option value="low">Low</option>
-                                    <option value="medium" selected>Medium</option>
-                                    <option value="high">High</option>
+                                    <option value="low">低</option>
+                                    <option value="medium" selected>中</option>
+                                    <option value="high">高</option>
                                 </select>
                             </div>
                         </div>
@@ -117,18 +117,18 @@
         
         <div class="invite-modal" id="inviteModal" style="display: none;">
             <div class="modal-content">
-                <h3>Invite Others</h3>
-                <p>Share this room ID with others:</p>
+                <h3>他のユーザーを招待</h3>
+                <p>このルームIDを他のユーザーと共有:</p>
                 <div class="invite-code">
                     <input type="text" id="inviteCode" readonly>
-                    <button id="copyCodeBtn">Copy</button>
+                    <button id="copyCodeBtn">コピー</button>
                 </div>
-                <p>Or share this link:</p>
+                <p>または、このリンクを共有:</p>
                 <div class="invite-link">
                     <input type="text" id="inviteLink" readonly>
-                    <button id="copyLinkBtn">Copy</button>
+                    <button id="copyLinkBtn">コピー</button>
                 </div>
-                <button id="closeInviteBtn" class="btn">Close</button>
+                <button id="closeInviteBtn" class="btn">閉じる</button>
             </div>
         </div>
         

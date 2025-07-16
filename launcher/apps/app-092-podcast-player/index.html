@@ -1,28 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Podcast Player</title>
+    <title>ポッドキャストプレイヤー</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Podcast Player</h1>
+        <h1>ポッドキャストプレイヤー</h1>
         
         <div class="podcast-section">
-            <h2>Browse Podcasts</h2>
+            <h2>ポッドキャスト一覧</h2>
             <div class="podcast-list" id="podcastList">
-                <!-- Podcast items will be loaded here -->
+                <!-- ポッドキャストアイテムがここに読み込まれます -->
             </div>
         </div>
         
         <div class="current-episode" id="currentEpisode">
             <div class="episode-info">
-                <img src="https://via.placeholder.com/80x80" alt="Episode artwork" class="episode-artwork">
+                <img src="https://via.placeholder.com/80x80" alt="エピソードアートワーク" class="episode-artwork">
                 <div class="episode-details">
-                    <h3 class="episode-title">Select an episode to play</h3>
-                    <p class="episode-description">Choose from the podcast episodes above</p>
+                    <h3 class="episode-title">再生するエピソードを選択</h3>
+                    <p class="episode-description">上記のポッドキャストエピソードから選択</p>
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@
         <div class="player-controls">
             <audio id="audioPlayer" controls>
                 <source src="" type="audio/mpeg">
-                Your browser does not support the audio element.
+                お使いのブラウザは音声再生をサポートしていません。
             </audio>
             
             <div class="custom-controls">
@@ -60,9 +60,9 @@
         </div>
         
         <div class="playlist" id="playlist">
-            <h3>Current Playlist</h3>
+            <h3>現在のプレイリスト</h3>
             <div class="playlist-items" id="playlistItems">
-                <!-- Playlist items will be shown here -->
+                <!-- プレイリストアイテムがここに表示されます -->
             </div>
         </div>
     </div>

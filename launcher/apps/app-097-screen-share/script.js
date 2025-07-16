@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Screen Share App initialized successfully!');
+    console.log('スクリーンシェアアプリが正常に初期化されました！');
     
     // App state
     let isSharing = false;
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Get display media constraints
             const constraints = getDisplayMediaConstraints(shareType, includeAudio, quality);
             
-            showNotification('Starting screen share...');
+            showNotification('スクリーンシェアを開始中...');
             
             // Request screen share permission
             currentStream = await navigator.mediaDevices.getDisplayMedia(constraints);
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Update UI
             updateButtonStates();
-            updateShareStatus('Sharing');
+            updateShareStatus('共有中');
             updateShareResolution();
             startShareTimer();
             
@@ -124,11 +124,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 stopScreenShare();
             };
             
-            showNotification('Screen sharing started!');
+            showNotification('スクリーンシェアを開始しました！');
             
         } catch (error) {
-            console.error('Error starting screen share:', error);
-            showNotification('Failed to start screen sharing', 'error');
+            console.error('スクリーンシェア開始エラー:', error);
+            showNotification('スクリーンシェアの開始に失敗しました', 'error');
         }
     }
     
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Update UI
         updateButtonStates();
-        updateShareStatus('Not sharing');
+        updateShareStatus('共有していません');
         updateShareResolution('-');
         stopShareTimer();
         
@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
             stopRecording();
         }
         
-        showNotification('Screen sharing stopped');
+        showNotification('スクリーンシェアを停止しました');
     }
     
     // Toggle pause sharing
@@ -178,17 +178,17 @@ document.addEventListener('DOMContentLoaded', function() {
             currentStream.getVideoTracks().forEach(track => {
                 track.enabled = false;
             });
-            updateShareStatus('Paused');
-            pauseShareBtn.textContent = 'Resume';
-            showNotification('Screen sharing paused');
+            updateShareStatus('一時停止中');
+            pauseShareBtn.textContent = '再開';
+            showNotification('スクリーンシェアを一時停止しました');
         } else {
             // Resume video tracks
             currentStream.getVideoTracks().forEach(track => {
                 track.enabled = true;
             });
-            updateShareStatus('Sharing');
-            pauseShareBtn.textContent = 'Pause';
-            showNotification('Screen sharing resumed');
+            updateShareStatus('共有中');
+            pauseShareBtn.textContent = '一時停止';
+            showNotification('スクリーンシェアを再開しました');
         }
     }
     
@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Start recording
     function startRecording() {
         if (!isSharing || !currentStream) {
-            showNotification('Please start screen sharing first', 'warning');
+            showNotification('まずスクリーンシェアを開始してください', 'warning');
             return;
         }
         
@@ -235,11 +235,11 @@ document.addEventListener('DOMContentLoaded', function() {
             recordingPanel.style.display = 'block';
             startRecordingTimer();
             
-            showNotification('Recording started');
+            showNotification('録画を開始しました');
             
         } catch (error) {
-            console.error('Error starting recording:', error);
-            showNotification('Failed to start recording', 'error');
+            console.error('録画開始エラー:', error);
+            showNotification('録画の開始に失敗しました', 'error');
         }
     }
     
@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', function() {
             recordingPanel.style.display = 'none';
             stopRecordingTimer();
             
-            showNotification('Recording stopped');
+            showNotification('録画を停止しました');
         }
     }
     
@@ -265,12 +265,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (mediaRecorder.state === 'recording') {
             mediaRecorder.pause();
-            pauseRecordBtn.textContent = 'Resume';
-            showNotification('Recording paused');
+            pauseRecordBtn.textContent = '再開';
+            showNotification('録画を一時停止しました');
         } else if (mediaRecorder.state === 'paused') {
             mediaRecorder.resume();
-            pauseRecordBtn.textContent = 'Pause';
-            showNotification('Recording resumed');
+            pauseRecordBtn.textContent = '一時停止';
+            showNotification('録画を再開しました');
         }
     }
     
@@ -284,7 +284,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const recording = {
             id: Date.now(),
-            title: `Screen Recording ${new Date().toLocaleString()}`,
+            title: `スクリーン録画 ${new Date().toLocaleString()}`,
             url: url,
             blob: blob,
             timestamp: timestamp,
@@ -296,7 +296,7 @@ document.addEventListener('DOMContentLoaded', function() {
         saveRecordingsToStorage();
         displayRecordings();
         
-        showNotification('Recording saved successfully!');
+        showNotification('録画が正常に保存されました！');
     }
     
     // Toggle fullscreen
@@ -342,7 +342,7 @@ document.addEventListener('DOMContentLoaded', function() {
             URL.revokeObjectURL(url);
         });
         
-        showNotification('Screenshot saved!');
+        showNotification('スクリーンショットを保存しました！');
     }
     
     // Get display media constraints
@@ -382,7 +382,7 @@ document.addEventListener('DOMContentLoaded', function() {
         stopShareBtn.disabled = !isSharing;
         pauseShareBtn.disabled = !isSharing;
         recordBtn.disabled = !isSharing;
-        recordBtn.textContent = isRecording ? 'Stop Recording' : 'Start Recording';
+        recordBtn.textContent = isRecording ? '録画停止' : '録画開始';
         stopRecordBtn.disabled = !isRecording;
         pauseRecordBtn.disabled = !isRecording;
         fullscreenBtn.disabled = !isSharing;
@@ -472,8 +472,8 @@ document.addEventListener('DOMContentLoaded', function() {
         ctx.fillStyle = '#000';
         ctx.font = '12px Arial';
         ctx.textAlign = 'center';
-        ctx.fillText('QR Code', canvas.width / 2, canvas.height / 2 - 10);
-        ctx.fillText('(Simulated)', canvas.width / 2, canvas.height / 2 + 10);
+        ctx.fillText('QRコード', canvas.width / 2, canvas.height / 2 - 10);
+        ctx.fillText('(シミュレーション)', canvas.width / 2, canvas.height / 2 + 10);
         
         // Add border
         ctx.strokeStyle = '#000';
@@ -483,11 +483,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add simulated viewers
     function addSimulatedViewers() {
         const simulatedViewers = [
-            'John Doe',
-            'Jane Smith',
-            'Mike Johnson',
-            'Sarah Wilson',
-            'David Brown'
+            '田中太郎',
+            '佐藤花子',
+            '鈴木一郎',
+            '山田美奈',
+            '伊藤大輔'
         ];
         
         simulatedViewers.forEach((name, index) => {
@@ -527,7 +527,7 @@ document.addEventListener('DOMContentLoaded', function() {
         recordingsContainer.innerHTML = '';
         
         if (recordings.length === 0) {
-            recordingsContainer.innerHTML = '<p>No recordings yet</p>';
+            recordingsContainer.innerHTML = '<p>まだ録画がありません</p>';
             return;
         }
         
@@ -541,14 +541,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 <div class="recording-info">
                     <div class="recording-title">${recording.title}</div>
-                    <div class="recording-meta">Duration: ${formatDuration(recording.duration)}</div>
-                    <div class="recording-meta">Size: ${formatFileSize(recording.size)}</div>
-                    <div class="recording-meta">Created: ${new Date(recording.timestamp).toLocaleDateString()}</div>
+                    <div class="recording-meta">時間: ${formatDuration(recording.duration)}</div>
+                    <div class="recording-meta">サイズ: ${formatFileSize(recording.size)}</div>
+                    <div class="recording-meta">作成日: ${new Date(recording.timestamp).toLocaleDateString()}</div>
                 </div>
                 <div class="recording-actions">
-                    <button class="btn small primary" onclick="downloadRecording(${recording.id})">Download</button>
-                    <button class="btn small secondary" onclick="shareRecording(${recording.id})">Share</button>
-                    <button class="btn small danger" onclick="deleteRecording(${recording.id})">Delete</button>
+                    <button class="btn small primary" onclick="downloadRecording(${recording.id})">ダウンロード</button>
+                    <button class="btn small secondary" onclick="shareRecording(${recording.id})">共有</button>
+                    <button class="btn small danger" onclick="deleteRecording(${recording.id})">削除</button>
                 </div>
             `;
             
@@ -578,7 +578,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             } else {
                 copyToClipboard(recording.url);
-                showNotification('Recording URL copied to clipboard');
+                showNotification('録画URLをクリップボードにコピーしました');
             }
         }
     };
@@ -591,7 +591,7 @@ document.addEventListener('DOMContentLoaded', function() {
             recordings.splice(index, 1);
             saveRecordingsToStorage();
             displayRecordings();
-            showNotification('Recording deleted');
+            showNotification('録画を削除しました');
         }
     };
     
@@ -607,7 +607,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }));
             localStorage.setItem('screenShareRecordings', JSON.stringify(recordingsData));
         } catch (error) {
-            console.error('Error saving recordings:', error);
+            console.error('録画保存エラー:', error);
         }
     }
     
@@ -621,7 +621,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 recordings = []; // Reset for demo
             }
         } catch (error) {
-            console.error('Error loading recordings:', error);
+            console.error('録画読み込みエラー:', error);
         }
         
         displayRecordings();
@@ -668,9 +668,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Copy to clipboard
     function copyToClipboard(text) {
         navigator.clipboard.writeText(text).then(() => {
-            showNotification('Copied to clipboard!');
+            showNotification('クリップボードにコピーしました！');
         }).catch(() => {
-            showNotification('Failed to copy to clipboard', 'error');
+            showNotification('クリップボードにコピーできませんでした', 'error');
         });
     }
     
@@ -688,7 +688,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function formatFileSize(bytes) {
         if (bytes === 0) return '0 Bytes';
         const k = 1024;
-        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const sizes = ['バイト', 'KB', 'MB', 'GB'];
         const i = Math.floor(Math.log(bytes) / Math.log(k));
         return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
     }

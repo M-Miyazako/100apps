@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Conference Tool initialized successfully!');
+    console.log('会議ツールが正常に初期化されました！');
     
     // App state
     let currentRoom = null;
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const userName = userNameInput.value.trim() || 'Anonymous';
         
         if (!roomId) {
-            showNotification('Please enter a room ID', 'error');
+            showNotification('ルームIDを入力してください', 'error');
             return;
         }
         
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Join room with ID
     async function joinRoomWithId(roomId, userName) {
         try {
-            showNotification('Joining room...');
+            showNotification('ルームに参加中...');
             
             // Initialize local media
             await initLocalMedia();
@@ -166,11 +166,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 addSimulatedParticipants();
             }, 2000);
             
-            showNotification('Successfully joined room!');
+            showNotification('ルームに正常に参加しました！');
             
         } catch (error) {
-            console.error('Error joining room:', error);
-            showNotification('Failed to join room', 'error');
+            console.error('ルーム参加エラー:', error);
+            showNotification('ルームの参加に失敗しました', 'error');
         }
     }
     
@@ -185,8 +185,8 @@ document.addEventListener('DOMContentLoaded', function() {
             localVideo.srcObject = localStream;
             
         } catch (error) {
-            console.error('Error accessing media devices:', error);
-            showNotification('Could not access camera/microphone', 'error');
+            console.error('メディアデバイスアクセスエラー:', error);
+            showNotification('カメラ/マイクにアクセスできませんでした', 'error');
             
             // Create a black video as fallback
             const canvas = document.createElement('canvas');
@@ -205,9 +205,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add simulated participants
     function addSimulatedParticipants() {
         const simulatedParticipants = [
-            { id: 'user1', name: 'John Doe', videoEnabled: true, audioEnabled: true },
-            { id: 'user2', name: 'Jane Smith', videoEnabled: true, audioEnabled: false },
-            { id: 'user3', name: 'Mike Johnson', videoEnabled: false, audioEnabled: true }
+            { id: 'user1', name: '田中太郎', videoEnabled: true, audioEnabled: true },
+            { id: 'user2', name: '佐藤花子', videoEnabled: true, audioEnabled: false },
+            { id: 'user3', name: '鈴木一郎', videoEnabled: false, audioEnabled: true }
         ];
         
         simulatedParticipants.forEach((participant, index) => {
@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 updateParticipantCount();
                 
                 // Add join message
-                addChatMessage('System', `${participant.name} joined the room`);
+                addChatMessage('システム', `${participant.name}がルームに参加しました`);
             }, index * 1000);
         });
     }
@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', function() {
             updateParticipantsList();
         }
         
-        showNotification(isVideoEnabled ? 'Video enabled' : 'Video disabled');
+        showNotification(isVideoEnabled ? 'ビデオが有効になりました' : 'ビデオが無効になりました');
     }
     
     // Toggle audio
@@ -333,7 +333,7 @@ document.addEventListener('DOMContentLoaded', function() {
             updateParticipantsList();
         }
         
-        showNotification(isAudioEnabled ? 'Audio enabled' : 'Audio disabled');
+        showNotification(isAudioEnabled ? 'オーディオが有効になりました' : 'オーディオが無効になりました');
     }
     
     // Toggle screen share
@@ -359,11 +359,11 @@ document.addEventListener('DOMContentLoaded', function() {
                         stopScreenShare();
                     };
                     
-                    showNotification('Screen sharing started');
+                    showNotification('画面共有を開始しました');
                 }
             } catch (error) {
-                console.error('Error starting screen share:', error);
-                showNotification('Could not start screen sharing', 'error');
+                console.error('画面共有開始エラー:', error);
+                showNotification('画面共有を開始できませんでした', 'error');
             }
         } else {
             stopScreenShare();
@@ -377,7 +377,7 @@ document.addEventListener('DOMContentLoaded', function() {
             initLocalMedia();
             isScreenSharing = false;
             screenShareBtn.classList.remove('active');
-            showNotification('Screen sharing stopped');
+            showNotification('画面共有を停止しました');
         }
     }
     
@@ -464,7 +464,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const name = document.createElement('div');
             name.className = 'participant-name';
-            name.textContent = participant.name + (participant.isLocal ? ' (You)' : '');
+            name.textContent = participant.name + (participant.isLocal ? ' (あなた)' : '');
             
             const status = document.createElement('div');
             status.className = 'participant-status';
@@ -505,9 +505,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Copy to clipboard
     function copyToClipboard(text) {
         navigator.clipboard.writeText(text).then(() => {
-            showNotification('Copied to clipboard!');
+            showNotification('クリップボードにコピーしました！');
         }).catch(() => {
-            showNotification('Could not copy to clipboard', 'error');
+            showNotification('クリップボードにコピーできませんでした', 'error');
         });
     }
     
@@ -529,7 +529,7 @@ document.addEventListener('DOMContentLoaded', function() {
         videoGrid.innerHTML = `
             <div class="video-container local">
                 <video id="localVideo" autoplay muted></video>
-                <div class="video-label">You</div>
+                <div class="video-label">あなた</div>
                 <div class="video-controls">
                     <button id="toggleVideoBtn" class="control-btn">📹</button>
                     <button id="toggleAudioBtn" class="control-btn">🎤</button>
@@ -551,7 +551,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Re-initialize event listeners for new elements
         init();
         
-        showNotification('Left the room');
+        showNotification('ルームを退室しました');
     }
     
     // Load media devices
@@ -583,7 +583,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             
         } catch (error) {
-            console.error('Error loading media devices:', error);
+            console.error('メディアデバイス読み込みエラー:', error);
         }
     }
     

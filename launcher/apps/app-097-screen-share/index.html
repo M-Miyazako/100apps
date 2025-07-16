@@ -1,152 +1,152 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Screen Share</title>
+    <title>スクリーンシェア</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Screen Share</h1>
+        <h1>スクリーンシェア</h1>
         
         <div class="main-content">
             <div class="control-panel">
-                <h2>Screen Sharing Controls</h2>
+                <h2>スクリーン共有コントロール</h2>
                 
                 <div class="share-options">
                     <div class="option-group">
-                        <h3>Share Type</h3>
+                        <h3>共有タイプ</h3>
                         <div class="radio-group">
                             <label class="radio-option">
                                 <input type="radio" name="shareType" value="screen" checked>
-                                <span class="radio-label">Entire Screen</span>
+                                <span class="radio-label">全画面</span>
                             </label>
                             <label class="radio-option">
                                 <input type="radio" name="shareType" value="window">
-                                <span class="radio-label">Application Window</span>
+                                <span class="radio-label">アプリケーションウィンドウ</span>
                             </label>
                             <label class="radio-option">
                                 <input type="radio" name="shareType" value="tab">
-                                <span class="radio-label">Browser Tab</span>
+                                <span class="radio-label">ブラウザタブ</span>
                             </label>
                         </div>
                     </div>
                     
                     <div class="option-group">
-                        <h3>Audio</h3>
+                        <h3>音声</h3>
                         <label class="checkbox-option">
                             <input type="checkbox" id="includeAudio">
-                            <span class="checkbox-label">Include System Audio</span>
+                            <span class="checkbox-label">システム音声を含める</span>
                         </label>
                     </div>
                     
                     <div class="option-group">
-                        <h3>Quality</h3>
+                        <h3>画質</h3>
                         <select id="qualitySelect">
-                            <option value="low">Low (360p)</option>
-                            <option value="medium" selected>Medium (720p)</option>
-                            <option value="high">High (1080p)</option>
+                            <option value="low">低 (360p)</option>
+                            <option value="medium" selected>中 (720p)</option>
+                            <option value="high">高 (1080p)</option>
                         </select>
                     </div>
                 </div>
                 
                 <div class="action-buttons">
-                    <button id="startShareBtn" class="btn primary">Start Sharing</button>
-                    <button id="stopShareBtn" class="btn danger" disabled>Stop Sharing</button>
-                    <button id="pauseShareBtn" class="btn secondary" disabled>Pause</button>
-                    <button id="recordBtn" class="btn info">Start Recording</button>
+                    <button id="startShareBtn" class="btn primary">共有開始</button>
+                    <button id="stopShareBtn" class="btn danger" disabled>共有停止</button>
+                    <button id="pauseShareBtn" class="btn secondary" disabled>一時停止</button>
+                    <button id="recordBtn" class="btn info">録画開始</button>
                 </div>
                 
                 <div class="status-info">
                     <div class="status-item">
-                        <span class="status-label">Status:</span>
-                        <span id="shareStatus" class="status-value">Not sharing</span>
+                        <span class="status-label">状態:</span>
+                        <span id="shareStatus" class="status-value">未共有</span>
                     </div>
                     <div class="status-item">
-                        <span class="status-label">Duration:</span>
+                        <span class="status-label">継続時間:</span>
                         <span id="shareDuration" class="status-value">00:00:00</span>
                     </div>
                     <div class="status-item">
-                        <span class="status-label">Resolution:</span>
+                        <span class="status-label">解像度:</span>
                         <span id="shareResolution" class="status-value">-</span>
                     </div>
                 </div>
             </div>
             
             <div class="preview-panel">
-                <h2>Preview</h2>
+                <h2>プレビュー</h2>
                 <div class="video-container">
                     <video id="screenVideo" autoplay muted></video>
                     <div class="video-overlay" id="videoOverlay">
                         <div class="overlay-content">
                             <div class="share-icon">🖥️</div>
-                            <p>Click "Start Sharing" to begin screen sharing</p>
+                            <p>"共有開始"をクリックしてスクリーン共有を開始</p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="preview-controls">
-                    <button id="fullscreenBtn" class="control-btn" title="Fullscreen">⛶</button>
-                    <button id="pipBtn" class="control-btn" title="Picture-in-Picture">📺</button>
-                    <button id="snapshotBtn" class="control-btn" title="Take Screenshot">📸</button>
+                    <button id="fullscreenBtn" class="control-btn" title="フルスクリーン">⛶</button>
+                    <button id="pipBtn" class="control-btn" title="ピクチャーインピクチャー">📺</button>
+                    <button id="snapshotBtn" class="control-btn" title="スクリーンショット撮影">📸</button>
                 </div>
             </div>
         </div>
         
         <div class="sharing-panel" id="sharingPanel" style="display: none;">
-            <h2>Share Your Screen</h2>
+            <h2>スクリーンを共有</h2>
             <div class="share-methods">
                 <div class="share-method">
-                    <h3>Share Link</h3>
+                    <h3>共有リンク</h3>
                     <div class="input-group">
-                        <input type="text" id="shareLink" readonly placeholder="Share link will appear here">
-                        <button id="copyLinkBtn" class="btn small">Copy</button>
+                        <input type="text" id="shareLink" readonly placeholder="共有リンクがここに表示されます">
+                        <button id="copyLinkBtn" class="btn small">コピー</button>
                     </div>
                 </div>
                 
                 <div class="share-method">
-                    <h3>QR Code</h3>
+                    <h3>QRコード</h3>
                     <div class="qr-container">
                         <canvas id="qrCanvas" width="150" height="150"></canvas>
                     </div>
                 </div>
                 
                 <div class="share-method">
-                    <h3>Room Code</h3>
+                    <h3>ルームコード</h3>
                     <div class="room-code">
                         <span id="roomCode">-</span>
-                        <button id="copyCodeBtn" class="btn small">Copy</button>
+                        <button id="copyCodeBtn" class="btn small">コピー</button>
                     </div>
                 </div>
             </div>
             
             <div class="viewers-list">
-                <h3>Active Viewers (<span id="viewerCount">0</span>)</h3>
+                <h3>アクティブ視聴者 (<span id="viewerCount">0</span>)</h3>
                 <div class="viewers" id="viewersList">
-                    <!-- Viewers will be added here -->
+                    <!-- 視聴者がここに追加されます -->
                 </div>
             </div>
         </div>
         
         <div class="recording-panel" id="recordingPanel" style="display: none;">
-            <h2>Recording</h2>
+            <h2>録画</h2>
             <div class="recording-status">
                 <div class="recording-indicator">
                     <span class="recording-dot"></span>
-                    <span>Recording in progress...</span>
+                    <span>録画中...</span>
                 </div>
                 <div class="recording-time" id="recordingTime">00:00:00</div>
             </div>
             
             <div class="recording-controls">
-                <button id="stopRecordBtn" class="btn danger">Stop Recording</button>
-                <button id="pauseRecordBtn" class="btn secondary">Pause</button>
+                <button id="stopRecordBtn" class="btn danger">録画停止</button>
+                <button id="pauseRecordBtn" class="btn secondary">一時停止</button>
             </div>
             
             <div class="recording-settings">
                 <div class="setting-group">
-                    <label for="recordFormat">Format:</label>
+                    <label for="recordFormat">形式:</label>
                     <select id="recordFormat">
                         <option value="webm">WebM</option>
                         <option value="mp4">MP4</option>
@@ -154,20 +154,20 @@
                 </div>
                 
                 <div class="setting-group">
-                    <label for="recordQuality">Quality:</label>
+                    <label for="recordQuality">画質:</label>
                     <select id="recordQuality">
-                        <option value="low">Low</option>
-                        <option value="medium" selected>Medium</option>
-                        <option value="high">High</option>
+                        <option value="low">低</option>
+                        <option value="medium" selected>中</option>
+                        <option value="high">高</option>
                     </select>
                 </div>
             </div>
         </div>
         
         <div class="recordings-list" id="recordingsList">
-            <h2>Saved Recordings</h2>
+            <h2>保存された録画</h2>
             <div class="recordings" id="recordingsContainer">
-                <!-- Recordings will be added here -->
+                <!-- 録画がここに追加されます -->
             </div>
         </div>
         

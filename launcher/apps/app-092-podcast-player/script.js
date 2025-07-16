@@ -1,26 +1,26 @@
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Podcast Player initialized successfully!');
+    console.log('ポッドキャストプレイヤーが正常に初期化されました！');
     
     // Sample podcast data
     const samplePodcasts = [
         {
             id: 1,
-            title: "Tech Talk Daily",
-            description: "Daily discussions about the latest in technology",
+            title: "テックトーク・デイリー",
+            description: "最新技術についての日々の議論",
             artwork: "https://via.placeholder.com/80x80/667eea/ffffff?text=TT",
             episodes: [
                 {
                     id: 1,
-                    title: "The Future of AI in 2024",
-                    description: "Exploring how artificial intelligence will shape our future",
+                    title: "2024年のAIの未来",
+                    description: "人工知能が私たちの未来をどう形成するかを探る",
                     duration: "32:45",
                     audioUrl: "https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3",
                     artwork: "https://via.placeholder.com/80x80/667eea/ffffff?text=AI"
                 },
                 {
                     id: 2,
-                    title: "Quantum Computing Breakthrough",
-                    description: "Recent advances in quantum computing technology",
+                    title: "量子コンピューティングの突破口",
+                    description: "量子コンピューティング技術の最近の進歩",
                     duration: "28:12",
                     audioUrl: "https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3",
                     artwork: "https://via.placeholder.com/80x80/667eea/ffffff?text=QC"
@@ -29,22 +29,22 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             id: 2,
-            title: "History Uncovered",
-            description: "Fascinating stories from history",
+            title: "歴史の発見",
+            description: "歴史からの魅力的な物語",
             artwork: "https://via.placeholder.com/80x80/764ba2/ffffff?text=HU",
             episodes: [
                 {
                     id: 3,
-                    title: "Ancient Rome: Rise and Fall",
-                    description: "The complete story of the Roman Empire",
+                    title: "古代ローマ：興亡の歴史",
+                    description: "ローマ帝国の完全な歴史",
                     duration: "45:30",
                     audioUrl: "https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3",
                     artwork: "https://via.placeholder.com/80x80/764ba2/ffffff?text=RO"
                 },
                 {
                     id: 4,
-                    title: "Medieval Castles",
-                    description: "Life in medieval times and castle construction",
+                    title: "中世の城",
+                    description: "中世の生活と城の建設",
                     duration: "38:22",
                     audioUrl: "https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3",
                     artwork: "https://via.placeholder.com/80x80/764ba2/ffffff?text=MC"
@@ -53,14 +53,14 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             id: 3,
-            title: "Science Today",
-            description: "Latest discoveries in science and research",
+            title: "今日の科学",
+            description: "科学と研究の最新発見",
             artwork: "https://via.placeholder.com/80x80/28a745/ffffff?text=ST",
             episodes: [
                 {
                     id: 5,
-                    title: "Climate Change Solutions",
-                    description: "Innovative approaches to combat climate change",
+                    title: "気候変動の解決策",
+                    description: "気候変動に対処する革新的なアプローチ",
                     duration: "41:15",
                     audioUrl: "https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3",
                     artwork: "https://via.placeholder.com/80x80/28a745/ffffff?text=CC"

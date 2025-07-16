@@ -309,7 +309,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-031-exercise-tracker/index.html',
     tags: ['エクササイズ', 'フィットネス', 'トラッカー', '健康', '031'],
     createdAt: new Date('2024-01-28'),
-    isTestedWorking: false,
+    isTestedWorking: true,
   },
   {
     id: '032',
@@ -319,7 +319,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-032-color-game/index.html',
     tags: ['カラー', 'ゲーム', '色', '記憶', '032'],
     createdAt: new Date('2024-01-28'),
-    isTestedWorking: false,
+    isTestedWorking: true,
   },
   {
     id: '033',
@@ -329,7 +329,7 @@ export const sampleApps: App[] = [
     path: '/apps/app-033-barcode-generator/index.html',
     tags: ['バーコード', 'ジェネレーター', 'ツール', '033'],
     createdAt: new Date('2024-01-28'),
-    isTestedWorking: false,
+    isTestedWorking: true,
   },
   {
     id: '034',

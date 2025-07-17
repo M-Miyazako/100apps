@@ -29,7 +29,7 @@
 
 ```bash
 # リポジトリをクローン
-git clone https://github.com/miyazako/100apps.git
+git clone https://github.com/M-Miyazako/100apps.git
 cd 100apps/launcher
 
 # 依存関係をインストール
@@ -42,7 +42,7 @@ npm install
 # 開発サーバーを起動
 npm run dev
 
-# ブラウザで http://localhost:5173 にアクセス
+# ブラウザで http://localhost:[port] にアクセス
 ```
 
 ### ビルド
